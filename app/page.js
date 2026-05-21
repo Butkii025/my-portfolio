@@ -33,31 +33,35 @@ export default function JunuPortfolio() {
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
       {/* NAVBAR */}
-      <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/40 border-b border-white/10">
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-          <h1 className="text-2xl font-bold tracking-wider">
-            P<span className="text-zinc-400">_Vijay</span>
-          </h1>
+      {/* NAVBAR */}
+<nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/40 border-b border-white/10">
 
-          <div className="hidden md:flex gap-8 text-sm text-zinc-300">
-            <a href="#about" className="hover:text-white transition">
-              About
-            </a>
-            <a href="#skills" className="hover:text-white transition">
-              Skills
-            </a>
-            <a href="#projects" className="hover:text-white transition">
-              Projects
-            </a>
-            <a href="#others" className="hover:text-white transition">
-              Others
-            </a>
-            <a href="#contact" className="hover:text-white transition">
-              Contact
-            </a>
-          </div>
-        </div>
-      </nav>
+  <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+
+    {/* LEFT SIDE */}
+    <div className="flex items-center gap-3">
+      <img
+        src="/pv_logo.jpg"
+        alt="Logo"
+        className="h-10 w-10 rounded-full"
+      />
+
+      <h1 className="text-2xl font-bold tracking-wider">
+        <span className="text-zinc-400">P_Vijay</span>
+      </h1>
+    </div>
+
+    {/* RIGHT SIDE */}
+    <div className="hidden md:flex gap-8 text-sm text-zinc-300">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#others">Others</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+  </div>
+</nav>
 
       {/* HERO */}
       <section className="relative min-h-screen flex items-center justify-center px-6">
@@ -98,10 +102,12 @@ export default function JunuPortfolio() {
               <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent" />
 
               <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center">
-                <div className="w-32 h-32 rounded-full bg-white/10 border border-white/10 mb-6 flex items-center justify-center text-4xl font-bold">
-                  J
-                </div>
-
+                <img
+                 src="/profile.png"
+                 alt="Profile"
+                 className="w-40 h-40 rounded-full object-cover border-4 border-zinc-700 shadow-2xl"
+                 />
+                
                 <h2 className="text-3xl font-bold mb-2">PRIYANSHU</h2>
 
                 <p className="text-zinc-400 leading-relaxed">
