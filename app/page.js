@@ -71,6 +71,9 @@ export default function JunuPortfolio() {
 
         <div className="relative z-10 max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
+
+            <br></br>
+            <br></br>
             <p className="uppercase tracking-[0.3em] text-zinc-400 text-sm mb-4">
               Artist • Developer • AI/ML Enthusiast • DATA_ANALYTIC
             </p>
