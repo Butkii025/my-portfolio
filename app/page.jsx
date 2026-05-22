@@ -617,8 +617,6 @@ export default function VijayPortfolio() {
         </div>
       </section>
 
-
-
       {/* FOOTER */}
       <footer className="py-8 border-t border-white/10 text-center text-zinc-500 text-sm">
         © 2026 P_Vijay Portfolio 🖤
