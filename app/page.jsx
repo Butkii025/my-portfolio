@@ -1,3 +1,9 @@
+'use client';
+
+import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaPython, FaGitAlt, FaFigma } from 'react-icons/fa';
+import { SiNextdotjs, SiTailwindcss, SiScikitlearn } from 'react-icons/si';
+import { MdDesignServices } from 'react-icons/md';
+
 export default function VijayPortfolio() {
   const projects = [
     {
@@ -17,17 +23,17 @@ export default function VijayPortfolio() {
     },
   ];
 
-  const skills = [
-    "HTML",
-    "CSS",
-    "JavaScript",
-    "React",
-    "Next.js",
-    "Tailwind CSS",
-    "Python",
-    "AI & ML",
-    "Git & GitHub",
-    "UI/UX Design",
+  const skillsData = [
+    { name: "HTML", icon: FaHtml5, color: "text-orange-500" },
+    { name: "CSS", icon: FaCss3Alt, color: "text-blue-500" },
+    { name: "JavaScript", icon: FaJs, color: "text-yellow-400" },
+    { name: "React", icon: FaReact, color: "text-blue-400" },
+    { name: "Next.js", icon: SiNextdotjs, color: "text-white" },
+    { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-cyan-400" },
+    { name: "Python", icon: FaPython, color: "text-blue-600" },
+    { name: "AI & ML", icon: SiScikitlearn, color: "text-orange-400" },
+    { name: "Git & GitHub", icon: FaGitAlt, color: "text-red-500" },
+    { name: "UI/UX Design", icon: FaFigma, color: "text-purple-400" },
   ];
 
   return (
@@ -75,15 +81,14 @@ export default function VijayPortfolio() {
               Artist • Developer • AI/ML Enthusiast • DATA_ANALYTIC
             </p>
 
-            <h1 className="text-5xl md:text-7xl font-black leading-tight mb-6">
+            <h1 className="text-4xl md:text-7xl font-black leading-tight mb-6">
               Building
               <span className="block text-zinc-400">Creative Digital</span>
-              Experiences.  
+              Experiences
             </h1>
 
             <p className="text-zinc-400 text-lg leading-relaxed max-w-xl mb-8">
-              I create modern web experiences blending technology, design,
-              artificial intelligence, creativity, and storytelling throught my portfolio.
+              ​I engineer intelligent web applications by combining data-driven AI models with clean, intuitive interfaces that bridge the gap between complex data and seamless user experiences.
             </p>
 
             <div className="flex gap-4 flex-wrap">
@@ -111,8 +116,7 @@ export default function VijayPortfolio() {
                 <h2 className="text-3xl font-bold mb-2">PRIYANSHU</h2>
 
                 <p className="text-zinc-400 leading-relaxed">
-                  B.Tech CSE Student passionate about AI, ML models, artistic creativity,
-                  frontend development, and futuristic UI design.
+                  B.Tech CSE Student passionate about AI & ML models, Artistic creativity, Data Engineering, and Futuristic UI Design.
                 </p>
               </div>
             </div>
@@ -130,17 +134,16 @@ export default function VijayPortfolio() {
 
             <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Turning Ideas Into
-              <span className="block text-zinc-400">Interactive Reality</span>
+              <span className="block text-zinc-500">Interactive Reality</span>
             </h2>
           </div>
 
           <div>
             <p className="text-zinc-400 leading-relaxed text-lg">
-              I am a Computer Science Engineering student who loves combining
-              technology with creativity. From AI-based healthcare projects to
-              artistic digital experiences and stock market dashboards, I enjoy
-              building projects that look visually impressive while solving
-              meaningful problems.
+              Hello! I’m <span class="gb-gradient-to-r from-blue-500/20 to-blue-500/10  hover:bg-blue-400/20 transition duration-100 text-sm font-medium text-blue-300 hover:text-blue-200 cursor-default italic text-sky-700 text-xl">Priyanshu Vijay</span> , a 3rd year B.Tech student currently pursuing my degree in Computer Science and Engineering from Dr. Shakuntala Misra National Rehabilitation University (DSMNRU), Lucknow. I am deeply interested in the fields of Artificial Intelligence, Machine Learning, Data Analytics, and Front-End Development, where I enjoy combining creativity with technology to build meaningful and impactful projects. <br></br><br></br>
+              
+              Apart from technical skills, I am a creative thinker, sketch artist, and problem solver who loves exploring innovative ideas and continuously learning new technologies. I believe in teamwork, discipline, and turning ideas into real-world solutions through dedication and curiosity.
+
             </p>
           </div>
         </div>
@@ -160,14 +163,18 @@ export default function VijayPortfolio() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-5 gap-5">
-            {skills.map((skill, index) => (
-              <div
-                key={index}
-                className="p-5 rounded-2xl border border-white/10 bg-black hover:bg-white hover:text-black cursor-pointer transition duration-300 text-center font-medium"
-              >
-                {skill}
-              </div>
-            ))}
+            {skillsData.map((skill, index) => {
+              const IconComponent = skill.icon;
+              return (
+                <div
+                  key={index}
+                  className="p-6 rounded-2xl border border-white/10 bg-black hover:bg-white hover:text-black cursor-pointer transition duration-300 text-center font-medium group flex flex-col items-center justify-center gap-3"
+                >
+                  <IconComponent className={`text-3xl ${skill.color} group-hover:text-black transition duration-300`} />
+                  {skill.name}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
