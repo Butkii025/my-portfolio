@@ -272,14 +272,14 @@ export default function VijayPortfolio() {
               Artist • Developer • AI/ML Enthusiast • DATA_ANALYTIC
             </p>
 
-            <h1 className="text-5xl md:text-7xl font-black leading-tight mb-6">
+            <h1 className="text-4xl md:text-7xl font-black leading-tight mb-6">
               Building
               <span className="block text-zinc-400">Creative Digital</span>
-              Experiences.  
+              Experiences
             </h1>
 
             <p className="text-zinc-400 text-lg leading-relaxed max-w-xl mb-8">
-              ​I engineer intelligent web applications by combining data-driven AI models with clean, intuitive interfaces that bridge the gap between complex data and seamless user experiences.
+              I engineer intelligent web applications by combining data-driven AI models with clean, intuitive interfaces that bridge the gap between complex data and seamless user experiences.
             </p>
 
             <div className="flex gap-4 flex-wrap">
