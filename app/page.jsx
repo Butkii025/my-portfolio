@@ -1,4 +1,4 @@
-export default function JunuPortfolio() {
+export default function VijayPortfolio() {
   const projects = [
     {
       title: "AI Pneumonia Detection",
@@ -53,28 +53,25 @@ export default function JunuPortfolio() {
 
     {/* RIGHT SIDE */}
     <div className="hidden md:flex gap-8 text-sm text-zinc-300">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#others">Others</a>
-      <a href="#contact">Contact</a>
+      <a href="#about" className="cursor-pointer hover:text-blue-400 transition duration-300">About</a>
+      <a href="#skills" className="cursor-pointer hover:text-blue-400 transition duration-300">Skills</a>
+      <a href="#projects" className="cursor-pointer hover:text-blue-400 transition duration-300">Projects</a>
+      <a href="#others" className="cursor-pointer hover:text-blue-400 transition duration-300">Others</a>
+      <a href="#contact" className="cursor-pointer hover:text-blue-400 transition duration-300">Contact</a>
     </div>
 
   </div>
 </nav>
 
       {/* HERO */}
-      <section className="relative min-h-screen flex items-center justify-center px-6">
+      <section className="relative min-h-screen flex items-center justify-center px-6 pt-20">
         <div className="absolute inset-0 bg-gradient-to-b from-zinc-900 via-black to-black opacity-90" />
 
         <div className="absolute w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl" />
 
         <div className="relative z-10 max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
-
-            <br></br>
-            <br></br>
-            <p className="uppercase tracking-[0.3em] text-zinc-400 text-sm mb-4">
+            <p className="uppercase tracking-[0.2em] text-white font-semibold text-sm mb-4">
               Artist • Developer • AI/ML Enthusiast • DATA_ANALYTIC
             </p>
 
@@ -166,7 +163,7 @@ export default function JunuPortfolio() {
             {skills.map((skill, index) => (
               <div
                 key={index}
-                className="p-5 rounded-2xl border border-white/10 bg-black hover:bg-white hover:text-black transition duration-300 cursor-pointer text-center font-medium"
+                className="p-5 rounded-2xl border border-white/10 bg-black hover:bg-white hover:text-black cursor-pointer transition duration-300 text-center font-medium"
               >
                 {skill}
               </div>
@@ -180,11 +177,11 @@ export default function JunuPortfolio() {
         <div className="max-w-6xl mx-auto">
           <div className="mb-14">
             <p className="text-zinc-500 uppercase tracking-[0.2em] mb-4">
-              Portfolio
+              Projects
             </p>
 
             <h2 className="text-4xl md:text-5xl font-bold">
-              Featured Projects
+              Featured Experiences
             </h2>
           </div>
 
@@ -209,7 +206,7 @@ export default function JunuPortfolio() {
                     {project.tech}
                   </div>
 
-                  <button className="px-5 py-2 rounded-xl border border-white/10 hover:bg-white hover:text-black transition duration-300">
+                  <button className="px-5 py-2 rounded-xl border border-white/10 hover:bg-white hover:text-black active:bg-blue-400 cursor-pointer transition duration-300">
                     Explore Project
                   </button>
                 </div>
@@ -219,33 +216,6 @@ export default function JunuPortfolio() {
         </div>
       </section>
 
-      {/* CONTACT */}
-      <section id="contact" className="py-28 px-6 border-t border-white/10">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-zinc-500 uppercase tracking-[0.2em] mb-4">
-            Contact
-          </p>
-
-          <h2 className="text-5xl font-black mb-6">
-            Let’s Build Something Amazing
-          </h2>
-
-          <p className="text-zinc-400 text-lg max-w-2xl mx-auto leading-relaxed mb-10">
-            Interested in collaborations, projects, or creative ideas? Let’s
-            connect and create impactful digital experiences together.
-          </p>
-
-          <div className="flex justify-center gap-5 flex-wrap">
-            <button className="px-7 py-3 rounded-2xl bg-white text-black font-semibold hover:scale-105 transition duration-300">
-              Email Me
-            </button>
-
-            <button className="px-7 py-3 rounded-2xl border border-white/10 hover:bg-white/10 transition duration-300">
-              GitHub Profile
-            </button>
-          </div>
-        </div>
-      </section>
       {/* OTHERS */}
 <section id="others" className="py-28 px-6 bg-zinc-950">
   <div className="max-w-6xl mx-auto">
@@ -304,9 +274,39 @@ export default function JunuPortfolio() {
   </div>
 </section>
 
+
+      {/* CONTACT */}
+      <section id="contact" className="py-28 px-6 border-t border-white/10">
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="text-zinc-500 uppercase tracking-[0.2em] mb-4">
+            Contact
+          </p>
+
+          <h2 className="text-5xl font-black mb-6">
+            Let’s Build Something Amazing
+          </h2>
+
+          <p className="text-zinc-400 text-lg max-w-2xl mx-auto leading-relaxed mb-10">
+            Interested in collaborations, projects, or creative ideas? Let’s
+            connect and create impactful digital experiences together.
+          </p>
+
+          <div className="flex justify-center gap-5 flex-wrap">
+            <button className="px-7 py-3 rounded-2xl bg-white text-black font-semibold hover:scale-105 active:bg-blue-400 cursor-pointer transition duration-300">
+              Email Me
+            </button>
+
+            <a href="https://github.com/Butkii025" target="_blank" rel="noopener noreferrer" className="px-7 py-3 rounded-2xl border border-white/10 hover:bg-white/10 active:bg-blue-400 cursor-pointer transition duration-300 inline-block">
+              GitHub Profile
+            </a>
+          </div>
+        </div>
+      </section>
+
+      
       {/* FOOTER */}
       <footer className="py-8 border-t border-white/10 text-center text-zinc-500 text-sm">
-        © 2026 P_Vijay Portfolio •
+        © 2026 P_Vijay Portfolio
       </footer>
     </div>
   );
