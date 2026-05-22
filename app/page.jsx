@@ -15,8 +15,8 @@ export default function VijayPortfolio() {
     { label: 'About', href: '#about' },
     { label: 'Skills', href: '#skills' },
     { label: 'Projects', href: '#projects' },
-    { label: 'Research', href: '#research_work' },
     { label: 'Credentials', href: '#credentials' },
+    { label: 'Research', href: '#research_work' },
     { label: 'creative_corner', href: '#creative_corner' },
     { label: 'Contact', href: '#contact' },
   ];
@@ -116,7 +116,7 @@ export default function VijayPortfolio() {
     { name: 'LinkedIn', icon: FaLinkedin, url: 'https://www.linkedin.com/in/priyanshu-v-17243729b?utm_source=share_via&utm_content=profile&utm_medium=member_android' },
     { name: 'Pinterest', icon: FaPinterest, url: 'https://pin.it/6WXws2ZFQ' },
     { name: 'YouTube', icon: FaYoutube, url: 'https://youtube.com/@me_priya_anshu_0?si=UpB7rvQMNGJuWPWS' },
-    { name: 'Kaggle', icon: SiKaggle, url: 'https://www.kaggle.com' },
+    { name: 'Kaggle', icon: SiKaggle, url: 'https://www.kaggle.com/butkii' },
   ];
 
   return (
@@ -266,7 +266,7 @@ export default function VijayPortfolio() {
 
         <div className="absolute w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl" />
 
-        <div className="relative z-10 max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center mt-20">
+        <div className="relative z-20 max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center mt-20">
           <div>
             <p className="uppercase tracking-[0.2em] text-white font-semibold text-sm mb-4">
               Artist • Developer • AI/ML Enthusiast • DATA_ANALYTIC
@@ -279,8 +279,7 @@ export default function VijayPortfolio() {
             </h1>
 
             <p className="text-zinc-400 text-lg leading-relaxed max-w-xl mb-8">
-              I create modern web experiences blending technology, design,
-              artificial intelligence, creativity, and storytelling throught my portfolio.
+              ​I engineer intelligent web applications by combining data-driven AI models with clean, intuitive interfaces that bridge the gap between complex data and seamless user experiences.
             </p>
 
             <div className="flex gap-4 flex-wrap">
@@ -310,8 +309,7 @@ export default function VijayPortfolio() {
                 <h2 className="text-3xl font-bold mb-2">PRIYANSHU</h2>
 
                 <p className="text-zinc-400 leading-relaxed">
-                  B.Tech CSE Student passionate about AI, ML models, artistic creativity,
-                  frontend development, and futuristic UI design.
+                  B.Tech CSE Student passionate about AI & ML models, Artistic creativity, Data Engineering, and Futuristic UI Design.
                 </p>
               </div>
             </div>
@@ -329,17 +327,16 @@ export default function VijayPortfolio() {
 
             <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Turning Ideas Into
-              <span className="block text-zinc-400">Interactive Reality</span>
+              <span className="block text-zinc-500">Interactive Reality</span>
             </h2>
           </div>
 
           <div>
             <p className="text-zinc-400 leading-relaxed text-lg">
-              I am a Computer Science Engineering student who loves combining
-              technology with creativity. From AI-based healthcare projects to
-              artistic digital experiences and stock market dashboards, I enjoy
-              building projects that look visually impressive while solving
-              meaningful problems.
+              Hello! I’m <span class="gb-gradient-to-r from-blue-500/20 to-blue-500/10  hover:bg-blue-400/20 transition duration-100 text-sm font-medium text-blue-300 hover:text-blue-200 cursor-default italic text-sky-700 text-xl">Priyanshu Vijay</span> , a 3rd year B.Tech student currently pursuing my degree in Computer Science and Engineering from Dr. Shakuntala Misra National Rehabilitation University (DSMNRU), Lucknow. I am deeply interested in the fields of Artificial Intelligence, Machine Learning, Data Analytics, and Front-End Development, where I enjoy combining creativity with technology to build meaningful and impactful projects. <br></br><br></br>
+              
+              Apart from technical skills, I am a creative thinker, sketch artist, and problem solver who loves exploring innovative ideas and continuously learning new technologies. I believe in teamwork, discipline, and turning ideas into real-world solutions through dedication and curiosity.
+
             </p>
           </div>
         </div>
