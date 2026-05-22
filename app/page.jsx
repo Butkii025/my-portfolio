@@ -1,4 +1,25 @@
-export default function JunuPortfolio() {
+'use client';
+
+import { useState } from 'react';
+
+export default function VijayPortfolio() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const navLinks = [
+    { label: 'About', href: '#about' },
+    { label: 'Skills', href: '#skills' },
+    { label: 'Projects', href: '#projects' },
+    { label: 'Others', href: '#others' },
+    { label: 'Contact', href: '#contact' },
+  ];
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
   const projects = [
     {
       title: "AI Pneumonia Detection",
@@ -51,30 +72,72 @@ export default function JunuPortfolio() {
       </h1>
     </div>
 
-    {/* RIGHT SIDE */}
+    {/* DESKTOP MENU */}
     <div className="hidden md:flex gap-8 text-sm text-zinc-300">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#others">Others</a>
-      <a href="#contact">Contact</a>
+      {navLinks.map((link) => (
+        <a
+          key={link.href}
+          href={link.href}
+          className="cursor-pointer hover:text-blue-400 transition duration-300"
+        >
+          {link.label}
+        </a>
+      ))}
     </div>
 
+    {/* MOBILE HAMBURGER */}
+    <button
+      onClick={toggleMenu}
+      className="md:hidden flex flex-col gap-1 cursor-pointer p-2"
+      aria-label="Toggle menu"
+    >
+      <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+      <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
+      <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+    </button>
+
   </div>
+
+  {/* MOBILE DROPDOWN MENU */}
+  {isMenuOpen && (
+    <>
+      {/* Backdrop with blue glow/blur */}
+      <div
+        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
+        onClick={closeMenu}
+        style={{
+          boxShadow: 'inset 0 0 40px rgba(96, 165, 250, 0.15)',
+        }}
+      />
+
+      {/* Menu */}
+      <div className="absolute top-16 right-6 w-48 bg-black border-2 border-blue-400 rounded-2xl shadow-2xl z-40 md:hidden animate-in fade-in slide-in-from-top-2 duration-300">
+        <div className="flex flex-col py-4">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={closeMenu}
+              className="px-6 py-3 text-white hover:text-blue-400 hover:bg-white/5 cursor-pointer transition duration-300 text-sm"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </>
+  )}
 </nav>
 
       {/* HERO */}
-      <section className="relative min-h-screen flex items-center justify-center px-6">
+      <section className="relative min-h-screen flex items-center justify-center px-6 pt-20">
         <div className="absolute inset-0 bg-gradient-to-b from-zinc-900 via-black to-black opacity-90" />
 
         <div className="absolute w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl" />
 
-        <div className="relative z-10 max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <div className="relative z-10 max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center mt-20">
           <div>
-
-            <br></br>
-            <br></br>
-            <p className="uppercase tracking-[0.3em] text-zinc-400 text-sm mb-4">
+            <p className="uppercase tracking-[0.2em] text-white font-semibold text-sm mb-4">
               Artist • Developer • AI/ML Enthusiast • DATA_ANALYTIC
             </p>
 
@@ -90,11 +153,11 @@ export default function JunuPortfolio() {
             </p>
 
             <div className="flex gap-4 flex-wrap">
-              <button className="px-6 py-3 rounded-2xl bg-white text-black font-semibold hover:scale-105 transition duration-300">
+              <button className="px-6 py-3 rounded-2xl bg-white text-black font-semibold hover:scale-105 active:bg-blue-400 cursor-pointer transition duration-300">
                 View Projects
               </button>
 
-              <button className="px-6 py-3 rounded-2xl border border-white/20 hover:bg-white/10 transition duration-300">
+              <button className="px-6 py-3 rounded-2xl border border-white/20 hover:bg-white/10 active:bg-blue-400 cursor-pointer transition duration-300">
                 Download Resume
               </button>
             </div>
@@ -166,7 +229,7 @@ export default function JunuPortfolio() {
             {skills.map((skill, index) => (
               <div
                 key={index}
-                className="p-5 rounded-2xl border border-white/10 bg-black hover:bg-white hover:text-black transition duration-300 cursor-pointer text-center font-medium"
+                className="p-5 rounded-2xl border border-white/10 bg-black hover:bg-white hover:text-black cursor-pointer transition duration-300 text-center font-medium"
               >
                 {skill}
               </div>
@@ -209,7 +272,7 @@ export default function JunuPortfolio() {
                     {project.tech}
                   </div>
 
-                  <button className="px-5 py-2 rounded-xl border border-white/10 hover:bg-white hover:text-black transition duration-300">
+                  <button className="px-5 py-2 rounded-xl border border-white/10 hover:bg-white hover:text-black active:bg-blue-400 cursor-pointer transition duration-300">
                     Explore Project
                   </button>
                 </div>
@@ -236,13 +299,13 @@ export default function JunuPortfolio() {
           </p>
 
           <div className="flex justify-center gap-5 flex-wrap">
-            <button className="px-7 py-3 rounded-2xl bg-white text-black font-semibold hover:scale-105 transition duration-300">
+            <button className="px-7 py-3 rounded-2xl bg-white text-black font-semibold hover:scale-105 active:bg-blue-400 cursor-pointer transition duration-300">
               Email Me
             </button>
 
-            <button className="px-7 py-3 rounded-2xl border border-white/10 hover:bg-white/10 transition duration-300">
+            <a href="https://github.com/Butkii025" target="_blank" rel="noopener noreferrer" className="px-7 py-3 rounded-2xl border border-white/10 hover:bg-white/10 active:bg-blue-400 cursor-pointer transition duration-300 inline-block">
               GitHub Profile
-            </button>
+            </a>
           </div>
         </div>
       </section>
