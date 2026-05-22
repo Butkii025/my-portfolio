@@ -1,15 +1,23 @@
 'use client';
 
 import { useState } from 'react';
+import { MdEmail } from 'react-icons/md';
+import { FaGithub, FaLinkedin, FaYoutube, FaPinterest } from 'react-icons/fa';
+import { SiKaggle } from 'react-icons/si';
 
 export default function VijayPortfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLogoOpen, setIsLogoOpen] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [selectedArtImage, setSelectedArtImage] = useState(null);
 
   const navLinks = [
     { label: 'About', href: '#about' },
     { label: 'Skills', href: '#skills' },
     { label: 'Projects', href: '#projects' },
-    { label: 'Others', href: '#others' },
+    { label: 'Research', href: '#research_work' },
+    { label: 'Credentials', href: '#credentials' },
+    { label: 'creative_corner', href: '#creative_corner' },
     { label: 'Contact', href: '#contact' },
   ];
 
@@ -20,6 +28,31 @@ export default function VijayPortfolio() {
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
+
+  const openLogo = () => {
+    setIsLogoOpen(true);
+  };
+
+  const closeLogo = () => {
+    setIsLogoOpen(false);
+  };
+
+  const openProfile = () => {
+    setIsProfileOpen(true);
+  };
+
+  const closeProfile = () => {
+    setIsProfileOpen(false);
+  };
+
+  const artImages = [
+    { id: 1, name: 'image.jpg' },
+    { id: 2, name: 'image1.jpg' },
+    { id: 3, name: 'image2.jpg' },
+    { id: 4, name: 'image3.jpg' },
+    { id: 5, name: 'image4.jpg' },
+    { id: 6, name: 'image5.jpg' },
+  ];
   const projects = [
     {
       title: "AI Pneumonia Detection",
@@ -38,17 +71,52 @@ export default function VijayPortfolio() {
     },
   ];
 
-  const skills = [
-    "HTML",
-    "CSS",
-    "JavaScript",
-    "React",
-    "Next.js",
-    "Tailwind CSS",
-    "Python",
-    "AI & ML",
-    "Git & GitHub",
-    "UI/UX Design",
+  const skills = {
+    frontEnd: {
+      title: 'Front-End',
+      icon: '💻',
+      technologies: ['React', 'Next.js', 'HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'Animations'],
+    },
+    backEnd: {
+      title: 'Back-End & Databases',
+      icon: '⚙️',
+      technologies: ['Node.js', 'Python', 'FastAPI', 'SQL', 'REST APIs'],
+    },
+    aiml: {
+      title: 'AI/ML',
+      icon: '🤖',
+      technologies: ['Python', 'PyTorch', 'TensorFlow', 'Hugging Face', 'OpenCV', 'APIs', 'Web Scraping', 'Pandas', 'NumPy', 'Scikit-learn', 'LightGBM', 'Deep Learning', 'Agentic AI'],
+    },
+    dataAnalytics: {
+      title: 'Data Analytics',
+      icon: '📊',
+      technologies: ['SQL', 'Pandas', 'Tableau', 'Power BI', 'Excel', 'A/B Testing', 'Data Wrangling', 'EDA'],
+    },
+    designing: {
+      title: 'Designing',
+      icon: '🎨',
+      technologies: ['Figma', 'Adobe Photoshop', 'Canva', 'Blender'],
+    },
+  };
+
+  const researchTechnologies = [
+    'Python',
+    'Pandas',
+    'NumPy',
+    'Scikit-learn',
+    'Matplotlib',
+    'API: NSE/BSE',
+    'Random Forest',
+    'Jupyter Notebook',
+  ];
+
+  const socialLinks = [
+    { name: 'Email', icon: MdEmail, url: 'https://mail.google.com/mail/?view=cm&fs=1&to=priyanshuvijay262@gmail.com&su=Portfolio%20Inquiry&body=Hii%20Priyanshu%2C%20i%27m%20here%20through%20your%20Portfolio%20!' },
+    { name: 'GitHub', icon: FaGithub, url: 'https://github.com/Butkii025' },
+    { name: 'LinkedIn', icon: FaLinkedin, url: 'https://www.linkedin.com/in/priyanshu-v-17243729b?utm_source=share_via&utm_content=profile&utm_medium=member_android' },
+    { name: 'Pinterest', icon: FaPinterest, url: 'https://pin.it/6WXws2ZFQ' },
+    { name: 'YouTube', icon: FaYoutube, url: 'https://youtube.com/@me_priya_anshu_0?si=UpB7rvQMNGJuWPWS' },
+    { name: 'Kaggle', icon: SiKaggle, url: 'https://www.kaggle.com' },
   ];
 
   return (
@@ -64,7 +132,8 @@ export default function VijayPortfolio() {
       <img
         src="/pv_logo.jpg"
         alt="Logo"
-        className="h-10 w-10 rounded-full"
+        className="h-10 w-10 rounded-full cursor-pointer hover:scale-110 transition duration-300"
+        onClick={openLogo}
       />
 
       <h1 className="text-2xl font-bold tracking-wider">
@@ -129,6 +198,68 @@ export default function VijayPortfolio() {
   )}
 </nav>
 
+{/* LOGO MODAL */}
+{isLogoOpen && (
+  <>
+    {/* Backdrop with blue glow */}
+    <div
+      className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50"
+      onClick={closeLogo}
+      style={{
+        boxShadow: 'inset 0 0 60px rgba(96, 165, 250, 0.2)',
+      }}
+    />
+
+    {/* Logo Modal - Left side to middle */}
+    <div className="fixed inset-0 z-50 flex items-center justify-start pointer-events-none">
+      <div
+        className="ml-12 pointer-events-auto animate-in fade-in zoom-in duration-300"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <img
+          src="/pv_logo.jpg"
+          alt="Profile Logo"
+          className="w-64 h-64 rounded-2xl border-4 border-blue-400 shadow-2xl object-cover"
+          style={{
+            boxShadow: '0 0 40px rgba(96, 165, 250, 0.4), inset 0 0 40px rgba(96, 165, 250, 0.1)',
+          }}
+        />
+      </div>
+    </div>
+  </>
+)}
+
+{/* PROFILE MODAL */}
+{isProfileOpen && (
+  <>
+    {/* Backdrop with blue glow */}
+    <div
+      className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50"
+      onClick={closeProfile}
+      style={{
+        boxShadow: 'inset 0 0 60px rgba(96, 165, 250, 0.2)',
+      }}
+    />
+
+    {/* Profile Modal - Center */}
+    <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
+      <div
+        className="pointer-events-auto animate-in fade-in zoom-in duration-300"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <img
+          src="/profile.png"
+          alt="Profile Picture"
+          className="w-80 h-80 rounded-full border-4 border-blue-400 shadow-2xl object-cover"
+          style={{
+            boxShadow: '0 0 40px rgba(96, 165, 250, 0.4), inset 0 0 40px rgba(96, 165, 250, 0.1)',
+          }}
+        />
+      </div>
+    </div>
+  </>
+)}
+
       {/* HERO */}
       <section className="relative min-h-screen flex items-center justify-center px-6 pt-20">
         <div className="absolute inset-0 bg-gradient-to-b from-zinc-900 via-black to-black opacity-90" />
@@ -153,13 +284,14 @@ export default function VijayPortfolio() {
             </p>
 
             <div className="flex gap-4 flex-wrap">
-              <button className="px-6 py-3 rounded-2xl bg-white text-black font-semibold hover:scale-105 active:bg-blue-400 cursor-pointer transition duration-300">
-                View Projects
-              </button>
-
+             
               <button className="px-6 py-3 rounded-2xl border border-white/20 hover:bg-white/10 active:bg-blue-400 cursor-pointer transition duration-300">
                 Download Resume
               </button>
+
+              <a href="https://github.com/Butkii025" target="_blank" rel="noopener noreferrer" className="px-7 py-3 rounded-2xl border border-white/10 hover:bg-white/10 active:bg-blue-400 cursor-pointer transition duration-300 inline-block">
+              GitHub Profile
+            </a>
             </div>
           </div>
 
@@ -171,7 +303,8 @@ export default function VijayPortfolio() {
                 <img
                  src="/profile.png"
                  alt="Profile"
-                 className="w-40 h-40 rounded-full object-cover border-4 border-zinc-700 shadow-2xl"
+                 className="w-40 h-40 rounded-full object-cover border-4 border-zinc-700 shadow-2xl cursor-pointer hover:scale-110 transition duration-300"
+                 onClick={openProfile}
                  />
                 
                 <h2 className="text-3xl font-bold mb-2">PRIYANSHU</h2>
@@ -214,8 +347,8 @@ export default function VijayPortfolio() {
 
       {/* SKILLS */}
       <section id="skills" className="py-28 px-6 bg-zinc-950">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-14">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-16">
             <p className="text-zinc-500 uppercase tracking-[0.2em] mb-4">
               Skills
             </p>
@@ -225,13 +358,25 @@ export default function VijayPortfolio() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-5">
-            {skills.map((skill, index) => (
+          {/* Skill Categories Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {Object.values(skills).map((category, index) => (
               <div
                 key={index}
-                className="p-5 rounded-2xl border border-white/10 bg-black hover:bg-white hover:text-black cursor-pointer transition duration-300 text-center font-medium"
+                className="group p-6 rounded-2xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 hover:border-blue-400/50 backdrop-blur-sm transition duration-500 hover:shadow-2xl hover:shadow-blue-500/10"
               >
-                {skill}
+                {/* Icon and Title */}
+                <div className="flex items-center gap-3 mb-5">
+                  <span className="text-3xl">{category.icon}</span>
+                  <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition duration-300">
+                    {category.title}
+                  </h3>
+                </div>
+
+                {/* Technologies */}
+                <p className="text-sm text-zinc-300 leading-relaxed">
+                  {category.technologies.join(' | ')}
+                </p>
               </div>
             ))}
           </div>
@@ -282,44 +427,18 @@ export default function VijayPortfolio() {
         </div>
       </section>
 
-      {/* CONTACT */}
-      <section id="contact" className="py-28 px-6 border-t border-white/10">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-zinc-500 uppercase tracking-[0.2em] mb-4">
-            Contact
-          </p>
-
-          <h2 className="text-5xl font-black mb-6">
-            Let’s Build Something Amazing
-          </h2>
-
-          <p className="text-zinc-400 text-lg max-w-2xl mx-auto leading-relaxed mb-10">
-            Interested in collaborations, projects, or creative ideas? Let’s
-            connect and create impactful digital experiences together.
-          </p>
-
-          <div className="flex justify-center gap-5 flex-wrap">
-            <button className="px-7 py-3 rounded-2xl bg-white text-black font-semibold hover:scale-105 active:bg-blue-400 cursor-pointer transition duration-300">
-              Email Me
-            </button>
-
-            <a href="https://github.com/Butkii025" target="_blank" rel="noopener noreferrer" className="px-7 py-3 rounded-2xl border border-white/10 hover:bg-white/10 active:bg-blue-400 cursor-pointer transition duration-300 inline-block">
-              GitHub Profile
-            </a>
-          </div>
-        </div>
-      </section>
-      {/* OTHERS */}
-<section id="others" className="py-28 px-6 bg-zinc-950">
+      
+      {/* credentials */}
+<section id="credentials" className="py-28 px-6 bg-zinc-950">
   <div className="max-w-6xl mx-auto">
     
     <div className="mb-14">
       <p className="text-zinc-500 uppercase tracking-[0.2em] mb-4">
-        Others
+        Credentials
       </p>
 
       <h2 className="text-4xl md:text-5xl font-bold">
-        Certificates & Hobbies
+        Certificates & Records
       </h2>
     </div>
 
@@ -336,40 +455,173 @@ export default function VijayPortfolio() {
           hackathons, and achievements.
         </p>
       </div>
-      
-
-      {/* Art Gallery */}
+      {/* records */}
       <div className="p-8 rounded-3xl border border-white/10 bg-black">
         <h3 className="text-2xl font-bold mb-4">
-          Art Gallery
+          Records
         </h3>
 
         <p className="text-zinc-400 leading-relaxed">
-          Pencil sketches, charcoal portraits, creative
-          illustrations, and artistic works.
+          Showcasing my record and achievements in creativity.
         </p>
       </div>
-
-      {/* Hobbies */}
-      <div className="p-8 rounded-3xl border border-white/10 bg-black">
-        <h3 className="text-2xl font-bold mb-4">
-          Hobbies
-        </h3>
-
-        <p className="text-zinc-400 leading-relaxed">
-          Rap writing, stock market analysis, filmmaking,
-          design exploration, and creative storytelling.
-        </p>
-      </div>
-      
 
     </div>
   </div>
 </section>
 
+{/* RESEARCH WORK */}
+<section id="research_work" className="py-28 px-6 border-t border-white/10">
+  <div className="max-w-6xl mx-auto">
+    <div className="mb-14">
+      <p className="text-zinc-500 uppercase tracking-[0.2em] mb-4">
+        Research
+      </p>
+
+      <h2 className="text-4xl md:text-5xl font-bold mb-6">
+        Research Work
+      </h2>
+    </div>
+
+    <p className="text-zinc-400 leading-relaxed text-lg mb-8 max-w-3xl">
+      My research work focuses on building intelligent systems and data-driven solutions. I work with cutting-edge tools and libraries to develop machine learning models, perform data analysis, and create scalable applications.
+    </p>
+
+    {/* Technologies Grid */}
+    <div className="flex flex-wrap gap-3">
+      {researchTechnologies.map((tech, index) => (
+        <div
+          key={index}
+          className="px-4 py-2 rounded-lg bg-gradient-to-br from-blue-500/20 to-blue-500/10 border border-blue-400/30 hover:border-blue-400 transition duration-300 text-sm font-medium text-blue-300 hover:text-blue-200 cursor-default"
+        >
+          {tech}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+{/* CREATIVE CORNER */}
+<section id="creative_corner" className="py-28 px-6 border-t border-white/10 bg-zinc-950">
+  <div className="max-w-6xl mx-auto">
+    <div className="mb-14">
+      <p className="text-zinc-500 uppercase tracking-[0.2em] mb-4">
+        creative_corner
+      </p>
+
+      <h2 className="text-4xl md:text-5xl font-bold mb-6">
+        Art_Gallery
+      </h2>
+    </div>
+
+    <p className="text-zinc-400 leading-relaxed text-lg mb-12 max-w-3xl">
+      This Creative_Corner reflects the artistic side of my personality beyond technology and coding. I enjoy sketching, portrait art, charcoal drawing, poster designing, and creating meaningful visual concepts that express emotions, stories, and social messages. Art allows me to transform imagination into reality while improving my creativity, observation, and attention to detail. From detailed pencil sketches to creative designs, every artwork represents my passion for visual storytelling and self-expression.
+    </p>
+
+    {/* Gallery Images - Half Overlaid */}
+    <div className="flex justify-center items-center gap-0 overflow-x-auto pb-4">
+      {artImages.map((image, index) => (
+        <div
+          key={image.id}
+          className="relative w-48 h-48 flex-shrink-0 cursor-pointer group"
+          style={{
+            marginLeft: index > 0 ? '-50px' : '0',
+            zIndex: index,
+          }}
+          onClick={() => setSelectedArtImage(image)}
+        >
+          <img
+            src={`/${image.name}`}
+            alt={`Art ${image.id}`}
+            className="w-full h-full object-cover rounded-lg border-4 border-blue-400 shadow-2xl hover:scale-110 transition duration-300"
+            style={{
+              boxShadow: '0 0 30px rgba(96, 165, 250, 0.3), inset 0 0 30px rgba(96, 165, 250, 0.1)',
+            }}
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+{/* ART IMAGE MODAL */}
+{selectedArtImage && (
+  <>
+    {/* Backdrop with blue glow */}
+    <div
+      className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50"
+      onClick={() => setSelectedArtImage(null)}
+      style={{
+        boxShadow: 'inset 0 0 60px rgba(96, 165, 250, 0.2)',
+      }}
+    />
+
+    {/* Image Modal - Center */}
+    <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
+      <div
+        className="pointer-events-auto animate-in fade-in zoom-in duration-300"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <img
+          src={`/${selectedArtImage.name}`}
+          alt={`Art ${selectedArtImage.id}`}
+          className="max-w-2xl max-h-96 rounded-lg border-4 border-blue-400 shadow-2xl object-cover"
+          style={{
+            boxShadow: '0 0 40px rgba(96, 165, 250, 0.4), inset 0 0 40px rgba(96, 165, 250, 0.1)',
+          }}
+        />
+      </div>
+    </div>
+  </>
+)}
+
+
+{/* CONTACT */}
+      <section id="contact" className="py-28 px-6 border-t border-white/10">
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="text-zinc-500 uppercase tracking-[0.2em] mb-4">
+            Contact
+          </p>
+
+          <h2 className="text-5xl font-black mb-6">
+            Let’s Build Something Amazing
+          </h2>
+
+          <p className="text-zinc-400 text-lg max-w-2xl mx-auto leading-relaxed mb-10">
+            Interested in collaborations, projects, or creative ideas? Let’s connect and create impactful digital experiences together. open to projects that blend technology, design, and storytelling. I’m excited to connect with like-minded individuals and explore new opportunities in the world of tech and creativity.
+          </p>
+
+          <div className="flex justify-center gap-4 flex-wrap">
+            {socialLinks.map((social, index) => {
+              const IconComponent = social.icon;
+              return (
+                <a
+                  key={index}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-16 h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 hover:border-blue-400/50 transition duration-300 hover:shadow-2xl hover:shadow-blue-500/20 cursor-pointer group"
+                  title={social.name}
+                >
+                  <IconComponent className="text-2xl text-white group-hover:text-blue-400 group-hover:scale-125 transition duration-300" />
+                </a>
+              );
+            })}
+          </div>
+          <br></br>
+          <br></br>
+          <p className="text-zinc-400 text-lg max-w-2xl mx-auto leading-relaxed mb-10">
+           Thank you for visiting my portfolio ~ feel free to reach out anytime ✌️
+
+          </p>
+        </div>
+      </section>
+
+
+
       {/* FOOTER */}
       <footer className="py-8 border-t border-white/10 text-center text-zinc-500 text-sm">
-        © 2026 P_Vijay Portfolio •
+        © 2026 P_Vijay Portfolio 🖤
       </footer>
     </div>
   );
