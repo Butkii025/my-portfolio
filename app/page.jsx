@@ -21,7 +21,7 @@ export default function VijayPortfolio() {
     { label: 'Projects', href: '#projects' },
     { label: 'Credentials', href: '#credentials' },
     { label: 'Research', href: '#research_work' },
-    { label: 'creative_corner', href: '#creative_corner' },
+    { label: 'Creative_Corner', href: '#creative_corner' },
     { label: 'Contact', href: '#contact' },
   ];
 
@@ -268,16 +268,16 @@ export default function VijayPortfolio() {
 
         <div className="absolute w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl" />
 
-        <div className="relative z-20 max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center mt-20">
+        <div className="relative z-20 max-w-8xl mx-auto grid md:grid-cols-2 gap-12 items-center mt-20">
           <div>
-            <p className="flex items-center gap-2 uppercase tracking-[0.2em] text-white font-semibold text-sm mb-4">
+            <p className="flex items-center gap-2 uppercase tracking-[0.2em] text-white font-semibold text-sm mb-10">
               Priyanshu <FiSmile size={24} className="text-400 animate-pulse animate-bounce" />
             </p>
 
-            <h1 className="text-4xl md:text-7xl font-black leading-tight mb-6">
-              Data Scientist 
-              <span className="block text-zinc-400">& </span>
-              AI/ML Engineer
+            <h1 className="text-10xl md:text-3xl font-black leading-tight mb-6">
+              Designer
+              <span className="block text-zinc-400"> Data_Analyst & Creative_Coder</span>
+              
             </h1>
 
             <p className="text-zinc-400 text-lg leading-relaxed max-w-xl mb-8">
@@ -286,16 +286,12 @@ export default function VijayPortfolio() {
 
             <div className="flex gap-4 flex-wrap">
              
-              <a download href="/Priyanshuy-Vijay_Resume.pdf" className="px-6 py-3 rounded-2xl border border-white/20 hover:bg-white/10 active:bg-blue-400 cursor-pointer transition duration-300">
+              <a download href="/Priyanshu-Vijay_Resume.pdf" className="px-6 py-3 rounded-2xl border border-white/20 hover:bg-white/10 active:bg-blue-400 cursor-pointer transition duration-300">
                 Resume <FaDownload size={18} className="inline-block ml-2" />
               </a>
 
               <a href="https://github.com/Butkii025" target="_blank" rel="noopener noreferrer" className="px-7 py-3 rounded-2xl border border-white/10 hover:bg-white/10 active:bg-blue-400 cursor-pointer transition duration-300 inline-block">
                GitHub <FaGithub size={18} className="inline-block ml-2" /> 
-              </a>
-
-              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=priyanshuvijay262@gmail.com&su=Portfolio%20Inquiry&body=Hii%20Priyanshu%2C%20i%27m%20here%20through%20your%20Portfolio%20!" target="_blank" rel="noopener noreferrer" className="px-6 py-3 rounded-2xl border border-white/20 hover:bg-white/10 active:bg-blue-400 cursor-pointer transition duration-300">
-               Say Hi <MdWavingHand size={18} className="inline-block ml-2 animate-wave" />
               </a>
 
             </div>
@@ -316,8 +312,12 @@ export default function VijayPortfolio() {
                 <h2 className="text-3xl font-bold mb-2">PRIYANSHU</h2>
 
                 <p className="text-zinc-400 leading-relaxed">
-                  B.Tech CSE Student passionate about AI & ML models, Artistic creativity, Data Engineering, and Futuristic UI Design.
-                </p>
+                  Passionate about AI & ML models, Artistic creativity, Data Engineering, and Futuristic UI Design
+                  
+                </p><br></br>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=priyanshuvijay262@gmail.com&su=Portfolio%20Inquiry&body=Hii%20Priyanshu%2C%20i%27m%20here%20through%20your%20Portfolio%20!" target="_blank" rel="noopener noreferrer" className="px-4 py-2 rounded-2xl border border-white/20 hover:bg-white/10 active:bg-zinc-400 cursor-pointer transition duration-300">
+                   Say Hi <MdWavingHand size={18} className="inline-block ml-2 animate-wave" />
+                  </a>
 
               </div>
             </div>
