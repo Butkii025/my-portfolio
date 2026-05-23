@@ -1,6 +1,26 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { FaGithub } from "react-icons/fa";
+import { MdWavingHand } from "react-icons/md";
+import {Inter, Great_Vibes} from "next/font/google";
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+const greatVibes = Great_Vibes({
+  weight: "400",
+  variable: "--font-great-vibes",
+  subsets: ["latin"],
+});   
+
+const calligraphy = Great_Vibes({
+  weight: "400",
+  variable: "--font-calligraphy",
+  subsets: ["latin"],
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

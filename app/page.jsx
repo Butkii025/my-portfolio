@@ -2,8 +2,12 @@
 
 import { useState } from 'react';
 import { MdEmail } from 'react-icons/md';
-import { FaGithub, FaLinkedin, FaYoutube, FaPinterest } from 'react-icons/fa';
+import { FaDownload, FaGithub, FaLinkedin, FaYoutube, FaPinterest } from 'react-icons/fa';
 import { SiKaggle } from 'react-icons/si';
+import { FiBarChart2, FiCpu, FiHeart, FiLayers, FiMonitor, FiServer } from 'react-icons/fi';
+import { FiSmile} from 'react-icons/fi';
+import { MdWavingHand } from 'react-icons/md';
+import { LuSparkle } from 'react-icons/lu';
 
 export default function VijayPortfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -74,27 +78,27 @@ export default function VijayPortfolio() {
   const skills = {
     frontEnd: {
       title: 'Front-End',
-      icon: '💻',
-      technologies: ['React', 'Next.js', 'HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'Animations'],
+      icon: <FiMonitor size={24} className="text-blue-400" />,
+      technologies: ['React.js', 'Next.js', 'HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'Animations'],
     },
     backEnd: {
       title: 'Back-End & Databases',
-      icon: '⚙️',
+      icon: <FiServer size={24} className="text-green-400" />,
       technologies: ['Node.js', 'Python', 'FastAPI', 'SQL', 'REST APIs'],
     },
     aiml: {
       title: 'AI/ML',
-      icon: '🤖',
+      icon: <FiCpu size={24} className="text-purple-400" />,
       technologies: ['Python', 'PyTorch', 'TensorFlow', 'Hugging Face', 'OpenCV', 'APIs', 'Web Scraping', 'Pandas', 'NumPy', 'Scikit-learn', 'LightGBM', 'Deep Learning', 'Agentic AI'],
     },
     dataAnalytics: {
       title: 'Data Analytics',
-      icon: '📊',
+      icon: <FiBarChart2 size={24} className="text-yellow-400" />,
       technologies: ['SQL', 'Pandas', 'Tableau', 'Power BI', 'Excel', 'A/B Testing', 'Data Wrangling', 'EDA'],
     },
     designing: {
       title: 'Designing',
-      icon: '🎨',
+      icon: <FiLayers size={24} className="text-pink-400" />,
       technologies: ['Figma', 'Adobe Photoshop', 'Canva', 'Blender'],
     },
   };
@@ -130,15 +134,13 @@ export default function VijayPortfolio() {
     {/* LEFT SIDE */}
     <div className="flex items-center gap-3">
       <img
-        src="/pv_logo.jpg"
+        src="/pv_newlogo.jpg"
         alt="Logo"
-        className="h-10 w-10 rounded-full cursor-pointer hover:scale-110 transition duration-300"
+        className="h-20 w-20 rounded-full cursor-pointer hover:scale-center transition duration-300 "
         onClick={openLogo}
       />
 
-      <h1 className="text-2xl font-bold tracking-wider">
-        <span className="text-zinc-400">P_Vijay</span>
-      </h1>
+      <h1 className="text-2xl font-bold tracking-wider">P_Vijay</h1>
     </div>
 
     {/* DESKTOP MENU */}
@@ -211,15 +213,15 @@ export default function VijayPortfolio() {
     />
 
     {/* Logo Modal - Left side to middle */}
-    <div className="fixed inset-0 z-50 flex items-center justify-start pointer-events-none">
+    <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
       <div
         className="ml-12 pointer-events-auto animate-in fade-in zoom-in duration-300"
         onClick={(e) => e.stopPropagation()}
       >
         <img
-          src="/pv_logo.jpg"
+          src="/pv_newlogo.jpg"
           alt="Profile Logo"
-          className="w-64 h-64 rounded-2xl border-4 border-blue-400 shadow-2xl object-cover"
+          className=" w-64 h-64 rounded-full border-2 border-blue-400 shadow-2xl object-cover"
           style={{
             boxShadow: '0 0 40px rgba(96, 165, 250, 0.4), inset 0 0 40px rgba(96, 165, 250, 0.1)',
           }}
@@ -237,7 +239,7 @@ export default function VijayPortfolio() {
       className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50"
       onClick={closeProfile}
       style={{
-        boxShadow: 'inset 0 0 60px rgba(96, 165, 250, 0.2)',
+        boxShadow: 'inset 0 0 60px rgba(183, 50, 35, 0.2)',
       }}
     />
 
@@ -250,7 +252,7 @@ export default function VijayPortfolio() {
         <img
           src="/profile.png"
           alt="Profile Picture"
-          className="w-80 h-80 rounded-full border-4 border-blue-400 shadow-2xl object-cover"
+          className="w-80 h-80 rounded-2xl border-2 border-blue-400 shadow-2xl object-cover"
           style={{
             boxShadow: '0 0 40px rgba(96, 165, 250, 0.4), inset 0 0 40px rgba(96, 165, 250, 0.1)',
           }}
@@ -268,29 +270,34 @@ export default function VijayPortfolio() {
 
         <div className="relative z-20 max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center mt-20">
           <div>
-            <p className="uppercase tracking-[0.2em] text-white font-semibold text-sm mb-4">
-              Artist • Developer • AI/ML Enthusiast • DATA_ANALYTIC
+            <p className="flex items-center gap-2 uppercase tracking-[0.2em] text-white font-semibold text-sm mb-4">
+              Priyanshu <FiSmile size={24} className="text-400 animate-pulse animate-bounce" />
             </p>
 
             <h1 className="text-4xl md:text-7xl font-black leading-tight mb-6">
-              Building
-              <span className="block text-zinc-400">Creative Digital</span>
-              Experiences
+              Data Scientist 
+              <span className="block text-zinc-400">& </span>
+              AI/ML Engineer
             </h1>
 
             <p className="text-zinc-400 text-lg leading-relaxed max-w-xl mb-8">
-              I engineer intelligent web applications by combining data-driven AI models with clean, intuitive interfaces that bridge the gap between complex data and seamless user experiences.
+              Building intelligent systems powered by data and creativity
             </p>
 
             <div className="flex gap-4 flex-wrap">
              
-              <button className="px-6 py-3 rounded-2xl border border-white/20 hover:bg-white/10 active:bg-blue-400 cursor-pointer transition duration-300">
-                Download Resume
-              </button>
+              <a download href="/Priyanshuy-Vijay_Resume.pdf" className="px-6 py-3 rounded-2xl border border-white/20 hover:bg-white/10 active:bg-blue-400 cursor-pointer transition duration-300">
+                Resume <FaDownload size={18} className="inline-block ml-2" />
+              </a>
 
               <a href="https://github.com/Butkii025" target="_blank" rel="noopener noreferrer" className="px-7 py-3 rounded-2xl border border-white/10 hover:bg-white/10 active:bg-blue-400 cursor-pointer transition duration-300 inline-block">
-              GitHub Profile
-            </a>
+               GitHub <FaGithub size={18} className="inline-block ml-2" /> 
+              </a>
+
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=priyanshuvijay262@gmail.com&su=Portfolio%20Inquiry&body=Hii%20Priyanshu%2C%20i%27m%20here%20through%20your%20Portfolio%20!" target="_blank" rel="noopener noreferrer" className="px-6 py-3 rounded-2xl border border-white/20 hover:bg-white/10 active:bg-blue-400 cursor-pointer transition duration-300">
+               Say Hi <MdWavingHand size={18} className="inline-block ml-2 animate-wave" />
+              </a>
+
             </div>
           </div>
 
@@ -301,7 +308,7 @@ export default function VijayPortfolio() {
               <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center">
                 <img
                  src="/profile.png"
-                 alt="Profile"
+                 alt="Profile Full"
                  className="w-40 h-40 rounded-full object-cover border-4 border-zinc-700 shadow-2xl cursor-pointer hover:scale-110 transition duration-300"
                  onClick={openProfile}
                  />
@@ -325,18 +332,32 @@ export default function VijayPortfolio() {
               About Me
             </p>
 
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              Turning Ideas Into
-              <span className="block text-zinc-500">Interactive Reality</span>
+            <h2 className="flex items-center gap-2 text-4xl md:text-5xl font-bold mb-6 leading-tight">
+              My Introduction
             </h2>
+
+            <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center">
+                <img
+                 src="/profile1.png"
+                 alt="Profile"
+                 className="w-80 h-100 rounded-full object-cover border-4 border-zinc-700 shadow-2xl cursor-pointer hover:scale-110 transition duration-300"
+                 />
+            </div>
+
+            <a download href="/Priyanshuy-Vijay_Resume.pdf" className="px-3 py-3 rounded-2xl border border-white/20 hover:bg-white/10 active:bg-blue-400 cursor-pointer transition duration-300">
+              Resume <FaDownload size={18} className="inline-block ml-2" />
+            </a>
           </div>
 
           <div>
             <p className="text-zinc-400 leading-relaxed text-lg">
-              Hello! I'm <span className="bg-gradient-to-r from-blue-500/20 to-blue-500/10  hover:bg-blue-400/20 transition duration-100 text-sm font-medium text-blue-300 hover:text-blue-200 cursor-default italic text-sky-700 text-xl">Priyanshu Vijay</span> , a 3rd year B.Tech student currently pursuing my degree in Computer Science and Engineering from Dr. Shakuntala Misra National Rehabilitation University (DSMNRU), Lucknow. I am deeply interested in the fields of Artificial Intelligence, Machine Learning, Data Analytics, and Front-End Development, where I enjoy combining creativity with technology to build meaningful and impactful projects. <br></br><br></br>
-              
-              Apart from technical skills, I am a creative thinker, sketch artist, and problem solver who loves exploring innovative ideas and continuously learning new technologies. I believe in teamwork, discipline, and turning ideas into real-world solutions through dedication and curiosity.
-
+              Hello! I'm <span className="transition duration-100 text-sm font-medium text-blue-300 hover:text-blue-200 cursor-default italic text-sky-700 text-xl">Priyanshu Vijay</span> 3rd year B.Tech student in Computer Science and Engineering at Dr. Shakuntala Misra National Rehabilitation University (DSMNRU), Lucknow.
+            </p>
+            <p className="flex gap-2 mt-4 text-zinc-400 leading-relaxed text-lg ">
+              Immersed in the full Data Science landscape, I transform data into actionable insights that blend innovation, and efficiency. My passion for AI/ML drives me to explore cutting-edge models and algorithms, while my interest for front-end development allows me to create engaging UI experiences.
+            </p>
+            <p className="flex gap-2 mt-4 text-zinc-400 leading-relaxed text-lg">  
+              Apart from technical skills, I am a creative sketch artist, and problem solver who explores innovative ideas and continuously learning new technologies.
             </p>
           </div>
         </div>
@@ -581,11 +602,11 @@ export default function VijayPortfolio() {
           </p>
 
           <h2 className="text-5xl font-black mb-6">
-            Let’s Build Something Amazing
+            Let’s Build Together
           </h2>
 
           <p className="text-zinc-400 text-lg max-w-2xl mx-auto leading-relaxed mb-10">
-            Interested in collaborations, projects, or creative ideas? Let’s connect and create impactful digital experiences together. open to projects that blend technology, design, and storytelling. I’m excited to connect with like-minded individuals and explore new opportunities in the world of tech and creativity.
+            Interested in collaborations, projects, or creative ideas? Let’s connect and create impactful digital experiences together.
           </p>
 
           <div className="flex justify-center gap-4 flex-wrap">
@@ -608,7 +629,7 @@ export default function VijayPortfolio() {
           <br></br>
           <br></br>
           <p className="text-zinc-400 text-lg max-w-2xl mx-auto leading-relaxed mb-10">
-           Thank you for visiting my portfolio ~ feel free to reach out anytime ✌️
+           Thank you for visiting my portfolio ~ feel free to reach out anytime <FiSmile size={18} className="inline-block text-white-400 animate-pulse" /> 
 
           </p>
         </div>
@@ -616,7 +637,7 @@ export default function VijayPortfolio() {
 
       {/* FOOTER */}
       <footer className="py-8 border-t border-white/10 text-center text-zinc-500 text-sm">
-        © 2026 P_Vijay Portfolio 🖤
+        © 2026 P_Vijay. All rights reserved
       </footer>
     </div>
   );
