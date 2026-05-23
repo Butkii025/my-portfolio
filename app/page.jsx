@@ -268,13 +268,13 @@ export default function VijayPortfolio() {
 
         <div className="absolute w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl" />
 
-        <div className="relative z-20 max-w-8xl mx-auto grid md:grid-cols-2 gap-12 items-center mt-20">
+        <div className="relative z-20 max-w-4xl mx-auto grid md:grid-cols-2 gap-center items-center mt-10">
           <div>
             <p className="flex items-center gap-2 uppercase tracking-[0.2em] text-white font-semibold text-sm mb-10">
               Priyanshu <FiSmile size={24} className="text-400 animate-pulse animate-bounce" />
             </p>
 
-            <h1 className="text-10xl md:text-3xl font-black leading-tight mb-6">
+            <h1 className="text-5xl md:text-4xl font-black leading-tight mb-3">
               Designer
               <span className="block text-zinc-400"> Data_Analyst & Creative_Coder</span>
               
@@ -286,7 +286,7 @@ export default function VijayPortfolio() {
 
             <div className="flex gap-4 flex-wrap">
              
-              <a download href="/Priyanshu-Vijay_Resume.pdf" className="px-6 py-3 rounded-2xl border border-white/20 hover:bg-white/10 active:bg-blue-400 cursor-pointer transition duration-300">
+              <a download href="/P_vijay Resume.PDF" className="px-6 py-3 rounded-2xl border border-white/20 hover:bg-white/10 active:bg-blue-400 cursor-pointer transition duration-300">
                 Resume <FaDownload size={18} className="inline-block ml-2" />
               </a>
 
@@ -345,7 +345,7 @@ export default function VijayPortfolio() {
                  />
             </div>
 
-            <a download href="/Priyanshuy-Vijay_Resume.pdf" className="px-3 py-3 rounded-2xl border border-white/20 hover:bg-white/10 active:bg-blue-400 cursor-pointer transition duration-300">
+            <a download href="/P_vijay Resume.PDF" className="px-3 py-3 rounded-2xl border border-white/20 hover:bg-white/10 active:bg-blue-400 cursor-pointer transition duration-300">
               Resume <FaDownload size={18} className="inline-block ml-2" />
             </a>
           </div>
