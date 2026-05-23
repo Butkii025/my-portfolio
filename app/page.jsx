@@ -318,7 +318,7 @@ export default function VijayPortfolio() {
                 <p className="text-zinc-400 leading-relaxed">
                   B.Tech CSE Student passionate about AI & ML models, Artistic creativity, Data Engineering, and Futuristic UI Design.
                 </p>
-                
+
               </div>
             </div>
           </div>
@@ -330,10 +330,10 @@ export default function VijayPortfolio() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
             <p className="text-zinc-500 uppercase tracking-[0.2em] mb-4">
-              About Me
+              About
             </p>
 
-            <h2 className="flex items-center gap-2 text-4xl md:text-5xl font-bold mb-6 leading-tight">
+            <h2 className="flex items-center gap-2 text-4xl md:text-3xl font-bold mb-6 leading-tight">
               My Introduction
             </h2>
 
@@ -372,7 +372,7 @@ export default function VijayPortfolio() {
               Skills
             </p>
 
-            <h2 className="text-4xl md:text-5xl font-bold">
+            <h2 className="text-4xl md:text-3xl font-bold">
               Tools & Technologies
             </h2>
           </div>
@@ -407,11 +407,11 @@ export default function VijayPortfolio() {
         <div className="max-w-6xl mx-auto">
           <div className="mb-14">
             <p className="text-zinc-500 uppercase tracking-[0.2em] mb-4">
-              Portfolio
+              Projects
             </p>
 
-            <h2 className="text-4xl md:text-5xl font-bold">
-              Featured Projects
+            <h2 className="text-4xl md:text-3xl font-bold">
+              Featured Work & Experiences
             </h2>
           </div>
 
@@ -456,7 +456,7 @@ export default function VijayPortfolio() {
         Credentials
       </p>
 
-      <h2 className="text-4xl md:text-5xl font-bold">
+      <h2 className="text-4xl md:text-3xl font-bold">
         Certificates & Records
       </h2>
     </div>
@@ -497,7 +497,7 @@ export default function VijayPortfolio() {
         Research
       </p>
 
-      <h2 className="text-4xl md:text-5xl font-bold mb-6">
+      <h2 className="text-4xl md:text-3xl font-bold mb-6">
         Research Work
       </h2>
     </div>
@@ -528,7 +528,7 @@ export default function VijayPortfolio() {
         creative_corner
       </p>
 
-      <h2 className="text-4xl md:text-5xl font-bold mb-6">
+      <h2 className="text-4xl md:text-3xl font-bold mb-6">
         Art_Gallery
       </h2>
     </div>
