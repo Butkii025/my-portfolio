@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "P_Vijay",
-  description: "P_Vijay_Portfolio",
+  title: "P-Vijay_Portfolio",
+  description: "P-Vijay_Portfolio",
   icons:{
     icon:"/pv_newlogo.ico",
   },
