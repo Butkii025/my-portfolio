@@ -144,7 +144,7 @@ export default function VijayPortfolio() {
     </div>
 
     {/* DESKTOP MENU */}
-    <div className="hidden md:flex gap-8 text-sm text-zinc-300">
+    <div className="hidden lg:flex gap-8 text-sm text-zinc-300">
       {navLinks.map((link) => (
         <a
           key={link.href}
@@ -156,10 +156,10 @@ export default function VijayPortfolio() {
       ))}
     </div>
 
-    {/* MOBILE HAMBURGER */}
+    {/* HAMBURGER MENU - ALWAYS VISIBLE */}
     <button
       onClick={toggleMenu}
-      className="md:hidden flex flex-col gap-1 cursor-pointer p-2"
+      className="flex flex-col gap-1 cursor-pointer p-2"
       aria-label="Toggle menu"
     >
       <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
@@ -169,12 +169,12 @@ export default function VijayPortfolio() {
 
   </div>
 
-  {/* MOBILE DROPDOWN MENU */}
+  {/* MOBILE DROPDOWN MENU - NOW VISIBLE ON ALL DEVICES */}
   {isMenuOpen && (
     <>
       {/* Backdrop with blue glow/blur */}
       <div
-        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
+        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
         onClick={closeMenu}
         style={{
           boxShadow: 'inset 0 0 40px rgba(96, 165, 250, 0.15)',
@@ -182,7 +182,7 @@ export default function VijayPortfolio() {
       />
 
       {/* Menu */}
-      <div className="absolute top-16 right-6 w-48 bg-black border-2 border-blue-400 rounded-2xl shadow-2xl z-40 md:hidden animate-in fade-in slide-in-from-top-2 duration-300">
+      <div className="absolute top-16 right-6 w-48 bg-black border-2 border-blue-400 rounded-2xl shadow-2xl z-40 animate-in fade-in slide-in-from-top-2 duration-300">
         <div className="flex flex-col py-4">
           {navLinks.map((link) => (
             <a
