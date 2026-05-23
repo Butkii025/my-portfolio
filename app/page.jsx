@@ -318,6 +318,7 @@ export default function VijayPortfolio() {
                 <p className="text-zinc-400 leading-relaxed">
                   B.Tech CSE Student passionate about AI & ML models, Artistic creativity, Data Engineering, and Futuristic UI Design.
                 </p>
+                
               </div>
             </div>
           </div>
