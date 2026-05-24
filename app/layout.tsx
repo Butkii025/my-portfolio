@@ -33,11 +33,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "P-Vijay_Portfolio",
-  description: "P-Vijay_Portfolio",
-  icons:{
-    icon:"/pv_newlogo.ico",
-  },
+  title: "P_Vijay Portfolio",
+  description: "P_Vijay Portfolio",
+  
 };
 
 export default function RootLayout({
