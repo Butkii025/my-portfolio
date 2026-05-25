@@ -1,5 +1,6 @@
 import React from 'react';
-import { FiMonitor, FiServer, FiCpu, FiBarChart2, FiLayers } from 'react-icons/fi';
+import { FaPaintBrush } from 'react-icons/fa';
+import { FiMonitor, FiServer, FiCpu, FiBarChart2 } from 'react-icons/fi';
 
 interface SkillCategory {
   title: string;
@@ -15,14 +16,14 @@ export default function Skills(): React.JSX.Element {
       technologies: ['React.js', 'Next.js', 'HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'Animations'],
     },
     backEnd: {
-      title: 'Back-End & Databases',
+      title: 'Databases & Management',
       icon: <FiServer size={24} className="text-green-400" />,
-      technologies: ['Node.js', 'Python', 'FastAPI', 'SQL', 'REST APIs'],
+      technologies: ['APIs', 'SQL', 'SQL:Queries','Data Administration','Information Management','DBMS'],
     },
     aiml: {
-      title: 'AI/ML',
+      title: 'AI / ML',
       icon: <FiCpu size={24} className="text-purple-400" />,
-      technologies: ['Python', 'PyTorch', 'TensorFlow', 'Hugging Face', 'OpenCV', 'APIs', 'Web Scraping', 'Pandas', 'NumPy', 'Scikit-learn', 'LightGBM', 'Deep Learning', 'Agentic AI'],
+      technologies: ['Python', 'PyTorch', 'TensorFlow', 'Hugging Face', 'OpenCV', 'APIs', 'Web Scraping', 'Pandas', 'NumPy', 'Scikit-learn', 'LightGBM', 'Deep Learning', 'Agentic AI','Prompt Engineering'],
     },
     dataAnalytics: {
       title: 'Data Analytics',
@@ -31,8 +32,8 @@ export default function Skills(): React.JSX.Element {
     },
     designing: {
       title: 'Designing',
-      icon: <FiLayers size={24} className="text-pink-400" />,
-      technologies: ['Figma', 'Adobe Photoshop', 'Canva', 'Blender'],
+      icon: <FaPaintBrush size={24} className="text-pink-400" />,
+      technologies: ['Figma', 'Adobe Photoshop', 'Canva'],
     },
   };
 

@@ -27,6 +27,7 @@ export default function Education(): React.JSX.Element {
         label: 'Marks', value: '75%',
         highlightColor: 'emerald'
     },
+    { label: 'Stream', value: 'Science PCM', highlightColor: 'blue' },
     { label: 'Best Performance', value: 'Maths (95%)', highlightColor: 'blue' },
   ];
 
@@ -51,11 +52,12 @@ export default function Education(): React.JSX.Element {
             
             <div className="group p-6 rounded-2xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 hover:border-blue-400/50 backdrop-blur-sm transition duration-500 hover:shadow-2xl hover:shadow-blue-500/10 ml-16">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 gap-1">
-                <h3 className="text-white font-bold text-xl tracking-wide">DSMNRU LKO</h3>
-                <span className="text-xs bg-zinc-800 text-zinc-400 px-2 py-1 rounded-md w-fit">Lucknow, India</span>
+                <h3 className="text-white font-bold text-2lg tracking-wide">B.Tech in Computer Science and Engineering</h3>
+                <span className="text-xs bg-zinc-800 text-blue-400 px-2 py-1 rounded-md w-fit">2023-2027</span>
               </div>
+              <span className="text-xs bg-zinc-900 italic text-zinc-400 px-10 py-1 rounded-md w-fit flex items-center justify-center">Dr. Sakuntala Misra National Rehabilitaion University, Lucknow, India</span>
               
-              <ul className="space-y-1.5 text-sm font-medium border-l border-zinc-800 pl-3">
+              <ul className="space-y-1.5 text-sm font-medium border-l border-zinc-800 pl-3 mt-4">
                 {semesterMarks.map((item, index) => (
                   <li key={index} className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 bg-zinc-400 rounded-full"></span> 
@@ -75,11 +77,12 @@ export default function Education(): React.JSX.Element {
             <div className="group p-6 rounded-2xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 hover:border-blue-400/50 backdrop-blur-sm transition duration-500 hover:shadow-2xl hover:shadow-blue-500/10 ml-16">
             
               <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 gap-1">
-                <h3 className="text-white font-bold text-xl tracking-wide">NPC LKO</h3>
-                <span className="text-xs bg-zinc-800 text-zinc-400 px-2 py-1 rounded-md w-fit">Lucknow, India</span>
+                <h3 className="text-white font-bold text-2lg tracking-wide">Higher Schooling (XII)</h3>
+                <span className="text-xs bg-zinc-800 text-blue-400 px-2 py-1 rounded-md w-fit">May-2023</span>
               </div>
-              
-              <ul className="space-y-2 text-sm font-medium border-l border-zinc-800 pl-3">
+              <span className="text-xs bg-zinc-900 italic text-zinc-400 px-10 py-1 rounded-md w-fit flex items-center justify-center">New Public Inter College, Lucknow</span>
+               
+              <ul className="space-y-2 text-sm font-medium border-l border-zinc-800 pl-3 mt-4">
                 {schoolDetails.map((detail, index) => (
                   <li key={index} className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 bg-zinc-600 rounded-full"></span>

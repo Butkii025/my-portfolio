@@ -6,11 +6,12 @@ import Home from '../src/components/Home';
 import About from '../src/components/About';
 import Skills from '../src/components/Skills';
 import Projects from '../src/components/Projects';
-import Credentials from '../src/components/Credentials';
-import Research from '../src/components/Research';
+import Credentials from '../src/components/Credentials'
 import CreativeCorner from '../src/components/CreativeCorner';
 import Contact from '../src/components/Contact';
 import Education from '../src/components/education';
+// import CanvasCursor from '../src/components/CanvasCursor';
+import SmoothFollower from '@/src/components/SmoothFollower';
 
 export default function VijayPortfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,7 +25,6 @@ export default function VijayPortfolio() {
     { label: 'Skills', href: '#skills' },
     { label: 'Projects', href: '#projects' },
     { label: 'Credentials', href: '#credentials' },
-    { label: 'Research', href: '#research_work' },
     { label: 'Creative_Corner', href: '#creative_corner' },
     { label: 'Contact', href: '#contact' },
   ];
@@ -130,7 +130,7 @@ export default function VijayPortfolio() {
           />
           <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
             <div
-              className="ml-12 pointer-events-auto animate-in fade-in zoom-in duration-300"
+              className="pointer-events-auto animate-in fade-in zoom-in duration-300"
               onClick={(e) => e.stopPropagation()}
             >
               <img
@@ -150,7 +150,7 @@ export default function VijayPortfolio() {
           <div
             className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50"
             onClick={closeProfile}
-            style={{ boxShadow: 'inset 0 0 60px rgba(183, 50, 35, 0.2)' }}
+            style={{ boxShadow: 'inset 0 0 60px rgba(96, 165, 250, 0.2)' }}
           />
           <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
             <div
@@ -204,8 +204,6 @@ export default function VijayPortfolio() {
       
       <Credentials />
       
-      <Research />
-      
       <CreativeCorner onImageClick={setSelectedArtImage} />
       
       <Contact />
@@ -214,6 +212,8 @@ export default function VijayPortfolio() {
       <footer className="py-8 border-t border-white/10 text-center text-zinc-500 text-sm">
         © 2026 P_Vijay. All rights reserved
       </footer>
+      {/* <CanvasCursor /> */}
+      <SmoothFollower />
     </div>
   );
 }

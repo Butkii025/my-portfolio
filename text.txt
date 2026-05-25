@@ -1,0 +1,17 @@
+if you need to change the cursor effect:
+
+
+just UNCOMMENT the line :
+{/* <CanvasCursor /> */} from (page.jsx) in the last after (footer) 
+&& line (  import CanvasCursor from '../src/components/CanvasCursor';  ) in the starting of the (page.jsx)
+
+and Wow you will see the "CanvasCursor" t\on the page.
+
+
+also getting confused b/w two cursor you need to COMMENTOUT previous cursor from:
+starting => (import SmoothFollower from '@/src/components/SmoothFollower';) in (page.jsx)
+&&
+In the last just after footer <SmoothFollower /> in (page.jsx)
+
+
+-----------------------------------------------------------------------------------------------------------

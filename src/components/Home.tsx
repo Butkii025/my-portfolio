@@ -12,7 +12,7 @@ export default function Home({ onProfileClick }: HomeProps): React.JSX.Element {
     <section id="home" className="relative min-h-screen flex items-center justify-center px-6 pt-20">
       <div className="absolute inset-0 bg-gradient-to-b from-zinc-900 via-black to-black opacity-90" />
 
-      <div className="absolute w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl" />
+      <div className="absolute w-[400px] h-[400px] bg-white/10 rounded-full blur-3xl" />
 
       <div className="relative z-20 max-w-4xl mx-auto grid md:grid-cols-2 gap-center items-center mt-10">
         <div>
