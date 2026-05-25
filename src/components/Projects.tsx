@@ -28,7 +28,7 @@ export default function Projects(): React.JSX.Element {
       title: "GPA calculator",
       desc: "Web app that allows users to calculate their GPA by inputting subject grade points and credits,result display with pre-coded feedback",
       tech: "HTML5 • CSS3 • JS",
-      url: 'clgplusminus.vercel.app',
+      url: 'https://clgplusminus.vercel.app/',
       img: '/clgplusminus.png',
     },
   ];
