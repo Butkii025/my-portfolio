@@ -37,7 +37,7 @@ export default function Projects(): React.JSX.Element {
   if (title === "Personal Portfolio") {
     e.preventDefault(); 
     // Custom message
-    alert("वाह वाह 👏! क्या अर्थ है इसका, अभी तो केवल पोर्टफोलियो ही देखा जा रहा है न 🤨?? कोई बात नहीं, अब फिर से प्रारंभ करो ✌️ आपका दिन मंगलमय हो 🙏");
+    alert("वाह वाह 👏! क्या अर्थ है इसका, अभी तो पोर्टफोलियो ही देखा जा रहा है न 🤨 ?? कोई बात नहीं, अब फिर से प्रारंभ करो ✌️ आपका दिन मंगलमय हो 🙏");
     window.open(e.currentTarget.href, '_blank', 'noopener,noreferrer');
   }
 };
