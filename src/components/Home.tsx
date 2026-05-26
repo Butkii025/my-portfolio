@@ -17,7 +17,7 @@ export default function Home({ onProfileClick }: HomeProps): React.JSX.Element {
       <div className="relative z-20 max-w-4xl mx-auto grid md:grid-cols-2 gap-center items-center mt-10">
         <div>
           <p className="flex items-center gap-2 uppercase tracking-[0.2em] text-white font-semibold text-sm mb-10">
-            Priyanshu <FiSmile size={24} className="text-400 animate-pulse animate-bounce" />
+            प्रियांशु <FiSmile size={24} className="text-400 animate-pulse animate-bounce" />
           </p>
 
           <h1 className="text-5xl md:text-4xl font-black leading-tight mb-3">
@@ -52,7 +52,7 @@ export default function Home({ onProfileClick }: HomeProps): React.JSX.Element {
                 onClick={onProfileClick}
               />
 
-              <h2 className="text-3xl font-bold mb-2 mt-2">PRIYANSHU</h2>
+              <h2 className="text-3xl font-bold font-['Alex_Brush',_cursive] mb-2 mt-2">PRIYANSHU</h2>
 
               <p className="text-zinc-400">
                 Passionate about AI & ML models, Artistic creativity, Data Engineering, and Futuristic UI Design

@@ -10,8 +10,10 @@ import Credentials from '../src/components/Credentials'
 import CreativeCorner from '../src/components/CreativeCorner';
 import Contact from '../src/components/Contact';
 import Education from '../src/components/education';
-// import CanvasCursor from '../src/components/CanvasCursor';
 import SmoothFollower from '@/src/components/SmoothFollower';
+import Footer from '../src/components/Footer';
+// import CanvasCursor from '../src/components/CanvasCursor';
+// import DotCursor from '../src/components/DotCursor';
 
 export default function VijayPortfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -208,11 +210,10 @@ export default function VijayPortfolio() {
       
       <Contact />
 
-      {/* FOOTER */}
-      <footer className="py-8 border-t border-white/10 text-center text-zinc-500 text-sm">
-        © 2026 P_Vijay. All rights reserved
-      </footer>
-      {/* <CanvasCursor /> */}
+      <Footer />
+      
+      {/* <CanvasCursor />  */}
+      {/* <DotCursor /> */}
       <SmoothFollower />
     </div>
   );

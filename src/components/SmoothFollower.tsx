@@ -83,7 +83,7 @@ export default function SmoothFollower() {
       />
 
       <div
-        className="absolute rounded-full border dark:border-zinc-400 border-black "
+        className="absolute rounded-full border dark:border-blue-300 border-black"
         style={{
           width: isHovering ? "44px" : "28px",
           height: isHovering ? "44px" : "28px",
