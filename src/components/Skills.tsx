@@ -23,29 +23,29 @@ export default function Skills(): React.JSX.Element {
     aiml: {
       title: 'AI / ML',
       icon: <FiCpu size={24} className="text-purple-400" />,
-      technologies: ['Python', 'PyTorch', 'TensorFlow', 'Hugging Face', 'OpenCV', 'APIs', 'Web Scraping', 'Pandas', 'NumPy', 'Scikit-learn', 'LightGBM', 'Deep Learning', 'Agentic AI','Prompt Engineering'],
+      technologies: ['Python', 'PyTorch', 'TensorFlow', 'Hugging Face', 'APIs', 'Web Scraping', 'Pandas', 'NumPy', 'Scikit-learn', 'Deep Learning','Prompt Engineering'],
     },
     dataAnalytics: {
       title: 'Data Analytics',
       icon: <FiBarChart2 size={24} className="text-yellow-400" />,
-      technologies: ['SQL', 'Pandas', 'Tableau', 'Power BI', 'Excel', 'A/B Testing', 'Data Wrangling', 'EDA'],
+      technologies: ['SQL', 'Pandas', 'Excel', 'A/B Testing', 'Data Wrangling', 'EDA'],
     },
     designing: {
       title: 'Designing',
       icon: <FaPaintBrush size={24} className="text-pink-400" />,
-      technologies: ['Figma', 'Adobe Photoshop', 'Canva'],
+      technologies: ['Figma', 'Adobe Express', 'Canva'],
     },
   };
 
   return (
-    <section id="skills" className="py-28 px-6 bg-zinc-950">
+    <section id="skills" className="py-28 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16">
           <p className="text-zinc-500 uppercase tracking-[0.2em] mb-4">
             Skills
           </p>
 
-          <h2 className="text-4xl md:text-3xl font-bold">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
             Tools & Technologies
           </h2>
         </div>
@@ -60,13 +60,13 @@ export default function Skills(): React.JSX.Element {
               {/* Icon and Title */}
               <div className="flex items-center gap-3 mb-5">
                 <span className="text-3xl">{category.icon}</span>
-                <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition duration-300">
+                <h3 className="text-2xl font-bold text-white group-hover:text-blue-400 transition duration-300">
                   {category.title}
                 </h3>
               </div>
 
               {/* Technologies */}
-              <p className="text-sm text-zinc-300 leading-relaxed">
+              <p className="text-sm text-zinc-400 leading-relaxed">
                 {category.technologies.join(' | ')}
               </p>
             </div>

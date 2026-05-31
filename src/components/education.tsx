@@ -1,7 +1,6 @@
 import React from 'react';
 import { FaPencil } from 'react-icons/fa6';
 
-// Defining types for our data structure to keep it strict and maintainable
 interface SemesterMark {
   sem: string;
   mark: number;
@@ -32,7 +31,7 @@ export default function Education(): React.JSX.Element {
   ];
 
   return (
-    <section id="education" className="py-20 px-6 bg-zinc-950 text-zinc-400">
+    <section id="education" className="py-20 px-6 text-zinc-400">
       <div className="max-w-3xl mx-auto">
         
         {/* Heading */}
@@ -44,7 +43,7 @@ export default function Education(): React.JSX.Element {
         {/* Timeline Container */}
         <div className="relative border-l-4 border-zinc-600 ml-4 md:ml-20 pl-6 md:pl-8 space-y-12 py-2">
           
-          {/* 1. COLLEGE BLOCK */}
+          {/* COLLEGE BLOCK */}
           <div className="relative">
            <span className="absolute -left-[38px] top-1.5 bg-zinc-900 border-2 text-zinc-400 font-semibold text-sm px-3 py-1 rounded-md shadow-md cursor-pointer hover:animate-bounce hover:border-white hover:scale-110 active:scale-95">
               College
@@ -52,7 +51,7 @@ export default function Education(): React.JSX.Element {
             
             <div className="group p-6 rounded-2xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 hover:border-blue-400/50 backdrop-blur-sm transition duration-500 hover:shadow-2xl hover:shadow-blue-500/10 ml-16">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 gap-1">
-                <h3 className="text-white font-bold text-2lg tracking-wide">B.Tech in Computer Science and Engineering</h3>
+                <h3 className="text-white font-bold text-2lg tracking-wide group-hover:text-blue-400 transition duration-300">B.Tech in Computer Science and Engineering</h3>
                 <span className="text-xs bg-zinc-800 text-blue-400 px-2 py-1 rounded-md w-fit">2023-2027</span>
               </div>
               <span className="text-xs bg-zinc-900 italic text-zinc-400 px-10 py-1 rounded-md w-fit flex items-center justify-center">Dr. Sakuntala Misra National Rehabilitaion University, Lucknow, India</span>
@@ -68,7 +67,7 @@ export default function Education(): React.JSX.Element {
             </div>
           </div>
 
-          {/* 2. SCHOOL BLOCK */}
+          {/* SCHOOL BLOCK */}
           <div className="relative">
             <span className="absolute -left-[38px] top-1.5 bg-zinc-900 border-2 text-zinc-400 font-semibold text-sm px-3 py-1 rounded-md shadow-md cursor-pointer hover:animate-bounce hover:border-white hover:scale-110 active:scale-95">
               School
@@ -77,7 +76,7 @@ export default function Education(): React.JSX.Element {
             <div className="group p-6 rounded-2xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 hover:border-blue-400/50 backdrop-blur-sm transition duration-500 hover:shadow-2xl hover:shadow-blue-500/10 ml-16">
             
               <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 gap-1">
-                <h3 className="text-white font-bold text-2lg tracking-wide">Higher Schooling (XII)</h3>
+                <h3 className="text-white font-bold text-2lg tracking-wide group-hover:text-blue-400 transition duration-300">Higher Schooling (XII)</h3>
                 <span className="text-xs bg-zinc-800 text-blue-400 px-2 py-1 rounded-md w-fit">May-2023</span>
               </div>
               <span className="text-xs bg-zinc-900 italic text-zinc-400 px-10 py-1 rounded-md w-fit flex items-center justify-center">New Public Inter College, Lucknow</span>

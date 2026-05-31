@@ -30,7 +30,7 @@ export default function Home({ onProfileClick }: HomeProps): React.JSX.Element {
           </p>
 
           <div className="flex gap-4 flex-wrap">
-            <a download href="/P_vijay Resume.PDF" className="px-6 py-3 rounded-2xl border border-white/20 hover:bg-white/10 active:bg-blue-400 cursor-pointer transition duration-300">
+            <a href="https://docs.google.com/document/d/14TxRuxXbM5NHvk2eK67MxWU4YnDQQSfl/edit?usp=sharing&ouid=111029989741912499048&rtpof=true&sd=true" className="px-6 py-3 rounded-2xl border border-white/10 hover:bg-white/10 active:bg-blue-400 cursor-pointer transition duration-300">
               Resume <FaDownload size={18} className="inline-block ml-2" />
             </a>
 
@@ -54,8 +54,8 @@ export default function Home({ onProfileClick }: HomeProps): React.JSX.Element {
 
               <h2 className="text-3xl font-bold font-['Alex_Brush',_cursive] mb-2 mt-2">PRIYANSHU</h2>
 
-              <p className="text-zinc-400">
-                Passionate about AI & ML models, Artistic creativity, Data Engineering, and Futuristic UI Design
+              <p className="text-zinc-400 text-2lg">
+                My friends regard me as an artist
               </p><br></br>
               <a href="https://mail.google.com/mail/?view=cm&fs=1&to=priyanshuvijay262@gmail.com&su=Portfolio%20Inquiry&body=Hii%20Priyanshu%2C%20i%27m%20here%20through%20your%20Portfolio%20!" target="_blank" rel="noopener noreferrer" className="px-4 py-2 rounded-2xl border border-white/20 hover:bg-white/10 active:bg-zinc-400 cursor-pointer transition duration-300">
                 Say Hi <MdWavingHand size={18} className="inline-block ml-2 animate-wave" />

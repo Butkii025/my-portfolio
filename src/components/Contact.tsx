@@ -21,7 +21,7 @@ export default function Contact(): React.JSX.Element {
   ];
 
   return (
-    <section id="contact" className="py-28 px-6 border-t border-white/10">
+    <section id="contact" className="py-28 px-6">
       <div className="max-w-4xl mx-auto text-center">
         <p className="text-zinc-500 uppercase tracking-[0.2em] mb-4">
           Contact
@@ -31,7 +31,7 @@ export default function Contact(): React.JSX.Element {
           Let's Build Together
         </h2>
 
-        <p className="text-zinc-400 text-lg max-w-2xl mx-auto leading-relaxed mb-10">
+        <p className="text-zinc-400 text-2lg max-w-2xl mx-auto leading-relaxed mb-10">
           Interested in collaborations, projects, or creative ideas? Let's connect and create impactful digital experiences together.
         </p>
 
@@ -54,7 +54,7 @@ export default function Contact(): React.JSX.Element {
         </div>
         <br></br>
         <br></br>
-        <p className="text-zinc-400 text-lg max-w-2xl mx-auto leading-relaxed mb-10">
+        <p className="text-zinc-400 text-2lg max-w-2xl mx-auto leading-relaxed mb-10">
           Thank you for visiting my portfolio ~ feel free to reach out anytime <FiSmile size={18} className="inline-block text-white-400 animate-pulse" />
         </p>
       </div>

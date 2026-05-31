@@ -2,18 +2,19 @@
 
 import { useState } from 'react';
 import { FaHome } from 'react-icons/fa';
-import Home from '../src/components/Home';
+import Hero from '../src/components/Hero';
 import About from '../src/components/About';
 import Skills from '../src/components/Skills';
 import Projects from '../src/components/Projects';
-import Credentials from '../src/components/Credentials'
+import Credentials from '../src/components/Credentials';
+import Research from '../src/components/Research';
 import CreativeCorner from '../src/components/CreativeCorner';
 import Contact from '../src/components/Contact';
-import Education from '../src/components/education';
 import SmoothFollower from '@/src/components/SmoothFollower';
-import Footer from '../src/components/Footer';
+import DotCursor from '../src/components/DotCursor';
 // import CanvasCursor from '../src/components/CanvasCursor';
-// import DotCursor from '../src/components/DotCursor';
+
+import Footer from '../src/components/Footer';
 
 export default function VijayPortfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,6 +28,7 @@ export default function VijayPortfolio() {
     { label: 'Skills', href: '#skills' },
     { label: 'Projects', href: '#projects' },
     { label: 'Credentials', href: '#credentials' },
+    { label: 'Research', href: '#research' },
     { label: 'Creative_Corner', href: '#creative_corner' },
     { label: 'Contact', href: '#contact' },
   ];
@@ -58,45 +60,38 @@ export default function VijayPortfolio() {
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
       {/* NAVBAR */}
-      <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/40 border-b border-white/10">
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-1">
+      <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-zinc/10">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-6">
           {/* LEFT SIDE */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 py-1">
             <img
               src="/pv_newlogo.jpg"
               alt="Logo"
-              className="h-20 w-20 rounded-full cursor-pointer hover:scale-center transition duration-300"
+              className="h-20 w-20 rounded-full cursor-pointer hover:scale-105 transition duration-300"
               onClick={openLogo}
             />
-            <h1 className="text-2xl font-bold tracking-wider">P_Vijay</h1>
-          </div>
-
-          {/* DESKTOP MENU */}
-          <div className="hidden lg:flex gap-8 text-sm text-zinc-300">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="cursor-pointer hover:text-blue-400 transition duration-300"
-              >
-                {link.label}
-              </a>
-            ))}
+            {/* TEXT CONTAINER */}
+            <div className="flex flex-col justify-center">
+              <h1 className="text-2xl font-bold tracking-wider leading-none">P_Vijay</h1>
+              {/* <p className="text-xs text-zinc-400 font-medium tracking-widest mt-1 uppercase">
+                Data Engineer
+              </p> */}
+            </div>
           </div>
 
           {/* HAMBURGER MENU */}
           <button
             onClick={toggleMenu}
-            className="flex flex-col gap-1 cursor-pointer p-2"
+            className="flex flex-col gap-1 cursor-pointer p-2 z-50"
             aria-label="Toggle menu"
           >
-            <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+            <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
             <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
-            <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+            <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
           </button>
         </div>
 
-        {/* MOBILE DROPDOWN MENU */}
+        {/* DROPDOWN MENU */}
         {isMenuOpen && (
           <>
             <div
@@ -104,7 +99,7 @@ export default function VijayPortfolio() {
               onClick={closeMenu}
               style={{ boxShadow: 'inset 0 0 40px rgba(96, 165, 250, 0.15)' }}
             />
-            <div className="absolute top-16 right-6 w-48 bg-black border-2 border-blue-400 rounded-2xl shadow-2xl z-40 animate-in fade-in slide-in-from-top-2 duration-300">
+            <div className="absolute top-24 right-6 w-48 bg-black border-2 border-blue-400 rounded-2xl shadow-2xl z-40 animate-in fade-in slide-in-from-top-2 duration-300">
               <div className="flex flex-col py-4">
                 {navLinks.map((link) => (
                   <a
@@ -162,7 +157,7 @@ export default function VijayPortfolio() {
               <img
                 src="/profile.png"
                 alt="Profile Picture"
-                className="w-80 h-80 rounded-2xl border-2 border-blue-400 shadow-2xl object-cover"
+                className="w-80 h-80 rounded-full border-2 border-blue-400 shadow-2xl object-cover"
                 style={{ boxShadow: '0 0 40px rgba(96, 165, 250, 0.4), inset 0 0 40px rgba(96, 165, 250, 0.1)' }}
               />
             </div>
@@ -186,7 +181,7 @@ export default function VijayPortfolio() {
               <img
                 src={`/${selectedArtImage.name}`}
                 alt={`Art ${selectedArtImage.id}`}
-                className="max-w-2xl max-h-96 rounded-lg border-4 border-blue-400 shadow-2xl object-cover"
+                className="max-w-2xl max-h-96 rounded-lg border-2 border-blue-400 shadow-2xl object-cover"
                 style={{ boxShadow: '0 0 40px rgba(96, 165, 250, 0.4), inset 0 0 40px rgba(96, 165, 250, 0.1)' }}
               />
             </div>
@@ -194,27 +189,21 @@ export default function VijayPortfolio() {
         </>
       )}
 
-      {/* SECTIONS - Imported Components */}
-      <Home onProfileClick={openProfile} />
-      
+      {/* SECTIONS */}
+      <Hero onProfileClick={openProfile} />
       <About onProfileClick={openProfile} />
-      <Education />
-      
       <Skills />
-      
       <Projects />
-      
       <Credentials />
-      
+      <Research />
       <CreativeCorner onImageClick={setSelectedArtImage} />
-      
       <Contact />
-
       <Footer />
       
-      {/* <CanvasCursor />  */}
-      {/* <DotCursor /> */}
+      {/* cursor effects */}
       <SmoothFollower />
+      {/* <CanvasCursor />  */}
+      <DotCursor />
     </div>
   );
 }

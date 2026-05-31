@@ -11,7 +11,7 @@ export default function Footer() {
   return (
     <footer className="mt-2 sm:mt-1">
       <div className="pt-6 sm:pt-8 pb-4 sm:pb-6">
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-3 sm:pt-4 border-t border-zinc-800/50">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-3 sm:pt-4">
           <p className="text-xs sm:text-xs text-zinc-500 text-center sm:text-center">
             © {currentYear} P_Vijay. All rights reserved .
           </p>

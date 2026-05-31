@@ -1,57 +1,113 @@
 import React from 'react';
 
 export default function Credentials(): React.JSX.Element {
+  const cardStyle = "p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm transition duration-500 hover:border-blue-400/50 hover:shadow-2xl hover:shadow-blue-500/10 group w-[320px] md:w-[450px] shrink-0 snap-start flex flex-col justify-between";
+  const btnStyle = "inline-block px-3 py-2 rounded-xl border border-zinc-800 hover:bg-white/10 active:bg-blue-400 text-sm transition duration-300 text-center";
+
   return (
-    <section id="credentials" className="py-28 px-6 bg-zinc-950">
+    <section id="credentials" className="py-28 px-6 text-white overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <div className="mb-14">
-          <p className="text-zinc-500 uppercase tracking-[0.2em] mb-4">
-            Credentials
-          </p>
-
-          <h2 className="text-4xl md:text-3xl font-bold">
-            Certificates & Research
-          </h2>
+          <p className="text-zinc-500 uppercase tracking-[0.2em] mb-4">Credentials</p>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Certification</h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {/* Certificates */}
-          <div className="p-8 rounded-3xl border border-white/10 bg-black group p-6 rounded-2xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 hover:border-blue-400/50 backdrop-blur-sm transition duration-500 hover:shadow-2xl hover:shadow-blue-500/10">
-            <h3 className="text-2xl font-bold mb-4">
-              Certificates
-            </h3>
+        {/* Horizontal Scroll */}
+        <div className="flex overflow-x-auto gap-8 pb-6 snap-x snap-mandatory scrollbar-none">
 
-            <p className="text-zinc-400 leading-relaxed">
-              Showcasing technical certifications, workshops,
-              hackathons, and achievements
-            </p>
+          <div className={cardStyle}>
+            <div>
+              <h3 className="text-2xl font-bold mb-4 group-hover:text-blue-400 transition duration-300">Work Related</h3>
+              <p className="text-zinc-400 leading-relaxed mb-5 text-sm md:text-base">
+                Certification related to Internship and professional experience
+              </p>
+            </div>
+            
+            <div className="flex flex-col gap-4 text-xs text-zinc-500">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-t border-white/5 pt-4">
+                <span className="text-left leading-normal">• Internship on Data Analysis, at Science Tech Institute</span>
+                <div className="flex gap-2 justify-start">
+                  <a href="/credentials/pv-saifai-intership.PDF" className={btnStyle}>
+                    Certificate
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
-          {/* Research Work */}
-          <div className="p-8 rounded-3xl border border-white/10 bg-black group p-6 rounded-2xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 hover:border-blue-400/50 backdrop-blur-sm transition duration-500 hover:shadow-2xl hover:shadow-blue-500/10">
-            <h3 className="text-2xl font-bold mb-4">
-              Research Work
-            </h3>
 
-            <p className="text-zinc-400 leading-relaxed">
-              Research on Indian market volatility forecasting system using NSE/BSE official data with Python, Random Forest, machine learning, predictive analytics techniques and forecasting market insights. 
-            </p>
-            <p className="text-sm text-zinc-500 mt-4 mb-6">
-               • Volatility Forecasting • Machine Learning: Random Forest • Python Analytics • Risk Modeling • NSE|BSE Data
-            </p>
-                  
-                <a className="px-6 py-3 rounded-xl border border-zinc-800 hover:bg-white/10 active:bg-blue-400 cursor-pointer transition duration-300 mb-10 ml-4"
-                href='https://zenodo.org/records/20373118'>
-                  Preview
+          {/* Educational */}
+          <div className={cardStyle}>
+            <div>
+              <h3 className="text-2xl font-bold mb-4 group-hover:text-blue-400 transition duration-300">Educational</h3>
+              <p className="text-zinc-400 leading-relaxed mb-5 text-sm md:text-base">
+                Certification related to education, workshops, course-completion
+              </p>
+            </div>
+            
+            <div className="flex flex-col gap-4 text-xs text-zinc-500">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-t border-white/5 pt-4">
+                <span>• Master Data Management (MDM), TCS</span>
+                <a href="/credentials/MDM-TCS.PDF" className={btnStyle}>
+                  Certificate
                 </a>
-              
-                <a href="/NCMPCS.PDF">
-                  <button className="px-5 py-2 rounded-xl border border-zinc-800 hover:bg-white/10 active:bg-blue-400 cursor-pointer transition duration-300 mb-10 ml-4">
-                    Certificate 
-                  </button>
-                </a>
-              
+              </div>
 
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <span>• Workshop of Machine Learning at IIT Kanpur</span>
+                <a href="/credentials/iit-kanpur-workshop.png" className={btnStyle}>
+                  Certificate
+                </a>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <span>• Conference at KMCLU</span>
+                <a href="/credentials/KMCLU.png" className={btnStyle}>
+                  Certificate
+                </a>
+              </div>
+            </div>
           </div>
+
+          {/* Social */}
+          <div className={cardStyle}>
+            <div>
+              <h3 className="text-2xl font-bold mb-4 group-hover:text-blue-400 transition duration-300">Social Events</h3>
+              <p className="text-zinc-400 leading-relaxed mb-5 text-sm md:text-base">
+                Certification related to Events, Volunteering
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-4 text-xs text-zinc-500">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-t border-white/5 pt-4">
+                <span>• Spirit 1.0 Chess Tournament</span>
+                <a href="/credentials/pv-spirit1.0.png" className={btnStyle}>
+                  Certificate
+                </a>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <span>• Youth Parliament</span>
+                <a href="/credentials/youth-parliament.png" className={btnStyle}>
+                  Certificate
+                </a>
+              </div>
+
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <span>• Women-Day Act/Play</span>
+                <a href="/credentials/play-on-womens day.png" className={btnStyle}>
+                  Certificate
+                </a>
+              </div>
+
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <span>• Seminar on Women Pioneering in Tech.</span>
+                <a href="/credentials/women-pioneer-seminar.png" className={btnStyle}>
+                  Certificate
+                </a>
+              </div>
+            </div>
+          </div>
+          
         </div>
       </div>      
     </section>
