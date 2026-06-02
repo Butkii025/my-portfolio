@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Creative Machine Learning & Full-Stack UI Engineering Portfolio
 
-## Getting Started
+Welcome to my personal portfolio repository! This project serves as a production-grade showcase of my work operating at the intersection of quantitative data processing, modern full-stack web applications, and immersive frontend interactions. 
 
-First, run the development server:
+The entire site is optimized for performance, clean typography, and seamless dark-mode glassmorphism visual balance.
 
+---
+
+## 🛠️ Core Tech Stack & Architecture
+
+* **Framework:** Next.js 14+ (App Router) / React Ecosystem
+* **Styling:** Tailwind CSS (Fluid responsive layouts, custom translucent gradients, and backdrop blurs)
+* **3D Graphics:** React Three Fiber (R3F) & `@react-three/drei` (Three.js WebGL Wrapper)
+* **Form Infrastructure:** Asynchronous Web3Forms API Pipeline
+
+---
+
+## ✨ Spotlight Feature: Embedded Interactive 3D Teacup
+
+Integrated directly alongside the responsive Contact Form layout is a lightweight, custom-engineered **3D Teacup Canvas** designed to elevate standard user engagement into a memorable interaction.
+
+### ⚙️ Technical Highlights:
+* **Dynamic Mirror Chrome Material:** Engineered with a roughness factor of `0.02` and full `1.0` metalness coupled with a virtual studio environment lightmap. The cup dynamically bounces sharp highlights as users spin or orbit the camera.
+* **Controlled Rotation Matrix:** Clicking the cup doesn't just spin it indefinitely—it calculates exactly one fluid $360^\circ$ ($2\pi$ radians) lap using physics-based linear interpolation (`lerp`), scaling up smoothly to reveal a clean UI overlay.
+* **Recessed Realism:** Built using precise nested cylindrical coordinates to map a hollow inner chamber. The organic tea liquid is deeply recessed down into the base, eliminating visual clipping and creating true perspective depth when viewed from above.
+* **Polished Obsidian Saucer:** A mathematically lathed, deep black saucer (`#050505`) with low roughness to ground the shimmering cup with premium ceramic highlights.
+
+---
+
+## 🚀 Installation & Local Environment Setup
+
+### 1. Clone the Source Repository
 ```bash
+git clone [https://github.com/Butkii025/my-portfolio.git](https://github.com/Butkii025/my-portfolio.git)
+cd my-portfolio
+
+2.Install Project Dependencies
+Ensure your workspace includes the core rendering engines required to parse the WebGL viewports cleanly:
+
+Bash
+npm install three @react-three/fiber @react-three/drei
+
+3. Initialize Local Engine
+Bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Navigate to http://localhost:3000 to view your local deployment environment live.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+📬 Form State Lifecycle
+The asymmetric grid module routes contact messages seamlessly across four explicit transactional states:
+idle ➡️ loading ➡️ success or error
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This safeguards asynchronous request loops on the client thread, changing the behavior of the interaction state machine automatically while maintaining persistent canvas states in the concurrent 3D workspace viewport.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+----------------------------------------------------------------------------------------------------------
