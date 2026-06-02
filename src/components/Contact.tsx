@@ -21,7 +21,7 @@ export default function Contact(): React.JSX.Element {
   ];
 
   return (
-    <section id="contact" className="py-28 px-6">
+    <section id="contact" className="py-28 px-6 md:px-12 lg:px-24">
       <div className="max-w-4xl mx-auto text-center">
         <p className="text-zinc-500 uppercase tracking-[0.2em] mb-4">
           Contact

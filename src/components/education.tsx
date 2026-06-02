@@ -40,7 +40,6 @@ export default function Education(): React.JSX.Element {
           <FaPencil size={18} className="inline-block ml-2 animate-bounce" />
         </h2>
 
-        {/* Timeline Container */}
         <div className="relative border-l-4 border-zinc-600 ml-4 md:ml-20 pl-6 md:pl-8 space-y-12 py-2">
           
           {/* COLLEGE BLOCK */}

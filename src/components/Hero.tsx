@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaDownload, FaGithub, FaSmile } from 'react-icons/fa';
+import { FaDownload, FaGithub, FaSadCry, FaSmile } from 'react-icons/fa';
 import { FiSmile } from 'react-icons/fi';
 import { MdWavingHand } from 'react-icons/md';
 import GradientText from "./ui/GradientText";
@@ -18,14 +18,9 @@ export default function Home({ onProfileClick }: HomeProps): React.JSX.Element {
       <div className="relative z-20 max-w-4xl mx-auto grid md:grid-cols-2 gap-center items-center mt-10">
         <div>
           <p className="flex items-center gap-2 uppercase tracking-[0.2em] text-white font-semibold text-sm mb-10">
-             <GradientText
-        colors={["#5227FF", "#FF9FFC", "#B497CF"]}
-        animationSpeed={8}
-        showBorder={false}
-        className="text-sm "
-      >
-          🛞प्रियांशु <FiSmile />
-      </GradientText>
+             
+          प्रियांशु <FiSmile size={18} className=" ml-2 animate-pulse" />
+      
           </p>
 
           <h1 className="text-5xl md:text-4xl font-black leading-tight mb-3">

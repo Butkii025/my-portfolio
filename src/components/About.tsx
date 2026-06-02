@@ -40,7 +40,7 @@ const schoolDetails: SchoolDetail[] = [
 
 export default function About({ onProfileClick }: AboutProps): React.JSX.Element {
   return (
-    <section id="about" className="py-28 px-6">
+    <section id="about" className="py-28 px-6 md:px-12 lg:px-24">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-6 items-center">
         <div>
           <p className="text-zinc-500 uppercase tracking-[0.2em] mb-4">About</p>
@@ -54,37 +54,29 @@ export default function About({ onProfileClick }: AboutProps): React.JSX.Element
             <img
               src="/profile1.png"
               alt="Profile"
-              className="w-70 h-90 rounded-full object-cover border-2 border-zinc-700 shadow-2xl hover:scale-110 transition duration-300 bg-gradient-to-br hover:border-blue-400/50 backdrop-blur-sm hover:shadow-blue-500/50"
+              className="w-60 h-90 rounded-full object-cover border-2 border-zinc-700 shadow-2xl hover:scale-110 transition duration-300 bg-gradient-to-br hover:border-blue-400/50 backdrop-blur-sm hover:shadow-blue-500/50"
             />
           </div>
 
-          <a
-            href="https://docs.google.com/document/d/14TxRuxXbM5NHvk2eK67MxWU4YnDQQSfl/edit?usp=sharing&ouid=111029989741912499048&rtpof=true&sd=true"
-            className="px-3 py-3 rounded-2xl border border-white/20 hover:bg-white/10 active:bg-blue-400 cursor-pointer transition duration-300"
-          >
-            Resume <FaDownload size={18} className="inline-block ml-2" />
-          </a>
-        </div>
-
-        <div>
-          <p className="text-zinc-400 text-2lg leading-relaxed max-w-xl mt-15">
-            Hello! I'm{' '}
+          <div className="font-serif italic text-xl text-gray-600 -rotate-7 ml-6">
             <GradientText
-                    colors={["#5227FF", "#FF9FFC", "#B497CF"]}
+                    colors={["#aaccf3", "#252627", "#e6e4e7"]}
                     animationSpeed={10}
                     showBorder={false}
                     className="inline cursor-default italic"
                   >
                     Priyanshu Vijay{' '}
-            </GradientText>Passionate about AI & ML models, artistic creativity, data engineering, and futuristic UI design.
-            Immersed in the data science landscape, I specialize in transforming raw data into actionable insights that
-            blend innovation with efficiency. My drive for AI/ML exploration pushes me toward cutting-edge algorithms,
-            while my interest in front-end development empowers me to design engaging, human-centered user experiences
+            </GradientText>
+              <div className="h-px w-40 bg-gray-900"></div>
+          </div>
+        </div>
+
+        <div>
+          <p className="text-zinc-400 text-2lg leading-relaxed max-w-xl mt-15">
+           An analyst focusing on the intersection of Data Science, Machine Learning, and human-centered User Interface (UI) design. Focused on transforming complex datasets into actionable backend insights while engineering intuitive, highly responsive frontend experiences. This includes utilizing cutting-edge algorithms and data modeling to solve complex engineering challenges, alongside blending strong frontend practices to build dynamic, user-friendly interfaces.
           </p>
           <p className="text-zinc-400 text-2lg leading-relaxed mt-8">
-            Beyond pure coding, my entire mindset is shaped by design, whether I'm using a pencil on paper or tools
-            like Figma and Canva. This artistic background helps me easily see things from other people's perspectives,
-            allowing me to turn complex logic into creative, user-friendly experiences.
+            Utilizing a background in creative design, from traditional sketching and digital tools like Canva, to translate intricate logic into seamless user journeys. This artistic mindset allows for approaching technical layouts with unique visual intuition.
           </p>
         </div>
       </div>

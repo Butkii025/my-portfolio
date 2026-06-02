@@ -23,9 +23,6 @@ export default function Credentials(): React.JSX.Element {
               • Volatility Forecasting • Machine Learning: Random Forest • Python Analytics • Risk Modeling • NSE|BSE Data
             </p>
             <div className="flex flex-wrap gap-3">
-              <a href="https://zenodo.org/records/20373118" target="_blank" rel="noreferrer" className={btnStyle}>
-                Preview
-              </a>
               <a href="/NCMPCS.PDF" className={btnStyle}>
                 Certificate
               </a>
