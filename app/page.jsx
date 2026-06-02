@@ -10,17 +10,16 @@ import Credentials from '../src/components/Credentials';
 import Research from '../src/components/Research';
 import CreativeCorner from '../src/components/CreativeCorner';
 import Contact from '../src/components/Contact';
-import SmoothFollower from '@/src/components/SmoothFollower';
+import SmoothFollower from '@/src/components/anim/SmoothFollower';
 import DotCursor from '../src/components/DotCursor';
-// import CanvasCursor from '../src/components/CanvasCursor';
-
+// import CanvasCursor from '@/src/components/anim/CanvasCursor';
+import ContactForm from '../src/components/contectform';
 import Footer from '../src/components/Footer';
 
 export default function VijayPortfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLogoOpen, setIsLogoOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const [selectedArtImage, setSelectedArtImage] = useState(null);
 
   const navLinks = [
     { label: <FaHome size={18} className="inline-block ml-2" />, href: '#home' },
@@ -165,30 +164,6 @@ export default function VijayPortfolio() {
         </>
       )}
 
-      {/* ART IMAGE MODAL */}
-      {selectedArtImage && (
-        <>
-          <div
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50"
-            onClick={() => setSelectedArtImage(null)}
-            style={{ boxShadow: 'inset 0 0 60px rgba(96, 165, 250, 0.2)' }}
-          />
-          <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
-            <div
-              className="pointer-events-auto animate-in fade-in zoom-in duration-300"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <img
-                src={`/${selectedArtImage.name}`}
-                alt={`Art ${selectedArtImage.id}`}
-                className="max-w-2xl max-h-96 rounded-lg border-2 border-blue-400 shadow-2xl object-cover"
-                style={{ boxShadow: '0 0 40px rgba(96, 165, 250, 0.4), inset 0 0 40px rgba(96, 165, 250, 0.1)' }}
-              />
-            </div>
-          </div>
-        </>
-      )}
-
       {/* SECTIONS */}
       <Hero onProfileClick={openProfile} />
       <About onProfileClick={openProfile} />
@@ -196,7 +171,9 @@ export default function VijayPortfolio() {
       <Projects />
       <Credentials />
       <Research />
-      <CreativeCorner onImageClick={setSelectedArtImage} />
+      <CreativeCorner />
+      
+      <ContactForm />
       <Contact />
       <Footer />
       

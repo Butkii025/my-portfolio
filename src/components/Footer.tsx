@@ -1,4 +1,5 @@
 import { LuArrowUp } from "react-icons/lu";
+import GradientText from "./ui/GradientText";
 
 export default function Footer() {
   const iconSize = 18;
@@ -20,8 +21,16 @@ export default function Footer() {
             onClick={scrollToTop}
             className="cursor-pointer inline-flex items-center gap-2 text-xs sm:text-xs text-zinc-500 hover:text-blue-400 transition-colors duration-300 group active:scale-95 px-3 py-2 sm:px-0 sm:py-0 rounded-lg sm:rounded-none hover:bg-zinc-800/50 sm:hover:bg-transparent"
             aria-label="Scroll to top"
-          >
-            <span>Back to top</span>
+          ><GradientText
+                  colors={["#5227FF", "#FF9FFC", "#B497CF"]}
+                  animationSpeed={1}
+                  showBorder={false}
+                  className="py-3 px-1 mt-3 inline"
+                >
+                  Back to top    <LuArrowUp />         
+
+                </GradientText>
+            
             <LuArrowUp className="w-3 h-3 group-hover:-translate-y-0.5 transition-transform duration-300" />
           </button>
         </div>

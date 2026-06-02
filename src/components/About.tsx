@@ -2,6 +2,9 @@ import React from 'react';
 import { FaStar } from 'react-icons/fa';
 import { FaDownload } from 'react-icons/fa';
 import { FaPencil } from 'react-icons/fa6';
+import GradientText from "./ui/GradientText";
+import { FiSmile } from 'react-icons/fi';
+
 
 interface AboutProps {
   onProfileClick: () => void;
@@ -64,12 +67,16 @@ export default function About({ onProfileClick }: AboutProps): React.JSX.Element
         </div>
 
         <div>
-          <p className="text-zinc-400 text-2lg leading-relaxed max-w-xl mt-25">
+          <p className="text-zinc-400 text-2lg leading-relaxed max-w-xl mt-15">
             Hello! I'm{' '}
-            <span className="transition duration-100 font-medium text-blue-300 hover:text-blue-200 cursor-default italic text-sky-700 text-1.5xl">
-              Priyanshu Vijay
-            </span>
-            , passionate about AI & ML models, artistic creativity, data engineering, and futuristic UI design.
+            <GradientText
+                    colors={["#5227FF", "#FF9FFC", "#B497CF"]}
+                    animationSpeed={10}
+                    showBorder={false}
+                    className="inline cursor-default italic"
+                  >
+                    Priyanshu Vijay{' '}
+            </GradientText>Passionate about AI & ML models, artistic creativity, data engineering, and futuristic UI design.
             Immersed in the data science landscape, I specialize in transforming raw data into actionable insights that
             blend innovation with efficiency. My drive for AI/ML exploration pushes me toward cutting-edge algorithms,
             while my interest in front-end development empowers me to design engaging, human-centered user experiences
