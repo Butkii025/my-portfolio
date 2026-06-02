@@ -14,7 +14,7 @@ const PROJECTS_DATA: Project[] = [
     title: "Xela_Arcade",
     desc: "A Next-Gen Library of Custom-Classic Game Engines with Core Frameworks and Algorithms (chess-is-best)",
     tech: ["JavaScript", "DSA", "TypeScript", "React", "Tailwind CSS", "Next.js", "Framer Motion", "Lucide React"],
-    url: 'https://ansharcade.netlify.app/',
+    url: 'https://xela-arcade.netlify.app/',
     img: 'project-img/Xela_Arcade.png',
     code: 'https://github.com/Butkii025/Xela_Arcade',
   },
