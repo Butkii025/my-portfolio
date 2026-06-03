@@ -2,7 +2,6 @@ import React from 'react';
 import { FaDownload, FaGithub, FaSadCry, FaSmile } from 'react-icons/fa';
 import { FiSmile } from 'react-icons/fi';
 import { MdWavingHand } from 'react-icons/md';
-import GradientText from "./ui/GradientText";
 
 interface HomeProps {
   onProfileClick: () => void;
@@ -60,7 +59,7 @@ export default function Home({ onProfileClick }: HomeProps): React.JSX.Element {
               <p className="text-zinc-400 text-2lg">
                 My friends regard me as an artist
               </p><br></br>
-              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=priyanshuvijay262@gmail.com&su=Portfolio%20Inquiry&body=Hii%20Priyanshu%2C%20i%27m%20here%20through%20your%20Portfolio%20!" target="_blank" rel="noopener noreferrer" className="px-4 py-2 rounded-2xl border border-white/20 hover:bg-white/10 active:bg-zinc-400 cursor-pointer transition duration-300">
+              <a href="#contact" target="_blank" rel="noopener noreferrer" className="px-4 py-2 rounded-2xl border border-white/20 hover:bg-white/10 active:bg-zinc-400 cursor-pointer transition duration-300">
                 Say Hi <MdWavingHand size={18} className="inline-block ml-2 animate-wave" />
               </a>
             </div>

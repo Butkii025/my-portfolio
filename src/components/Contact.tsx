@@ -14,7 +14,7 @@ export default function Contact(): React.JSX.Element {
   const socialLinks: SocialLink[] = [
     { name: 'Email', icon: MdEmail, url: 'https://mail.google.com/mail/?view=cm&fs=1&to=priyanshuvijay262@gmail.com&su=Portfolio%20Inquiry&body=Hii%20Priyanshu%2C%20i%27m%20here%20through%20your%20Portfolio%20!' },
     { name: 'GitHub', icon: FaGithub, url: 'https://github.com/Butkii025' },
-    { name: 'LinkedIn', icon: FaLinkedin, url: 'https://www.linkedin.com/in/priyanshu-v-17243729b?utm_source=share_via&utm_content=profile&utm_medium=member_android' },
+    { name: 'LinkedIn', icon: FaLinkedin, url: 'https://www.linkedin.com/in/priyanshu-v-6626b62a8?utm_source=share_via&utm_content=profile&utm_medium=member_android' },
     { name: 'Pinterest', icon: FaPinterest, url: 'https://pin.it/6WXws2ZFQ' },
     { name: 'YouTube', icon: FaYoutube, url: 'https://youtube.com/@me_priya_anshu_0?si=UpB7rvQMNGJuWPWS' },
     { name: 'Kaggle', icon: SiKaggle, url: 'https://www.kaggle.com/butkii' },

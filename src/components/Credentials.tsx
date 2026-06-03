@@ -46,6 +46,12 @@ export default function Credentials(): React.JSX.Element {
             
             <div className="flex flex-col gap-4 text-xs text-zinc-500">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-t border-white/5 pt-4">
+                <span>• Professional Communication, TCS</span>
+                <a href="/credentials/TCS-certificate.PDF" className={btnStyle}>
+                  Certificate
+                </a>
+              </div>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <span>• Master Data Management (MDM), TCS</span>
                 <a href="/credentials/MDM-TCS.PDF" className={btnStyle}>
                   Certificate
@@ -53,7 +59,7 @@ export default function Credentials(): React.JSX.Element {
               </div>
 
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                <span>• Workshop of Machine Learning at IIT Kanpur</span>
+                <span>• Machine Learning Workshop at IIT Kanpur</span>
                 <a href="/credentials/iit-kanpur-workshop.png" className={btnStyle}>
                   Certificate
                 </a>
@@ -95,13 +101,6 @@ export default function Credentials(): React.JSX.Element {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <span>• Women-Day Act/Play</span>
                 <a href="/credentials/play-on-womens day.png" className={btnStyle}>
-                  Certificate
-                </a>
-              </div>
-
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                <span>• Seminar on Women Pioneering in Tech.</span>
-                <a href="/credentials/women-pioneer-seminar.png" className={btnStyle}>
                   Certificate
                 </a>
               </div>
