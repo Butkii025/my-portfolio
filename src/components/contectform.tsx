@@ -11,7 +11,7 @@ export default function ContactForm() {
     e.preventDefault()
     setStatus("loading")
 
-    const ACCESS_KEY = "YOUR_WEB3FORMS_ACCESS_KEY_HERE"
+    const ACCESS_KEY = "b16dd9e8-f9c5-4d0e-adb3-6997acc3787f"
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -25,7 +25,7 @@ export default function ContactForm() {
           name: formData.name,
           email: formData.email,
           message: formData.message,
-          from_name: "Portfolio Contact Form",
+          from_name: "Portfolio Inquiry",
         }),
       })
 
@@ -53,7 +53,7 @@ export default function ContactForm() {
               Get in Touch
             </h2>
             <p className="text-gray-400">
-              Let's plan a chai meeting
+              Let's plan a chai meeting ....
             </p>
           </div>
 
