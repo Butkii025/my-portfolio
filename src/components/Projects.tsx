@@ -12,8 +12,8 @@ interface Project {
 const PROJECTS_DATA: Project[] = [
   {
     title: "Xela_Arcade",
-    desc: "A Next-Gen Library of Custom-Classic Game Engines with Core Frameworks and Algorithms (chess-is-best)",
-    tech: ["JavaScript", "DSA", "TypeScript", "React", "Tailwind CSS", "Next.js", "Framer Motion", "Lucide React"],
+    desc: "A Next-Gen Library of Custom-Classic Games with Core Frameworks and Algorithms (chess-is-best)",
+    tech: ["JavaScript", "TypeScript", "React", "Next.js", "Framer Motion", "Lucide React"],
     url: 'https://xela-arcade.netlify.app/',
     img: 'project-img/Xela_Arcade.png',
     code: 'https://github.com/Butkii025/Xela_Arcade',
@@ -21,23 +21,23 @@ const PROJECTS_DATA: Project[] = [
   {
     title: "Personal Portfolio",
     desc: "Developed an optimized and responsive personal space to showcase my work.",
-    tech: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Turbo Pack", "SmoothCursor"],
+    tech: ["Next.js", "React", "Tailwind CSS", "Turbo Pack", "SmoothCursor"],
     url: 'https://p-vijay.vercel.app/',
     img: 'project-img/portfolio.png',
     code: 'https://github.com/Butkii025/my-portfolio',
   },
   {
     title: "Craft-Greet",
-    desc: "Custom or predefined direct device downloads. Personalized greeting cards with custom images/messages and a responsive UI.",
-    tech: ["HTML5", "CSS3", "JS"],
+    desc: "Custom or predefined direct device downloads. Personalized cards with custom images/message.",
+    tech: ["HTML5", "JS"],
     url: 'https://butkii025.github.io/Craft-Greet/',
     img: 'project-img/craftgreet.png',
     code: 'https://github.com/Butkii025/Craft-Greet',
   },
   {
     title: "GPA calculator",
-    desc: "Web app that allows users to calculate their GPA by inputting subject grade points and credits. Includes custom feedback display.",
-    tech: ["HTML5", "CSS3", "JS"],
+    desc: " Allows users to calculate their GPA by subject grade points and credits.",
+    tech: ["HTML5", "JS"],
     url: 'https://butkii025.github.io/SGPA-calculator/',
     img: 'project-img/clgplusminus.png',
     code: 'https://github.com/Butkii025/SGPA-calculator',
@@ -72,7 +72,7 @@ export default function Projects(): React.JSX.Element {
           {PROJECTS_DATA.map((project, index) => (
             <div
               key={index}
-              className="group rounded-3xl overflow-hidden bg-gradient-to-br from-white/5 to-white/0 border border-white/10 hover:border-blue-400/50 backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10 flex flex-col justify-between w-[300px] md:w-[360px] shrink-0 snap-start"
+              className="group rounded-3xl overflow-hidden bg-gradient-to-br from-white/5 to-white/0 border border-white/10 hover:border-blue-400/50 backdrop-blur-sm transition-all duration-500 ease-out hover:shadow-blue-500/10 flex flex-col justify-between h-[500px] flex-1 hover:flex-[2] min-w-[120px] md:min-w-[150px] shrink-0 snap-start"
             >
               {/* Project Image Layout */}
               <div>
@@ -80,13 +80,13 @@ export default function Projects(): React.JSX.Element {
                   <img
                     src={project.img}
                     alt={`${project.title} screenshot`}
-                    className="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
+                    className="w-full h-full object-cover object-top"
                   />
                 </div>
 
                 {/* Project Details */}
                 <div className="p-6 pb-0">
-                  <h3 className="text-2xl font-bold mb-3 group-hover:text-blue-400 transition duration-300">
+                  <h3 className="text-2xl font-bold mb-3">
                     {project.title}
                   </h3>
                   <p className="text-zinc-400 leading-relaxed mb-5 text-2lg md:text-base">
