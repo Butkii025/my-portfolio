@@ -13,7 +13,6 @@ import Contact from '../src/components/Contact';
 import SmoothFollower from '@/src/components/anim/SmoothFollower';
 import DotCursor from '../src/components/DotCursor';
 // import CanvasCursor from '@/src/components/anim/CanvasCursor';
-import ContactForm from '../src/components/contectform';
 import Footer from '../src/components/Footer';
 
 export default function VijayPortfolio() {
@@ -172,8 +171,6 @@ export default function VijayPortfolio() {
       <Credentials />
       <Research />
       <CreativeCorner />
-      
-      <ContactForm />
       <Contact />
       <Footer />
       
