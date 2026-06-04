@@ -98,13 +98,6 @@ export default function Credentials(): React.JSX.Element {
                   Certificate
                 </a>
               </div>
-
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                <span>• Seminar on Women Pioneering in Tech.</span>
-                <a href="/credentials/women-pioneer-seminar.png" className={btnStyle}>
-                  Certificate
-                </a>
-              </div>
             </div>
           </div>
           
