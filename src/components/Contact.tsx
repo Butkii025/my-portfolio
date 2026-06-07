@@ -20,7 +20,7 @@ export default function Contact(): React.JSX.Element {
           
           <div className="flex flex-col gap-8">
             <p className="leading-relaxed dark:text-zinc-400 text-zinc-500">
-              Interested in collaborations, projects, or creative ideas?<br></br> Let's connect and create impactful digital experiences — over a cup of chai, perhaps.
+              Interested in collaborations, projects, or creative ideas?<br></br> Let's connect and create impactful digital experiences.
             </p>
 
             <div className="flex flex-col gap-3">
@@ -41,7 +41,7 @@ export default function Contact(): React.JSX.Element {
             <ChaiCup submitted={submitted} />
 
             <p className="text-sm italic dark:text-zinc-500 text-zinc-400 font-['Alex_Brush',_cursive] text-lg">
-              " — the best meetings start with chai. "
+              " — the best meetings start with chai "
             </p>
           </div>
 

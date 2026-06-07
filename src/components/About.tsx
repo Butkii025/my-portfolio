@@ -28,8 +28,8 @@ const schoolDetails: SchoolDetail[] = [
 
 const highlights = [
   { label: 'Focus',    value: 'Data Science & ML'         },
-  { label: 'Strength', value: 'UI / Frontend Engineering'  },
-  { label: 'Tools',    value: 'Python, React, Canva'       },
+  { label: 'Skill', value: 'UI / Frontend Engineering'  },
+  { label: 'Tools',    value: 'Python, React'       },
   { label: 'Approach', value: 'Data-driven + Design-first' },
 ];
 
@@ -111,8 +111,7 @@ function HighlightCard({ h }: { h: { label: string; value: string } }) {
       onMouseLeave={tilt.onMouseLeave}
       style={{ transition: 'transform 0.15s ease-out', transformStyle: 'preserve-3d' }}
       className="relative flex flex-col gap-1 p-3 rounded-xl cursor-default overflow-hidden
-        dark:bg-zinc-950/40 dark:border dark:border-zinc-900
-        bg-zinc-50 border border-zinc-200"
+        dark:bg-zinc-900 dark:border dark:border-zinc-900  dark:hover:border-blue-400/50 dark:hover:shadow-blue-500/10 hover:border-blue-400/50 hover:shadow-blue-500/10 bg-zinc-50 border border-zinc-200"
     >
       <div className="card-glow absolute inset-0 pointer-events-none rounded-xl transition-opacity duration-300" style={{ opacity: 0 }} />
       <span className="text-xs font-normal uppercase tracking-wider dark:text-zinc-500 text-zinc-500 relative z-10">{h.label}</span>
@@ -184,31 +183,22 @@ export default function About({ onProfileClick }: AboutProps): React.JSX.Element
               <img
                 src="/pv_sign.png"
                 alt="Priyanshu signature"
-                className="w-28 object-contain opacity-80 dark:invert dark:opacity-60"
+                className="w-35 object-contain opacity-80 dark:invert dark:opacity-60"
               />
-              <GradientText
-                colors={["#aaccf3", "#60a5fa", "#e6e4e7", "#60a5fa", "#aaccf3"]}
-                animationSpeed={3}
-                showBorder={false}
-                className="text-xl mb-1 inline cursor-default"
-              >
-                ←
-              </GradientText>
             </div>
           </div>
         </div>
 
-        {/* RIGHT — bio + highlights */}
         <div className="flex flex-col gap-6">
           <p className="text-2lg leading-relaxed max-w-xl mt-4 dark:text-zinc-400 text-zinc-500">
             CS undergrad building at the intersection of{' '}
             <span className="dark:text-white text-black font-medium">Data Science</span>,{' '}
             <span className="dark:text-white text-black font-medium">Machine Learning</span>, and{' '}
-            <span className="dark:text-white text-black font-medium">UI Design</span> — turning raw data into backend insights and clean, responsive interfaces users actually enjoy.
+            <span className="dark:text-white text-black font-medium">UI Design,</span> turning raw data into backend insights and clean, responsive interfaces users actually enjoy.
           </p>
 
           <p className="text-2lg leading-relaxed max-w-xl dark:text-zinc-400 text-zinc-500">
-            A creative thinker with a background in traditional sketching and digital design — approaching every technical problem with both logic and visual intuition.
+            A creative thinker with a background in traditional sketching and digital design, approaching every technical problem with both logic and visual intuition.
           </p>
 
           <ul className="grid grid-cols-2 gap-3 mt-2">

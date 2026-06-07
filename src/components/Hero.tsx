@@ -84,10 +84,10 @@ export default function Home({ onProfileClick }: HomeProps): React.JSX.Element {
           </p>
 
           <h1 className="text-5xl md:text-4xl font-black leading-tight mb-3
-            dark:text-white text-gray-900">
-            Designer
-            <span className="block dark:text-zinc-400 text-zinc-500">
-              Data_Analyst & Creative_Coder
+            dark:text-zinc-300 text-gray-900">
+             Data_Engineer
+            <span className="text-3xl md:text-3xl block dark:text-zinc-500 text-zinc-500">
+              & Creative_Coder
             </span>
           </h1>
 
