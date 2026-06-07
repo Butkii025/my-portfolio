@@ -10,14 +10,12 @@ export default function SmoothFollower() {
   const [renderPos, setRenderPos] = useState({ dot: { x: 0, y: 0 }, border: { x: 0, y: 0 } })
   const [isHovering, setIsHovering] = useState(false)
   
-  // 1. Add a mounted state tracker
   const [mounted, setMounted] = useState(false)
 
   const DOT_SMOOTHNESS = 0.2
   const BORDER_DOT_SMOOTHNESS = 0.1
 
   useEffect(() => {
-    // 2. Set mounted to true once we hit the client side
     setMounted(true)
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -68,14 +66,13 @@ export default function SmoothFollower() {
     }
   }, [])
 
-  // 3. Render absolutely nothing until the client hydration phase finishes
   if (!mounted) return null
 
   return (
     <div className="pointer-events-none fixed inset-0 z-50"> 
-      {/* Added z-50 to keep it visible on top of your layout components */}
+
       <div
-        className="absolute rounded-full dark:bg-white bg-white "
+        className="absolute rounded-full dark:bg-pink bg-zinc-400 "
         style={{
           width: "8px",
           height: "8px",

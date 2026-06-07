@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useRef, useState } from 'react';
 
 interface Project {
   title: string;
@@ -7,6 +9,7 @@ interface Project {
   url: string;
   img: string;
   code: string;
+  type: string;
 }
 
 const PROJECTS_DATA: Project[] = [
@@ -17,6 +20,16 @@ const PROJECTS_DATA: Project[] = [
     url: 'https://xela-arcade.netlify.app/',
     img: 'project-img/Xela_Arcade.png',
     code: 'https://github.com/Butkii025/Xela_Arcade',
+    type: 'WEB/AI-BOT'
+  },
+  {
+    title: "Predictive Book Analytics & MLOps Pipeline",
+    desc: "An automated Python pipeline that harvests web data, trains an ensemble machine learning model, and exposes a real-time command-line interface for predictive inference.",
+    tech: ["Python", "scikit-learn","Request API", "pandas", "numpy", "BeautifulSoup4","LXML", "joblib", "matplotlib", "seaborn"],
+    url: 'https://github.com/Butkii025/bibliophile-data-extractor',
+    img: 'project-img/extractor_pipeline.png',
+    code: 'https://github.com/Butkii025/bibliophile-data-extractor',
+    type: 'MLOps / Data eng.'
   },
   {
     title: "Personal Portfolio",
@@ -25,6 +38,7 @@ const PROJECTS_DATA: Project[] = [
     url: 'https://p-vijay.vercel.app/',
     img: 'project-img/portfolio.png',
     code: 'https://github.com/Butkii025/my-portfolio',
+    type: 'WEB'
   },
   {
     title: "Craft-Greet",
@@ -33,19 +47,173 @@ const PROJECTS_DATA: Project[] = [
     url: 'https://butkii025.github.io/Craft-Greet/',
     img: 'project-img/craftgreet.png',
     code: 'https://github.com/Butkii025/Craft-Greet',
+    type: 'WEB'
   },
   {
     title: "GPA calculator",
-    desc: " Allows users to calculate their GPA by subject grade points and credits.",
+    desc: "Allows users to calculate their GPA by subject grade points and credits.",
     tech: ["HTML5", "JS"],
     url: 'https://butkii025.github.io/SGPA-calculator/',
     img: 'project-img/clgplusminus.png',
     code: 'https://github.com/Butkii025/SGPA-calculator',
+    type: 'WEB'
   },
 ];
 
+function useTiltCard(strength = 10) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    const rotateX = -(y / rect.height) * strength;
+    const rotateY = (x / rect.width) * strength;
+    el.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02,1.02,1.02)`;
+    const glow = el.querySelector('.card-glow') as HTMLElement;
+    if (glow) {
+      const gx = 50 + (x / rect.width) * 60;
+      const gy = 50 + (y / rect.height) * 60;
+      glow.style.background = `radial-gradient(circle at ${gx}% ${gy}%, rgba(96,165,250,0.15), transparent 70%)`;
+      glow.style.opacity = '1';
+    }
+  };
+
+  const onMouseLeave = () => {
+    const el = ref.current;
+    if (!el) return;
+    el.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
+    const glow = el.querySelector('.card-glow') as HTMLElement;
+    if (glow) glow.style.opacity = '0';
+  };
+
+  return { ref, onMouseMove, onMouseLeave };
+}
+
+function ProjectCard({
+  project,
+  isActive,
+  onMouseEnter,
+  onMouseLeave: onCardLeave,
+  onExplore,
+}: {
+  project: Project;
+  isActive: boolean;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+  onExplore: (e: React.MouseEvent<HTMLAnchorElement>, title: string) => void;
+}) {
+  const tilt = useTiltCard(10);
+
+  return (
+    <div
+      ref={tilt.ref}
+      onMouseMove={tilt.onMouseMove}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={() => { tilt.onMouseLeave(); onCardLeave(); }}
+      style={{ transition: 'transform 0.15s ease-out', transformStyle: 'preserve-3d' }}
+      className="
+        group relative rounded-3xl overflow-hidden w-full h-full
+        dark:bg-gradient-to-br dark:from-white/5 dark:to-white/0 dark:border dark:border-white/10
+        dark:hover:border-blue-400/50 dark:hover:shadow-blue-500/10
+        bg-gradient-to-br from-zinc-50 to-white border border-zinc-200
+        hover:border-blue-400/50 hover:shadow-blue-500/10
+        backdrop-blur-sm hover:shadow-2xl
+        flex flex-col justify-between min-h-[480px]
+      "
+    >
+      
+      <div
+        className="card-glow absolute inset-0 pointer-events-none rounded-3xl z-10 transition-opacity duration-300"
+        style={{ opacity: 0 }}
+      />
+
+      <div className="w-full flex flex-col">
+        <div className="h-48 sm:h-56 md:h-60 w-full overflow-hidden relative shrink-0
+          dark:bg-gradient-to-br dark:from-zinc-700 dark:via-zinc-900 dark:to-black
+          bg-gradient-to-br from-zinc-200 via-zinc-100 to-white">
+         
+         <img
+            src={project.img}
+            alt={`${project.title} screenshot`}
+            className="w-full h-full object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105"
+          /> 
+
+          <div className="absolute inset-0 dark:bg-zinc-950/20 bg-white/10 transition-opacity duration-500 group-hover:opacity-0" />
+        </div>
+
+        <div className="p-5 md:p-6 flex-1 min-w-0">
+          <h3 className="text-xl md:text-2xl font-bold mb-3 tracking-tight transition-colors duration-300
+            whitespace-normal md:truncate md:group-hover:whitespace-normal
+            dark:text-white text-zinc-800 group-hover:text-blue-400">
+            {project.title}
+            <h3 className="flex items-center justify-between text-xs md:text-xs mb-3 tracking-tight transition-colors duration-300
+            whitespace-normal md:truncate md:group-hover:whitespace-normal
+           dark:text-zinc-400 text-zinc-500 group-hover:text-zinc-700">
+            {project.type}
+            </h3>
+            
+          </h3>
+
+          <div
+            style={{
+              transition: 'opacity 0.4s ease, max-height 0.55s cubic-bezier(0.25,1,0.5,1)',
+              opacity: isActive ? 1 : 0,
+              maxHeight: isActive ? '8rem' : '0px',
+              overflow: 'hidden',
+            }}
+            className="leading-relaxed text-sm md:text-base dark:text-zinc-400 text-zinc-500"
+          >
+            {project.desc}
+          </div>
+        </div>
+      </div>
+
+      <div
+        style={{
+          transition: 'opacity 0.4s ease 0.1s, max-height 0.55s cubic-bezier(0.25,1,0.5,1)',
+          opacity: isActive ? 1 : 0,
+          maxHeight: isActive ? '16rem' : '0px',
+          overflow: 'hidden',
+        }}
+        className="px-5 md:px-6 pb-5 md:pb-6 w-full shrink-0"
+      >
+        <div className="flex flex-wrap gap-1.5 mb-4 text-xs">
+          {project.tech.map((techItem, i) => (
+            <span key={i} className="px-2 py-0.5 rounded-md whitespace-nowrap
+              dark:bg-zinc-900/80 dark:border dark:border-zinc-800/80 dark:text-zinc-400
+              bg-zinc-100 border border-zinc-200 text-zinc-600">
+              {techItem}
+            </span>
+          ))}
+        </div>
+        <div className="flex gap-3">
+          <a href={project.url} target="_blank" rel="noopener noreferrer"
+            className="flex-1 text-center" onClick={(e) => onExplore(e, project.title)}>
+            <button className="w-full px-3 py-2.5 text-xs md:text-sm font-medium rounded-xl transition duration-200 cursor-pointer
+              dark:border dark:border-zinc-800 dark:text-white dark:hover:bg-white/10 dark:active:bg-blue-400
+              border border-zinc-300 text-zinc-700 hover:bg-zinc-100 active:bg-blue-400">
+              Preview
+            </button>
+          </a>
+          <a href={project.code} target="_blank" rel="noopener noreferrer" className="flex-1 text-center">
+            <button className="w-full px-3 py-2.5 text-xs md:text-sm font-medium rounded-xl transition duration-200 cursor-pointer capitalize
+              dark:border dark:border-zinc-800 dark:text-white dark:hover:bg-white/10 dark:active:bg-blue-400
+              border border-zinc-300 text-zinc-700 hover:bg-zinc-100 active:bg-blue-400">
+              Code
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Projects(): React.JSX.Element {
-  
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
   const handleExploreClick = (e: React.MouseEvent<HTMLAnchorElement>, title: string) => {
     if (title === "Personal Portfolio") {
       e.preventDefault();
@@ -55,117 +223,59 @@ export default function Projects(): React.JSX.Element {
   };
 
   return (
-    <section id="projects" className="py-28 px-6 text-white overflow-hidden">
+    <section id="projects" className="py-28 px-6 overflow-hidden dark:bg-transparent bg-white">
       <div className="max-w-6xl mx-auto">
-        
-        {/* Header Section */}
         <div className="mb-14">
-          <p className="text-zinc-500 uppercase tracking-[0.2em] mb-4 ">
-            Projects
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+          <p className="uppercase tracking-[0.2em] mb-4 dark:text-zinc-500 text-zinc-500">Projects</p>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight dark:text-white text-black">
             Featured Work & Experiences
           </h2>
         </div>
 
-        {/* Outer Gallery Wrapper Container */}
-        <div className="flex flex-col md:flex-row w-full gap-6 md:gap-4 pb-6 items-stretch">
-          {PROJECTS_DATA.map((project, index) => (
-            <div
-              key={index}
-              className="
-                group relative rounded-3xl overflow-hidden 
-                bg-gradient-to-br from-white/5 to-white/0 border border-white/10 hover:border-blue-400/50 
-                backdrop-blur-sm transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:shadow-blue-500/10 
-                flex flex-col justify-between
-                
-                /* Mobile Layout Defaults */
-                w-full min-h-[480px]
-                
-                /* Desktop Gallery Layout Configuration */
-                md:flex-1 md:hover:flex-[4.5] md:min-w-[95px]
-              "
-            >
-              {/* Top Layer Content: Image and Header details */}
-              <div className="w-full flex flex-col">
-                {/* Image layout container */}
-                <div className="h-48 sm:h-56 md:h-60 w-full overflow-hidden bg-zinc-900 bg-gradient-to-br from-zinc-700 via-zinc-900 to-black relative shrink-0">
-                  <img
-                    src={project.img}
-                    alt={`${project.title} screenshot`}
-                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+        {/* 
+          MOBILE: horizontal scroll snap — each card 78vw fixed
+          DESKTOP: all cards in a row, the wrapper div controls flex accordion
+        */}
+        <div className="
+          flex gap-4 pb-4
+          overflow-x-auto snap-x snap-mandatory scroll-smooth
+          [&::-webkit-scrollbar]:h-1.5
+          dark:[&::-webkit-scrollbar-track]:bg-zinc-900
+          dark:[&::-webkit-scrollbar-thumb]:bg-zinc-700
+          [&::-webkit-scrollbar-track]:bg-zinc-100
+          [&::-webkit-scrollbar-thumb]:bg-zinc-300
+          [&::-webkit-scrollbar-thumb]:rounded-full
+          md:overflow-visible md:snap-none md:items-stretch
+        ">
+          {PROJECTS_DATA.map((project, index) => {
+            const isActive = activeIndex === index;
+            return (
+              
+              <div
+                key={index}
+                className="snap-center shrink-0 md:shrink md:min-w-[80px]"
+                style={{
+                  transition: 'flex 0.65s cubic-bezier(0.34,1.4,0.64,1)',
+                  flex: isActive ? '4 1 0%' : '1 1 0%',
+                }}
+              >
+                <div className="w-[78vw] md:w-full h-full">
+                  <ProjectCard
+                    project={project}
+                    isActive={isActive}
+                    onMouseEnter={() => setActiveIndex(index)}
+                    onMouseLeave={() => setActiveIndex(null)}
+                    onExplore={handleExploreClick}
                   />
-                  <div className="absolute inset-0 bg-zinc-950/20 transition-opacity duration-300 group-hover:opacity-0" />
-                </div>
-
-                {/* Text Block Content */}
-                <div className="p-5 md:p-6 flex-1">
-                  {/* Title */}
-                  <h3 className="text-xl md:text-2xl font-bold mb-3 tracking-tight truncate group-hover:whitespace-normal transition-colors duration-300 group-hover:text-blue-400">
-                    {project.title}
-                  </h3>
-                  
-                  {/* Descriptions: Perfectly responsive animation without dynamic absolute max-height cutting layout limits */}
-                  <div className="
-                    text-zinc-400 leading-relaxed text-sm md:text-base transition-all duration-300 ease-out
-                    /* Mobile: Visible naturally */
-                    opacity-100 block
-                    /* Desktop: Collapsed smoothly until hovered */
-                    md:opacity-0 md:invisible md:h-0 md:group-hover:h-auto md:group-hover:opacity-100 md:group-hover:visible md:group-hover:mt-2
-                  ">
-                    {project.desc}
-                  </div>
                 </div>
               </div>
-
-              {/* Bottom Layer Content: Badges and Interactive Action Buttons */}
-              <div className="
-                p-5 md:p-6 pt-0 mt-auto w-full shrink-0 transition-all duration-300 ease-out
-                /* Mobile: standard layout rendering */
-                opacity-100 block
-                /* Desktop: Collapsed smoothly until card expands */
-                md:opacity-0 md:invisible md:h-0 md:group-hover:h-auto md:group-hover:opacity-100 md:group-hover:visible md:group-hover:mt-4
-              ">
-                
-                {/* Tech Stack Chips Wrapper */}
-                <div className="flex flex-wrap gap-1.5 mb-5 text-xs text-zinc-400">
-                  {project.tech.map((techItem, techIndex) => (
-                    <span key={techIndex} className="bg-zinc-900/80 px-2 py-0.5 rounded-md border border-zinc-800/80 whitespace-nowrap">
-                      {techItem}
-                    </span>
-                  ))}
-                </div>
-
-                {/* CTAs */}
-                <div className="flex gap-3">
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 text-center"
-                    onClick={(e) => handleExploreClick(e, project.title)}
-                  >
-                    <button className="w-full px-3 py-2.5 text-xs md:text-sm font-medium rounded-xl border border-zinc-800 hover:bg-white/10 active:bg-blue-400 cursor-pointer transition duration-200">
-                      Preview
-                    </button>
-                  </a>
-
-                  <a
-                    href={project.code}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 text-center"
-                  >
-                    <button className="w-full px-3 py-2.5 text-xs md:text-sm font-medium rounded-xl border border-zinc-800 hover:bg-white/10 active:bg-blue-400 cursor-pointer transition duration-200 capitalize">
-                      Code
-                    </button>
-                  </a>
-                </div>
-
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
+
+        <p className="mt-3 text-center text-xs dark:text-zinc-600 text-zinc-400 md:hidden">
+          ← swipe to explore →
+        </p>
       </div>
     </section>
   );

@@ -6,8 +6,17 @@ const config: Config = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      wave: {
+    '0%, 100%': { transform: 'rotate(0deg)' },
+    '25%': { transform: 'rotate(20deg)' },
+    '75%': { transform: 'rotate(-10deg)' },
   },
-  plugins: [],
+  animation: {
+  wave: 'wave 0.8s ease-in-out infinite',
+}
+    },
+  },
+  plugins: [require('tailwindcss-animate')],
 };
 export default config;
