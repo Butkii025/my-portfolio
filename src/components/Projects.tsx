@@ -20,16 +20,16 @@ const PROJECTS_DATA: Project[] = [
     url: 'https://xela-arcade.netlify.app/',
     img: 'project-img/Xela_Arcade.png',
     code: 'https://github.com/Butkii025/Xela_Arcade',
-    type: 'WEB/AI-BOT'
+    type: 'WEB / AI-BOT',
   },
   {
-    title: "Predictive Book Analytics & MLOps Pipeline",
-    desc: "An automated Python pipeline that harvests web data, trains an ensemble machine learning model, and exposes a real-time command-line interface for predictive inference.",
-    tech: ["Python", "scikit-learn","Request API", "pandas", "numpy", "BeautifulSoup4","LXML", "joblib", "matplotlib", "seaborn"],
+    title: "MLOps Pipeline & Predictive Book Analytics",
+    desc: "An automated Python pipeline that harvests web data, trains an ensemble ML model, and exposes a real-time CLI for predictive inference.",
+    tech: ["Python", "scikit-learn", "Request API", "pandas", "numpy", "BeautifulSoup4", "LXML", "joblib", "matplotlib", "seaborn"],
     url: 'https://github.com/Butkii025/bibliophile-data-extractor',
     img: 'project-img/extractor_pipeline.png',
     code: 'https://github.com/Butkii025/bibliophile-data-extractor',
-    type: 'MLOps / Data eng.'
+    type: 'MLOps / Data Eng.',
   },
   {
     title: "Personal Portfolio",
@@ -38,7 +38,7 @@ const PROJECTS_DATA: Project[] = [
     url: 'https://p-vijay.vercel.app/',
     img: 'project-img/portfolio.png',
     code: 'https://github.com/Butkii025/my-portfolio',
-    type: 'WEB'
+    type: 'WEB',
   },
   {
     title: "Craft-Greet",
@@ -47,16 +47,16 @@ const PROJECTS_DATA: Project[] = [
     url: 'https://butkii025.github.io/Craft-Greet/',
     img: 'project-img/craftgreet.png',
     code: 'https://github.com/Butkii025/Craft-Greet',
-    type: 'WEB'
+    type: 'WEB',
   },
   {
-    title: "GPA calculator",
+    title: "GPA Calculator",
     desc: "Allows users to calculate their GPA by subject grade points and credits.",
     tech: ["HTML5", "JS"],
     url: 'https://butkii025.github.io/SGPA-calculator/',
     img: 'project-img/clgplusminus.png',
     code: 'https://github.com/Butkii025/SGPA-calculator',
-    type: 'WEB'
+    type: 'WEB',
   },
 ];
 
@@ -64,26 +64,20 @@ function useTiltCard(strength = 10) {
   const ref = useRef<HTMLDivElement>(null);
 
   const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const el = ref.current;
-    if (!el) return;
+    const el = ref.current; if (!el) return;
     const rect = el.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
-    const rotateX = -(y / rect.height) * strength;
-    const rotateY = (x / rect.width) * strength;
-    el.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02,1.02,1.02)`;
+    el.style.transform = `perspective(800px) rotateX(${-(y/rect.height)*strength}deg) rotateY(${(x/rect.width)*strength}deg) scale3d(1.02,1.02,1.02)`;
     const glow = el.querySelector('.card-glow') as HTMLElement;
     if (glow) {
-      const gx = 50 + (x / rect.width) * 60;
-      const gy = 50 + (y / rect.height) * 60;
-      glow.style.background = `radial-gradient(circle at ${gx}% ${gy}%, rgba(96,165,250,0.15), transparent 70%)`;
+      glow.style.background = `radial-gradient(circle at ${50+(x/rect.width)*60}% ${50+(y/rect.height)*60}%, rgba(96,165,250,0.15), transparent 70%)`;
       glow.style.opacity = '1';
     }
   };
 
   const onMouseLeave = () => {
-    const el = ref.current;
-    if (!el) return;
+    const el = ref.current; if (!el) return;
     el.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
     const glow = el.querySelector('.card-glow') as HTMLElement;
     if (glow) glow.style.opacity = '0';
@@ -93,11 +87,8 @@ function useTiltCard(strength = 10) {
 }
 
 function ProjectCard({
-  project,
-  isActive,
-  onMouseEnter,
-  onMouseLeave: onCardLeave,
-  onExplore,
+  project, isActive, onMouseEnter,
+  onMouseLeave: onCardLeave, onExplore,
 }: {
   project: Project;
   isActive: boolean;
@@ -114,34 +105,33 @@ function ProjectCard({
       onMouseEnter={onMouseEnter}
       onMouseLeave={() => { tilt.onMouseLeave(); onCardLeave(); }}
       style={{ transition: 'transform 0.15s ease-out', transformStyle: 'preserve-3d' }}
-      className="
-        group relative rounded-3xl overflow-hidden w-full h-full
+      className="group relative rounded-3xl overflow-hidden w-full h-full
         dark:bg-gradient-to-br dark:from-white/5 dark:to-white/0 dark:border dark:border-white/10
         dark:hover:border-blue-400/50 dark:hover:shadow-blue-500/10
         bg-gradient-to-br from-zinc-50 to-white border border-zinc-200
         hover:border-blue-400/50 hover:shadow-blue-500/10
-        backdrop-blur-sm hover:shadow-2xl
-        flex flex-col justify-between min-h-[480px]
-      "
+        backdrop-blur-sm hover:shadow-2xl flex flex-col justify-between min-h-[480px]"
     >
       
-      <div
-        className="card-glow absolute inset-0 pointer-events-none rounded-3xl z-10 transition-opacity duration-300"
-        style={{ opacity: 0 }}
-      />
+      <div className="card-glow absolute inset-0 pointer-events-none rounded-3xl z-10 transition-opacity duration-300" style={{ opacity: 0 }} />
 
+      {/* Image */}
       <div className="w-full flex flex-col">
         <div className="h-48 sm:h-56 md:h-60 w-full overflow-hidden relative shrink-0
           dark:bg-gradient-to-br dark:from-zinc-700 dark:via-zinc-900 dark:to-black
           bg-gradient-to-br from-zinc-200 via-zinc-100 to-white">
-         
-         <img
+          <img
             src={project.img}
             alt={`${project.title} screenshot`}
             className="w-full h-full object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105"
-          /> 
-
+          />
           <div className="absolute inset-0 dark:bg-zinc-950/20 bg-white/10 transition-opacity duration-500 group-hover:opacity-0" />
+        
+          <span className="absolute top-3 right-3 text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-md
+            dark:bg-zinc-900/80 dark:border dark:border-zinc-700 dark:text-zinc-400
+            bg-white/80 border border-zinc-200 text-zinc-500">
+            {project.type}
+          </span>
         </div>
 
         <div className="p-5 md:p-6 flex-1 min-w-0">
@@ -149,17 +139,11 @@ function ProjectCard({
             whitespace-normal md:truncate md:group-hover:whitespace-normal
             dark:text-white text-zinc-800 group-hover:text-blue-400">
             {project.title}
-            <h3 className="flex items-center justify-between text-xs md:text-xs mb-3 tracking-tight transition-colors duration-300
-            whitespace-normal md:truncate md:group-hover:whitespace-normal
-           dark:text-zinc-400 text-zinc-500 group-hover:text-zinc-700">
-            {project.type}
-            </h3>
-            
           </h3>
 
           <div
             style={{
-              transition: 'opacity 0.4s ease, max-height 0.55s cubic-bezier(0.25,1,0.5,1)',
+              transition: 'opacity 0.45s cubic-bezier(0.25,1,0.5,1), max-height 0.55s cubic-bezier(0.25,1,0.5,1)',
               opacity: isActive ? 1 : 0,
               maxHeight: isActive ? '8rem' : '0px',
               overflow: 'hidden',
@@ -199,7 +183,7 @@ function ProjectCard({
             </button>
           </a>
           <a href={project.code} target="_blank" rel="noopener noreferrer" className="flex-1 text-center">
-            <button className="w-full px-3 py-2.5 text-xs md:text-sm font-medium rounded-xl transition duration-200 cursor-pointer capitalize
+            <button className="w-full px-3 py-2.5 text-xs md:text-sm font-medium rounded-xl transition duration-200 cursor-pointer
               dark:border dark:border-zinc-800 dark:text-white dark:hover:bg-white/10 dark:active:bg-blue-400
               border border-zinc-300 text-zinc-700 hover:bg-zinc-100 active:bg-blue-400">
               Code
@@ -232,10 +216,6 @@ export default function Projects(): React.JSX.Element {
           </h2>
         </div>
 
-        {/* 
-          MOBILE: horizontal scroll snap — each card 78vw fixed
-          DESKTOP: all cards in a row, the wrapper div controls flex accordion
-        */}
         <div className="
           flex gap-4 pb-4
           overflow-x-auto snap-x snap-mandatory scroll-smooth
@@ -245,36 +225,35 @@ export default function Projects(): React.JSX.Element {
           [&::-webkit-scrollbar-track]:bg-zinc-100
           [&::-webkit-scrollbar-thumb]:bg-zinc-300
           [&::-webkit-scrollbar-thumb]:rounded-full
-          md:overflow-visible md:snap-none md:items-stretch
         ">
           {PROJECTS_DATA.map((project, index) => {
             const isActive = activeIndex === index;
             return (
-              
               <div
                 key={index}
-                className="snap-center shrink-0 md:shrink md:min-w-[80px]"
+                className="snap-center shrink-0"
                 style={{
-                  transition: 'flex 0.65s cubic-bezier(0.34,1.4,0.64,1)',
-                  flex: isActive ? '4 1 0%' : '1 1 0%',
+                  transition: 'width 0.65s cubic-bezier(0.34,1.4,0.64,1)',
+                  width: isActive ? 'min(420px, 78vw)' : 'min(200px, 56vw)',
+                  minWidth: isActive ? 'min(420px, 78vw)' : 'min(200px, 56vw)',
                 }}
+                onMouseEnter={() => setActiveIndex(index)}
+                onMouseLeave={() => setActiveIndex(null)}
               >
-                <div className="w-[78vw] md:w-full h-full">
-                  <ProjectCard
-                    project={project}
-                    isActive={isActive}
-                    onMouseEnter={() => setActiveIndex(index)}
-                    onMouseLeave={() => setActiveIndex(null)}
-                    onExplore={handleExploreClick}
-                  />
-                </div>
+                <ProjectCard
+                  project={project}
+                  isActive={isActive}
+                  onMouseEnter={() => setActiveIndex(index)}
+                  onMouseLeave={() => setActiveIndex(null)}
+                  onExplore={handleExploreClick}
+                />
               </div>
             );
           })}
         </div>
 
-        <p className="mt-3 text-center text-xs dark:text-zinc-600 text-zinc-400 md:hidden">
-          ← swipe to explore →
+        <p className="mt-3 text-center text-xs dark:text-zinc-600 text-zinc-400">
+          ← hover / swipe to explore →
         </p>
       </div>
     </section>
