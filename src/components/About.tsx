@@ -3,6 +3,7 @@
 import React, { useRef } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { FaPencil } from 'react-icons/fa6';
+import GradientText from "./ui/GradientText";
 
 interface AboutProps {
   onProfileClick: () => void;
@@ -78,12 +79,35 @@ function useTiltDiv(strength = 8) {
   return { ref, onMouseMove, onMouseLeave };
 }
 
+function useTiltLi(strength = 10) {
+  const ref = useRef<HTMLLIElement>(null);
+  const onMouseMove = (e: React.MouseEvent<HTMLLIElement>) => {
+    const el = ref.current; if (!el) return;
+    const r = el.getBoundingClientRect();
+    const x = e.clientX - r.left - r.width / 2;
+    const y = e.clientY - r.top - r.height / 2;
+    el.style.transform = `perspective(600px) rotateX(${-(y/r.height)*strength}deg) rotateY(${(x/r.width)*strength}deg) scale3d(1.02,1.02,1.02)`;
+    const g = el.querySelector('.card-glow') as HTMLElement;
+    if (g) {
+      g.style.background = `radial-gradient(circle at ${50+(x/r.width)*60}% ${50+(y/r.height)*60}%, rgba(96,165,250,0.13), transparent 70%)`;
+      g.style.opacity = '1';
+    }
+  };
+  const onMouseLeave = () => {
+    const el = ref.current; if (!el) return;
+    el.style.transform = 'perspective(600px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
+    const g = el.querySelector('.card-glow') as HTMLElement;
+    if (g) g.style.opacity = '0';
+  };
+  return { ref, onMouseMove, onMouseLeave };
+}
+
 function HighlightCard({ h }: { h: { label: string; value: string } }) {
-  const tilt = useTiltDiv(10);
+  const tilt = useTiltLi(10);
   return (
     <li
-      ref={tilt.ref as React.RefObject<HTMLLIElement>}
-      onMouseMove={tilt.onMouseMove as any}
+      ref={tilt.ref}
+      onMouseMove={tilt.onMouseMove}
       onMouseLeave={tilt.onMouseLeave}
       style={{ transition: 'transform 0.15s ease-out', transformStyle: 'preserve-3d' }}
       className="relative flex flex-col gap-1 p-3 rounded-xl cursor-default overflow-hidden
@@ -131,7 +155,6 @@ export default function About({ onProfileClick }: AboutProps): React.JSX.Element
             <FaStar size={18} className="inline-block ml-2 animate-bounce" />
           </h2>
 
-          {/* Profile image 3d */}
           <div className="relative z-10 flex flex-col items-center justify-center px-6 text-center">
             <div
               ref={imgTilt.ref}
@@ -146,7 +169,6 @@ export default function About({ onProfileClick }: AboutProps): React.JSX.Element
                 className="w-60 h-90 rounded-full object-cover shadow-2xl
                   dark:border-2 dark:border-zinc-700 border-2 border-zinc-700"
               />
-             
               <div
                 className="img-glow absolute inset-0 rounded-full pointer-events-none transition-opacity duration-300"
                 style={{ opacity: 0 }}
@@ -156,22 +178,29 @@ export default function About({ onProfileClick }: AboutProps): React.JSX.Element
             </div>
           </div>
 
-          {/* Signature boxx */}
+          {/* Signature */}
           <div className="relative flex justify-start pl-4 -mt-8 ml-2 z-20">
-            <div className="flex items-end gap-2 -rotate-[10deg]">
+            <div className="flex items-end gap-2 -rotate-[5deg]">
               <img
                 src="/pv_sign.png"
                 alt="Priyanshu signature"
-                className="w-35 object-contain opacity-80 dark:invert dark:opacity-60"
+                className="w-28 object-contain opacity-80 dark:invert dark:opacity-60"
               />
-    
+              <GradientText
+                colors={["#aaccf3", "#60a5fa", "#e6e4e7", "#60a5fa", "#aaccf3"]}
+                animationSpeed={3}
+                showBorder={false}
+                className="text-xl mb-1 inline cursor-default"
+              >
+                ←
+              </GradientText>
             </div>
           </div>
-
         </div>
 
+        {/* RIGHT — bio + highlights */}
         <div className="flex flex-col gap-6">
-          <p className="text-2lg leading-relaxed max-w-xl dark:text-zinc-400 text-zinc-500">
+          <p className="text-2lg leading-relaxed max-w-xl mt-4 dark:text-zinc-400 text-zinc-500">
             CS undergrad building at the intersection of{' '}
             <span className="dark:text-white text-black font-medium">Data Science</span>,{' '}
             <span className="dark:text-white text-black font-medium">Machine Learning</span>, and{' '}

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 
 const LINES = [
@@ -10,8 +10,10 @@ const LINES = [
 ];
 
 const getWinner = (b) => {
-  for (const [a,c,d] of LINES)
+  for (const line of LINES) {
+    const [a,c,d] = line;
     if (b[a] && b[a] === b[c] && b[a] === b[d]) return b[a];
+  }
   return null;
 };
 
@@ -32,29 +34,49 @@ export default function FunZone() {
   const isDraw = !winner && !board.includes(null);
   const isGameOver = !!winner || isDraw;
 
-  const makeMove = (index, player) => {
-    setBoard(prev => { const n = [...prev]; n[index] = player; return n; });
+  const makeMove = useCallback((index, player) => {
+    setBoard(prev => {
+      const n = [...prev];
+      n[index] = player;
+      return n;
+    });
     setIsUserTurn(player === 'O');
-  };
+  }, []);
 
   useEffect(() => {
     if (isUserTurn || isGameOver) return;
+
     const timer = setTimeout(() => {
-      const open = board.map((v,i) => v === null ? i : null).filter(v => v !== null);
+      const open = board
+        .map((v, i) => (v === null ? i : null))
+        .filter(v => v !== null);
+
       if (!open.length) return;
-      for (const player of ['O','X']) {
+
+      // Try to win or block
+      for (const player of ['O', 'X']) {
         for (const idx of open) {
-          const test = [...board]; test[idx] = player;
-          if (getWinner(test) === player) { makeMove(idx,'O'); return; }
+          const test = [...board];
+          test[idx] = player;
+          if (getWinner(test) === player) {
+            makeMove(idx, 'O');
+            return;
+          }
         }
       }
-      const choice = open.includes(4) ? 4 : open[Math.floor(Math.random()*open.length)];
+
+      // Take center or random
+      const choice = open.includes(4) ? 4 : open[Math.floor(Math.random() * open.length)];
       makeMove(choice, 'O');
     }, 500);
-    return () => clearTimeout(timer);
-  }, [isUserTurn, board, isGameOver]);
 
-  const reset = () => { setBoard(Array(9).fill(null)); setIsUserTurn(true); };
+    return () => clearTimeout(timer);
+  }, [isUserTurn, isGameOver, board, makeMove]);
+
+  const reset = () => {
+    setBoard(Array(9).fill(null));
+    setIsUserTurn(true);
+  };
 
   return (
     <div className="relative">
@@ -65,6 +87,7 @@ export default function FunZone() {
         hover:border-blue-400/50 hover:shadow-blue-500/10
         p-5 rounded-[2rem] backdrop-blur-xl shadow-2xl transition-shadow duration-500"
       >
+        {/* External link */}
         <a
           href="https://xela-arcade.netlify.app/"
           target="_blank"
@@ -77,6 +100,7 @@ export default function FunZone() {
           <FaExternalLinkAlt size={10} />
         </a>
 
+        {/* Title */}
         <div className="text-center mb-3">
           <p className="uppercase tracking-[0.2em] text-[10px] mb-0.5 dark:text-zinc-500 text-zinc-400">Xela_Arcade</p>
           <h2 className="text-2xl font-bold tracking-tight dark:text-white text-black">fun_zone</h2>
@@ -85,6 +109,7 @@ export default function FunZone() {
           </p>
         </div>
 
+        {/* Status bar */}
         <div className="w-full flex justify-center items-center h-10 mb-4 rounded-lg px-2 text-xs font-medium text-center shrink-0
           dark:bg-zinc-950/60 dark:border dark:border-zinc-900
           bg-zinc-100 border border-zinc-200">
@@ -93,7 +118,7 @@ export default function FunZone() {
               {winner === 'X' ? '🎉 You Beat the Bot!' : '🤖 Bot Wins!'}
             </span>
           ) : isDraw ? (
-            <span className="dark:text-zinc-400 text-zinc-500">🤝 It's a Draw!</span>
+            <span className="dark:text-zinc-400 text-zinc-500">🤝 It&apos;s a Draw!</span>
           ) : (
             <div className="flex items-center gap-1.5 dark:text-zinc-400 text-zinc-500">
               {isUserTurn ? (
@@ -115,23 +140,25 @@ export default function FunZone() {
           )}
         </div>
 
+        {/* Board */}
         <div className="grid grid-cols-3 gap-2 w-full mb-5">
           {board.map((value, idx) => {
             const canClick = !value && !isGameOver && isUserTurn;
-            const isWinCell = winLine?.includes(idx);
+            const isWinCell = winLine && winLine.includes(idx);
             return (
               <button
                 key={idx}
                 onClick={() => canClick && makeMove(idx, 'X')}
                 disabled={!canClick}
-                className={`h-[76px] w-full text-3xl font-black rounded-xl border transition-colors duration-300 flex items-center justify-center select-none
-                  ${canClick
+                className={[
+                  'h-[76px] w-full text-3xl font-black rounded-xl border transition-colors duration-300 flex items-center justify-center select-none',
+                  canClick
                     ? 'dark:border-zinc-800 dark:bg-zinc-900/20 dark:hover:border-blue-400/40 dark:hover:bg-blue-500/5 border-zinc-200 bg-zinc-50 hover:border-blue-400/40 hover:bg-blue-50 cursor-pointer'
-                    : 'dark:border-zinc-900 dark:bg-zinc-950/40 border-zinc-100 bg-zinc-50/60 cursor-default'}
-                  ${value === 'X' ? 'text-blue-400 dark:border-blue-500/20 border-blue-200' : ''}
-                  ${value === 'O' ? 'dark:text-zinc-400 text-zinc-500 dark:border-zinc-700 border-zinc-200' : ''}
-                  ${isWinCell ? 'dark:border-blue-400/60 border-blue-400/60 dark:shadow-[0_0_14px_rgba(96,165,250,0.25)] shadow-[0_0_14px_rgba(96,165,250,0.2)]' : ''}
-                `}
+                    : 'dark:border-zinc-900 dark:bg-zinc-950/40 border-zinc-100 bg-zinc-50/60 cursor-default',
+                  value === 'X' ? 'text-blue-400 dark:border-blue-500/20 border-blue-200' : '',
+                  value === 'O' ? 'dark:text-zinc-400 text-zinc-500 dark:border-zinc-700 border-zinc-200' : '',
+                  isWinCell ? 'dark:border-blue-400/60 border-blue-400/60 dark:shadow-[0_0_14px_rgba(96,165,250,0.25)] shadow-[0_0_14px_rgba(96,165,250,0.2)]' : '',
+                ].join(' ')}
               >
                 <span className={`text-3xl font-black transition-all duration-200 ${value ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}>
                   {value ?? ' '}
