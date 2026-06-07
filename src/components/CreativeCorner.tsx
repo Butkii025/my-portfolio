@@ -167,7 +167,7 @@ export default function CreativeCorner(): React.JSX.Element {
   }, [selectedIndex, goNext, goPrev]);
 
   return (
-    <section id="creative_corner" className="py-28 px-6 overflow-hidden dark:bg-black bg-white dark:text-white text-black">
+    <section id="creative_corner" className="py-28 px-6 overflow-hidden dark:text-white text-black">
 
       <div className="max-w-6xl mx-auto">
         <div className="mb-14">
