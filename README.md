@@ -1,6 +1,6 @@
-# 🚀 Creative Machine Learning & Full-Stack UI Engineering Portfolio
+# My Engineering Portfolio
 
-Welcome to my personal portfolio repository! This project serves as a production-grade showcase of my work operating at the intersection of quantitative data processing, modern full-stack web applications, and immersive frontend interactions. 
+Welcome to my personal portfolio repository, this project serves as a production-grade showcase of my work operating at the intersection of quantitative data processing, modern full-stack web applications, and immersive interactions. 
 
 The entire site is optimized for performance, clean typography, and seamless dark-mode glassmorphism visual balance.
 
