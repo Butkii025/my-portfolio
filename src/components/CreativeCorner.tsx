@@ -10,7 +10,7 @@ interface ArtImage {
   name: string; 
 }
 
-const artImages: ArtImage[] = Array.from({ length: 10 }, (_, i) => ({
+const artImages: ArtImage[] = Array.from({ length: 11 }, (_, i) => ({
   id: i + 1,
   name: `artworks/image${i === 0 ? '' : i}.jpg`,
 }));
@@ -20,7 +20,7 @@ const rangoliFacts = [
   { icon: '📐', text: '2,500 sq. ft. coverage' },
   { icon: '🏛️', text: 'Bhoomi Fest 2026, Lucknow University' },
   { icon: '🕊️', text: 'Tribute to Pahalgam victims' },
-  { icon: '🤝', text: 'With SFD-Awadh' },
+  { icon: '🤝', text: 'Collaboration With SFD-Awadh' },
 ];
 
 function useTilt(strength = 12) {
@@ -139,7 +139,7 @@ function VideoBox() {
               />
 
               <p className="text-center text-xs dark:text-zinc-500 text-zinc-400 italic mt-3">
-                Am I an editor ??
+                editor ??
               </p>
             </div>
           </div>

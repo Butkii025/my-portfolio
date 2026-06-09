@@ -217,6 +217,7 @@ export default function VijayPortfolio() {
         )}
 
         {/* SECTIONS */}
+        
         <Hero onProfileClick={openProfile} />
         <About onProfileClick={openProfile} />
         <Skills />
@@ -235,4 +236,5 @@ export default function VijayPortfolio() {
       </div>
     </div>
   );
+  
 }

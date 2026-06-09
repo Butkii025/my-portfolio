@@ -133,7 +133,7 @@ export default function Credentials(): React.JSX.Element {
   ];
 
   return (
-    <section id="credentials" className="py-28 px-6 overflow-hidden dark:bg-transparent">
+    <section id="credentials" className="py-28 px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <div className="mb-14">
           <p className="uppercase tracking-[0.2em] mb-4 dark:text-zinc-500 text-zinc-500">Credentials</p>
