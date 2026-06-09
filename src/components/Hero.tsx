@@ -43,23 +43,6 @@ export default function Home({ onProfileClick }: HomeProps): React.JSX.Element {
     if (glow) glow.style.opacity = '0';
   };
 
-  const handleImgMouseMove = (e: React.MouseEvent<HTMLImageElement>) => {
-    const el = imgRef.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    const rotateX = -(y / rect.height) * 20;
-    const rotateY = (x / rect.width) * 20;
-    el.style.transform = `perspective(400px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.08,1.08,1.08)`;
-  };
-
-  const handleImgMouseLeave = () => {
-    const el = imgRef.current;
-    if (!el) return;
-    el.style.transform = `perspective(400px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)`;
-  };
-
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center px-6 pt-20">
 
@@ -74,22 +57,28 @@ export default function Home({ onProfileClick }: HomeProps): React.JSX.Element {
           <p className="flex items-center gap-2 uppercase tracking-[0.2em] font-semibold text-sm mb-10
             dark:text-white text-blue-400"><GradientText
                             colors={["#5d94d7", "#5a6168", "#1e1f21"]}
-                            animationSpeed={5}
+                            animationSpeed={4}
                             showBorder={false}
                             className="inline"
                           >
-                            priyanshu
+                            ____portfolio
                           </GradientText>
              <FiSmile size={18} className="ml-2 animate-pulse" />
           </p>
 
-          <h1 className="text-5xl md:text-4xl font-black leading-tight mb-3
-            dark:text-white text-gray-900">
-            Designer
-            <span className="block dark:text-zinc-400 text-zinc-500">
-              Data_Analyst & Creative_Coder
+          <h1 className="text-5xl md:text-5xl font-black leading-tight mb-3
+            dark:text-zinc-300 text-gray-900 mb-8">
+             Priyanshu
+            <span className="text-4xl md:text-4xl block dark:text-zinc-500 text-zinc-500">
+              Vijay
             </span>
+            
           </h1>
+          
+          <p className="text-xl md:text-xl max-w-xl
+            dark:text-zinc-300 text-zinc-700 mt-8">
+              MLOps_Data Scientist
+          </p>
 
           <p className="text-2lg leading-relaxed max-w-xl mb-8
             dark:text-zinc-400 text-zinc-700/100">
@@ -123,10 +112,10 @@ export default function Home({ onProfileClick }: HomeProps): React.JSX.Element {
         <div className="flex justify-center mt-4" style={{ perspective: '800px' }}>
           <div
             ref={cardRef}
-            onMouseMove={handleCardMouseMove}
-            onMouseLeave={handleCardMouseLeave}
+            // onMouseMove={handleCardMouseMove}
+            // onMouseLeave={handleCardMouseLeave}
             style={{ transition: 'transform 0.15s ease-out', transformStyle: 'preserve-3d' }}
-            className="relative w-[280px] h-[380px] rounded-[3rem] overflow-hidden shadow-2xl backdrop-blur-xl cursor-default
+            className=" relative w-[280px] h-[380px] rounded-[3rem] overflow-hidden shadow-2xl backdrop-blur-xl cursor-default
               dark:border dark:border-white/20 dark:bg-zinc-900/50 dark:bg-gradient-to-br dark:from-white/5 dark:to-white/0 dark:hover:border-blue-400/50 dark:hover:shadow-zinc-500/10
               border border-zinc-200 bg-white/60 bg-gradient-to-br hover:border-blue-400/50 hover:shadow-zinc-300/20"
           >
@@ -143,20 +132,22 @@ export default function Home({ onProfileClick }: HomeProps): React.JSX.Element {
               <div style={{ perspective: '400px', transformStyle: 'preserve-3d' }}>
                 <img
                   ref={imgRef}
+                  onMouseMove={handleCardMouseMove}
+                  onMouseLeave={handleCardMouseLeave}
                   src="/profile.png"
                   alt="Profile Full"
                   style={{ transition: 'transform 0.15s ease-out', transformStyle: 'preserve-3d' }}
-                  className="w-45 h-55 rounded-[3rem] object-cover shadow-2xl cursor-pointer
+                  className="w-50 h-65 rounded-[3rem] object-cover shadow-2xl cursor-pointer
                     dark:border-4 dark:border-zinc-700 hover:scale-101
                     border-4 border-zinc-200"
                   onClick={onProfileClick}
                 />
               </div>
 
-              <h2 className="text-2xl font-bold font-['Alex_Brush',_cursive] mt-2
+              {/* <h2 className="text-2xl font-bold font-['Alex_Brush',_cursive] mt-2
                 dark:text-white text-gray-800">
                 PRIYANSHU
-              </h2>
+              </h2> */}
               <br />
 
               <a

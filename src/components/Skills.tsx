@@ -96,7 +96,7 @@ export default function Skills(): React.JSX.Element {
     backEnd: {
       title: 'Databases & Management',
       icon: <FiServer size={24} className="text-blue-400" />,
-      technologies: ['APIs', 'SQL', 'SQL:Queries', 'Data Administration', 'Information Management', 'DBMS'],
+      technologies: ['APIs', 'SQL', 'Data Administration', 'Information Management', 'DBMS'],
     },
     aiml: {
       title: 'AI / ML',
@@ -106,7 +106,7 @@ export default function Skills(): React.JSX.Element {
     dataAnalytics: {
       title: 'Data Analytics',
       icon: <FiBarChart2 size={24} className="text-blue-400" />,
-      technologies: ['SQL', 'Pandas', 'Excel', 'A/B Testing', 'Data Wrangling', 'EDA'],
+      technologies: ['SQL', 'Pandas', "PowerBI", 'Excel', 'A/B Testing', 'Data Wrangling', 'EDA'],
     },
     designing: {
       title: 'Designing',
@@ -116,8 +116,8 @@ export default function Skills(): React.JSX.Element {
   };
 
   return (
-    <section id="skills" className="py-28 px-6 md:px-12 lg:px-24 dark:bg-transparent bg-white">
-      <div className="max-w-7xl mx-auto">
+    <section id="skills" className="py-28 px-6 md:px-12 lg:px-24 dark:bg-transparent">
+      <div className="max-w-6xl mx-auto">
         <div className="mb-16">
           <p className="uppercase tracking-[0.2em] mb-4 dark:text-zinc-500 text-zinc-500">
             Skills

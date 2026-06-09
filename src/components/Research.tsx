@@ -48,7 +48,7 @@ export default function Research(): React.JSX.Element {
   const blogTilt = useTiltCard(8);
 
   return (
-    <section id="research" className="py-28 px-6 dark:bg-transparent bg-white">
+    <section id="research" className="py-28 px-6 dark:bg-transparent">
       <div className="max-w-6xl mx-auto">
 
         <div className="mb-14">
