@@ -14,6 +14,15 @@ interface Project {
 
 const PROJECTS_DATA: Project[] = [
   {
+    title: "MLOps Pipeline - Predictive Book Analytics",
+    desc: "An automated Python pipeline that harvests web data, trains an ensemble ML model, and exposes a real-time CLI for predictive inference.",
+    tech: ["Python", "Scikit-Learn", "Request API", "BeautifulSoup4", "LXML", "joblib"],
+    url: 'https://github.com/Butkii025/bibliophile-data-extractor',
+    img: 'project-img/extractor_pipeline.png',
+    code: 'https://github.com/Butkii025/bibliophile-data-extractor',
+    type: 'MLOps / Data Eng.',
+  },
+  {
     title: "Xela_Arcade",
     desc: "A Next-Gen Library of Custom-Classic Games with Core Frameworks and Algorithms (chess-is-best)",
     tech: ["JavaScript", "TypeScript", "React", "Next.js", "Framer Motion", "Lucide React"],
@@ -21,15 +30,6 @@ const PROJECTS_DATA: Project[] = [
     img: 'project-img/Xela_Arcade.png',
     code: 'https://github.com/Butkii025/Xela_Arcade',
     type: 'WEB / AI-BOT',
-  },
-  {
-    title: "MLOps Pipeline & Predictive Book Analytics",
-    desc: "An automated Python pipeline that harvests web data, trains an ensemble ML model, and exposes a real-time CLI for predictive inference.",
-    tech: ["Python", "scikit-learn", "Request API", "pandas", "numpy", "BeautifulSoup4", "LXML", "joblib", "matplotlib", "seaborn"],
-    url: 'https://github.com/Butkii025/bibliophile-data-extractor',
-    img: 'project-img/extractor_pipeline.png',
-    code: 'https://github.com/Butkii025/bibliophile-data-extractor',
-    type: 'MLOps / Data Eng.',
   },
   {
     title: "Personal Portfolio",
@@ -207,7 +207,7 @@ export default function Projects(): React.JSX.Element {
   };
 
   return (
-    <section id="projects" className="py-28 px-6 overflow-hidden dark:bg-transparent bg-white">
+    <section id="projects" className="py-28 px-6 overflow-hidden dark:bg-transparen">
       <div className="max-w-6xl mx-auto">
         <div className="mb-14">
           <p className="uppercase tracking-[0.2em] mb-4 dark:text-zinc-500 text-zinc-500">Projects</p>
