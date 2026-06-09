@@ -34,8 +34,5 @@ This project is open-source software licensed under the **MIT License**.
 * You are completely free to clone this repository, fork the UI architecture, or modify the 3D canvas pipeline logic for your own applications.
 * The original copyright notice and permission notice must be preserved in all copies or substantial portions of the software.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](/LICENSE)
-
-
 *Copyright (c) 2026 Priyanshu Vijay*
 ----------------------------------------------------------------------------------------------------------
