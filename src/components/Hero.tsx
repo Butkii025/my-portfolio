@@ -112,8 +112,6 @@ export default function Home({ onProfileClick }: HomeProps): React.JSX.Element {
         <div className="flex justify-center mt-4" style={{ perspective: '800px' }}>
           <div
             ref={cardRef}
-            // onMouseMove={handleCardMouseMove}
-            // onMouseLeave={handleCardMouseLeave}
             style={{ transition: 'transform 0.15s ease-out', transformStyle: 'preserve-3d' }}
             className=" relative w-[280px] h-[380px] rounded-[3rem] overflow-hidden shadow-2xl backdrop-blur-xl cursor-default
               dark:border dark:border-white/20 dark:bg-zinc-900/50 dark:bg-gradient-to-br dark:from-white/5 dark:to-white/0 dark:hover:border-blue-400/50 dark:hover:shadow-zinc-500/10
@@ -144,14 +142,10 @@ export default function Home({ onProfileClick }: HomeProps): React.JSX.Element {
                 />
               </div>
 
-              {/* <h2 className="text-2xl font-bold font-['Alex_Brush',_cursive] mt-2
-                dark:text-white text-gray-800">
-                PRIYANSHU
-              </h2> */}
               <br />
 
               <a
-                href="https://mail.google.com/mail/?view=cm&fs=1&to=priyanshuvijay262@gmail.com&su=Portfolio%20Inquiry&body=Hii%20Priyanshu%2C%20i%27m%20here%20through%20your%20Portfolio%20!"
+                href='#contact'
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-2 rounded-2xl transition duration-300 cursor-pointer

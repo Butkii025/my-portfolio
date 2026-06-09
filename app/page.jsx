@@ -15,6 +15,7 @@ import Footer from '../src/components/Footer';
 import InteractiveDots from '@/src/components/anim/Interactivedots';
 import Experience from '../src/components/Experience';
 import AcademicBlock from '../src/components/Academics';
+import LandingPage from '../src/components/prepage/LandingPage';
 
 
 
@@ -23,6 +24,7 @@ export default function VijayPortfolio() {
   const [isLogoOpen,    setIsLogoOpen]    = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isDark,        setIsDark]        = useState(true);
+  const [showPreloader, setShowPreloader] = useState(true);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -62,6 +64,12 @@ export default function VijayPortfolio() {
   const closeProfile = () => setIsProfileOpen(false);
 
   return (
+    <>
+    {/* 1. The Preloader Lifecycle */}
+      {showPreloader && (
+        <LandingPage onEnter={() => setShowPreloader(false)} />
+      )}
+
     <div className="relative min-h-screen dark:bg-black bg-white dark:text-white text-gray-900 transition-colors duration-300">
 
       {/* Global interactive dot background */}
@@ -235,6 +243,6 @@ export default function VijayPortfolio() {
 
       </div>
     </div>
-  );
+  </>);
   
 }
