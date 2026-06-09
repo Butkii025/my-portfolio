@@ -13,6 +13,10 @@ import Contact from '../src/components/Contact';
 import SmoothFollower from '@/src/components/anim/SmoothFollower';
 import Footer from '../src/components/Footer';
 import InteractiveDots from '@/src/components/anim/Interactivedots';
+import Experience from '../src/components/Experience';
+import AcademicBlock from '../src/components/Academics';
+
+
 
 export default function VijayPortfolio() {
   const [isMenuOpen,    setIsMenuOpen]    = useState(false);
@@ -32,6 +36,7 @@ export default function VijayPortfolio() {
     { label: <FaHome size={16} />, href: '#home' },
     { label: 'About',          href: '#about'          },
     { label: 'Projects',       href: '#projects'       },
+    { label: 'Academics',     href: '#academics'     },
     { label: 'Creative_Corner',href: '#creative_corner'},
     { label: 'Contact',        href: '#contact'        },
   ];
@@ -39,6 +44,8 @@ export default function VijayPortfolio() {
   const allLinks = [
     { label: 'Home',           href: '#home'           },
     { label: 'About',          href: '#about'          },
+    { label: 'Experience',     href: '#experience'     },
+    { label: 'Academics',     href: '#academics'       },
     { label: 'Skills',         href: '#skills'         },
     { label: 'Projects',       href: '#projects'       },
     { label: 'Credentials',    href: '#credentials'    },
@@ -214,6 +221,8 @@ export default function VijayPortfolio() {
         <About onProfileClick={openProfile} />
         <Skills />
         <Projects />
+        <Experience />
+        <AcademicBlock />
         <Credentials />
         <Research />
         <CreativeCorner />

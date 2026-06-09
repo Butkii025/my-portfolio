@@ -7,7 +7,7 @@ export default function Contact(): React.JSX.Element {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <section id="contact" className="py-28 px-6 md:px-12 lg:px-24 dark:bg-transparent bg-white">
+    <section id="contact" className="py-28 px-6 md:px-12 lg:px-24 dark:bg-transparent">
       <div className="max-w-6xl mx-auto">
         <div className="mb-14">
           <p className="uppercase tracking-[0.2em] mb-4 dark:text-zinc-500 text-zinc-500">Contact</p>

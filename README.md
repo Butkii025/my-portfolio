@@ -1,6 +1,6 @@
-# 🚀 Creative Machine Learning & Full-Stack UI Engineering Portfolio
+# My Engineering Portfolio
 
-Welcome to my personal portfolio repository! This project serves as a production-grade showcase of my work operating at the intersection of quantitative data processing, modern full-stack web applications, and immersive frontend interactions. 
+Welcome to my personal portfolio repository, this project serves as a production-grade showcase of my work operating at the intersection of quantitative data processing, modern full-stack web applications, and immersive interactions. 
 
 The entire site is optimized for performance, clean typography, and seamless dark-mode glassmorphism visual balance.
 
@@ -26,30 +26,16 @@ Integrated directly alongside the responsive Contact Form layout is a lightweigh
 * **Polished Obsidian Saucer:** A mathematically lathed, deep black saucer (`#050505`) with low roughness to ground the shimmering cup with premium ceramic highlights.
 
 ---
+## ⚖️ License & Attribution
 
-## 🚀 Installation & Local Environment Setup
+This project is open-source software licensed under the **MIT License**.
 
-### 1. Clone the Source Repository
-```bash
-git clone [https://github.com/Butkii025/my-portfolio.git](https://github.com/Butkii025/my-portfolio.git)
-cd my-portfolio
+### Terms of Use:
+* You are completely free to clone this repository, fork the UI architecture, or modify the 3D canvas pipeline logic for your own applications.
+* The original copyright notice and permission notice must be preserved in all copies or substantial portions of the software.
 
-2.Install Project Dependencies
-Ensure your workspace includes the core rendering engines required to parse the WebGL viewports cleanly:
-
-Bash
-npm install three @react-three/fiber @react-three/drei
-
-3. Initialize Local Engine
-Bash
-npm run dev
-Navigate to http://localhost:3000 to view your local deployment environment live.
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](/LICENSE)
 
 
-📬 Form State Lifecycle
-The asymmetric grid module routes contact messages seamlessly across four explicit transactional states:
-idle ➡️ loading ➡️ success or error
-
-This safeguards asynchronous request loops on the client thread, changing the behavior of the interaction state machine automatically while maintaining persistent canvas states in the concurrent 3D workspace viewport.
-
+*Copyright (c) 2026 Priyanshu Vijay*
 ----------------------------------------------------------------------------------------------------------

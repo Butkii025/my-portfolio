@@ -74,22 +74,28 @@ export default function Home({ onProfileClick }: HomeProps): React.JSX.Element {
           <p className="flex items-center gap-2 uppercase tracking-[0.2em] font-semibold text-sm mb-10
             dark:text-white text-blue-400"><GradientText
                             colors={["#5d94d7", "#5a6168", "#1e1f21"]}
-                            animationSpeed={5}
+                            animationSpeed={4}
                             showBorder={false}
                             className="inline"
                           >
-                            priyanshu
+                            ____portfolio
                           </GradientText>
              <FiSmile size={18} className="ml-2 animate-pulse" />
           </p>
 
-          <h1 className="text-5xl md:text-4xl font-black leading-tight mb-3
+          <h1 className="text-5xl md:text-5xl font-black leading-tight mb-3
             dark:text-zinc-300 text-gray-900">
-             Data_Engineer
-            <span className="text-3xl md:text-3xl block dark:text-zinc-500 text-zinc-500">
-              & Creative_Coder
+             Priyanshu
+            <span className="text-4xl md:text-4xl block dark:text-zinc-500 text-zinc-500">
+              Vijay
             </span>
+            
           </h1>
+          
+          <p className="text-2xl md:text-2xl max-w-xl
+            dark:text-zinc-300 text-zinc-700 mt-8">
+              Data Engineer and & Creative Coder
+          </p>
 
           <p className="text-2lg leading-relaxed max-w-xl mb-8
             dark:text-zinc-400 text-zinc-700/100">
@@ -146,17 +152,17 @@ export default function Home({ onProfileClick }: HomeProps): React.JSX.Element {
                   src="/profile.png"
                   alt="Profile Full"
                   style={{ transition: 'transform 0.15s ease-out', transformStyle: 'preserve-3d' }}
-                  className="w-45 h-55 rounded-[3rem] object-cover shadow-2xl cursor-pointer
+                  className="w-50 h-65 rounded-[3rem] object-cover shadow-2xl cursor-pointer
                     dark:border-4 dark:border-zinc-700 hover:scale-101
                     border-4 border-zinc-200"
                   onClick={onProfileClick}
                 />
               </div>
 
-              <h2 className="text-2xl font-bold font-['Alex_Brush',_cursive] mt-2
+              {/* <h2 className="text-2xl font-bold font-['Alex_Brush',_cursive] mt-2
                 dark:text-white text-gray-800">
                 PRIYANSHU
-              </h2>
+              </h2> */}
               <br />
 
               <a
