@@ -1,4 +1,4 @@
-# My Engineering Portfolio
+# My Engineering Portfolio 
 
 Welcome to my personal portfolio repository, this project serves as a production-grade showcase of my work operating at the intersection of quantitative data processing, modern full-stack web applications, and immersive interactions. 
 
