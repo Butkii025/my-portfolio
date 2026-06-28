@@ -9,7 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "framer-motion": "^...",
+    "framer-motion": "^11.0.0",
     "@emailjs/browser": "^4.4.1",
     "@react-spring/web": "^10.1.0",
     "@react-three/drei": "^10.7.7",
