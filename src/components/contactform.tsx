@@ -98,7 +98,7 @@ export default function ContactForm({ onSuccess }: Props) {
     <div className="relative rounded-2xl overflow-hidden p-6
       dark:bg-zinc-800/60 dark:border dark:border-zinc-700
       bg-white border border-zinc-200
-      shadow-lg dark:shadow-zinc-900/50">
+      shadow-lg dark:shadow-zinc-900/50 mt-25">
 
       <div className="absolute top-0 left-0 right-0 h-px
         dark:bg-gradient-to-r dark:from-transparent dark:via-blue-400/50 dark:to-transparent

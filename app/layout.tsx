@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { FaGithub } from "react-icons/fa";
-import { MdWavingHand } from "react-icons/md";
 import {Inter, Great_Vibes} from "next/font/google";
 
 const inter = Inter({
@@ -33,8 +31,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "P_Vijay Portfolio",
-  description: "P_Vijay Portfolio",
+  title: "Priyanshu_Vijay Portfolio",
+  description: "Priyanshu_Vijay Portfolio",
   
 };
 

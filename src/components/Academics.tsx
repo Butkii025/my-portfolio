@@ -1,69 +1,34 @@
 'use client';
 
 import React, { useRef } from 'react';
+import { motion } from 'framer-motion';
 import { FaStar } from 'react-icons/fa';
-import { FaPencil } from 'react-icons/fa6';
+import {
+  semesterMarks,
+  schoolDetails,
+  csSubjects,
+  collegeInfo,
+  schoolInfo,
+} from '@/src/Data/Academicdata';
 
-interface academicsProps {
-  onProfileClick: () => void;
-}
-
-interface SemesterMark { sem: string; mark: number; }
-interface SchoolDetail  { label: string; value: string | number; }
-
-const semesterMarks: SemesterMark[] = [
-  { sem: 'Sem I',   mark: 6.86 },
-  { sem: 'Sem II',  mark: 6.36 },
-  { sem: 'Sem III', mark: 8.91 },
-  { sem: 'Sem IV',  mark: 8.55 },
-  { sem: 'Sem V',   mark: 9.64 },
-];
-
-const schoolDetails: SchoolDetail[] = [
-  { label: 'Stream',           value: 'Science PCM'  },
-  { label: 'Best Performance', value: 'Maths (95%)'  },
-  { label: 'Marks',            value: '75%'          },
-];
-
-function useTilt(strength = 20) {
+function useTilt(strength = 8) {
   const ref = useRef<HTMLDivElement>(null);
   const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const el = ref.current; if (!el) return;
+    const el = ref.current;
+    if (!el) return;
     const r = el.getBoundingClientRect();
     const x = e.clientX - r.left - r.width / 2;
     const y = e.clientY - r.top - r.height / 2;
-    el.style.transform = `perspective(500px) rotateX(${-(y/r.height)*strength}deg) rotateY(${(x/r.width)*strength}deg) scale3d(1.05,1.05,1.05)`;
-    const g = el.querySelector('.img-glow') as HTMLElement;
-    if (g) {
-      g.style.background = `radial-gradient(circle at ${50+(x/r.width)*60}% ${50+(y/r.height)*60}%, rgba(96,165,250,0.3), transparent 70%)`;
-      g.style.opacity = '1';
-    }
-  };
-  const onMouseLeave = () => {
-    const el = ref.current; if (!el) return;
-    el.style.transform = 'perspective(500px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
-    const g = el.querySelector('.img-glow') as HTMLElement;
-    if (g) g.style.opacity = '0';
-  };
-  return { ref, onMouseMove, onMouseLeave };
-}
-
-function useTiltDiv(strength = 8) {
-  const ref = useRef<HTMLDivElement>(null);
-  const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const el = ref.current; if (!el) return;
-    const r = el.getBoundingClientRect();
-    const x = e.clientX - r.left - r.width / 2;
-    const y = e.clientY - r.top - r.height / 2;
-    el.style.transform = `perspective(600px) rotateX(${-(y/r.height)*strength}deg) rotateY(${(x/r.width)*strength}deg) scale3d(1.02,1.02,1.02)`;
+    el.style.transform = `perspective(600px) rotateX(${-(y / r.height) * strength}deg) rotateY(${(x / r.width) * strength}deg) scale3d(1.02,1.02,1.02)`;
     const g = el.querySelector('.card-glow') as HTMLElement;
     if (g) {
-      g.style.background = `radial-gradient(circle at ${50+(x/r.width)*60}% ${50+(y/r.height)*60}%, rgba(96,165,250,0.13), transparent 70%)`;
+      g.style.background = `radial-gradient(circle at ${50 + (x / r.width) * 60}% ${50 + (y / r.height) * 60}%, rgba(96,165,250,0.15), transparent 70%)`;
       g.style.opacity = '1';
     }
   };
   const onMouseLeave = () => {
-    const el = ref.current; if (!el) return;
+    const el = ref.current;
+    if (!el) return;
     el.style.transform = 'perspective(600px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
     const g = el.querySelector('.card-glow') as HTMLElement;
     if (g) g.style.opacity = '0';
@@ -71,128 +36,220 @@ function useTiltDiv(strength = 8) {
   return { ref, onMouseMove, onMouseLeave };
 }
 
-function EducationBlock({ children }: { children: React.ReactNode }) {
-  const tilt = useTiltDiv(6);
+function GradeBar({ mark, sem, index }: { mark: number; sem: string; index: number }) {
+  const percentage = (mark / 10) * 100;
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ delay: index * 0.1, duration: 0.5 }}
+      className="flex items-center gap-3"
+    >
+      <span className="w-16 text-xs font-semibold dark:text-zinc-400 text-zinc-600">{sem}</span>
+      <div className="flex-1 relative h-8 rounded-lg overflow-hidden dark:bg-zinc-900/50 bg-zinc-100">
+        <motion.div
+          initial={{ width: 0 }}
+          whileInView={{ width: `${percentage}%` }}
+          transition={{ delay: index * 0.15 + 0.3, duration: 0.8, ease: 'easeOut' }}
+          className="h-full bg-gradient-to-r from-blue-400 to-blue-600 rounded-lg flex items-center justify-end pr-2"
+        >
+          <span className="text-[10px] font-bold text-white">{mark}</span>
+        </motion.div>
+      </div>
+      <span className="w-10 text-right text-xs font-semibold dark:text-zinc-300 text-zinc-700">{mark}/10</span>
+    </motion.div>
+  );
+}
+
+function StatCard({ label, value, icon }: { label: string; value: string | number; icon: string }) {
+  const tilt = useTilt(6);
+  return (
+    <motion.div
       ref={tilt.ref}
       onMouseMove={tilt.onMouseMove}
       onMouseLeave={tilt.onMouseLeave}
       style={{ transition: 'transform 0.15s ease-out', transformStyle: 'preserve-3d' }}
-      className="relative group p-6 rounded-2xl backdrop-blur-sm transition-shadow duration-500 hover:shadow-2xl ml-16 overflow-hidden
-        dark:bg-gradient-to-br dark:from-white/5 dark:to-white/0 dark:border dark:border-white/10 dark:hover:border-blue-400/50 dark:hover:shadow-blue-500/10
-        bg-gradient-to-br from-zinc-50 to-white border border-zinc-200 hover:border-blue-400/50 hover:shadow-blue-500/10"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="relative group p-6 rounded-2xl backdrop-blur-sm transition-shadow duration-500
+  hover:shadow-2xl hover:shadow-blue-500/10 flex flex-col justify-between gap-6
+  dark:border dark:border-white/10 dark:bg-gradient-to-br dark:from-white/5 dark:to-white/0 dark:hover:border-blue-400/50
+  border border-zinc-200 bg-gradient-to-br from-zinc-50 to-white hover:border-blue-400/50"
     >
       <div className="card-glow absolute inset-0 pointer-events-none rounded-2xl transition-opacity duration-300" style={{ opacity: 0 }} />
-      {children}
-    </div>
+      <div className="relative z-10">
+        <span className="text-2xl block mb-2">{icon}</span>
+        <p className="text-xs uppercase tracking-widest dark:text-zinc-500 text-zinc-600 mb-1 font-semibold">{label}</p>
+        <p className="text-2xl font-bold dark:text-white text-black">{value}</p>
+      </div>
+    </motion.div>
   );
 }
 
-export default function academics({ onProfileClick }: academicsProps): React.JSX.Element {
-  const imgTilt = useTilt(20);
+export default function Academics(): React.JSX.Element {
+  const currentCGPA = (semesterMarks.reduce((a, b) => a + b.mark, 0) / semesterMarks.length).toFixed(2);
 
   return (
-    <section id="academics" className="py-28 px-6 md:px-12 lg:px-24">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+    <section id="academics" className="py-28 px-6 md:px-12 lg:px-24 dark:bg-transparent">
+      <div className="max-w-6xl mx-auto">
 
-        {/* LEFT */}
-        <div>
-          <p className="uppercase tracking-[0.2em] mb-4 dark:text-zinc-500 text-zinc-500">academics</p>
-
-          <h2 className="flex items-center gap-2 text-4xl md:text-3xl font-bold leading-tight dark:text-white text-black">
-            My Academic Background
-            <FaStar size={18} className="inline-block ml-2 animate-bounce" />
+        {/* HEADER */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-16"
+        >
+          <p className="uppercase tracking-[0.2em] mb-4 text-zinc-500 dark:text-zinc-500 text-xs font-semibold">academics</p>
+          <h2 className="flex items-center gap-3 text-4xl md:text-5xl font-bold dark:text-white text-black mb-4">
+            Educational Journey
+            <motion.span animate={{ rotate: [0, 20, 0] }} transition={{ repeat: Infinity, duration: 2 }}>
+              <FaStar size={32} className="text-yellow-400" />
+            </motion.span>
           </h2>
+          <p className="text-base dark:text-zinc-400 text-zinc-600 max-w-2xl">
+            Pursuing B.Tech in Computer Science & Engineering with focus on full-stack development, data structures, algorithms, and software architecture. Building practical knowledge through hands-on projects and problem-solving.
+          </p>
+        </motion.div>
 
-        </div>
-      </div>
-
-      {/* Education */}
-      <div className="max-w-3xl mx-auto mt-15">
-        <h2 className="flex justify-center items-center gap-2 text-3xl md:text-2xl font-bold w-full mb-12 leading-tight
-          dark:text-zinc-400 text-zinc-700">
-          Education
-          <FaPencil size={18} className="inline-block ml-2 animate-bounce" />
-        </h2>
-
-        <div className="relative ml-4 md:ml-20 pl-6 md:pl-8 space-y-12 py-2
-          border-l-4 dark:border-zinc-600 border-zinc-300">
-
-          {/* COLLEGE */}
-          <div className="relative">
-            <span className="absolute -left-[38px] top-1.5 font-semibold text-sm px-3 py-1 rounded-md shadow-md cursor-pointer hover:animate-bounce hover:scale-110 active:scale-95 transition duration-300
-              dark:bg-zinc-900 dark:border-2 dark:text-zinc-400 dark:hover:border-white
-              bg-white border-2 border-zinc-300 text-zinc-600 hover:border-zinc-500">
-              College
+        {/* COLLEGE SECTION */}
+        <div className="mb-20">
+          <motion.h3
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex items-center gap-3 text-2xl font-bold dark:text-white text-black mb-8"
+          >
+            🎓 {collegeInfo.degree}
+            <span className="text-xs px-3 py-1 rounded-full dark:bg-blue-500/20 dark:text-blue-300 bg-blue-100 text-blue-700">
+              {collegeInfo.duration}
             </span>
-            <EducationBlock>
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 gap-1 relative z-10">
-                <h3 className="font-bold text-2lg tracking-wide transition duration-300
-                  dark:text-white dark:group-hover:text-blue-400 text-black group-hover:text-blue-400">
-                  B.Tech — Computer Science & Engineering
-                </h3>
-                <span className="text-xs px-2 py-1 rounded-md w-fit dark:bg-zinc-800 dark:text-blue-400 bg-zinc-100 text-blue-400">
-                  2023–2027
-                </span>
+          </motion.h3>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-sm italic dark:text-zinc-400 text-zinc-600 mb-8"
+          >
+            {collegeInfo.university}
+          </motion.p>
+
+          {/* SEMESTER PROGRESS - FULL WIDTH */}
+          <motion.div
+            className="mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="relative p-8 rounded-3xl backdrop-blur-xl border overflow-hidden
+              dark:bg-gradient-to-br dark:from-white/5 dark:to-white/0 dark:border-white/10
+              bg-gradient-to-br from-white/40 to-zinc-50/40 border-white/20">
+              <div className="card-glow absolute inset-0 pointer-events-none rounded-3xl transition-opacity duration-300" style={{ opacity: 0 }} />
+              <div className="relative z-10">
+                <h4 className="text-sm uppercase tracking-widest font-semibold dark:text-zinc-400 text-zinc-600 mb-8">
+                  📊 Semester Performance (SGPA: 0-10)
+                </h4>
+                <div className="space-y-5">
+                  {semesterMarks.map((item, i) => (
+                    <GradeBar key={i} mark={item.mark} sem={item.sem} index={i} />
+                  ))}
+                </div>
+
+                {/* SUBJECTS & TREND */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.8, duration: 0.5 }}
+                  className="mt-8 pt-8 border-t dark:border-zinc-800/50 border-zinc-200/50"
+                >
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-semibold dark:text-zinc-400 text-zinc-600">📚 Core Computer Science Subjects:</span>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {csSubjects.map((subject, i) => (
+                        <motion.span
+                          key={i}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: 0.5 + i * 0.05 }}
+                          className="text-[11px] px-3 py-1.5 rounded-lg dark:bg-blue-500/20 dark:text-blue-300 bg-blue-100/60 text-blue-700 font-medium"
+                        >
+                          {subject}
+                        </motion.span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
               </div>
-              <span className="text-xs italic px-10 py-1 rounded-md w-fit flex items-center justify-center relative z-10
-                dark:bg-zinc-900 dark:text-zinc-400 bg-zinc-100 text-zinc-500">
-                Dr. Sakuntala Misra National Rehabilitation University, Lucknow
-              </span>
-              <ul className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-sm font-medium pt-4 mt-4 relative z-10
-                border-t dark:border-zinc-900 border-zinc-200 dark:text-zinc-400 text-zinc-600">
-                {semesterMarks.map((item, i) => (
-                  <li key={i} className="flex items-center gap-2 p-2 rounded-xl
-                    dark:bg-zinc-950/40 dark:border dark:border-zinc-900 bg-zinc-50 border border-zinc-200">
-                    <span className="w-1.5 h-1.5 bg-blue-400 rounded-full shrink-0" />
-                    <span>{item.sem}: <strong className="dark:text-zinc-400 text-zinc-700 font-semibold">{item.mark}</strong></span>
-                  </li>
-                ))}
-                <li className="flex items-center gap-2 p-2 rounded-xl col-span-2 sm:col-span-3
-                  dark:bg-zinc-950/40 dark:border dark:border-zinc-900 bg-zinc-50 border border-zinc-200">
-                  <span className="w-1.5 h-1.5 bg-blue-400 rounded-full shrink-0" />
-                  <span className="text-xs dark:text-zinc-500 text-zinc-500 italic">Consistent upward trend → 9.64 in Sem V</span>
-                </li>
-              </ul>
-            </EducationBlock>
+            </div>
+          </motion.div>
+
+          {/* STATS CARDS */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 ">
+            <StatCard label="Current CGPA" value={currentCGPA} icon="🎯" />
+            <StatCard label="Semesters Completed" value="5" icon="📅" />
+            <StatCard label="Highest Mark" value="9.64" icon="🏆" />
           </div>
 
-          {/* SCHOOL */}
-          <div className="relative">
-            <span className="absolute -left-[38px] top-1.5 font-semibold text-sm px-3 py-1 rounded-md shadow-md cursor-pointer hover:animate-bounce hover:scale-110 active:scale-95 transition duration-300
-              dark:bg-zinc-900 dark:border-2 dark:text-zinc-400 dark:hover:border-white
-              bg-white border-2 border-zinc-300 text-zinc-600 hover:border-zinc-500">
-              School
-            </span>
-            <EducationBlock>
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 gap-1 relative z-10">
-                <h3 className="font-bold text-2lg tracking-wide transition duration-300
-                  dark:text-white dark:group-hover:text-blue-400 text-black group-hover:text-blue-400">
-                  Higher Secondary (XII) — Science PCM
-                </h3>
-                <span className="text-xs px-2 py-1 rounded-md w-fit dark:bg-zinc-800 dark:text-blue-400 bg-zinc-100 text-blue-400">
-                  May 2023
-                </span>
-              </div>
-              <span className="text-xs italic px-10 py-1 rounded-md w-fit flex items-center justify-center relative z-10
-                dark:bg-zinc-900 dark:text-zinc-400 bg-zinc-100 text-zinc-500">
-                New Public Inter College, Lucknow
-              </span>
-              <ul className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm font-medium pt-4 mt-4 relative z-10
-                border-t dark:border-zinc-900 border-zinc-200 dark:text-zinc-400 text-zinc-600">
-                {schoolDetails.map((detail, i) => (
-                  <li key={i} className="flex flex-col gap-1 p-3 rounded-xl
-                    dark:bg-zinc-950/40 dark:border dark:border-zinc-900 bg-zinc-50 border border-zinc-200">
-                    <span className="text-xs font-normal uppercase tracking-wider dark:text-zinc-500 text-zinc-500">{detail.label}</span>
-                    <strong className="font-semibold dark:text-zinc-400 text-zinc-700">{detail.value}</strong>
-                  </li>
-                ))}
-              </ul>
-            </EducationBlock>
-          </div>
-
+          
         </div>
+
+        {/* SCHOOL SECTION */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mt-20 pt-20 border-t dark:border-zinc-800 border-zinc-200"
+        >
+          <h3 className="flex items-center gap-3 text-2xl font-bold dark:text-white text-black mb-4">
+            📚 {schoolInfo.degree}
+            <span className="text-xs px-3 py-1 rounded-full dark:bg-blue-500/20 dark:text-blue-300 bg-blue-100 text-blue-700">
+              {schoolInfo.year}
+            </span>
+          </h3>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-sm italic dark:text-zinc-400 text-zinc-600 mb-8"
+          >
+            {schoolInfo.school}
+          </motion.p>
+
+          {/* SCHOOL STATS */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {schoolDetails.map((detail, i) => {
+              const tilt = useTilt(6);
+              return (
+                <motion.div
+                  key={i}
+                  ref={tilt.ref}
+                  onMouseMove={tilt.onMouseMove}
+                  onMouseLeave={tilt.onMouseLeave}
+                  style={{ transition: 'transform 0.15s ease-out', transformStyle: 'preserve-3d' }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.15, duration: 0.5 }}
+                  className="relative p-6 rounded-2xl backdrop-blur-xl border overflow-hidden
+                    dark:bg-gradient-to-br dark:from-white/5 dark:to-white/0 dark:border-white/10
+                    bg-gradient-to-br from-white/40 to-zinc-50/40 border-white/20"
+                >
+                  <div className="card-glow absolute inset-0 pointer-events-none rounded-2xl transition-opacity duration-300" style={{ opacity: 0 }} />
+                  <div className="relative z-10">
+                    <span className="text-4xl mb-3 block">{detail.icon}</span>
+                    <p className="text-xs uppercase tracking-widest dark:text-zinc-500 text-zinc-600 mb-2 font-semibold">{detail.label}</p>
+                    <p className="text-xl font-bold dark:text-white text-black">{detail.value}</p>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </motion.div>
+
       </div>
     </section>
   );

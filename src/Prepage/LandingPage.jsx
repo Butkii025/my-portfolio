@@ -89,7 +89,7 @@ export default function LandingPage({ onEnter }) {
             P_Vijay
           </h1>
           <p className="text-xs uppercase tracking-[0.3em] text-zinc-500 mt-4">
-            Engineer · Data Analyst · Creative Coder
+            ML Engineer · Data Analyst · Creative Coder
           </p>
         </div>
 

@@ -11,7 +11,6 @@ The entire site is optimized for performance, clean typography, and seamless dar
 * **Framework:** Next.js 14+ (App Router) / React Ecosystem
 * **Styling:** Tailwind CSS (Fluid responsive layouts, custom translucent gradients, and backdrop blurs)
 * **3D Graphics:** React Three Fiber (R3F) & `@react-three/drei` (Three.js WebGL Wrapper)
-* **Form Infrastructure:** Asynchronous Web3Forms API Pipeline
 
 ---
 

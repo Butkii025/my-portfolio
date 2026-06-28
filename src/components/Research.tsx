@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef } from 'react';
-import GradientText from "./ui/GradientText";
+import GradientText from "../ui/GradientText";
 
 function useTiltCard(strength = 8) {
   const ref = useRef<HTMLDivElement>(null);
@@ -51,16 +51,15 @@ export default function Research(): React.JSX.Element {
     <section id="research" className="py-28 px-6 dark:bg-transparent">
       <div className="max-w-6xl mx-auto">
 
-        <div className="mb-14">
-          <p className="uppercase tracking-[0.2em] mb-4 dark:text-zinc-500 text-zinc-500">Research</p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight dark:text-white text-black">
-            Research & Blogs
+        <div className="mb-8">
+          <p className="uppercase tracking-[0.2em] mb-4 text-zinc-500 dark:text-zinc-500 text-xs font-semibold">Research</p>
+          <h2 className="text-3xl font-bold tracking-tight dark:text-white text-black">
+            Research & documents
           </h2>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
 
-          {/* Research Work Card */}
           <div
             ref={researchTilt.ref}
             onMouseMove={researchTilt.onMouseMove}
@@ -91,7 +90,7 @@ export default function Research(): React.JSX.Element {
                 </span>
               </div>
 
-              <p className="leading-relaxed text-sm md:text-base
+              <p className="leading-relaxed text-sm 
                 dark:text-zinc-400 text-zinc-500">
                 Research on Indian market volatility forecasting system using NSE/BSE official data with Python, Random Forest, machine learning, predictive analytics techniques and forecasting market insights.
               </p>
@@ -142,7 +141,7 @@ export default function Research(): React.JSX.Element {
                 <h3 className="text-2xl font-bold transition duration-300
                   dark:text-white dark:group-hover:text-blue-400
                   text-zinc-800 group-hover:text-blue-400">
-                  Blogs
+                  Soft.documents
                 </h3>
 
                 <GradientText
@@ -155,13 +154,13 @@ export default function Research(): React.JSX.Element {
                 </GradientText>
               </div>
 
-              <p className="leading-relaxed text-sm md:text-base
+              <p className="leading-relaxed text-sm 
                 dark:text-zinc-400 text-zinc-500">
                 Explore my latest thoughts, designs, and project insights. This space showcases ideas, blueprints, and creative journeys.
               </p>
             </div>
             <div className="relative z-10 flex flex-col gap-3">
-              <p className="text-xs uppercase tracking-widest dark:text-zinc-600 text-zinc-400">Latest</p>
+              <p className="text-xs uppercase tracking-widest dark:text-zinc-600 text-zinc-400">Project</p>
               <a
                 href="https://docs.google.com/document/d/19uTBz7EuTVufrOsQsNTRrwAKSsSPFJLwatDf_PN8xOI/edit?usp=sharing"
                 target="_blank"
@@ -174,7 +173,25 @@ export default function Research(): React.JSX.Element {
                   text-zinc-500 group-hover/link:text-blue-400
                   group-hover/link:scale-[1.02] inline-block
                   group-hover/link:underline underline-offset-2">
-                  Xela_Arcade Architecture Blueprint
+                  Explore Page 1
+                </span>
+              </a>
+            </div>
+            <div className="relative z-10 flex flex-col gap-3">
+              <p className="text-xs uppercase tracking-widest dark:text-zinc-600 text-zinc-400">Blog</p>
+              <a
+                href="https://docs.google.com/document/d/1TB4mDFlJAg0AOtym3JTQlMj89itq4K9zq8vgWxkS9I0/edit?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group/link flex items-start gap-2 transition-all duration-300"
+              >
+                <span className="mt-0.5 dark:text-zinc-600 text-zinc-400 text-sm">→</span>
+                <span className="text-sm leading-relaxed transition-all duration-300 origin-left
+                  dark:text-zinc-500 dark:group-hover/link:text-blue-400
+                  text-zinc-500 group-hover/link:text-blue-400
+                  group-hover/link:scale-[1.02] inline-block
+                  group-hover/link:underline underline-offset-2">
+                  Explore Page 2
                 </span>
               </a>
             </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef } from 'react';
-import GradientText from "./ui/GradientText";
+import GradientText from "../ui/GradientText";
 
 function useTilt(strength = 8) {
   const ref = useRef<HTMLDivElement>(null);
@@ -26,10 +26,12 @@ function useTilt(strength = 8) {
   return { ref, onMouseMove, onMouseLeave };
 }
 
+// Added responsive width configuration, disabled shrinking, and added snap alignment for a smooth desktop/mobile scrolling feel
 const cardBase = `relative group p-6 rounded-2xl backdrop-blur-sm transition-shadow duration-500
   hover:shadow-2xl hover:shadow-blue-500/10 flex flex-col justify-between gap-6
   dark:border dark:border-white/10 dark:bg-gradient-to-br dark:from-white/5 dark:to-white/0 dark:hover:border-blue-400/50
-  border border-zinc-200 bg-gradient-to-br from-zinc-50 to-white hover:border-blue-400/50`;
+  border border-zinc-200 bg-gradient-to-br from-zinc-50 to-white hover:border-blue-400/50
+  w-[290px] sm:w-[380px] md:w-[450px] shrink-0 snap-start`;
 
 function ExperienceCard({ children }: { children: React.ReactNode }) {
   const tilt = useTilt();
@@ -63,14 +65,71 @@ export default function Experience(): React.JSX.Element {
     <section id="experience" className="py-28 px-6 md:px-12 lg:px-24 dark:bg-transparent">
       <div className="max-w-6xl mx-auto">
 
-        <div className="mb-14">
-          <p className="uppercase tracking-[0.2em] mb-4 dark:text-zinc-500 text-zinc-500">Experience</p>
+        <div className="mb-8">
+          <p className="uppercase tracking-[0.2em] mb-4 text-zinc-500 dark:text-zinc-500 text-xs font-semibold">Experience</p>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight dark:text-white text-black">
             Collaborations & Impact
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Changed grid layout to a flex horizontal scroll container with custom padding rules to preserve hover glow clipping */}
+        <div className="flex gap-6 overflow-x-auto pb-8 pt-2 px-2 -mx-2 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-zinc-200 dark:scrollbar-thumb-zinc-800">
+
+          <ExperienceCard>
+            <div className="relative z-10">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-xl font-bold transition duration-300
+                  dark:text-white dark:group-hover:text-blue-400
+                  text-zinc-800 group-hover:text-blue-400">
+                  LearnForge AI — Google × Kaggle Hackathon
+                </h3>
+                <span className="text-xs px-2 py-1 rounded-full shrink-0
+                  dark:bg-zinc-900 dark:border dark:border-zinc-700 dark:text-zinc-400
+                  bg-zinc-100 border border-zinc-200 text-zinc-500">
+                  JUNE-2026
+                </span>
+              </div>
+              <p className="leading-relaxed text-sm dark:text-zinc-400 text-zinc-500">
+                <b>Project : </b>Full-Stack AI Education Platform & Secure Code Sandbox.<br/>
+                <b>Working & Objective :</b> Developed a next-gen learning application for the joint Google × Kaggle 2026 Hackathon. Implemented a custom Model Context Protocol (MCP) backend featuring strict regex-driven token sanitization, automated validation schema tests, and isolated subprocess execution boundaries to safely run user-submitted code alongside a high-performance frontend build pipeline.<br/><br/>
+                <b>Tech Used :</b> Python | MCP Server | React | Vite | Tailwind CSS | Docker | Subprocess
+              </p>
+            </div>
+            <div className="relative z-10 flex flex-col gap-2">
+              <p className="text-xs uppercase tracking-widest dark:text-zinc-600 text-zinc-400">Source Code</p>
+              <CardLink href="https://github.com/Butkii025/LearnForge-AI" label="GitHub Repository" />
+            </div>
+          </ExperienceCard>
+
+
+          <ExperienceCard>
+            <div className="relative z-10">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-xl font-bold transition duration-300
+                  dark:text-white dark:group-hover:text-blue-400
+                  text-zinc-800 group-hover:text-blue-400">
+                  BeeSkilled
+                </h3>
+                <span className="text-xs px-2 py-1 rounded-full shrink-0
+                  dark:bg-zinc-900 dark:border dark:border-zinc-700 dark:text-zinc-400
+                  bg-zinc-100 border border-zinc-200 text-zinc-500">
+                  JUNE-2026
+                </span>
+              </div>
+              <p className="leading-relaxed text-sm dark:text-zinc-400 text-zinc-500">
+               <b>Internship : </b> As a ML/AI & Data Analyst work on 4-level datasets & mildstone project using a real-world corporate dataset to model and forecast $118M+ in global sales.<br/>
+
+                <b>Working & Objective :</b> Implement EDA, trained a Scikit-Learn Linear Regression model, and deployed an interactive Power BI dashboard.
+                Caught a -3.1% profit drain in Enterprise and recommended scaling high-margin (73.1%) Channel Partners.<br/><br/>
+
+                <b>Tech Used :</b> Python | Pandas | Scikit-Learn | Matplotlib | Seaborn | Power BI Desktop.
+              </p>
+            </div>
+            <div className="relative z-10 flex flex-col gap-2">
+              <p className="text-xs uppercase tracking-widest dark:text-zinc-600 text-zinc-400">GitHub</p>
+              <CardLink href="https://github.com/Butkii025/Financial-Predictive-Modelling---intern" label="Data-Analysis & Predictive-Modelling" />
+            </div>
+          </ExperienceCard>
 
           <ExperienceCard>
             <div className="relative z-10">
@@ -83,11 +142,13 @@ export default function Experience(): React.JSX.Element {
                 <span className="text-xs px-2 py-1 rounded-full shrink-0
                   dark:bg-zinc-900 dark:border dark:border-zinc-700 dark:text-zinc-400
                   bg-zinc-100 border border-zinc-200 text-zinc-500">
-                  Completed
+                  JULY-2025
                 </span>
               </div>
               <p className="leading-relaxed text-sm dark:text-zinc-400 text-zinc-500">
-                Data Analysis using R, Excel, and Python. Gained hands-on experience in statistical data processing and predictive modeling.
+                <b>Internship : </b>As a role of Data Analyst on multiple projects per week given by Institute's real dataset.<br/>
+                <b>Working & Objective :</b> Developed new ecosystem using R, Excel, and Python. Gained hands-on experience in statistical data processing and predictive modeling.<br/><br/>
+                <b>Tech Used :</b> Python | R | Pandas | Numpy | Matplotlib | Excel | Pivot
               </p>
             </div>
             <div className="relative z-10 flex flex-col gap-2">
@@ -95,30 +156,7 @@ export default function Experience(): React.JSX.Element {
               <CardLink href="/credentials/pv-saifai-intership.PDF" label="Data-Analysis Internship" />
             </div>
           </ExperienceCard>
-
-          <ExperienceCard>
-            <div className="relative z-10">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-xl font-bold transition duration-300
-                  dark:text-white dark:group-hover:text-blue-400
-                  text-zinc-800 group-hover:text-blue-400">
-                  BeeSkilled
-                </h3>
-                <GradientText colors={["#5227FF", "#FF9FFC", "#B497CF"]} animationSpeed={1} showBorder={true}
-                  className="py-1 px-2 text-xs rounded-full shrink-0">
-                  Active
-                </GradientText>
-              </div>
-              <p className="leading-relaxed text-sm dark:text-zinc-400 text-zinc-500">
-                Conducted EDA on global financial data, built a Python regression model to forecast sales volumes, and developed an interactive Power BI dashboard for business insights.
-              </p>
-            </div>
-            <div className="relative z-10 flex flex-col gap-2">
-              <p className="text-xs uppercase tracking-widest dark:text-zinc-600 text-zinc-400">GitHub</p>
-              <CardLink href="https://github.com/Butkii025/Data-Analysis-Predictive-Modelling" label="Data-Analysis & Predictive-Modelling" />
-            </div>
-          </ExperienceCard>
-
+                  
         </div>
       </div>
     </section>

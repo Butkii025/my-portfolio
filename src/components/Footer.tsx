@@ -1,7 +1,7 @@
 'use client';
 
 import { LuArrowUp } from "react-icons/lu";
-import GradientText from "./ui/GradientText";
+import GradientText from "../ui/GradientText";
 import { MdEmail } from 'react-icons/md';
 import { FaGithub, FaLinkedin, FaYoutube, FaPinterest } from 'react-icons/fa';
 import { SiKaggle } from 'react-icons/si';

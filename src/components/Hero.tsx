@@ -4,7 +4,7 @@ import React, { useRef } from 'react';
 import { FaDownload, FaGithub } from 'react-icons/fa';
 import { FiSmile } from 'react-icons/fi';
 import { MdWavingHand } from 'react-icons/md';
-import GradientText from "./ui/GradientText";
+import GradientText from "../ui/GradientText";
 
 
 interface HomeProps {
@@ -75,17 +75,17 @@ export default function Home({ onProfileClick }: HomeProps): React.JSX.Element {
             
           </h1>
           
-          <p className="text-xl md:text-xl max-w-xl
-            dark:text-zinc-300 text-zinc-700 mt-8">
+          {/* <p className="text-lg md:text-xl max-w-xl
+            dark:text-zinc-300 text-zinc-700 mt-8 mb-2">
               MLOps_Data Scientist
-          </p>
+          </p> */}
 
-          <p className="text-2lg leading-relaxed max-w-xl mb-8
+          <p className="text-sm leading-relaxed max-w-xl mb-8
             dark:text-zinc-400 text-zinc-700/100">
             Building intelligent systems powered by data and creativity
           </p>
 
-          <div className="flex gap-4 flex-wrap">
+          <div className="flex gap-4 flex-wrap mb-4">
             <a
               href="https://docs.google.com/document/d/145I8HrBv9Ub2HroPFgFkyLaGp5p4T4UDzb6s-uII7Pk/export?format=pdf"
               className="px-6 py-3 rounded-2xl transition duration-300 cursor-pointer
@@ -113,7 +113,7 @@ export default function Home({ onProfileClick }: HomeProps): React.JSX.Element {
           <div
             ref={cardRef}
             style={{ transition: 'transform 0.15s ease-out', transformStyle: 'preserve-3d' }}
-            className=" relative w-[280px] h-[380px] rounded-[3rem] overflow-hidden shadow-2xl backdrop-blur-xl cursor-default
+            className=" relative w-[260px] h-[360px] rounded-[3rem] overflow-hidden shadow-2xl backdrop-blur-xl cursor-default
               dark:border dark:border-white/20 dark:bg-zinc-900/50 dark:bg-gradient-to-br dark:from-white/5 dark:to-white/0 dark:hover:border-blue-400/50 dark:hover:shadow-zinc-500/10
               border border-zinc-200 bg-white/60 bg-gradient-to-br hover:border-blue-400/50 hover:shadow-zinc-300/20"
           >
@@ -135,7 +135,7 @@ export default function Home({ onProfileClick }: HomeProps): React.JSX.Element {
                   src="/profile.png"
                   alt="Profile Full"
                   style={{ transition: 'transform 0.15s ease-out', transformStyle: 'preserve-3d' }}
-                  className="w-50 h-65 rounded-[3rem] object-cover shadow-2xl cursor-pointer
+                  className="w-45 h-60 rounded-[3rem] object-cover shadow-2xl cursor-pointer
                     dark:border-4 dark:border-zinc-700 hover:scale-101
                     border-4 border-zinc-200"
                   onClick={onProfileClick}

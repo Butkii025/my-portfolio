@@ -8,14 +8,14 @@ import Skills from '../src/components/Skills';
 import Projects from '../src/components/Projects';
 import Credentials from '../src/components/Credentials';
 import Research from '../src/components/Research';
-import CreativeCorner from '../src/components/CreativeCorner';
+import CreativeCorner from '../src/components/ArtGallery';
 import Contact from '../src/components/Contact';
-import SmoothFollower from '@/src/components/anim/SmoothFollower';
+import SmoothFollower from '@/src/anim/SmoothFollower';
 import Footer from '../src/components/Footer';
-import InteractiveDots from '@/src/components/anim/Interactivedots';
+import InteractiveDots from '@/src/ui/Interactivedots';
 import Experience from '../src/components/Experience';
 import AcademicBlock from '../src/components/Academics';
-import LandingPage from '../src/components/Prepage/LandingPage'
+import LandingPage from '../src/Prepage/LandingPage'
 
 
 
@@ -37,8 +37,10 @@ export default function VijayPortfolio() {
   const desktopLinks = [
     { label: <FaHome size={16} />, href: '#home' },
     { label: 'About',          href: '#about'          },
+    { label: 'Skills',         href: '#skills'         },
     { label: 'Projects',       href: '#projects'       },
-    { label: 'Academics',     href: '#academics'     },
+    { label: 'Experience',     href: '#experience'     },
+    { label: 'Research',       href: '#research'       },
     { label: 'Creative_Corner',href: '#creative_corner'},
     { label: 'Contact',        href: '#contact'        },
   ];
@@ -46,10 +48,10 @@ export default function VijayPortfolio() {
   const allLinks = [
     { label: 'Home',           href: '#home'           },
     { label: 'About',          href: '#about'          },
-    { label: 'Experience',     href: '#experience'     },
-    { label: 'Academics',     href: '#academics'       },
     { label: 'Skills',         href: '#skills'         },
     { label: 'Projects',       href: '#projects'       },
+    { label: 'Experience',     href: '#experience'     },
+    { label: 'Academics',     href: '#academics'       },
     { label: 'Credentials',    href: '#credentials'    },
     { label: 'Research',       href: '#research'       },
     { label: 'Creative_Corner',href: '#creative_corner'},

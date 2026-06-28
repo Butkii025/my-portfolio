@@ -60,7 +60,6 @@ function CredentialCard({ title, desc, items }: CredentialCardProps) {
         border border-zinc-200 bg-gradient-to-br from-zinc-50 to-white hover:border-blue-400/50
         w-[320px] md:w-[450px] shrink-0 snap-start flex flex-col justify-between"
     >
-      {/* Directional glow */}
       <div
         className="card-glow absolute inset-0 pointer-events-none rounded-2xl transition-opacity duration-300"
         style={{ opacity: 0 }}
@@ -93,7 +92,7 @@ function CredentialCard({ title, desc, items }: CredentialCardProps) {
                 text-zinc-500 hover:text-blue-400
                 hover:scale-[1.03] origin-left"
             >
-              <span className="dark:text-zinc-600 text-zinc-400">•</span>
+              <span className="dark:text-zinc-300 text-zinc-400">•</span>
               <span className="hover:underline underline-offset-2">{item.label}</span>
             </a>
           </div>
@@ -109,8 +108,10 @@ export default function Credentials(): React.JSX.Element {
       title: 'Work Related',
       desc: 'Certification related to Internship and professional experience',
       items: [
-        { label: 'Internship on Data Analysis, at Science Tech Institute', href: '/credentials/pv-saifai-intership.PDF' },
-      ],
+        { label: 'Internship in ML / AI at Beeskilled [JUNE-2026]', href: '/credentials/ML-AI.PDF' },
+        { label: 'Experience as Data Analyst at Beeskilled [MAY-2026]', href: '/credentials/DataAnalyst.PDF' },
+        { label: 'Data Analysis Intern at Science Tech Institute, UP.Gov [JULY-2025] ', href: '/credentials/pv-saifai-intership.PDF' },
+        ],
     },
     {
       title: 'Educational',
@@ -123,7 +124,7 @@ export default function Credentials(): React.JSX.Element {
     },
     {
       title: 'Social Events',
-      desc: 'Certification related to Events, Volunteering',
+      desc: 'Certification related to Events,Volunteering, Social Netwoking',
       items: [
         { label: 'Spirit 1.0 Chess Tournament', href: '/credentials/pv-spirit1.0.png' },
         { label: 'Youth Parliament', href: '/credentials/youth-parliament.png' },
@@ -135,8 +136,8 @@ export default function Credentials(): React.JSX.Element {
   return (
     <section id="credentials" className="py-28 px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto">
-        <div className="mb-14">
-          <p className="uppercase tracking-[0.2em] mb-4 dark:text-zinc-500 text-zinc-500">Credentials</p>
+        <div className="mb-8">
+          <p className="uppercase tracking-[0.2em] mb-4 text-zinc-500 dark:text-zinc-500 text-xs font-semibold">Credentials</p>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight dark:text-white text-black">Certification</h2>
         </div>
 

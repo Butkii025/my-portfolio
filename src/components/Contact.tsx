@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import ContactForm from './contactform';
+import { FaDownload } from 'react-icons/fa';
+
 
 export default function Contact(): React.JSX.Element {
   const [submitted, setSubmitted] = useState(false);
@@ -9,8 +11,8 @@ export default function Contact(): React.JSX.Element {
   return (
     <section id="contact" className="py-28 px-6 md:px-12 lg:px-24 dark:bg-transparent">
       <div className="max-w-6xl mx-auto">
-        <div className="mb-14">
-          <p className="uppercase tracking-[0.2em] mb-4 dark:text-zinc-500 text-zinc-500">Contact</p>
+        <div className="mb-6">
+          <p className="uppercase tracking-[0.2em] mb-4 text-zinc-500 dark:text-zinc-500 text-xs font-semibold">Contact</p>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight dark:text-white text-black">
             Let's Build Together
           </h2>
@@ -36,6 +38,17 @@ export default function Contact(): React.JSX.Element {
                 <span className="dark:text-zinc-600 text-zinc-400">→</span>
                 <span className="hover:underline underline-offset-2">github.com/Butkii025</span>
               </a>
+              <div className="flex gap-4 flex-wrap">
+                <a
+                  href="https://docs.google.com/document/d/145I8HrBv9Ub2HroPFgFkyLaGp5p4T4UDzb6s-uII7Pk/edit?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 text-sm  mt-4 rounded-2xl transition duration-300 cursor-pointer dark:border dark:border-white/20 dark:text-white/80 dark:hover:bg-white/10 dark:active:bg-zinc-400 border border-zinc-300 text-zinc-700 hover:bg-zinc-100 active:bg-zinc-300"
+                >
+                  Resume <FaDownload size={18} className="inline-block ml-2" />
+                </a>
+              </div>
+              
             </div>
 
             <ChaiCup submitted={submitted} />
@@ -56,7 +69,7 @@ export default function Contact(): React.JSX.Element {
 
 function ChaiCup({ submitted }: { submitted: boolean }) {
   return (
-    <div className="relative w-52 h-52">
+    <div className="relative w-52 h-52 ">
       <style>{`
         @keyframes axisRotate {
           0%   { transform: rotateY(0deg);   }
