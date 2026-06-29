@@ -86,7 +86,7 @@ export default function VideoBox() {
               />
 
               <p className="text-center text-xs dark:text-zinc-500 text-zinc-400 italic mt-3">
-                editor ??
+                I'm Priyanshu 
               </p>
             </div>
           </div>

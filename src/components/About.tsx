@@ -130,7 +130,7 @@ export default function About({ onProfileClick }: AboutProps): React.JSX.Element
               <img
                 src="/1.png"
                 alt="Profile"
-                className="w-65 h-110 rounded-full object-cover shadow-2xl
+                className="w-80 h-105 rounded-full object-cover shadow-2xl
                   dark:border-1 dark:border-zinc-700 
                   dark:hover:border-blue-400 hover:shadow-zinc-300/20 border-1 border-zinc-700 hover:border-blue-400 hover:shadow-zinc-300/20"
               />
