@@ -11,9 +11,9 @@ interface AboutProps {
 
 const highlights = [
   { label: 'Focus',    value: 'Data Science & ML'        },
-  { label: 'Additional', value: 'Stock Market Analytics'  },
+  { label: 'Additional', value: 'Presented a Research Abstract'  },
   { label: 'Tools',    value: 'All rounder Python'       },
-  { label: 'Approach', value: 'Data-driven + Design-first' },
+  { label: 'Approach', value: 'Data-driven + Design' },
 ];
 
 function useTilt(strength = 20) {

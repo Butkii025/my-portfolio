@@ -191,7 +191,7 @@ export default function Academics(): React.JSX.Element {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 ">
             <StatCard label="Current CGPA" value={currentCGPA} icon="🎯" />
             <StatCard label="Semesters Completed" value="5" icon="📅" />
-            <StatCard label="Highest Mark" value="9.64" icon="🏆" />
+            <StatCard label="Highest GPA" value="9.64" icon="🏆" />
           </div>
 
           

@@ -81,7 +81,7 @@ export default function Experience(): React.JSX.Element {
                 <h3 className="text-xl font-bold transition duration-300
                   dark:text-white dark:group-hover:text-blue-400
                   text-zinc-800 group-hover:text-blue-400">
-                  LearnForge AI — Google × Kaggle Hackathon
+                  Google × Kaggle Hackathon
                 </h3>
                 <span className="text-xs px-2 py-1 rounded-full shrink-0
                   dark:bg-zinc-900 dark:border dark:border-zinc-700 dark:text-zinc-400
@@ -90,14 +90,18 @@ export default function Experience(): React.JSX.Element {
                 </span>
               </div>
               <p className="leading-relaxed text-sm dark:text-zinc-400 text-zinc-500">
-                <b>Project : </b>Full-Stack AI Education Platform & Secure Code Sandbox.<br/>
-                <b>Working & Objective :</b> Developed a next-gen learning application for the joint Google × Kaggle 2026 Hackathon. Implemented a custom Model Context Protocol (MCP) backend featuring strict regex-driven token sanitization, automated validation schema tests, and isolated subprocess execution boundaries to safely run user-submitted code alongside a high-performance frontend build pipeline.<br/><br/>
+                <b>Idea : <i>LearnForge AI</i></b> — Full-Stack AI Education Platform & Secure Code Sandbox.<br/>
+                <b>Working & Objective :</b> Developed a next-gen learning application for the joint Google × Kaggle 2026 Hackathon. Implemented a custom Model Context Protocol (MCP) backend featuring strict regex-driven token sanitization, 4 AI Agent-automated validation schema tests, and isolated subprocess execution.<br/><br/>
                 <b>Tech Used :</b> Python | MCP Server | React | Vite | Tailwind CSS | Docker | Subprocess
               </p>
             </div>
             <div className="relative z-10 flex flex-col gap-2">
               <p className="text-xs uppercase tracking-widest dark:text-zinc-600 text-zinc-400">Source Code</p>
               <CardLink href="https://github.com/Butkii025/LearnForge-AI" label="GitHub Repository" />
+            </div>
+            <div className="relative z-10 flex flex-col gap-2">
+              <p className="text-xs uppercase tracking-widest dark:text-zinc-600 text-zinc-400">Overview</p>
+              <CardLink href="https://www.kaggle.com/competitions/vibecoding-agents-capstone-project/writeups/learnforge-ai-a-multi-agent-study-system-for-engi" label="Kaggle Writeup" />
             </div>
           </ExperienceCard>
 
@@ -117,10 +121,9 @@ export default function Experience(): React.JSX.Element {
                 </span>
               </div>
               <p className="leading-relaxed text-sm dark:text-zinc-400 text-zinc-500">
-               <b>Internship : </b> As a ML/AI & Data Analyst work on 4-level datasets & mildstone project using a real-world corporate dataset to model and forecast $118M+ in global sales.<br/>
+               <b>Internship : </b> As a ML/AI & Data Analyst<br/>
 
-                <b>Working & Objective :</b> Implement EDA, trained a Scikit-Learn Linear Regression model, and deployed an interactive Power BI dashboard.
-                Caught a -3.1% profit drain in Enterprise and recommended scaling high-margin (73.1%) Channel Partners.<br/><br/>
+                <b>Working & Objective :</b> Implement EDA, trained a Scikit-Learn Linear Regression model, and deployed an interactive Power BI dashboard. Work on 4-level datasets & mildstone project using a real-world corporate dataset to model and forecast $118M+ in global sales. Caught a -3.1% profit drain in Enterprise and recommended scaling high-margin (73.1%) Channel Partners.<br/><br/>
 
                 <b>Tech Used :</b> Python | Pandas | Scikit-Learn | Matplotlib | Seaborn | Power BI Desktop.
               </p>
@@ -146,8 +149,8 @@ export default function Experience(): React.JSX.Element {
                 </span>
               </div>
               <p className="leading-relaxed text-sm dark:text-zinc-400 text-zinc-500">
-                <b>Internship : </b>As a role of Data Analyst on multiple projects per week given by Institute's real dataset.<br/>
-                <b>Working & Objective :</b> Developed new ecosystem using R, Excel, and Python. Gained hands-on experience in statistical data processing and predictive modeling.<br/><br/>
+                <b>Internship : </b>As a role of Data Analyst<br/>
+                <b>Working & Objective :</b> Developed new ecosystem using R, Excel, and Python. Work on multiple projects per week given by Institute's real dataset. Gained hands-on experience in statistical data processing and predictive modeling. Extract insights using pandas and pivot table<br/><br/>
                 <b>Tech Used :</b> Python | R | Pandas | Numpy | Matplotlib | Excel | Pivot
               </p>
             </div>

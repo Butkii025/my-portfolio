@@ -119,7 +119,7 @@ export default function Credentials(): React.JSX.Element {
       items: [
         { label: 'Master Data Management (MDM), TCS', href: '/credentials/MDM-TCS.PDF' },
         { label: 'Workshop of Machine Learning at IIT Kanpur', href: '/credentials/iit-kanpur-workshop.png' },
-        { label: 'Conference at KMCLU', href: '/credentials/KMCLU.png' },
+        { label: 'Python programming, Kaggle', href: '/credentials/py-programming.png' },
       ],
     },
     {

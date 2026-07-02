@@ -229,10 +229,10 @@ export default function VijayPortfolio() {
         
         <Hero onProfileClick={openProfile} />
         <About onProfileClick={openProfile} />
+        <AcademicBlock />
         <Skills />
         <Projects />
         <Experience />
-        <AcademicBlock />
         <Credentials />
         <Research />
         <CreativeCorner />
