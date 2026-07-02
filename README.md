@@ -158,7 +158,7 @@ I'm always interested in:
 
 This portfolio is a **snapshot of my current skillset** and will evolve as I learn and build more. Projects are organized by category and linked throughout the site.
 
-For detailed project documentation, implementation notes, and code walkthroughs, visit the individual GitHub repositories linked in each project card.
+For detailed project documentation, and code walkthroughs, visit the individual GitHub repositories linked in each project card.
 
 ---
 
