@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { FaStar } from 'react-icons/fa';
 import {
   semesterMarks,
-  schoolDetails,
+  SchoolDetail,
   csSubjects,
   collegeInfo,
   schoolInfo,
