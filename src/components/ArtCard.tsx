@@ -38,8 +38,7 @@ interface ArtCardProps {
 }
 
 export default function ArtCard({ image, index, onClick }: ArtCardProps) {
-  const { ref, move, leave } = useTilt(12);
-  
+  const { ref, move, leave } = useTilt(12); 
   return (
     <div 
       ref={ref} 

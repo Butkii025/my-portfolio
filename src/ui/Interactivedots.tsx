@@ -89,7 +89,7 @@ const InteractiveDots = ({
       const mi = getMouseInfluence(dot.originalX, dot.originalY);
       const ri = getRippleInfluence(dot.originalX, dot.originalY, now);
       const total = mi + ri;
-      const size    = 0.5 + total * 1.5 + Math.sin(timeRef.current + dot.phase) * 0.3;
+      const size    = 0.8 + total * 1.5 + Math.sin(timeRef.current + dot.phase) * 0.3;
       const opacity = Math.max(0.2, 0.35 + total * 0.5 + Math.abs(Math.sin(timeRef.current * 0.5 + dot.phase)) * 0.1);
       ctx.beginPath();
       ctx.arc(dot.originalX, dot.originalY, size, 0, Math.PI * 2);
@@ -97,7 +97,6 @@ const InteractiveDots = ({
       ctx.fill();
     });
 
-    // clean old ripples
     ripples.current = ripples.current.filter(r => now - r.time < 3000);
 
     animationFrameId.current = requestAnimationFrame(animate);
@@ -106,12 +105,11 @@ const InteractiveDots = ({
   useEffect(() => {
     resizeCanvas();
 
-    // ── attach to WINDOW so pointer-events-none wrapper doesn't block ──
     const onMouseMove = (e: MouseEvent) => {
       mouseRef.current = { x: e.clientX, y: e.clientY };
     };
     const onMouseDown = (e: MouseEvent) => {
-      ripples.current.push({ x: e.clientX, y: e.clientY, time: Date.now(), intensity: 2 });
+      ripples.current.push({ x: e.clientX, y: e.clientY, time: Date.now(), intensity: 4 });
     };
     const onResize = () => resizeCanvas();
 

@@ -77,7 +77,7 @@ export default function Skills(): React.JSX.Element {
 
         <div className="mb-16">
           <p className="uppercase tracking-[0.2em] mb-4 text-zinc-500 dark:text-zinc-500 text-xs font-semibold">Skills</p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white mb-3">
+          <h2 className="flex items-center gap-3 text-5xl md:text-6xl font-bold dark:text-white text-black mb-4">
             Technical Expertise
           </h2>
           <p className="text-base text-zinc-600 dark:text-zinc-400 max-w-2xl">
@@ -86,7 +86,6 @@ export default function Skills(): React.JSX.Element {
         </div>
 
         <div className="hidden md:grid grid-cols-3 gap-8">
-          {/* Left Sidebar - Compact Navigation */}
           <div className="space-y-2 h-fit sticky top-24">
             {SKILL_CATEGORIES.map((cat) => (
               <CategoryNavItem
@@ -98,7 +97,6 @@ export default function Skills(): React.JSX.Element {
             ))}
           </div>
 
-          {/* Right Container - Sticky Content */}
           <div
             ref={containerRef}
             onMouseMove={handleMouseMove}
@@ -178,7 +176,6 @@ export default function Skills(): React.JSX.Element {
           </div>
         </div>
 
-        {/* Mobile Layout */}
         <div className="md:hidden">
           <div className="flex overflow-x-auto gap-2 pb-4 mb-6 -mx-6 px-6 snap-x scroll-smooth">
             {SKILL_CATEGORIES.map((cat) => (

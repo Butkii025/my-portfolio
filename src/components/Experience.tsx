@@ -1,24 +1,27 @@
 'use client';
 
-import React, { useRef } from 'react';
-import GradientText from "../ui/GradientText";
+import React, { useRef, useState } from 'react';
+import { motion } from 'framer-motion';
+import { FiArrowRight, FiGithub, FiExternalLink, FiChevronDown } from 'react-icons/fi';
 
 function useTilt(strength = 8) {
   const ref = useRef<HTMLDivElement>(null);
   const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const el = ref.current; if (!el) return;
+    const el = ref.current;
+    if (!el) return;
     const r = el.getBoundingClientRect();
     const x = e.clientX - r.left - r.width / 2;
     const y = e.clientY - r.top - r.height / 2;
-    el.style.transform = `perspective(600px) rotateX(${-(y/r.height)*strength}deg) rotateY(${(x/r.width)*strength}deg) scale3d(1.02,1.02,1.02)`;
+    el.style.transform = `perspective(600px) rotateX(${-(y / r.height) * strength}deg) rotateY(${(x / r.width) * strength}deg) scale3d(1.02,1.02,1.02)`;
     const g = el.querySelector('.card-glow') as HTMLElement;
     if (g) {
-      g.style.background = `radial-gradient(circle at ${50+(x/r.width)*60}% ${50+(y/r.height)*60}%, rgba(96,165,250,0.15), transparent 70%)`;
+      g.style.background = `radial-gradient(circle at ${50 + (x / r.width) * 60}% ${50 + (y / r.height) * 60}%, rgba(96,165,250,0.15), transparent 70%)`;
       g.style.opacity = '1';
     }
   };
   const onMouseLeave = () => {
-    const el = ref.current; if (!el) return;
+    const el = ref.current;
+    if (!el) return;
     el.style.transform = 'perspective(600px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
     const g = el.querySelector('.card-glow') as HTMLElement;
     if (g) g.style.opacity = '0';
@@ -26,141 +29,248 @@ function useTilt(strength = 8) {
   return { ref, onMouseMove, onMouseLeave };
 }
 
-// Added responsive width configuration, disabled shrinking, and added snap alignment for a smooth desktop/mobile scrolling feel
-const cardBase = `relative group p-6 rounded-2xl backdrop-blur-sm transition-shadow duration-500
-  hover:shadow-2xl hover:shadow-blue-500/10 flex flex-col justify-between gap-6
-  dark:border dark:border-white/10 dark:bg-gradient-to-br dark:from-white/5 dark:to-white/0 dark:hover:border-blue-400/50
-  border border-zinc-200 bg-gradient-to-br from-zinc-50 to-white hover:border-blue-400/50
-  w-[290px] sm:w-[380px] md:w-[450px] shrink-0 snap-start`;
+interface ExperienceItem {
+  title: string;
+  role: string;
+  date: string;
+  description: string;
+  impact: string;
+  tech: string[];
+  links: { label: string; href: string; icon: 'github' | 'link' | 'download' }[];
+}
 
-function ExperienceCard({ children }: { children: React.ReactNode }) {
-  const tilt = useTilt();
+const experiences: ExperienceItem[] = [
+  {
+    title: 'Full-Stack AI Developer',
+    role: '@Google × Kaggle Hackathon - Git_Online',
+    date: 'July 2026',
+    description: 'LearnForge AI — Full-Stack AI Education Platform & Secure Code Sandbox. Developed a next-gen learning application for the joint Google × Kaggle 2026 Hackathon.',
+    impact: 'Implemented Model Context Protocol (MCP) backend with regex-driven token sanitization and 4 AI Agent-automated validation schema tests.',
+    tech: ['Python', 'MCP Server', 'React', 'Vite', 'Tailwind CSS', 'Docker', 'Subprocess'],
+    links: [
+      { label: 'GitHub Repository', href: 'https://github.com/Butkii025/LearnForge-AI', icon: 'github' },
+      { label: 'Kaggle Writeup', href: 'https://www.kaggle.com/competitions/vibecoding-agents-capstone-project', icon: 'link' },
+    ],
+  },
+  {
+    title: 'Data Analyst Intern',
+    role: '@BeeSkilled - Remote ',
+    date: 'June 2026',
+    description: 'Data-driven analysis for enterprise sales forecasting. Implemented EDA, trained Scikit-Learn models, and deployed interactive Power BI dashboards.',
+    impact: 'Analyzed 4-level datasets on $118M+ global sales. Identified -3.1% profit drain in Enterprise segment and recommended scaling high-margin (73.1%) Channel Partners.',
+    tech: ['Python', 'Pandas', 'Scikit-Learn', 'Matplotlib', 'Seaborn', 'Power BI', 'SQL'],
+    links: [
+      { label: 'Data Analysis Repository', href: 'https://github.com/Butkii025/Financial-Predictive-Modelling---intern', icon: 'github' },
+    ],
+  },
+  {
+    title: 'Data Analyst Intern',
+    role: '@Science Tech Institute, UP - Hybrid',
+    date: 'July 2025',
+    description: 'Statistical data processing and predictive modeling on real-world datasets. Developed ecosystem using R, Excel, and Python for weekly projects.',
+    impact: 'Gained hands-on experience extracting insights from complex datasets, implementing pivot tables, and creating actionable recommendations.',
+    tech: ['Python', 'R', 'Pandas', 'NumPy', 'Matplotlib', 'Excel', 'Statistics'],
+    links: [
+      { label: 'Internship Certificate', href: '/credentials/pv-saifai-intership.PDF', icon: 'download' },
+    ],
+  },
+];
+
+function TechBadge({ tech, index }: { tech: string; index: number }) {
   return (
-    <div ref={tilt.ref} onMouseMove={tilt.onMouseMove} onMouseLeave={tilt.onMouseLeave}
-      style={{ transition: 'transform 0.15s ease-out', transformStyle: 'preserve-3d' }}
-      className={cardBase}>
-      <div className="card-glow absolute inset-0 pointer-events-none rounded-2xl transition-opacity duration-300" style={{ opacity: 0 }} />
-      {children}
-    </div>
+    <motion.span
+      initial={{ opacity: 0, scale: 0.8 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{ delay: index * 0.05 }}
+      className="px-3 py-1 rounded-full text-xs font-medium
+        dark:bg-white/10 dark:border-white/20 dark:text-zinc-300
+        bg-black/10 border border-white/30 text-zinc-700
+        backdrop-blur-sm whitespace-nowrap"
+    >
+      {tech}
+    </motion.span>
   );
 }
 
-function CardLink({ href, label }: { href: string; label: string }) {
+function ExperienceCard({ item, index }: { item: ExperienceItem; index: number }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const tilt = useTilt(6);
+
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer"
-      className="group/link flex items-start gap-2 transition-all duration-300">
-      <span className="mt-0.5 dark:text-zinc-600 text-zinc-400 text-sm">→</span>
-      <span className="text-sm transition-all duration-300 origin-left
-        dark:text-zinc-500 dark:group-hover/link:text-blue-400
-        text-zinc-500 group-hover/link:text-blue-400
-        group-hover/link:scale-[1.02] inline-block group-hover/link:underline underline-offset-2">
-        {label}
-      </span>
-    </a>
+    <motion.div
+      ref={tilt.ref}
+      onMouseMove={tilt.onMouseMove}
+      onMouseLeave={tilt.onMouseLeave}
+      style={{ transition: 'transform 0.15s ease-out', transformStyle: 'preserve-3d' }}
+      initial={{ opacity: 0, x: 50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, margin: '-50px' }}
+      transition={{ delay: index * 0.1, duration: 0.5 }}
+      className="relative group w-[350px] md:w-[450px] flex-shrink-0"
+    >
+      <motion.div
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="relative p-8 h-full rounded-3xl backdrop-blur-xl border transition-all duration-300 cursor-pointer
+          dark:border-white/10 border-zinc-200 dark:bg-gradient-to-br dark:from-white/5 dark:to-white/0
+          border-white/40 bg-gradient-to-br from-white/60 to-zinc-50/40
+          hover:shadow-2xl hover:dark:shadow-blue-500/20 hover:shadow-blue-500/10
+          dark:hover:border-blue-400/50 hover:border-blue-400/50
+          overflow-hidden flex flex-col justify-between"
+      >
+        <div className="card-glow absolute inset-0 pointer-events-none rounded-3xl transition-opacity duration-300" style={{ opacity: 0 }} />
+
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl pointer-events-none"
+        />
+
+        <div className="relative z-10 flex flex-col h-full justify-between">
+          <div>
+            <div className="flex items-start justify-between mb-4">
+              <div>
+                <p className="text-xs uppercase tracking-widest dark:text-zinc-600 text-zinc-500 font-semibold mb-2">
+                  {item.date}
+                </p>
+                <h3 className="text-xl md:text-2xl font-bold dark:text-white text-black mb-1 group-hover:dark:text-blue-300 group-hover:text-blue-600 transition-colors">
+                  {item.title}
+                </h3>
+                <p className="text-sm dark:text-zinc-400 text-zinc-600 font-medium">
+                  {item.role}
+                </p>
+              </div>
+              <motion.button
+                animate={{ rotate: isExpanded ? 180 : 0 }}
+                className="p-2 rounded-lg dark:bg-white/10 dark:hover:bg-white/20 bg-black/10 hover:bg-black/20
+                  dark:text-zinc-400 text-zinc-600 transition-all flex-shrink-0 ml-2"
+              >
+                <FiChevronDown className="w-5 h-5" />
+              </motion.button>
+            </div>
+
+            <p className="text-sm dark:text-zinc-300 text-zinc-700 mb-4 leading-relaxed">
+              {item.description}
+            </p>
+
+            <motion.div
+              initial={false}
+              animate={{ height: isExpanded ? 'auto' : 0, opacity: isExpanded ? 1 : 0 }}
+              transition={{ duration: 0.3 }}
+              className="overflow-hidden"
+            >
+              <div className="space-y-4 mb-4 pt-4 border-t dark:border-white/10 border-white/30">
+                <div>
+                  <p className="text-xs uppercase tracking-widest dark:text-zinc-600 text-zinc-500 font-semibold mb-2">
+                    🎯 Key Impact
+                  </p>
+                  <p className="text-sm dark:text-zinc-300 text-zinc-700">
+                    {item.impact}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          <div>
+            <div className="mb-6">
+              <p className="text-xs uppercase tracking-widest dark:text-zinc-600 text-zinc-500 font-semibold mb-3">
+                Technologies
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {item.tech.map((tech, i) => (
+                  <TechBadge key={i} tech={tech} index={i} />
+                ))}
+              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-3">
+              {item.links.map((link, i) => (
+                <motion.a
+                  key={i}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ x: 4 }}
+                  className="group/link inline-flex items-center gap-2 px-4 py-2 rounded-lg
+                    dark:bg-white/10 dark:hover:bg-blue-500/20 dark:border-white/20 dark:text-zinc-300
+                    bg-black/10 hover:bg-blue-500/20 border border-white/30 text-zinc-700
+                    transition-all duration-300"
+                >
+                  {link.icon === 'github' && <FiGithub className="w-4 h-4" />}
+                  {link.icon === 'link' && <FiExternalLink className="w-4 h-4" />}
+                  {link.icon === 'download' && <FiArrowRight className="w-4 h-4" />}
+                  <span className="text-sm font-medium">{link.label}</span>
+                </motion.a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
   );
 }
 
 export default function Experience(): React.JSX.Element {
   return (
-    <section id="experience" className="py-28 px-6 md:px-12 lg:px-24 dark:bg-transparent">
+    <section id="experience" className="py-28 px-6 md:px-12 lg:px-24 dark:bg-transparent overflow-hidden">
       <div className="max-w-6xl mx-auto">
-
-        <div className="mb-8">
-          <p className="uppercase tracking-[0.2em] mb-4 text-zinc-500 dark:text-zinc-500 text-xs font-semibold">Experience</p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight dark:text-white text-black">
-            Collaborations & Impact
+        
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-16"
+        >
+          <p className="uppercase tracking-[0.2em] mb-4 text-zinc-500 dark:text-zinc-500 text-xs font-semibold">
+            Experience
+          </p>
+          <h2 className="flex items-center gap-3 text-5xl md:text-6xl font-bold dark:text-white text-black mb-4">
+            Professional Journey
           </h2>
+          <p className="text-base dark:text-zinc-400 text-zinc-600 max-w-2xl">
+            A chronological look at my roles and contributions. Scroll horizontally or swipe to discover more.
+          </p>
+        </motion.div>
+
+        <div 
+          className="flex gap-6 overflow-x-auto pb-8 pt-4 snap-x snap-mandatory 
+            scrollbar-none [-ms-overflow-style:none] [scrollbar-width:none]"
+          style={{ WebkitOverflowScrolling: 'touch' }}
+        >
+          {experiences.map((experience, index) => (
+            <div key={index} className="snap-center">
+              <ExperienceCard item={experience} index={index} />
+            </div>
+          ))}
         </div>
 
-        {/* Changed grid layout to a flex horizontal scroll container with custom padding rules to preserve hover glow clipping */}
-        <div className="flex gap-6 overflow-x-auto pb-8 pt-2 px-2 -mx-2 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-zinc-200 dark:scrollbar-thumb-zinc-800">
-
-          <ExperienceCard>
-            <div className="relative z-10">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-xl font-bold transition duration-300
-                  dark:text-white dark:group-hover:text-blue-400
-                  text-zinc-800 group-hover:text-blue-400">
-                  Google × Kaggle Hackathon
-                </h3>
-                <span className="text-xs px-2 py-1 rounded-full shrink-0
-                  dark:bg-zinc-900 dark:border dark:border-zinc-700 dark:text-zinc-400
-                  bg-zinc-100 border border-zinc-200 text-zinc-500">
-                  JUNE-2026
-                </span>
-              </div>
-              <p className="leading-relaxed text-sm dark:text-zinc-400 text-zinc-500">
-                <b>Idea : <i>LearnForge AI</i></b> — Full-Stack AI Education Platform & Secure Code Sandbox.<br/>
-                <b>Working & Objective :</b> Developed a next-gen learning application for the joint Google × Kaggle 2026 Hackathon. Implemented a custom Model Context Protocol (MCP) backend featuring strict regex-driven token sanitization, 4 AI Agent-automated validation schema tests, and isolated subprocess execution.<br/><br/>
-                <b>Tech Used :</b> Python | MCP Server | React | Vite | Tailwind CSS | Docker | Subprocess
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.6 }}
+          className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
+        >
+          {[
+            { label: 'Experiences', value: '3+' },
+            { label: 'Tech Stack', value: '20+' },
+            { label: 'Projects', value: '10+' },
+            { label: 'Data Rows', value: '60k+' },
+          ].map((stat, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 + i * 0.1 }}
+              className="p-4 rounded-xl text-center backdrop-blur-sm border
+                dark:bg-white/5 dark:border-white/10
+                bg-white/40 border-white/30"
+            >
+              <p className="text-2xl font-bold dark:text-white text-black">{stat.value}</p>
+              <p className="text-xs uppercase tracking-widest dark:text-zinc-500 text-zinc-600 mt-2">
+                {stat.label}
               </p>
-            </div>
-            <div className="relative z-10 flex flex-col gap-2">
-              <p className="text-xs uppercase tracking-widest dark:text-zinc-600 text-zinc-400">Source Code</p>
-              <CardLink href="https://github.com/Butkii025/LearnForge-AI" label="GitHub Repository" />
-            </div>
-            <div className="relative z-10 flex flex-col gap-2">
-              <p className="text-xs uppercase tracking-widest dark:text-zinc-600 text-zinc-400">Overview</p>
-              <CardLink href="https://www.kaggle.com/competitions/vibecoding-agents-capstone-project/writeups/learnforge-ai-a-multi-agent-study-system-for-engi" label="Kaggle Writeup" />
-            </div>
-          </ExperienceCard>
+            </motion.div>
+          ))}
+        </motion.div>
 
-
-          <ExperienceCard>
-            <div className="relative z-10">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-xl font-bold transition duration-300
-                  dark:text-white dark:group-hover:text-blue-400
-                  text-zinc-800 group-hover:text-blue-400">
-                  BeeSkilled
-                </h3>
-                <span className="text-xs px-2 py-1 rounded-full shrink-0
-                  dark:bg-zinc-900 dark:border dark:border-zinc-700 dark:text-zinc-400
-                  bg-zinc-100 border border-zinc-200 text-zinc-500">
-                  JUNE-2026
-                </span>
-              </div>
-              <p className="leading-relaxed text-sm dark:text-zinc-400 text-zinc-500">
-               <b>Internship : </b> As a ML/AI & Data Analyst<br/>
-
-                <b>Working & Objective :</b> Implement EDA, trained a Scikit-Learn Linear Regression model, and deployed an interactive Power BI dashboard. Work on 4-level datasets & mildstone project using a real-world corporate dataset to model and forecast $118M+ in global sales. Caught a -3.1% profit drain in Enterprise and recommended scaling high-margin (73.1%) Channel Partners.<br/><br/>
-
-                <b>Tech Used :</b> Python | Pandas | Scikit-Learn | Matplotlib | Seaborn | Power BI Desktop.
-              </p>
-            </div>
-            <div className="relative z-10 flex flex-col gap-2">
-              <p className="text-xs uppercase tracking-widest dark:text-zinc-600 text-zinc-400">GitHub</p>
-              <CardLink href="https://github.com/Butkii025/Financial-Predictive-Modelling---intern" label="Data-Analysis & Predictive-Modelling" />
-            </div>
-          </ExperienceCard>
-
-          <ExperienceCard>
-            <div className="relative z-10">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-xl font-bold transition duration-300
-                  dark:text-white dark:group-hover:text-blue-400
-                  text-zinc-800 group-hover:text-blue-400">
-                  Science Tech Institute, UP
-                </h3>
-                <span className="text-xs px-2 py-1 rounded-full shrink-0
-                  dark:bg-zinc-900 dark:border dark:border-zinc-700 dark:text-zinc-400
-                  bg-zinc-100 border border-zinc-200 text-zinc-500">
-                  JULY-2025
-                </span>
-              </div>
-              <p className="leading-relaxed text-sm dark:text-zinc-400 text-zinc-500">
-                <b>Internship : </b>As a role of Data Analyst<br/>
-                <b>Working & Objective :</b> Developed new ecosystem using R, Excel, and Python. Work on multiple projects per week given by Institute's real dataset. Gained hands-on experience in statistical data processing and predictive modeling. Extract insights using pandas and pivot table<br/><br/>
-                <b>Tech Used :</b> Python | R | Pandas | Numpy | Matplotlib | Excel | Pivot
-              </p>
-            </div>
-            <div className="relative z-10 flex flex-col gap-2">
-              <p className="text-xs uppercase tracking-widest dark:text-zinc-600 text-zinc-400">Certificate</p>
-              <CardLink href="/credentials/pv-saifai-intership.PDF" label="Data-Analysis Internship" />
-            </div>
-          </ExperienceCard>
-                  
-        </div>
       </div>
     </section>
   );

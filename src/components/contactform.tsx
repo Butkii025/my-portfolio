@@ -81,7 +81,7 @@ export default function ContactForm({ onSuccess }: Props) {
           <p className="text-sm dark:text-zinc-400 text-zinc-500">I'll get back to you shortly</p>
         </div>
         <p className="font-['Alex_Brush',_cursive] text-xl dark:text-zinc-300 text-zinc-500 italic">
-          " — have a nice day "
+          " — have a nice day"
         </p>
         <button onClick={() => setStatus('idle')}
           className="px-5 py-2 rounded-xl text-sm transition duration-200 cursor-pointer
@@ -109,7 +109,6 @@ export default function ContactForm({ onSuccess }: Props) {
 
       <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5 relative z-10">
 
-        {/* Name + Email */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {([
             { id: 'name',  type: 'text',  label: 'Name',  placeholder: 'Your name',       Icon: UserIcon },
@@ -134,7 +133,6 @@ export default function ContactForm({ onSuccess }: Props) {
           ))}
         </div>
 
-        {/* Message */}
         <div>
           <label className="block text-xs font-semibold uppercase tracking-wider mb-2
             dark:text-zinc-300 text-zinc-500">Message</label>
@@ -159,13 +157,12 @@ export default function ContactForm({ onSuccess }: Props) {
           </p>
         </div>
 
-        {/* Submit */}
         <button type="submit" disabled={status === 'loading'}
           className="w-full py-3 rounded-xl text-sm font-medium transition-all duration-300 cursor-pointer relative overflow-hidden group
             dark:bg-zinc-700 dark:border dark:border-zinc-500 dark:text-white dark:hover:bg-zinc-600 dark:hover:border-blue-400/60 dark:hover:shadow-[0_0_16px_rgba(96,165,250,0.2)] dark:disabled:opacity-50
             bg-zinc-100 border border-zinc-300 text-zinc-700 hover:bg-zinc-200 hover:border-blue-400/60 hover:shadow-[0_0_12px_rgba(96,165,250,0.15)] disabled:opacity-50
             flex items-center justify-center gap-2">
-          {/* Shimmer sweep */}
+
           <span className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-400/15 to-transparent
             -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none" />
           {status === 'loading' && <SpinnerIcon />}

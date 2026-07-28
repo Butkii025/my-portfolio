@@ -73,10 +73,10 @@ function StatCard({ label, value, icon }: { label: string; value: string | numbe
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       className="relative group p-6 rounded-2xl backdrop-blur-sm transition-shadow duration-500
-  hover:shadow-2xl hover:shadow-blue-500/10 flex flex-col justify-between gap-6
-  dark:border dark:border-white/10 dark:bg-gradient-to-br dark:from-white/5 dark:to-white/0 dark:hover:border-blue-400/50
-  border border-zinc-200 bg-gradient-to-br from-zinc-50 to-white hover:border-blue-400/50"
-    >
+        hover:shadow-2xl hover:shadow-blue-500/10 flex flex-col justify-between gap-6
+        dark:border dark:border-white/10 dark:bg-gradient-to-br dark:from-white/5 dark:to-white/0 dark:hover:border-blue-400/50
+        border border-zinc-200 bg-gradient-to-br from-zinc-50 to-white hover:border-blue-400/50"
+>
       <div className="card-glow absolute inset-0 pointer-events-none rounded-2xl transition-opacity duration-300" style={{ opacity: 0 }} />
       <div className="relative z-10">
         <span className="text-2xl block mb-2">{icon}</span>
@@ -91,10 +91,9 @@ export default function Academics(): React.JSX.Element {
   const currentCGPA = (semesterMarks.reduce((a, b) => a + b.mark, 0) / semesterMarks.length).toFixed(2);
 
   return (
-    <section id="academics" className="py-28 px-6 md:px-12 lg:px-24 dark:bg-transparent">
-      <div className="max-w-6xl mx-auto">
+    <section id="academics" className="py-28 px-6 md:px-12 lg:px-24 dark:bg-transparent text-zinc-900 dark:text-zinc-100">
+      <div className="max-w-7xl mx-auto">
 
-        {/* HEADER */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -102,18 +101,17 @@ export default function Academics(): React.JSX.Element {
           className="mb-16"
         >
           <p className="uppercase tracking-[0.2em] mb-4 text-zinc-500 dark:text-zinc-500 text-xs font-semibold">academics</p>
-          <h2 className="flex items-center gap-3 text-4xl md:text-5xl font-bold dark:text-white text-black mb-4">
+          <h2 className="flex items-center gap-3 text-5xl md:text-6xl font-bold dark:text-white text-black mb-4">
             Educational Journey
             <motion.span animate={{ rotate: [0, 20, 0] }} transition={{ repeat: Infinity, duration: 2 }}>
               <FaStar size={32} className="text-yellow-400" />
             </motion.span>
           </h2>
           <p className="text-base dark:text-zinc-400 text-zinc-600 max-w-2xl">
-            Pursuing B.Tech in Computer Science & Engineering with focus on full-stack development, data structures, algorithms, and software architecture. Building practical knowledge through hands-on projects and problem-solving.
+            Pursuing B.Tech in Computer Science & Engineering with focus on full-stack development, machine learing, agorithms, and software design. Building practical knowledge through hands-on projects and problem-solving.
           </p>
         </motion.div>
 
-        {/* COLLEGE SECTION */}
         <div className="mb-20">
           <motion.h3
             initial={{ opacity: 0, x: -20 }}
@@ -136,7 +134,6 @@ export default function Academics(): React.JSX.Element {
             {collegeInfo.university}
           </motion.p>
 
-          {/* SEMESTER PROGRESS - FULL WIDTH */}
           <motion.div
             className="mb-12"
             initial={{ opacity: 0, y: 20 }}
@@ -187,17 +184,15 @@ export default function Academics(): React.JSX.Element {
             </div>
           </motion.div>
 
-          {/* STATS CARDS */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 ">
             <StatCard label="Current CGPA" value={currentCGPA} icon="🎯" />
-            <StatCard label="Semesters Completed" value="5" icon="📅" />
+            <StatCard label="Semesters Completed" value="6" icon="📅" />
             <StatCard label="Highest GPA" value="9.64" icon="🏆" />
           </div>
 
           
         </div>
 
-        {/* SCHOOL SECTION */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -215,39 +210,17 @@ export default function Academics(): React.JSX.Element {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-sm italic dark:text-zinc-400 text-zinc-600 mb-8"
+            className="text-sm italic dark:text-zinc-400 text-zinc-600 mt-8"
           >
             {schoolInfo.school}
-          </motion.p>
 
-          {/* SCHOOL STATS */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {schoolDetails.map((detail, i) => {
-              const tilt = useTilt(6);
-              return (
-                <motion.div
-                  key={i}
-                  ref={tilt.ref}
-                  onMouseMove={tilt.onMouseMove}
-                  onMouseLeave={tilt.onMouseLeave}
-                  style={{ transition: 'transform 0.15s ease-out', transformStyle: 'preserve-3d' }}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.15, duration: 0.5 }}
-                  className="relative p-6 rounded-2xl backdrop-blur-xl border overflow-hidden
-                    dark:bg-gradient-to-br dark:from-white/5 dark:to-white/0 dark:border-white/10
-                    bg-gradient-to-br from-white/40 to-zinc-50/40 border-white/20"
-                >
-                  <div className="card-glow absolute inset-0 pointer-events-none rounded-2xl transition-opacity duration-300" style={{ opacity: 0 }} />
-                  <div className="relative z-10">
-                    <span className="text-4xl mb-3 block">{detail.icon}</span>
-                    <p className="text-xs uppercase tracking-widest dark:text-zinc-500 text-zinc-600 mb-2 font-semibold">{detail.label}</p>
-                    <p className="text-xl font-bold dark:text-white text-black">{detail.value}</p>
-                  </div>
-                </motion.div>
-              );
-            })}
+          </motion.p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 ">
+            <StatCard label="Stream" value="Science PCM" icon="🧪" />
+            <StatCard label ='Best Subject' value= 'Maths (95%)' icon = '📐'  />
+            <StatCard label="Score" value="A+" icon="⭐" />
           </div>
+
         </motion.div>
 
       </div>

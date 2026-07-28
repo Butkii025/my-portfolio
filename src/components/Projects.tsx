@@ -16,13 +16,16 @@ export default function Projects(): React.JSX.Element {
   };
 
   return (
-    <section id="projects" className="py-28 px-6 overflow-hidden dark:bg-transparent">
-      <div className="max-w-6xl mx-auto">
+    <section id="projects" className="py-28 px-6 md:px-12 lg:px-24 dark:bg-transparent text-zinc-900 dark:text-zinc-100">
+      <div className="max-w-7xl mx-auto">
         <div className="mb-8">
           <p className="uppercase tracking-[0.2em] mb-4 text-zinc-500 dark:text-zinc-500 text-xs font-semibold">Projects</p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight dark:text-white text-black">
+          <h2 className="flex items-center gap-3 text-5xl md:text-6xl font-bold dark:text-white text-black mb-4">
             Featured Work & Experiences
           </h2>
+          <p className="text-base dark:text-zinc-400 text-zinc-600 max-w-2xl mb-20">
+            Projects where data, machine learning, and design come together.
+          </p>
         </div>
 
         <div className="
@@ -49,7 +52,6 @@ export default function Projects(): React.JSX.Element {
           ))}
         </div>
 
-        {/* Desktop Interactive Expanding Accordion Layout */}
         <div className="
           hidden md:flex gap-4 pb-4
           overflow-x-auto scroll-smooth

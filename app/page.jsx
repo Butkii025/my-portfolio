@@ -38,8 +38,8 @@ export default function VijayPortfolio() {
     { label: <FaHome size={16} />, href: '#home' },
     { label: 'About',          href: '#about'          },
     { label: 'Skills',         href: '#skills'         },
-    { label: 'Projects',       href: '#projects'       },
     { label: 'Experience',     href: '#experience'     },
+    { label: 'Projects',       href: '#projects'       },
     { label: 'Research',       href: '#research'       },
     { label: 'Creative_Corner',href: '#creative_corner'},
     { label: 'Contact',        href: '#contact'        },
@@ -48,11 +48,11 @@ export default function VijayPortfolio() {
   const allLinks = [
     { label: 'Home',           href: '#home'           },
     { label: 'About',          href: '#about'          },
-    { label: 'Skills',         href: '#skills'         },
-    { label: 'Projects',       href: '#projects'       },
-    { label: 'Experience',     href: '#experience'     },
     { label: 'Academics',     href: '#academics'       },
+    { label: 'Skills',         href: '#skills'         },
+    { label: 'Experience',     href: '#experience'     },
     { label: 'Credentials',    href: '#credentials'    },
+    { label: 'Projects',       href: '#projects'       },
     { label: 'Research',       href: '#research'       },
     { label: 'Creative_Corner',href: '#creative_corner'},
     { label: 'Contact',        href: '#contact'        },
@@ -231,9 +231,9 @@ export default function VijayPortfolio() {
         <About onProfileClick={openProfile} />
         <AcademicBlock />
         <Skills />
-        <Projects />
         <Experience />
         <Credentials />
+        <Projects />
         <Research />
         <CreativeCorner />
         <Contact />

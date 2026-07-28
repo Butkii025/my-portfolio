@@ -5,7 +5,6 @@ import { Project } from '@/src/Data/projectsData';
 
 function useTilt(strength = 10) {
   const ref = useRef<HTMLDivElement>(null);
-  
   const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const el = ref.current;
     if (!el) return;

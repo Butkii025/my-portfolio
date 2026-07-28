@@ -13,7 +13,7 @@ export default function Contact(): React.JSX.Element {
       <div className="max-w-6xl mx-auto">
         <div className="mb-6">
           <p className="uppercase tracking-[0.2em] mb-4 text-zinc-500 dark:text-zinc-500 text-xs font-semibold">Contact</p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight dark:text-white text-black">
+          <h2 className="flex items-center gap-3 text-5xl md:text-6xl font-bold dark:text-white text-black mb-4">
             Let's Build Together
           </h2>
         </div>
@@ -90,7 +90,6 @@ function ChaiCup({ submitted }: { submitted: boolean }) {
         .do-steam .steam-wip { opacity: 1; }
       `}</style>
 
-      {/* Orbit ring */}
       {submitted && (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
           <div style={{
@@ -111,14 +110,12 @@ function ChaiCup({ submitted }: { submitted: boolean }) {
           filter: submitted ? 'drop-shadow(0 0 14px rgba(96,165,250,0.6))' : undefined,
         }}
       >
-        {/* Mandala rings */}
         {[68, 55, 42].map((r, i) => (
           <circle key={i} cx="100" cy="120" r={r} fill="none"
             stroke={`rgba(96,165,250,${submitted ? 0.3 - i*0.07 : 0.1 - i*0.02})`}
             strokeWidth="1" style={{ transition: 'stroke 0.5s' }} />
         ))}
 
-        {/* Spokes */}
         {Array.from({ length: 12 }).map((_, i) => {
           const a = (i * 30) * Math.PI / 180;
           return <line key={i}
@@ -128,7 +125,6 @@ function ChaiCup({ submitted }: { submitted: boolean }) {
             style={{ transition: 'stroke 0.5s' }} />;
         })}
 
-        {/* Dots */}
         {Array.from({ length: 8 }).map((_, i) => {
           const a = (i * 45) * Math.PI / 180;
           return <circle key={i} cx={100 + Math.cos(a)*52} cy={120 + Math.sin(a)*52}
@@ -144,7 +140,6 @@ function ChaiCup({ submitted }: { submitted: boolean }) {
           fill="rgba(96,165,250,0.05)"
           stroke={`rgba(96,165,250,${submitted ? 0.35 : 0.12})`} strokeWidth="1" />
 
-        {/* Cup body */}
         <path d="M60 105 Q58 148 100 152 Q142 148 140 105 Z"
           fill={`rgba(96,165,250,${submitted ? 0.18 : 0.08})`}
           stroke={`rgba(96,165,250,${submitted ? 0.7 : 0.35})`}
@@ -163,7 +158,6 @@ function ChaiCup({ submitted }: { submitted: boolean }) {
           fill="none" stroke={`rgba(96,165,250,${submitted ? 0.65 : 0.35})`}
           strokeWidth="2" strokeLinecap="round" style={{ transition: 'stroke 0.5s' }} />
 
-        {/* Cup mandala */}
         <circle cx="100" cy="128" r="14" fill="none"
           stroke={`rgba(96,165,250,${submitted ? 0.45 : 0.2})`} strokeWidth="1" />
         {Array.from({ length: 6 }).map((_, i) => {

@@ -16,11 +16,11 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     title: 'AI/ML Engineering',
     icon: '🤖',
     description: 'Building intelligent systems with deep learning and predictive models.',
-    skills: ['PyTorch', 'TensorFlow', 'Scikit-Learn', 'XGBoost', 'Deep Learning', 'Predictive Modeling', 'Neural Networks', 'Ensemble Methods'],
+    skills: ['PyTorch', 'TensorFlow', 'Scikit-Learn', 'XGBoost', 'Deep Learning', 'Predictive Modeling', 'Neural Networks', 'Ensemble Methods','LightGBM','SciPy','KNN'],
     metrics: [
-      { label: 'ML Projects', value: '2' }, 
+      { label: 'ML Projects', value: '5' }, 
       { label: 'Prediction Accuracy', value: '89.54%' }, 
-      { label: 'Models Deployed', value: '2' }, 
+      { label: 'Models Deployed', value: '3' }, 
       { label: 'Frameworks Mastered', value: '4' }, 
     ],
   },
@@ -30,12 +30,12 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     title: 'Data Analytics',
     icon: '📊',
     description: 'Uncovering insights from data with visualization and statistical analysis.',
-    skills: ['SQL', 'Python', 'Plotly Express', 'Pandas', 'Data Visualization', 'EDA', 'Statistical Analysis', 'Dashboard Design', 'Business Intelligence'],
+    skills: ['SQL', 'Python', 'Plotly Express', 'Pandas', 'Data Visualization', 'EDA', 'Statistical Analysis', 'Dashboard Design', 'Business Intelligence','Matplotlib','Seaborn'],
     metrics: [
       { label: 'Visualizations', value: '6+' }, 
       { label: 'Records Analyzed', value: '700K+' }, 
-      { label: 'Projects', value: '2' }, 
-      { label: 'Tools Proficient', value: '3' },
+      { label: 'Projects', value: '3' }, 
+      { label: 'Tools Proficient', value: '6' },
     ],
   },
 
@@ -46,7 +46,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     description: 'End-to-end data science workflows from exploration to deployment.',
     skills: ['Python', 'Scikit-Learn', 'Pandas', 'NumPy', 'Feature Engineering', 'Model Validation', 'Hyperparameter Tuning', 'Predictive Modeling', 'Regression Analysis'],
     metrics: [
-      { label: 'DS Projects', value: '2' }, 
+      { label: 'DS Projects', value: '3' }, 
       { label: 'Records Processed', value: '700K+' }, 
       { label: 'Features Engineered', value: '50+' }, 
       { label: 'Model Accuracy', value: '89%+' }, 
@@ -60,16 +60,16 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     description: 'Building robust data pipelines, web scraping, and ETL workflows for scale.',
     skills: ['Python', 'BeautifulSoup4', 'LXML', 'Web Scraping', 'Requests API', 'ETL Design', 'Data Validation', 'Pipeline Automation', 'joblib Serialization', 'REST API Integration'],
     metrics: [
-      { label: 'Data Pipelines Built', value: '2' }, 
-      { label: 'Data Sources Integrated', value: '2' }, 
-      { label: 'Projects', value: '3' },
-      { label: 'Automation Coverage', value: '80%' }, 
+      { label: 'Data Pipelines Built', value: '3' }, 
+      { label: 'Data Sources Integrated', value: '3' }, 
+      { label: 'Projects', value: '4' },
+      { label: 'Automation Coverage', value: '89%' }, 
     ],
   },
 
   {
     id: 'desktop-apps',
-    title: 'Python Desktop App. Dev.',
+    title: 'Python App Development',
     icon: '🐍',
     description: 'Building standalone desktop applications with rich GUI, file handling, and system integration.',
     skills: ['Python', 'Tkinter', 'Pygame (Mixer)', 'PyInstaller', 'File I/O', 'Data Persistence', 'State Management', 'GUI Architecture', 'OOP Design', 'OS Module', 'Shutil'],
@@ -87,7 +87,6 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   icon: '🎮',
   description: 'Building interactive game engines with complex AI, multiple game mechanics, and algorithm optimization.',
   skills: [
-    'Game Architecture', 
     'Chess Engine Development', 
     'Minimax Algorithm', 
     'Chess.js Library',         
@@ -97,13 +96,13 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     'Snake Game Mechanics',      
     'Score Tracking',            
     'Game UI Design',            
-    'AI Bot Development'
+    'Bot Development'
   ],
   metrics: [
     { label: 'Games Built', value: '3' },              
-    { label: 'Game Types', value: 'Strategy/Classic/Arcade' }, 
+    { label: 'Game Types', value: 'Classic' }, 
     { label: 'AI Implementation', value: '1 Bot' }, 
-    { label: 'Algorithms', value: 'Logic, Movement' }, 
+    { label: 'Algorithms', value: 'Logic, chess.js' }, 
   ],
 },
 
@@ -140,11 +139,11 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     title: 'Developer Tools & Deployment',
     icon: '🛠️',
     description: 'Mastering development infrastructure, version control, and deployment platforms.',
-    skills: ['Git', 'GitHub', 'Streamlit', 'Hugging Face','Google Colab', 'Anaconda', 'VS Code', 'Netlify', 'Vercel', 'PyInstaller', 'Environment Management'],
+    skills: ['Git', 'GitHub', 'Streamlit', 'Hugging Face Space','Google Colab', 'Anaconda', 'VS Code', 'Netlify', 'Vercel', 'PyInstaller', 'Environment Management','PowerBI'],
     metrics: [
-      { label: 'Projects Deployed', value: '12' }, 
+      { label: 'Projects Deployed', value: '13' }, 
       { label: 'Platforms Used', value: '5' }, 
-      { label: 'Repositories', value: '20+' }, 
+      { label: 'Repositories', value: '25+' }, 
       { label: 'Deployment Success', value: '100%' }, 
     ],
   },

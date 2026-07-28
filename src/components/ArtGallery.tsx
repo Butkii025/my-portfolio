@@ -63,40 +63,45 @@ export default function CreativeCorner(): React.JSX.Element {
   }, [selectedIndex, goNext, goPrev]);
 
   return (
-    <section className="pt-8 py-28 px-6 overflow-hidden dark:text-white text-black">
-      <div className="max-w-6xl mx-auto">
+    <section id="creative_corner" className="py-28 px-6 md:px-12 lg:px-24 dark:bg-transparent text-zinc-900 dark:text-zinc-100">
+      <div className="max-w-7xl mx-auto">
         
-        {/* Section Header */}
         <div className="mb-8">
-          <ComponentLibrary />
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+          {/* <ComponentLibrary /> */}
+          <p className="uppercase tracking-[0.2em] mb-4 text-zinc-500 dark:text-zinc-500 text-xs font-semibold">Creative_Corner</p>
+          <h2 className="flex items-center gap-3 text-5xl md:text-6xl font-bold dark:text-white text-black mb-4">
             Art_Gallery <FaPaintBrush size={20} className="inline-block ml-2 animate-bounce text-blue-400" />
           </h2>
         </div>
 
         <p className="leading-relaxed mb-10 dark:text-zinc-400 text-zinc-500 text-base max-w-3xl">
-          Beyond code — I sketch, draw portraits, do charcoal work, design posters, and create visuals that carry emotions and stories. I've also done commissioned pieces for friends and clients.
+          Beyond code I sketch, draw portraits, do charcoal work, design posters, and create visuals that carry emotions and stories. I've also done commissioned pieces for friends and clients.
         </p>
 
         <div className="flex items-center gap-3 mb-6">
-          <span className="font-medium text-sm dark:text-zinc-300 text-zinc-700">Moment :</span>
+          <p className="font-medium text-xm dark:text-zinc-300 text-zinc-700">MOMENT : 
+            <span className="dark:text-zinc-400 text-zinc-500 text-center text-sm italic mt-20"> 
+            The team Kala_Arpan project was a monumental, award-winning rangoli installation at Lucknow University's Bhoomi Fest 2026, created using 50,000 disposable cups across 2,500 square feet in collaboration with SFD-Awadh. This incredible feat of teamwork and creativity served as a visually striking and deeply moving tribute to the victims of Pahalgam.
+            </span>
+            
+          </p>
+          
+        </div>
+
+        <div className="flex flex-wrap gap-3 mb-14">
+          <span className="text-xs uppercase tracking-widest dark:text-zinc-500 text-zinc-400 self-center mr-1 font-semibold">Kala_Arpan —</span> 
           <a href="https://www.youtube.com/shorts/lpRupMkGGaM" target="_blank" rel="noreferrer"
             className="px-3 py-1.5 rounded-xl border text-sm transition duration-300 shadow-sm
               dark:border-zinc-700 dark:text-zinc-400 dark:hover:border-blue-400 dark:hover:text-blue-400
               border-zinc-200 text-zinc-500 hover:border-blue-400 hover:text-blue-400">
             झलक
           </a>
-        </div>
-
-        {/* Rangoli Project Milestones */}
-        <div className="flex flex-wrap gap-3 mb-14">
-          <span className="text-xs uppercase tracking-widest dark:text-zinc-500 text-zinc-400 self-center mr-1 font-semibold">Kala_Arpan —</span>
           {RANGOLI_FACTS.map((f, i) => (
             <span key={i} className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs shadow-sm
               dark:bg-zinc-900 dark:border dark:border-zinc-800 dark:text-zinc-400
               bg-zinc-100 border border-zinc-200 text-zinc-600">
               {f.icon} {f.text}
-            </span>
+            </span> 
           ))}
         </div>
       </div>
@@ -121,7 +126,7 @@ export default function CreativeCorner(): React.JSX.Element {
       </p>
 
       <div className="max-w-4xl mx-auto mt-24 flex flex-col lg:flex-row items-center justify-center gap-16 px-4">
-        <VideoBox />
+        {/* <VideoBox /> */}
         <FunZone />
       </div>
 

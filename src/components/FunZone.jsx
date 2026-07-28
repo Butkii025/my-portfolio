@@ -65,7 +65,6 @@ export default function FunZone() {
         }
       }
 
-      // Take center or random
       const choice = open.includes(4) ? 4 : open[Math.floor(Math.random() * open.length)];
       makeMove(choice, 'O');
     }, 500);
@@ -87,9 +86,8 @@ export default function FunZone() {
         hover:border-blue-400/50 hover:shadow-blue-500/10
         p-5 rounded-[2rem] backdrop-blur-xl shadow-2xl transition-shadow duration-500"
       >
-        {/* External link */}
         <a
-          href="https://xela-arcade.netlify.app/"
+          href="https://xela-arcade.vercel.app/"
           target="_blank"
           rel="noreferrer"
           title="Explore more on Xela_Arcade"
@@ -100,7 +98,6 @@ export default function FunZone() {
           <FaExternalLinkAlt size={10} />
         </a>
 
-        {/* Title */}
         <div className="text-center mb-3">
           <p className="uppercase tracking-[0.2em] text-[10px] mb-0.5 dark:text-zinc-500 text-zinc-400">Xela_Arcade</p>
           <h2 className="text-2xl font-bold tracking-tight dark:text-white text-black">fun_zone</h2>
@@ -109,7 +106,6 @@ export default function FunZone() {
           </p>
         </div>
 
-        {/* Status bar */}
         <div className="w-full flex justify-center items-center h-10 mb-4 rounded-lg px-2 text-xs font-medium text-center shrink-0
           dark:bg-zinc-950/60 dark:border dark:border-zinc-900
           bg-zinc-100 border border-zinc-200">
@@ -140,7 +136,6 @@ export default function FunZone() {
           )}
         </div>
 
-        {/* Board */}
         <div className="grid grid-cols-3 gap-2 w-full mb-5">
           {board.map((value, idx) => {
             const canClick = !value && !isGameOver && isUserTurn;
@@ -168,7 +163,6 @@ export default function FunZone() {
           })}
         </div>
 
-        {/* Reset */}
         <button
           onClick={reset}
           className="px-4 py-2.5 rounded-xl text-xs font-medium inline-flex items-center gap-1.5 transition duration-200 active:scale-95 cursor-pointer

@@ -17,16 +17,12 @@ export interface AchievementBadge {
 
 export const semesterMarks: SemesterMark[] = [
   { sem: 'Sem I',   mark: 6.86 },
-  { sem: 'Sem II',  mark: 6.61 },
+  { sem: 'Sem II',  mark: 6.36 },
   { sem: 'Sem III', mark: 8.91 },
   { sem: 'Sem IV',  mark: 8.55 },
   { sem: 'Sem V',   mark: 9.64 },
-];
+  { sem: 'Sem VI',   mark: 9.45 },
 
-export const schoolDetails: SchoolDetail[] = [
-  { label: 'Stream', value: 'Science PCM', icon: '🧪' },
-  { label: 'Best Subject', value: 'Maths (95%)', icon: '📐' },
-  { label: 'Score', value: '75%', icon: '⭐' },
 ];
 
 export const csSubjects: string[] = [
@@ -36,9 +32,11 @@ export const csSubjects: string[] = [
   'Algorithms',
   'OS',
   'Networking',
-  'AI/Python',
+  'ML / Python',
   'Neural Network',
   'Data Warehouse',
+  'Computer Network',
+  'Compiler Design',
 ];
 
 export const collegeInfo = {
@@ -48,7 +46,7 @@ export const collegeInfo = {
 };
 
 export const schoolInfo = {
-  degree: 'Higher Secondary (XII) — Science PCM',
+  degree: 'Higher Secondary School',
   school: 'New Public Inter College, Lucknow',
   year: 'May 2023',
 };

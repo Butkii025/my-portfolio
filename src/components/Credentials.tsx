@@ -1,6 +1,10 @@
 'use client';
 
 import React, { useRef } from 'react';
+import { motion } from 'framer-motion';
+import { FiFileText, FiAward, FiUsers, FiExternalLink } from 'react-icons/fi';
+import { credentialsData } from '@/src/Data/Credentialsdata';
+import type { CredentialItem, CredentialCardProps } from '@/src/Data/Credentialsdata';
 
 function useTiltCard(strength = 8) {
   const ref = useRef<HTMLDivElement>(null);
@@ -18,7 +22,7 @@ function useTiltCard(strength = 8) {
     if (glow) {
       const gx = 50 + (x / rect.width) * 60;
       const gy = 50 + (y / rect.height) * 60;
-      glow.style.background = `radial-gradient(circle at ${gx}% ${gy}%, rgba(96,165,250,0.15), transparent 70%)`;
+      glow.style.background = `radial-gradient(circle at ${gx}% ${gy}%, rgba(96,165,250,0.2), transparent 70%)`;
       glow.style.opacity = '1';
     }
   };
@@ -34,124 +38,165 @@ function useTiltCard(strength = 8) {
   return { ref, onMouseMove, onMouseLeave };
 }
 
-interface CredentialItem {
-  label: string;
-  href: string;
-}
-
-interface CredentialCardProps {
-  title: string;
-  desc: string;
-  items: CredentialItem[];
-}
-
-function CredentialCard({ title, desc, items }: CredentialCardProps) {
-  const tilt = useTiltCard(8);
+function CredentialItem({ item }: { item: CredentialItem }) {
+  const isPDF = item.href.toLowerCase().endsWith('.pdf');
 
   return (
-    <div
+    <motion.a
+      href={item.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      initial={{ opacity: 0, x: -10 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      whileHover={{ x: 5 }}
+      className="group relative flex items-start gap-3 p-3 rounded-lg transition-all duration-300
+        dark:hover:bg-white/5 hover:bg-zinc-50/50
+        dark:hover:border-blue-400/30 hover:border-blue-300/30
+        border dark:border-white/0 border-transparent"
+    >
+      <span className="mt-1 flex-shrink-0">
+        {isPDF ? (
+          <FiFileText className="w-4 h-4 dark:text-blue-400 text-blue-500" />
+        ) : (
+          <FiAward className="w-4 h-4 dark:text-purple-400 text-purple-500" />
+        )}
+      </span>
+      <div className="flex-1 min-w-0">
+        <p className="text-sm font-medium dark:text-zinc-300 text-zinc-700 group-hover:dark:text-blue-300 group-hover:text-blue-600 transition-colors">
+          {item.label}
+        </p>
+        {item.date && (
+          <p className="text-xs dark:text-zinc-600 text-zinc-500 mt-0.5">{item.date}</p>
+        )}
+      </div>
+      <FiExternalLink className="w-4 h-4 flex-shrink-0 dark:text-zinc-600 text-zinc-400 group-hover:dark:text-blue-400 group-hover:text-blue-500 transition-colors opacity-0 group-hover:opacity-100" />
+    </motion.a>
+  );
+}
+
+function CredentialCard({ title, desc, icon, badgeColor, items }: CredentialCardProps) {
+  const tilt = useTiltCard(8);
+
+  const getIconComponent = (iconEmoji: string) => {
+    const iconMap: { [key: string]: React.ReactNode } = {
+      '🏆': <FiAward className="w-6 h-6 text-white" />,
+      '📚': <FiFileText className="w-6 h-6 text-white" />,
+      '👥': <FiUsers className="w-6 h-6 text-white" />,
+    };
+    return iconMap[iconEmoji] || <FiAward className="w-6 h-6 text-white" />;
+  };
+
+  return (
+    <motion.div
       ref={tilt.ref}
       onMouseMove={tilt.onMouseMove}
       onMouseLeave={tilt.onMouseLeave}
       style={{ transition: 'transform 0.15s ease-out', transformStyle: 'preserve-3d' }}
-      className="relative group p-6 rounded-2xl backdrop-blur-sm transition-shadow duration-500
-        hover:shadow-2xl hover:shadow-blue-500/10
-        dark:border dark:border-white/10 dark:bg-gradient-to-br dark:from-white/5 dark:to-white/0 dark:hover:border-blue-400/50
-        border border-zinc-200 bg-gradient-to-br from-zinc-50 to-white hover:border-blue-400/50
-        w-[320px] md:w-[450px] shrink-0 snap-start flex flex-col justify-between"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="relative group p-8 rounded-3xl backdrop-blur-xl transition-all duration-500
+        dark:border dark:border-white/10  border-zinc-200 dark:bg-gradient-to-br dark:from-white/5 dark:to-white/0
+        border border-white/40 bg-gradient-to-br from-white/60 to-zinc-50/40
+        flex flex-col h-full
+        hover:shadow-2xl hover:dark:shadow-blue-500/20 hover:shadow-blue-500/10
+        dark:hover:border-blue-400/50 hover:border-blue-300/30"
     >
       <div
-        className="card-glow absolute inset-0 pointer-events-none rounded-2xl transition-opacity duration-300"
+        className="card-glow absolute inset-0 pointer-events-none rounded-3xl transition-opacity duration-300"
         style={{ opacity: 0 }}
       />
 
-      <div className="relative z-10">
-        <h3 className="text-2xl font-bold mb-4 transition duration-300
-          dark:text-white dark:group-hover:text-blue-400
-          text-zinc-800 group-hover:text-blue-400">
-          {title}
-        </h3>
-        <p className="leading-relaxed mb-5 text-sm md:text-base
-          dark:text-zinc-400 text-zinc-500">
+      <div className="relative z-10 flex flex-col h-full">
+        {/* HEADER */}
+        <div className="flex items-start justify-between mb-4">
+          <div className="flex items-center gap-3">
+            <div className={`p-3 rounded-xl ${badgeColor}`}>
+              {getIconComponent(icon)}
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold dark:text-white text-zinc-900">
+                {title}
+              </h3>
+            </div>
+          </div>
+        </div>
+
+        <p className="text-sm dark:text-zinc-400 text-zinc-600 mb-6 leading-relaxed">
           {desc}
         </p>
-      </div>
 
-      <div className="relative z-10 flex flex-col gap-3 text-sm">
-        {items.map((item, i) => (
-          <div
-            key={i}
-            className={`pt-3 ${i === 0 ? 'border-t dark:border-white/5 border-zinc-200' : ''}`}
-          >
-            <a
-              href={item.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 transition-all duration-300
-                dark:text-zinc-500 dark:hover:text-blue-400
-                text-zinc-500 hover:text-blue-400
-                hover:scale-[1.03] origin-left"
-            >
-              <span className="dark:text-zinc-300 text-zinc-400">•</span>
-              <span className="hover:underline underline-offset-2">{item.label}</span>
-            </a>
-          </div>
-        ))}
+        <div className="w-12 h-1 bg-gradient-to-r dark:from-blue-500/40 dark:to-blue-500/0 from-blue-400/40 to-blue-400/0 rounded-full mb-6" />
+
+
+        <div className="flex-1 space-y-2 min-h-0 overflow-y-auto pr-2
+          [&::-webkit-scrollbar]:w-1
+          dark:[&::-webkit-scrollbar-track]:bg-transparent
+          dark:[&::-webkit-scrollbar-thumb]:bg-zinc-700
+          [&::-webkit-scrollbar-track]:bg-transparent
+          [&::-webkit-scrollbar-thumb]:bg-zinc-300
+          [&::-webkit-scrollbar-thumb]:rounded-full
+          hover:dark:[&::-webkit-scrollbar-thumb]:bg-zinc-600
+          hover:[&::-webkit-scrollbar-thumb]:bg-zinc-400">
+          {items.map((item, i) => (
+            <CredentialItem key={i} item={item} />
+          ))}
+        </div>
+
+        <div className="mt-6 pt-6 border-t dark:border-white/5 border-white/30">
+          <p className="text-xs uppercase tracking-widest font-semibold dark:text-zinc-500 text-zinc-500">
+            {items.length} Credential{items.length !== 1 ? 's' : ''}
+          </p>
+        </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
 export default function Credentials(): React.JSX.Element {
-  const cards: CredentialCardProps[] = [
-    {
-      title: 'Work Related',
-      desc: 'Certification related to Internship and professional experience',
-      items: [
-        { label: 'Internship in ML / AI at Beeskilled [JUNE-2026]', href: '/credentials/ML-AI.PDF' },
-        { label: 'Experience as Data Analyst at Beeskilled [MAY-2026]', href: '/credentials/DataAnalyst.PDF' },
-        { label: 'Data Analysis Intern at Science Tech Institute, UP.Gov [JULY-2025] ', href: '/credentials/pv-saifai-intership.PDF' },
-        ],
-    },
-    {
-      title: 'Educational',
-      desc: 'Certification related to education, workshops, course-completion',
-      items: [
-        { label: 'Master Data Management (MDM), TCS', href: '/credentials/MDM-TCS.PDF' },
-        { label: 'Workshop of Machine Learning at IIT Kanpur', href: '/credentials/iit-kanpur-workshop.png' },
-        { label: 'Python programming, Kaggle', href: '/credentials/py-programming.png' },
-      ],
-    },
-    {
-      title: 'Social Events',
-      desc: 'Certification related to Events,Volunteering, Social Netwoking',
-      items: [
-        { label: 'Spirit 1.0 Chess Tournament', href: '/credentials/pv-spirit1.0.png' },
-        { label: 'Youth Parliament', href: '/credentials/youth-parliament.png' },
-        { label: 'Women-Day Act/Play', href: '/credentials/play-on-womens-day.png' },
-      ],
-    },
-  ];
-
   return (
-    <section id="credentials" className="py-28 px-6 overflow-hidden">
-      <div className="max-w-6xl mx-auto">
-        <div className="mb-8">
-          <p className="uppercase tracking-[0.2em] mb-4 text-zinc-500 dark:text-zinc-500 text-xs font-semibold">Credentials</p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight dark:text-white text-black">Certification</h2>
-        </div>
+    <section id="credentials" className="py-28 px-6 md:px-12 lg:px-24 dark:bg-transparent overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-16"
+        >
+          <p className="uppercase tracking-[0.2em] mb-4 text-zinc-500 dark:text-zinc-500 text-xs font-semibold">
+            Achievements
+          </p>
+          <h2 className="flex items-center gap-3 text-5xl md:text-6xl font-bold dark:text-white text-black mb-4">
+            Credentials & Certifications
+          </h2>
+          <p className="text-base dark:text-zinc-400 text-zinc-600 max-w-2xl">
+            A collection of professional achievements, educational certifications, and community contributions that showcase continuous learning and engagement.
+          </p>
+        </motion.div>
 
-        <div className="flex overflow-x-auto gap-8 pb-6 snap-x snap-mandatory
-          [&::-webkit-scrollbar]:h-1.5
-          dark:[&::-webkit-scrollbar-track]:bg-zinc-900
-          dark:[&::-webkit-scrollbar-thumb]:bg-zinc-800
-          [&::-webkit-scrollbar-track]:bg-zinc-100
-          [&::-webkit-scrollbar-thumb]:bg-zinc-300
-          [&::-webkit-scrollbar-thumb]:rounded-full">
-          {cards.map((card, i) => (
+        <div className="hidden md:grid md:grid-cols-3 gap-6 mb-12">
+          {credentialsData.map((card, i) => (
             <CredentialCard key={i} {...card} />
           ))}
         </div>
+
+        <div className="md:hidden mb-12">
+          <div className="flex overflow-x-auto gap-4 pb-6 snap-x snap-mandatory
+            [&::-webkit-scrollbar]:h-1.5
+            dark:[&::-webkit-scrollbar-track]:bg-zinc-900
+            dark:[&::-webkit-scrollbar-thumb]:bg-zinc-800
+            [&::-webkit-scrollbar-track]:bg-zinc-100
+            [&::-webkit-scrollbar-thumb]:bg-zinc-300
+            [&::-webkit-scrollbar-thumb]:rounded-full">
+            {credentialsData.map((card, i) => (
+              <div key={i} className="w-full shrink-0 snap-start">
+                <CredentialCard {...card} />
+              </div>
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   );

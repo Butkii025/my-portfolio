@@ -10,6 +10,16 @@ export interface Project {
 }
 
 export const PROJECTS_DATA: Project[] = [
+  {
+    title: "CreditOptima - Loan Approval System",
+    desc: "End-to-end ML classification app: engineered and compared Logistic Regression, KNN, and Naive Bayes models achieving ~87% accuracy, built an interactive Streamlit frontend with live approval predictions and model comparison dashboards.",
+    focused: "Full-Stack Development · Machine Learning Application",
+    tech: ["Python", "Scikit-Learn", "Pandas", "NumPy", "Streamlit Cloud"],
+    url: 'https://creditoptima.streamlit.app',
+    img: 'project-img/CreditOptima.png',
+    code: 'https://github.com/Butkii025/CreditOptima',
+    type: 'Machine Learning',
+  },
 
   {
     title: "Real Estate Valuation Analysis",

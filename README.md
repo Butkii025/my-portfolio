@@ -7,7 +7,7 @@
 
 ## 🎯 About This Portfolio
 
-This is my **personal engineering workspace** — a living showcase of projects spanning machine learning, web development, desktop applications, game design, and creative systems. Each project represents real problem-solving, deployed solutions, and continuous learning.
+This is my **personal engineering workspace** a living showcase of projects spanning machine learning, web development, desktop applications, game design, and creative systems. Each project represents real problem-solving, deployed solutions, and continuous learning.
 
 Built with modern web technologies and carefully crafted interactions, this portfolio demonstrates not just **what I've built**, but **how I think** about design, performance, and user experience.
 
@@ -67,9 +67,9 @@ Embedded **Custom 3D Teacup Canvas** using React Three Fiber:
 - **Databases:** SQL, File I/O, joblib serialization
 
 ### **Deployment**
-- **Hosting:** Vercel (Next.js), Netlify (static sites), GitHub Pages
+- **Hosting:** Vercel (Next.js), Netlify (static sites), GitHub Pages, HuggingFace, Streamlit
 - **Package Manager:** npm, pip
-- **Version Control:** Git + GitHub
+- **Version Control:** Git + GitHub, HuggingFace Space
 
 ---
 
@@ -77,12 +77,12 @@ Embedded **Custom 3D Teacup Canvas** using React Three Fiber:
 
 | Project | Type | Status | Link |
 |---------|------|--------|------|
-| **PropValue AI** | ML/Data Science | ✅ Deployed | Streamlit Dashboard |
-| **Xela_Arcade** | Web Game Platform | ✅ Live | [Play](https://xela-arcade.netlify.app/) |
+| **PropValue AI** | ML/Data Science | ✅ Deployed | [Streamlit Dashboard](https://propsight.streamlit.app/)|
+| **Xela_Arcade** | Web Game Platform | ✅ Live | [Play](https://xela-arcade.vercel.app/) |
 | **Personal Portfolio** | Web Design | ✅ This Site | [p-vijay.vercel.app](https://p-vijay.vercel.app/) |
-| **Music Player** | Desktop App | ✅ .exe Compiled | GitHub |
-| **Book Data System** | MLOps Pipeline | ✅ Complete | GitHub |
-| **Weather Dashboard** | Desktop + APIs | ✅ Complete | GitHub |
+| **Music Player** | Desktop App | ✅ .exe Compiled | [GitHub](https://github.com/Butkii025/Music_Player_App) |
+| **Book Data System** | MLOps Pipeline | ✅ Complete | [GitHub](https://github.com/Butkii025/bibliophile-data-prediction) |
+| **Weather Dashboard** | Desktop + APIs | ✅ Complete | [GitHub](https://github.com/Butkii025/Weather-app) |
 | **Craft-Greet** | Web Design | ✅ Live | [Design](https://butkii025.github.io/Craft-Greet/) |
 
 **See all 12+ projects on the [Projects](https://p-vijay.vercel.app/#projects) section.**
@@ -92,17 +92,17 @@ Embedded **Custom 3D Teacup Canvas** using React Three Fiber:
 ## 🎓 Education & Skills
 
 **B.Tech in Computer Science & Engineering** (2023–2027)  
-Dr. Sakuntala Misra National Rehabilitation University, Lucknow
+*Dr. Sakuntala Misra National Rehabilitation University, Lucknow*
 
 ### Core Competencies
 - 🤖 **AI/ML Engineering** — Ensemble modeling, predictive analytics, deployment
 - ⚙️ **Data Engineering** — ETL pipelines, web scraping, API integration
+- ⚙️ **Data Science** — Cleaning, Preprocessing, EDA, Visualization
 - 💻 **Web Development** — Full-stack React/Next.js, responsive design, web animation
-- 🎮 **Game Development** — Game engines, AI algorithms, interactive mechanics
 - 🖥️ **Desktop Applications** — GUI design, system integration, PyInstaller deployment
 - 🎨 **Creative Design** — UI/UX, motion design, design systems
 
-**Current CGPA:** 8.51 | **Semesters Completed:** 5
+**Current GPA:** 8.1 | **Semesters Completed:** 5
 
 ---
 
@@ -122,7 +122,7 @@ This portfolio is engineered for **speed and responsiveness:**
 
 This portfolio reflects my approach to engineering:
 
-1. **Form Follows Function** — Beautiful design serves user goals, not ego
+1. **Form Follows Function** — Beautiful design serves user goals
 2. **Performance-First** — Smooth 60fps animations, lazy-loaded assets
 3. **Accessible by Default** — Semantic HTML, keyboard navigation, contrast ratios
 4. **Honest Presentation** — Real projects, real data, no inflated metrics
@@ -140,7 +140,7 @@ I'm always interested in:
 **Reach me:**
 - 📧 **Email:** [Contact Form](https://p-vijay.vercel.app/#contact)
 - 🔗 **GitHub:** [@Butkii025](https://github.com/Butkii025)
-- 💼 **LinkedIn:** [Priyanshu Vijay](https://linkedin.com/in/priyanshu-vijay)
+- 💼 **LinkedIn:** [Priyanshu Vijay](https://www.linkedin.com/in/priyanshu-v/)
 
 ---
 
@@ -148,8 +148,8 @@ I'm always interested in:
 
 - ✨ **12+ Deployed Projects** — From data science to game design
 - 📊 **89.54% ML Accuracy** — Real Estate valuation ensemble model
-- 🎮 **3-Game Platform** — Chess AI with Minimax algorithm
-- 🌐 **Full-Stack Expertise** — Front-end, back-end, ML, desktop, games
+- 🎮 **1-Game Platform** — Chess AI with Minimax algorithm
+- 🌐 **Full-Stack Expertise** — Front-end, back-end, ML, desktop
 - 🎯 **Production-Ready Code** — Clean architecture, tested, documented
 
 ---
@@ -162,10 +162,10 @@ For detailed project documentation, and code walkthroughs, visit the individual 
 
 ---
 
-**Last Updated:** June 2026  
+**Last Updated:** July 2026  
 **Built with:** Next.js, React, Tailwind CSS, Framer Motion, Three.js  
 **Deployed on:** Vercel
 
 ---
 
-*This is my personal workspace. All projects, code, and creative work are original unless otherwise attributed.*
+*This is my personal warehouse. All projects, code, and creative work are original unless otherwise attributed.*

@@ -219,7 +219,7 @@ export default function ComponentLibraryCarousel(): React.JSX.Element {
           <div className="max-w-6xl mx-auto">
             <div className="mb-8">
               <p className="uppercase tracking-[0.2em] mb-4 text-zinc-500 dark:text-zinc-500 text-xs font-semibold">Creative_Corner</p>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+              <h2 className="flex items-center gap-3 text-5xl md:text-6xl font-bold dark:text-white text-black mb-4">
                 Component Library
               </h2>
             </div>
