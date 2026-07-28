@@ -228,7 +228,7 @@ export default function VijayPortfolio() {
         {/* SECTIONS */}
         
         <Hero onProfileClick={openProfile} />
-        <About onProfileClick={openProfile} />
+        <About isDark={isDark} onProfileClick={openProfile} />
         <AcademicBlock />
         <Skills />
         <Experience />

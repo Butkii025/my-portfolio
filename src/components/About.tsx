@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaStar } from 'react-icons/fa';
 
@@ -28,7 +28,6 @@ function useTilt(strength = 8) {
   };
   return { ref, onMouseMove, onMouseLeave };
 }
-
 
 interface Highlight {
   icon: string;
@@ -69,8 +68,13 @@ function HighlightCard({ highlight, index }: { highlight: Highlight; index: numb
   );
 }
 
-export default function AboutCool(): React.JSX.Element {
+export default function AboutCool({ isDark }: { isDark: boolean }): React.JSX.Element {
   const imgTilt = useTilt(20);
+  const [profileImage, setProfileImage] = useState('/1.png');
+
+  useEffect(() => {
+    setProfileImage(isDark ? '/1.png' : '/2.png');
+  }, [isDark]);
 
   return (
     <section id="about" className="py-28 px-6 md:px-12 lg:px-24 dark:bg-transparent relative overflow-hidden">
@@ -94,7 +98,7 @@ export default function AboutCool(): React.JSX.Element {
           <div className="w-20 h-1 bg-gradient-to-r from-zinc-400 to-cyan-400 rounded-full" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-10">
+        <div className="grid md:grid-cols-2 gap-12 mb-10">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -121,8 +125,12 @@ export default function AboutCool(): React.JSX.Element {
                 className="relative w-fit cursor-pointer"
               >
                 <motion.img
+                  key={profileImage}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
                   whileHover={{ scale: 1.02 }}
-                  src="/1.png"
+                  src={profileImage}
                   alt="Priyanshu"
                   className="w-80 h-100 rounded-full object-cover shadow-2xl
                     dark:border-2 dark:border-zinc-400
@@ -154,7 +162,7 @@ export default function AboutCool(): React.JSX.Element {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
-            className="flex flex-col gap-6"
+            className="flex flex-col justify-center h-100 gap-6"
           >
             <div>
               <p className="text-sm leading-relaxed dark:text-zinc-400 text-zinc-600">
