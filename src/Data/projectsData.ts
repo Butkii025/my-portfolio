@@ -11,7 +11,7 @@ export interface Project {
 
 export const PROJECTS_DATA: Project[] = [
   {
-    title: "CreditOptima - Loan Approval System",
+    title: "CreditOptima - Loan Approval Predictor",
     desc: "End-to-end ML classification app: engineered and compared Logistic Regression, KNN, and Naive Bayes models achieving ~87% accuracy, built an interactive Streamlit frontend with live approval predictions and model comparison dashboards.",
     focused: "Full-Stack Development · Machine Learning Application",
     tech: ["Python", "Scikit-Learn", "Pandas", "NumPy", "Streamlit Cloud"],
@@ -19,6 +19,26 @@ export const PROJECTS_DATA: Project[] = [
     img: 'project-img/CreditOptima.png',
     code: 'https://github.com/Butkii025/CreditOptima',
     type: 'Machine Learning',
+  },
+  {
+    title: "BhuNirvighna-Ai - Land Acquisition Delay Risk Predictor",
+    desc: "End-to-end ML decision-support platform: engineered an XGBoost classifier for delay-risk scoring (0.97 ROC-AUC) with SHAP-based explainability, plus a Random Forest regressor for compensation cost estimation (R² 0.67) - all served through a multi-tab Streamlit dashboard with GIS risk heatmaps, live prediction forms, and an automated recommendation engine.",
+    focused: "Full-Stack Development · Machine Learning Application",
+    tech: ["XGBoost", "Scikit-Learn", "SHAP", "Pandas", "Plotly", "Folium", "Streamlit Cloud"],
+    url: 'https://bhunirvighna-ai.streamlit.app/',
+    img: 'project-img/BhNv.png',
+    code: 'https://github.com/Butkii025/BhuNirvighna-Ai',
+    type: 'Full Stack',
+  },
+  {
+    title: "FeelFrame - Text Sentiment Analysis",
+    desc: "Full-Stack Sentiment Analysis Platform Built and deployed a production REST API with FastAPI serving the trained model, with a custom frontend featuring, it tells you whether the sentiment is positive or negative, with a confidence score, visualized live on a sweeping needle gauge. Classification approaches on 50K IMDB reviews TF-IDF + Logistic Regression/LinearSVC baseline 91% accuracy ",
+    focused: "Deep Learning · NLP · Model Deployment",
+    tech: ["Next.js","React","TypeScript","Python", "Scikit-Learn", "PyTorch","REST API"],
+    url: 'https://feelframe.vercel.app/',
+    img: 'project-img/feelframe.png',
+    code: 'https://github.com/Butkii025/feelframe',
+    type: 'Full Stack',
   },
 
   {

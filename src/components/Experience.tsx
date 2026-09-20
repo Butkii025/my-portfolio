@@ -42,6 +42,18 @@ interface ExperienceItem {
 const experiences: ExperienceItem[] = [
   {
     title: 'Full-Stack AI Developer',
+    role: '@Smart India Hackathon 2026 - Ministry of Rural Development',
+    date: 'September 2026',
+    description: 'BhuNirvighna-Ai - Predictive Analytics Platform for Early Detection of Land Acquisition Delays. Built an AI-powered decision-support dashboard for PS26017, addressing infrastructure project delays caused by compensation, legal, and rehabilitation bottlenecks.',
+    impact: 'Engineered an XGBoost delay-risk classifier (0.97 ROC-AUC) with SHAP-based explainability, a Random Forest cost-estimation model (R² 0.67), and a rule-based land feasibility engine, served through a 5-tab Streamlit dashboard with GIS risk heatmaps and an automated recommendation engine',
+    tech: ['Python', 'XGBoost', 'Scikit-Learn', 'SHAP', 'Pandas', 'Plotly', 'Folium', 'Streamlit Cloud'],
+    links: [
+      { label: 'GitHub Repository', href: 'https://github.com/Butkii025/BhuNirvighna-Ai', icon: 'github' },
+      { label: 'Live Dashboard', href: 'https://bhunirvighna-ai.streamlit.app/', icon: 'link' },
+    ],
+  },
+  {
+    title: 'Full-Stack AI Developer',
     role: '@Google × Kaggle Hackathon - Git_Online',
     date: 'July 2026',
     description: 'LearnForge AI - Full-Stack AI Education Platform & Secure Code Sandbox. Developed a next-gen learning application for the joint Google × Kaggle 2026 Hackathon',

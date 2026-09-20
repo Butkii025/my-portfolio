@@ -228,10 +228,11 @@ export default function Research(): React.JSX.Element {
                 
                 <div className="flex flex-col gap-2">
                   {[
+                    { label: "BhuNirvighna-Ai: AI-powered predictive analytics platform for land acquisition delay", href: "research/BhNv-Ai proposal.PDF" },
                     { label: "CreditOptima - Loan Approval System", href: "research/CreditOptima.PDF" },
                     { label: "Ensemble Real Estate Valuation & Analytics", href: "research/Real-Estate-HousePricing.PDF" },
                     { label: "Book Data Analysis", href: "research/Bibiliofile-data-analysis.PDF" },
-                    { label: "Xela_Arcade: Frictionless Multi-Game Matrix", href: "research/Xela_Arcade-architecture.PDF" },
+                    { label: "Xela_Arcade: Frictionless Multi-Game Matrix", href: "research/Xela_Arcade-architecture.PDF"},
                   ].map((doc, i) => (
                     <a
                       key={i}

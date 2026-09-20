@@ -91,12 +91,12 @@ function CredentialCard({ title, desc, icon, badgeColor, items }: CredentialCard
       ref={tilt.ref}
       onMouseMove={tilt.onMouseMove}
       onMouseLeave={tilt.onMouseLeave}
-      style={{ transition: 'transform 0.15s ease-out', transformStyle: 'preserve-3d' }}
+      style={{ transition: 'transform 0.15s ease-out', transformStyle: 'preserve-3d', width: '320px', minWidth: '320px', height: '500px' }}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       className="relative group p-8 rounded-3xl backdrop-blur-xl transition-all duration-500
-        dark:border dark:border-white/10  border-zinc-200 dark:bg-gradient-to-br dark:from-white/5 dark:to-white/0
+        dark:border dark:border-white/10 border-zinc-200 dark:bg-gradient-to-br dark:from-white/5 dark:to-white/0
         border border-white/40 bg-gradient-to-br from-white/60 to-zinc-50/40
         flex flex-col h-full
         hover:shadow-2xl hover:dark:shadow-blue-500/20 hover:shadow-blue-500/10
@@ -127,7 +127,6 @@ function CredentialCard({ title, desc, icon, badgeColor, items }: CredentialCard
         </p>
 
         <div className="w-12 h-1 bg-gradient-to-r dark:from-blue-500/40 dark:to-blue-500/0 from-blue-400/40 to-blue-400/0 rounded-full mb-6" />
-
 
         <div className="flex-1 space-y-2 min-h-0 overflow-y-auto pr-2
           [&::-webkit-scrollbar]:w-1
@@ -171,30 +170,22 @@ export default function Credentials(): React.JSX.Element {
             Credentials & Certifications
           </h2>
           <p className="text-base dark:text-zinc-400 text-zinc-600 max-w-2xl">
-            A collection of professional achievements, educational certifications, and community contributions that showcase continuous learning and engagement.
+            A collection of professional achievements, educational certifications, and community contributions.
           </p>
         </motion.div>
 
-        <div className="hidden md:grid md:grid-cols-3 gap-6 mb-12">
+        <div className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory items-start
+          [&::-webkit-scrollbar]:h-1.5
+          dark:[&::-webkit-scrollbar-track]:bg-zinc-900
+          dark:[&::-webkit-scrollbar-thumb]:bg-zinc-800
+          [&::-webkit-scrollbar-track]:bg-zinc-100
+          [&::-webkit-scrollbar-thumb]:bg-zinc-300
+          [&::-webkit-scrollbar-thumb]:rounded-full">
           {credentialsData.map((card, i) => (
-            <CredentialCard key={i} {...card} />
+            <div key={i} className="snap-start flex-shrink-0">
+              <CredentialCard {...card} />
+            </div>
           ))}
-        </div>
-
-        <div className="md:hidden mb-12">
-          <div className="flex overflow-x-auto gap-4 pb-6 snap-x snap-mandatory
-            [&::-webkit-scrollbar]:h-1.5
-            dark:[&::-webkit-scrollbar-track]:bg-zinc-900
-            dark:[&::-webkit-scrollbar-thumb]:bg-zinc-800
-            [&::-webkit-scrollbar-track]:bg-zinc-100
-            [&::-webkit-scrollbar-thumb]:bg-zinc-300
-            [&::-webkit-scrollbar-thumb]:rounded-full">
-            {credentialsData.map((card, i) => (
-              <div key={i} className="w-full shrink-0 snap-start">
-                <CredentialCard {...card} />
-              </div>
-            ))}
-          </div>
         </div>
 
       </div>

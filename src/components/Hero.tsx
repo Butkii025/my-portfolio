@@ -161,7 +161,7 @@ export default function Home({ onProfileClick }: HomeProps): React.JSX.Element {
                   ref={imgRef}
                   onMouseMove={handleCardMouseMove}
                   onMouseLeave={handleCardMouseLeave}
-                  src="/profile.png"
+                  src="/6.png"
                   alt="Profile Full"
                   style={{ transition: 'transform 0.15s ease-out', transformStyle: 'preserve-3d' }}
                   className="w-45 h-60 rounded-[3rem] object-cover shadow-2xl cursor-pointer

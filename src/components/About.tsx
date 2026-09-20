@@ -73,7 +73,7 @@ export default function AboutCool({ isDark }: { isDark: boolean }): React.JSX.El
   const [profileImage, setProfileImage] = useState('/1.png');
 
   useEffect(() => {
-    setProfileImage(isDark ? '/1.png' : '/2.png');
+    setProfileImage(isDark ? '/4.png' : '/6.png');
   }, [isDark]);
 
   return (
@@ -215,7 +215,7 @@ export default function AboutCool({ isDark }: { isDark: boolean }): React.JSX.El
         >
           {[
             { label: 'Internships', value: '3+' },
-            { label: 'Projects Built', value: '13+' },
+            { label: 'Projects Built', value: '15+' },
             { label: 'Technologies', value: '20+' },
           ].map((stat, i) => (
             <motion.div
