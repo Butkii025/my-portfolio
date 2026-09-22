@@ -89,7 +89,7 @@ export default function CreativeCorner(): React.JSX.Element {
         </div>
 
         <div className="flex flex-wrap gap-3 mb-14">
-          <span className="text-xs uppercase tracking-widest dark:text-zinc-500 text-zinc-400 self-center mr-1 font-semibold">Kala_Arpan —</span> 
+          <span className="text-xs uppercase tracking-widest dark:text-zinc-500 text-zinc-400 self-center mr-1 font-semibold">Kala_Arpan -</span> 
           <a href="https://www.youtube.com/shorts/lpRupMkGGaM" target="_blank" rel="noreferrer"
             className="px-3 py-1.5 rounded-xl border text-sm transition duration-300 shadow-sm
               dark:border-zinc-700 dark:text-zinc-400 dark:hover:border-blue-400 dark:hover:text-blue-400

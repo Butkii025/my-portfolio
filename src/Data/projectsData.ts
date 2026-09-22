@@ -94,7 +94,7 @@ export const PROJECTS_DATA: Project[] = [
   },
   
   {
-    title: "Xela_Arcade — Chess Engine & Game Collection",
+    title: "Xela_Arcade - Chess Engine & Game Collection",
     desc: "Custom game framework with chess.js engine leveraging state machines and minimax algorithms. Demonstrates deep algorithm design, competitive bot logic, and React animation orchestration.",
     focused: "Game Development · Bot Logic · State Machines",
     tech: ["JavaScript", "React", "Chess.js", "Framer Motion", "Lucide React"],
@@ -125,7 +125,7 @@ export const PROJECTS_DATA: Project[] = [
   },
 
   {
-    title: "Craft-Greet — Custom Card Generator",
+    title: "Craft-Greet - Custom Card Generator",
     desc: "Interactive greeting card creator with custom image upload, personalized messaging, template selection, and direct download. Demonstrates creative UI design and file handling.",
     focused: "Creative Design · User Input Handling · File Export",
     tech: ["HTML5", "CSS", "JavaScript"],

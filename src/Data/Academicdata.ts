@@ -40,7 +40,7 @@ export const csSubjects: string[] = [
 ];
 
 export const collegeInfo = {
-  degree: 'B.Tech — Computer Science & Engineering',
+  degree: 'B.Tech - Computer Science & Engineering',
   university: 'Dr. Sakuntala Misra National Rehabilitation University, Lucknow',
   duration: '2023–2027',
 };

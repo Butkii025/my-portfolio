@@ -81,7 +81,7 @@ export default function ContactForm({ onSuccess }: Props) {
           <p className="text-sm dark:text-zinc-400 text-zinc-500">I'll get back to you shortly</p>
         </div>
         <p className="font-['Alex_Brush',_cursive] text-xl dark:text-zinc-300 text-zinc-500 italic">
-          " — have a nice day"
+          " - have a nice day"
         </p>
         <button onClick={() => setStatus('idle')}
           className="px-5 py-2 rounded-xl text-sm transition duration-200 cursor-pointer
