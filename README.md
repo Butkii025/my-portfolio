@@ -116,6 +116,15 @@ I'm always interested in:
 - **Technical Discussion** about algorithms, architecture, and optimization
 - **Learning Opportunities** through mentorship and open source
 
+### Contact form setup
+
+The contact form uses EmailJS. Copy `.env.example` to `.env.local` and replace
+the placeholder values with the Service ID, Template ID, and Public Key from
+your EmailJS account. Configure the EmailJS template to use the `from_name`,
+`reply_to`, and `message` parameters. Restart the development server after
+updating environment variables, and add the same variables to your deployment
+provider before redeploying.
+
 **Reach me at:**
 - **GitHub:** [@Butkii025](https://github.com/Butkii025)
 - **LinkedIn:** [Priyanshu Vijay](https://www.linkedin.com/in/priyanshu-v/)

@@ -27,12 +27,22 @@ export default function ContactForm({ onSuccess }: Props) {
   const [errors,  setErrors]  = useState<Errors>({})
   const [focused, setFocused] = useState<string | null>(null)
   const [status,  setStatus]  = useState<Status>("idle")
+  const [submitError, setSubmitError] = useState<string | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setSubmitError(null)
+    setStatus("idle")
     const errs = validate(form)
     if (Object.keys(errs).length) { setErrors(errs); return }
     setErrors({})
+
+    if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+      setSubmitError("Email service is not configured. Add the EmailJS settings and restart the app.")
+      setStatus("error")
+      return
+    }
+
     setStatus("loading")
     try {
       await emailjs.send(SERVICE_ID, TEMPLATE_ID, {
@@ -43,7 +53,9 @@ export default function ContactForm({ onSuccess }: Props) {
       setStatus("success")
       setForm({ name: "", email: "", message: "" })
       onSuccess?.()
-    } catch {
+    } catch (error) {
+      console.error("EmailJS failed to send the contact message:", error)
+      setSubmitError("Message could not be sent. Check the EmailJS service and template settings.")
       setStatus("error")
     }
   }
@@ -173,7 +185,7 @@ export default function ContactForm({ onSuccess }: Props) {
 
         {status === 'error' && (
           <p className="text-xs text-red-400 flex items-center gap-1.5 animate-in fade-in duration-300">
-            <AlertIcon /> Something went wrong. Please try again.
+            <AlertIcon /> {submitError}
           </p>
         )}
       </form>

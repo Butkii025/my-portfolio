@@ -11,14 +11,14 @@ export interface Project {
 
 export const PROJECTS_DATA: Project[] = [
   {
-    title: "CreditOptima - Loan Approval Predictor",
-    desc: "End-to-end ML classification app: engineered and compared Logistic Regression, KNN, and Naive Bayes models achieving ~87% accuracy, built an interactive Streamlit frontend with live approval predictions and model comparison dashboards.",
-    focused: "Full-Stack Development · Machine Learning Application",
-    tech: ["Python", "Scikit-Learn", "Pandas", "NumPy", "Streamlit Cloud"],
-    url: 'https://creditoptima.streamlit.app',
-    img: 'project-img/CreditOptima.png',
-    code: 'https://github.com/Butkii025/CreditOptima',
-    type: 'Machine Learning',
+    title: "Present Call - Biometrics Engine with Anti-spoofing & Realtime Sync",
+    desc: "A teacher can mark the attendance of an entire class from one photograph, or conduct a voice roll-call in which students say “Present” one after another. Students enrol once using their face and voice, and from then on their identity is verified using mathematical embeddings rather than stored raw images.",
+    focused: "Full-Stack Development · AI Application",
+    tech: ["Python", "Scikit-Learn", "Supabase", "Resemblyzer", "bcrypt","segno"],
+    url: 'https://presentcall.vercel.app/',
+    img: 'project-img/presentcall.png',
+    code: 'https://github.com/Butkii025/Present-Call-page',
+    type: 'Ai Application',
   },
   {
     title: "BhuNirvighna-Ai - Land Acquisition Delay Risk Predictor",
@@ -29,6 +29,16 @@ export const PROJECTS_DATA: Project[] = [
     img: 'project-img/BhNv.png',
     code: 'https://github.com/Butkii025/BhuNirvighna-Ai',
     type: 'Full Stack',
+  },
+  {
+    title: "CreditOptima - Loan Approval Predictor",
+    desc: "End-to-end ML classification app: engineered and compared Logistic Regression, KNN, and Naive Bayes models achieving ~87% accuracy, built an interactive Streamlit frontend with live approval predictions and model comparison dashboards.",
+    focused: "Full-Stack Development · Machine Learning Application",
+    tech: ["Python", "Scikit-Learn", "Pandas", "NumPy", "Streamlit Cloud"],
+    url: 'https://creditoptima.streamlit.app',
+    img: 'project-img/CreditOptima.png',
+    code: 'https://github.com/Butkii025/CreditOptima',
+    type: 'Machine Learning',
   },
   {
     title: "FeelFrame - Text Sentiment Analysis",

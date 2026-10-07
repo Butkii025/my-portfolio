@@ -43,6 +43,51 @@ export const credentialsData: CredentialCardProps[] = [
     ],
   },
   {
+    title: 'Community',
+    desc: 'Workshops, courses, certifications from leading institutions and platforms',
+    icon: '📚',
+    badgeColor: 'dark:bg-purple-500/20 bg-purple-100',
+    items: [
+      {
+        label: 'Hackday 2026 - organised by DECODEP, in collab with UNSTOP',
+        href: '/credentials/Hackday.png',
+        type: 'image',
+        date: 'Sept 2026',
+      },
+      {
+        label: 'Tech Debugging Challenge: StatNova - organised by VIT Bhopal University (VIT), Bhopal',
+        href: 'https://unstop.com/certificate-preview/7161c34b-dc31-470f-8d46-26216c42f513',
+        type: 'image',
+        date: 'Sept 2026',
+      },
+      {
+        label: 'StatNova - Minecraft Submission Round Coding Challenge',
+        href: 'https://unstop.com/certificate-preview/b9c1e9e4-920e-464a-a3f8-4b3aef86d677',
+        type: 'image',
+        date: 'Sept 2026',
+      },
+      {
+        label: 'Google/Kaggle Hacathon 2026 - Kaggle Badge',
+        href: 'https://www.kaggle.com/certification/badges/butkii/108',
+        type: 'image',
+        date: 'July 2026',
+      },
+      {
+        label: 'Internship Common Aptitute Test- ICAT',
+        href: '/credentials/ICAT.PDF',
+        type: 'pdf',
+        date: 'July 2026',
+      },
+      {
+        label: 'Research on Market Volatility Forecasting System',
+        href: 'research/NCMPCS.PDF',
+        date: 'March 2026',
+        type: 'pdf',
+      },
+    ],
+      
+  },
+  {
     title: 'Education',
     desc: 'Workshops, courses, certifications from leading institutions and platforms',
     icon: '📚',
@@ -75,33 +120,7 @@ export const credentialsData: CredentialCardProps[] = [
       },
     ],
   },
-  {
-    title: 'Community',
-    desc: 'Workshops, courses, certifications from leading institutions and platforms',
-    icon: '📚',
-    badgeColor: 'dark:bg-purple-500/20 bg-purple-100',
-    items: [
-      {
-        label: 'Tech Debugging Challenge: StatNova - organised by VIT Bhopal University (VIT), Bhopal',
-        href: 'https://unstop.com/certificate-preview/7161c34b-dc31-470f-8d46-26216c42f513',
-        type: 'image',
-        date: 'Sept 2026',
-      },
-      {
-        label: 'StatNova - Minecraft Submission Round Coding Challenge',
-        href: 'https://unstop.com/certificate-preview/b9c1e9e4-920e-464a-a3f8-4b3aef86d677',
-        type: 'image',
-        date: 'Sept 2026',
-      },
-      {
-        label: 'Research on Market Volatility Forecasting System',
-        href: 'research/NCMPCS.PDF',
-        date: 'March 2026',
-        type: 'pdf',
-      },
-    ],
-      
-  },
+
   {
     title: 'Social Activity',
     desc: 'Events, volunteering, competitions, and social impact participation',
@@ -109,15 +128,10 @@ export const credentialsData: CredentialCardProps[] = [
     badgeColor: 'dark:bg-emerald-500/20 bg-emerald-100',
     items: [
       {
-        label: 'Women\'s Day Play Performance',
-        href: 'https://www.kaggle.com/certification/badges/butkii/108',
+        label: 'Volunteer @Pharma-Vision 2026',
+        href: '/credentials/PV-volunteer.png',
         type: 'image',
-      },
-        {
-        label: 'Internship Common Aptitute Test- ICAT',
-        href: '/credentials/ICAT.PDF',
-        type: 'pdf',
-      },
+      }, 
       {
         label: 'Record Wining Rangoli @Bhoomi-fest_26',
         href: '/credentials/Bhoomi-fest.png',
@@ -137,9 +151,7 @@ export const credentialsData: CredentialCardProps[] = [
         label: 'Women\'s Day Play Performance',
         href: '/credentials/play-on-womens day.png',
         type: 'image',
-        // https://www.kaggle.com/certification/badges/butkii/108
       },
-      
     ],
   },
 ];

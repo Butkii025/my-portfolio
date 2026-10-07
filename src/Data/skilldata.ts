@@ -16,11 +16,11 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     title: 'AI/ML Engineering',
     icon: '🤖',
     description: 'Building intelligent systems with deep learning and predictive models.',
-    skills: ['PyTorch', 'TensorFlow', 'Scikit-Learn', 'XGBoost', 'Deep Learning', 'Predictive Modeling', 'Neural Networks', 'Ensemble Methods','LightGBM','SciPy','KNN'],
+    skills: ['PyTorch', 'TensorFlow', 'Scikit-Learn', 'XGBoost', 'Deep Learning', 'Predictive Modeling', 'Neural Networks', 'Ensemble Methods','LightGBM','SciPy','KNN','Resemblyzer','librosa','segno','OpenCV'],
     metrics: [
       { label: 'ML Projects', value: '6' }, 
       { label: 'Prediction Accuracy', value: '89.54%' }, 
-      { label: 'Models Deployed', value: '7' }, 
+      { label: 'Models Deployed', value: '9' }, 
       { label: 'Frameworks Mastered', value: '4' }, 
     ],
   },
