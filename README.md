@@ -47,6 +47,9 @@ Professional achievements, educational certifications, and community contributio
 ### **Theme System**
 Dark mode by default with seamless light/dark toggle. Dynamic image switching on theme change, glassmorphism effects, and color-coded badges.
 
+### **AI Portfolio Assistant**
+The floating chat assistant answers questions about the portfolio using Gemini and adapts to the selected light or dark theme. Using Gemini Keys
+
 ---
 
 ## 🛠️ Tech Stack
@@ -124,6 +127,12 @@ your EmailJS account. Configure the EmailJS template to use the `from_name`,
 `reply_to`, and `message` parameters. Restart the development server after
 updating environment variables, and add the same variables to your deployment
 provider before redeploying.
+
+The Gemini portfolio assistant builds its reference context from the project's
+project, skills, education, experience, and credentials data. Set
+`GEMINI_API_KEY` in `.env.local` for local development and in your deployment
+provider's server-side environment settings before redeploying. The API key is
+never exposed to the browser.
 
 **Reach me at:**
 - **GitHub:** [@Butkii025](https://github.com/Butkii025)

@@ -10,6 +10,16 @@ export interface Project {
 }
 
 export const PROJECTS_DATA: Project[] = [
+  //   {
+  //   title: "PixelAnsh - AI-Powered Art Commerce & Collaboration Platform",
+  //   desc: "Full-stack art platform with a searchable gallery, role-based accounts (customer, artist, admin), a commission request flow with a live price estimate and a 5-stage progress tracker, and a Razorpay test-mode checkout with a 15-minute inventory hold and server-side payment signature verification. Includes Kiran, a Gemini-powered chat assistant that reads live prices from the database, a guest-artist approval and payout workflow, customer reviews, Row Level Security on every table, and light, dark and animated system themes.",
+  //   focused: "Full-Stack Development · AI Application · E-Commerce",
+  //   tech: ["Next.js", "React", "TypeScript", "Framer Motion", "Supabase", "Razorpay", "Gemini API"],
+  //   url: 'https://pixelansh.vercel.app/',
+  //   img: 'project-img/pixelansh.png',
+  //   code: 'https://github.com/Butkii025/pixelansh',
+  //   type: 'Full Stack',
+  // },
   {
     title: "Present Call - Biometrics Engine with Anti-spoofing & Realtime Sync",
     desc: "A teacher can mark the attendance of an entire class from one photograph, or conduct a voice roll-call in which students say “Present” one after another. Students enrol once using their face and voice, and from then on their identity is verified using mathematical embeddings rather than stored raw images.",

@@ -16,7 +16,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     title: 'AI/ML Engineering',
     icon: '🤖',
     description: 'Building intelligent systems with deep learning and predictive models.',
-    skills: ['PyTorch', 'TensorFlow', 'Scikit-Learn', 'XGBoost', 'Deep Learning', 'Predictive Modeling', 'Neural Networks', 'Ensemble Methods','LightGBM','SciPy','KNN','Resemblyzer','librosa','segno','OpenCV'],
+    skills: ['PyTorch', 'TensorFlow', 'Scikit-Learn', 'XGBoost', 'Deep Learning', 'Predictive Modeling', 'Neural Networks', 'Ensemble Methods','LightGBM','SciPy','KNN','Resemblyzer','librosa','segno', 'Transformers', 'Hugging Face', 'NLP', 'Computer Vision', 'Time Series Analysis'],
     metrics: [
       { label: 'ML Projects', value: '6' }, 
       { label: 'Prediction Accuracy', value: '89.54%' }, 
@@ -27,29 +27,16 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 
   {
     id: 'data-analytics',
-    title: 'Data Analytics',
+    title: 'Data Science & Analytics',
     icon: '📊',
-    description: 'Uncovering insights from data with visualization and statistical analysis.',
-    skills: ['SQL', 'Python', 'Plotly Express', 'Pandas', 'Data Visualization', 'EDA', 'Statistical Analysis', 'Dashboard Design', 'Business Intelligence','Matplotlib','Seaborn'],
+    description: 'Uncovering insights from data with visualization and science workflows from exploration to deployment.',
+    skills: ['SQL', 'Python', 'Plotly Express', 'Pandas', 'Data Visualization', 'EDA', 'Statistical Analysis', 'Dashboard Design', 'Business Intelligence','Matplotlib','Seaborn','Python', 'Scikit-Learn', 'Pandas', 'NumPy', 'Feature Engineering', 'Model Validation', 'Hyperparameter Tuning', 'Predictive Modeling', 'Regression Analysis'],
     metrics: [
       { label: 'Visualizations', value: '6+' }, 
       { label: 'Records Analyzed', value: '700K+' }, 
-      { label: 'Projects', value: '3' }, 
-      { label: 'Tools Proficient', value: '6' },
-    ],
-  },
-
-  {
-    id: 'data-science',
-    title: 'Data Science',
-    icon: '🔬',
-    description: 'End-to-end data science workflows from exploration to deployment.',
-    skills: ['Python', 'Scikit-Learn', 'Pandas', 'NumPy', 'Feature Engineering', 'Model Validation', 'Hyperparameter Tuning', 'Predictive Modeling', 'Regression Analysis'],
-    metrics: [
-      { label: 'DS Projects', value: '3' }, 
-      { label: 'Records Processed', value: '700K+' }, 
       { label: 'Features Engineered', value: '50+' }, 
       { label: 'Model Accuracy', value: '89%+' }, 
+
     ],
   },
 

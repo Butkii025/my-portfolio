@@ -15,7 +15,8 @@ import Footer from '../src/components/Footer';
 import InteractiveDots from '@/src/ui/Interactivedots';
 import Experience from '../src/components/Experience';
 import AcademicBlock from '../src/components/Academics';
-import LandingPage from '../src/Prepage/LandingPage'
+import LandingPage from '../src/Prepage/LandingPage';
+import ChatBot from '../src/components/ChatBot';
 
 
 
@@ -226,7 +227,6 @@ export default function VijayPortfolio() {
         )}
 
         {/* SECTIONS */}
-        
         <Hero onProfileClick={openProfile} />
         <About isDark={isDark} onProfileClick={openProfile} />
         <AcademicBlock />
@@ -238,6 +238,7 @@ export default function VijayPortfolio() {
         <CreativeCorner />
         <Contact />
         <Footer />
+        <ChatBot />
 
         {/* Cursor */}
         <SmoothFollower />

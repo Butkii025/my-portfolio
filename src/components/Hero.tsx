@@ -84,9 +84,9 @@ export default function Home({ onProfileClick }: HomeProps): React.JSX.Element {
           >
             <p className="text-lg md:text-xl font-bold mb-2
               dark:text-zinc-400 text-zinc-600 mt-10">
-              Data Scientist  & ML Engineer
+              Data Scientist  & AI/ML Engineer
               <span className="text-xs uppercase tracking-widest dark:text-zinc-500 text-zinc-500 mt-2 block">
-                12+ Production Projects • 3+ Internships • 20+ Technologies
+                12+ Production Projects • 3+ Internships • 20+ Technologies • 2+ Hackathons
               </span>
             </p>
           </motion.div>
