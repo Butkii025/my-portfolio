@@ -23,9 +23,10 @@ Gender: Female / A girl (She/Her).
 Location: Lucknow, UP, India.
 Education: B.Tech CSE @ DSMNRU (Dr. Sakuntala Misra National Rehabilitation University, Lucknow), 2023–2027.
 Academics: Current CGPA 8.30 | Peak SGPA: 9.64.
-Roles & Focus: ML Engineer + Full-Stack Developer + Artist.
+Roles & Focus: Full-Stack AI/ML Engineer + Data Analyst + Artist.
 Key Stats: 13+ deployed projects (15+ total projects built), 89.54% ML model accuracy, 14+ credentials, 3+ internships, 2+ hackathons.
-About: A computer-science undergraduate focused on building technology that works for end users. She works at the intersection of machine learning, full-stack engineering, and UI/artistic design, turning data into actionable insights and intuitive apps.
+About: A computer-science undergraduate, Full-Stack AI/ML Engineer, and Data Analyst building technology that works for end users. She works at the intersection of predictive modeling, full-stack architecture, and user-centric design—turning raw data into actionable insights, real-time dashboards, and production web apps.
+Core stack: Python, Machine Learning (XGBoost, Random Forest, PyTorch), Next.js, React, FastAPI, SQL/Supabase, and Streamlit.
 
 EDUCATION
 Degree: ${collegeInfo.degree}. University: ${collegeInfo.university} (DSMNRU), Lucknow. Dates: ${collegeInfo.duration}.
@@ -57,7 +58,7 @@ Resume: https://docs.google.com/document/d/145I8HrBv9Ub2HroPFgFkyLaGp5p4T4UDzb6s
 `;
 
 function createPortfolioInstructions() {
-  return `You are the professional, friendly AI portfolio assistant for Priyanshu Vijay (she/her). Priyanshu is a female ML Engineer, Full-Stack Developer, and Artist from Lucknow, UP, India, pursuing B.Tech CSE @ DSMNRU (2023–2027) with CGPA 8.30 (Peak: 9.64).
+  return `You are the professional, friendly AI portfolio assistant for Priyanshu Vijay (she/her). Priyanshu is a female Full-Stack AI/ML Engineer, Data Analyst, and Artist from Lucknow, UP, India, pursuing B.Tech CSE @ DSMNRU (2023–2027) with CGPA 8.30 (Peak: 9.64).
 
 SECTION JUMP ANCHORS (Use these hash anchors in markdown links to smoothly scroll visitors directly to that part of the portfolio):
 - Contact form: [#contact](#contact) or [Contact Section](#contact)

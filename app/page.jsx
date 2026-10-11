@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { FaHome, FaMoon, FaSun } from 'react-icons/fa';
+import { FaHome, FaMoon, FaSun, FaDesktop } from 'react-icons/fa';
 import Hero from '../src/components/Hero';
 import About from '../src/components/About';
 import Skills from '../src/components/Skills';
@@ -13,25 +13,71 @@ import Contact from '../src/components/Contact';
 import SmoothFollower from '@/src/anim/SmoothFollower';
 import Footer from '../src/components/Footer';
 import InteractiveDots from '@/src/ui/Interactivedots';
+import ArtisticIllustrativeBg from '@/src/ui/ArtisticIllustrativeBg';
 import Experience from '../src/components/Experience';
 import AcademicBlock from '../src/components/Academics';
 import LandingPage from '../src/Prepage/LandingPage';
 import ChatBot from '../src/components/ChatBot';
 
-
-
 export default function VijayPortfolio() {
   const [isMenuOpen,    setIsMenuOpen]    = useState(false);
   const [isLogoOpen,    setIsLogoOpen]    = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  // Theme mode: 'dark' (default) | 'system' | 'light'
+  const [themeMode,     setThemeMode]     = useState('dark');
   const [isDark,        setIsDark]        = useState(true);
   const [showPreloader, setShowPreloader] = useState(true);
 
+  // Sync theme mode with localStorage and system preference (defaulting to dark)
+  useEffect(() => {
+    const saved = localStorage.getItem('theme_preference');
+    if (saved === 'dark' || saved === 'light' || saved === 'system') {
+      setThemeMode(saved);
+    } else {
+      setThemeMode('dark');
+      localStorage.setItem('theme_preference', 'dark');
+    }
+  }, []);
+
   useEffect(() => {
     const root = document.documentElement;
-    if (isDark) root.classList.add('dark');
-    else        root.classList.remove('dark');
-  }, [isDark]);
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    const updateTheme = () => {
+      let resolvedDark = true;
+      if (themeMode === 'system') {
+        resolvedDark = mediaQuery.matches;
+      } else if (themeMode === 'light') {
+        resolvedDark = false;
+      } else {
+        // 'dark' mode default
+        resolvedDark = true;
+      }
+
+      setIsDark(resolvedDark);
+      if (resolvedDark) {
+        root.classList.add('dark');
+      } else {
+        root.classList.remove('dark');
+      }
+    };
+
+    updateTheme();
+    localStorage.setItem('theme_preference', themeMode);
+
+    if (themeMode === 'system') {
+      mediaQuery.addEventListener('change', updateTheme);
+      return () => mediaQuery.removeEventListener('change', updateTheme);
+    }
+  }, [themeMode]);
+
+  const cycleTheme = () => {
+    setThemeMode((current) => {
+      if (current === 'system') return 'dark';
+      if (current === 'dark') return 'light';
+      return 'system';
+    });
+  };
 
   const logoSrc = isDark ? '/logo-on-dark.png' : '/logo-on-white.png';
 
@@ -72,17 +118,29 @@ export default function VijayPortfolio() {
       {showPreloader && (
         <LandingPage onEnter={() => setShowPreloader(false)} />
       )}
-    <div className="relative min-h-screen dark:bg-black bg-white dark:text-white text-gray-900 transition-colors duration-300">
+    <div className={`relative min-h-screen transition-colors duration-500 ${
+      themeMode === 'system'
+        ? isDark
+          ? 'bg-[#0b0f19] text-zinc-100'
+          : 'bg-[#f8fafc] text-zinc-800'
+        : 'dark:bg-black bg-white dark:text-white text-gray-900'
+    }`}>
 
-      {/* Global interactive dot background */}
+      {/* Background layer */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <InteractiveDots
-          backgroundColor={isDark ? '#000000' : '#ffffff'}
-          dotColor={isDark ? '#395e8b' : '#93c5fd'}
-          gridSpacing={25}
-          animationSpeed={0.005}
-          removeWaveLine={true}
-        />
+        {/* Artistic Animated Illustrative Canvas for System mode */}
+        {themeMode === 'system' && <ArtisticIllustrativeBg isDark={isDark} />}
+
+        {/* Global interactive dot background (hidden in system mode) */}
+        {themeMode !== 'system' && (
+          <InteractiveDots
+            backgroundColor={isDark ? '#000000' : '#ffffff'}
+            dotColor={isDark ? '#395e8b' : '#93c5fd'}
+            gridSpacing={25}
+            animationSpeed={0.005}
+            removeWaveLine={true}
+          />
+        )}
       </div>
 
       {/* All content above dots */}
@@ -125,16 +183,63 @@ export default function VijayPortfolio() {
                 ))}
               </div>
 
-              {/* Theme toggle */}
-              <button
-                onClick={() => setIsDark(!isDark)}
-                aria-label="Toggle theme"
-                className="p-2 rounded-xl transition duration-300 cursor-pointer
-                  dark:text-yellow-300 dark:hover:bg-white/10 dark:hover:text-yellow-300
-                  text-zinc-600 hover:bg-zinc-100 hover:text-zinc-800 hover:scale-110"
+              {/* Segmented Radio-Group Theme Toggle (System / Light / Dark) matching pixelansh.vercel.app */}
+              <div
+                role="radiogroup"
+                aria-label="Theme switcher"
+                className="relative flex items-center rounded-full border border-zinc-200/80 dark:border-white/10 bg-zinc-100/90 dark:bg-zinc-900/90 p-0.5 backdrop-blur-md shadow-xs transition-all duration-300"
               >
-                {isDark ? <FaSun size={18} /> : <FaMoon size={18} />}
-              </button>
+                {/* Dark (Default) */}
+                <button
+                  type="button"
+                  role="radio"
+                  aria-checked={themeMode === 'dark'}
+                  aria-label="Dark theme"
+                  title="Dark theme (Cosmic Dark)"
+                  onClick={() => setThemeMode('dark')}
+                  className={`relative z-10 grid h-7 w-7 place-items-center rounded-full transition-all duration-200 cursor-pointer ${
+                    themeMode === 'dark'
+                      ? 'bg-white dark:bg-white/15 text-indigo-500 dark:text-indigo-400 shadow-xs scale-105'
+                      : 'text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white'
+                  }`}
+                >
+                  <FaMoon size={12} />
+                </button>
+
+                {/* System (Artistic Animated Illustrative Canvas) */}
+                <button
+                  type="button"
+                  role="radio"
+                  aria-checked={themeMode === 'system'}
+                  aria-label="System theme"
+                  title="System theme (Animated Artistic Canvas & Illustrative Motifs)"
+                  onClick={() => setThemeMode('system')}
+                  className={`relative z-10 grid h-7 w-7 place-items-center rounded-full transition-all duration-200 cursor-pointer ${
+                    themeMode === 'system'
+                      ? 'bg-white dark:bg-white/15 text-blue-500 dark:text-blue-400 shadow-xs scale-105'
+                      : 'text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white'
+                  }`}
+                >
+                  <FaDesktop size={12} />
+                </button>
+
+                {/* Light */}
+                <button
+                  type="button"
+                  role="radio"
+                  aria-checked={themeMode === 'light'}
+                  aria-label="Light theme"
+                  title="Light theme"
+                  onClick={() => setThemeMode('light')}
+                  className={`relative z-10 grid h-7 w-7 place-items-center rounded-full transition-all duration-200 cursor-pointer ${
+                    themeMode === 'light'
+                      ? 'bg-white text-amber-500 shadow-xs scale-105'
+                      : 'text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white'
+                  }`}
+                >
+                  <FaSun size={12} />
+                </button>
+              </div>
 
               {/* Hamburger — mobile only */}
               <button
@@ -156,16 +261,57 @@ export default function VijayPortfolio() {
                 onClick={closeMenu}
                 style={{ boxShadow: 'inset 0 0 40px rgba(96,165,250,0.15)' }}
               />
-              <div className="absolute top-24 right-6 w-48 rounded-2xl shadow-2xl z-40 animate-in fade-in slide-in-from-top-2 duration-300
+              <div className="absolute top-24 right-6 w-56 rounded-2xl shadow-2xl z-40 animate-in fade-in slide-in-from-top-2 duration-300
                 dark:bg-black dark:border-2 dark:border-blue-400
-                bg-white border-2 border-blue-400">
-                <div className="flex flex-col py-4">
+                bg-white border-2 border-blue-400 overflow-hidden">
+                <div className="flex flex-col py-3">
+                  {/* Mobile theme pill inside menu */}
+                  <div className="px-4 py-2 mb-2 border-b border-zinc-200 dark:border-white/10 flex items-center justify-between">
+                    <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400">Theme</span>
+                    <div
+                      role="radiogroup"
+                      aria-label="Theme switcher mobile"
+                      className="flex items-center rounded-full border border-zinc-200/80 dark:border-white/10 bg-zinc-100/90 dark:bg-zinc-900/90 p-0.5"
+                    >
+                      <button
+                        type="button"
+                        onClick={() => setThemeMode('dark')}
+                        title="Dark"
+                        className={`grid h-6 w-6 place-items-center rounded-full transition-all ${
+                          themeMode === 'dark' ? 'bg-white dark:bg-white/20 text-indigo-400' : 'text-zinc-400'
+                        }`}
+                      >
+                        <FaMoon size={10} />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setThemeMode('system')}
+                        title="System"
+                        className={`grid h-6 w-6 place-items-center rounded-full transition-all ${
+                          themeMode === 'system' ? 'bg-white dark:bg-white/20 text-blue-500' : 'text-zinc-400'
+                        }`}
+                      >
+                        <FaDesktop size={10} />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setThemeMode('light')}
+                        title="Light"
+                        className={`grid h-6 w-6 place-items-center rounded-full transition-all ${
+                          themeMode === 'light' ? 'bg-white text-amber-500' : 'text-zinc-400'
+                        }`}
+                      >
+                        <FaSun size={10} />
+                      </button>
+                    </div>
+                  </div>
+
                   {allLinks.map((link) => (
                     <a
                       key={link.href}
                       href={link.href}
                       onClick={closeMenu}
-                      className="px-6 py-3 text-sm transition duration-300 cursor-pointer
+                      className="px-6 py-2.5 text-sm transition duration-300 cursor-pointer
                         dark:text-white dark:hover:text-blue-400 dark:hover:bg-white/5
                         text-gray-700 hover:text-blue-600 hover:bg-blue-50"
                     >

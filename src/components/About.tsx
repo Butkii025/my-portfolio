@@ -36,10 +36,10 @@ interface Highlight {
 }
 
 const highlights: Highlight[] = [
-  { icon: '🤖', label: 'Focus', value: 'Data Science & ML' },
-  { icon: '🐍', label: 'Tools', value: 'Python All-Rounder' },
-  { icon: '💻', label: 'Approach', value: 'Data-Driven Design' },
-  { icon: '⭐', label: 'Specialty', value: 'ML + Web Stack' },
+  { icon: '🤖', label: 'Role', value: 'Full-Stack AI/ML Engineer' },
+  { icon: '📊', label: 'Specialty', value: 'Data Analyst & Insights' },
+  { icon: '💻', label: 'Systems', value: '13+ Production Deployed Apps' },
+  { icon: '🎨', label: 'Creative', value: 'Artist & UI Craftsman' },
 ];
 
 function HighlightCard({ highlight, index }: { highlight: Highlight; index: number }) {
@@ -166,17 +166,17 @@ export default function AboutCool({ isDark }: { isDark: boolean }): React.JSX.El
           >
             <div>
               <p className="text-sm leading-relaxed dark:text-zinc-400 text-zinc-600">
-                CS undergrad driven by a simple philosophy: <strong className="dark:text-white text-zinc-600">Build tech that works for end users</strong>. Building at the intersection of Data Science, Machine Learning, and UI Design, turning raw data into actionable insights.
+                CS undergrad, <strong className="dark:text-white text-zinc-800">Full-Stack AI/ML Engineer</strong> and <strong className="dark:text-white text-zinc-800">Data Analyst</strong> driven by a simple philosophy: <strong className="dark:text-white text-zinc-800">Build technology that works for end users</strong>. Working at the intersection of predictive modeling, full-stack architecture, and user-centric interfaces.
               </p>
             </div>
             <div>
               <p className="text-sm leading-relaxed dark:text-zinc-400 text-zinc-600">
-                I have experience working with <strong className="dark:text-white text-zinc-600">Python, Machine Learning, Data Science & Analysis</strong>, GitHub, and Web technologies. I enjoy building practical projects that solve real-world problems, continuously learning about the stock market, data science, and emerging technologies.
+                I build end-to-end applications powered by <strong className="dark:text-white text-zinc-800">Python, Machine Learning (XGBoost, Random Forest, PyTorch), Next.js, and FastAPI</strong>. From real-time risk classification and biometric authentication to quantitative volatility forecasting, every project turns raw data into reliable, production-ready systems.
               </p>
             </div>
             <div>
               <p className="text-sm leading-relaxed dark:text-zinc-400 text-zinc-600">
-                Apart from academics, I enjoy <strong className="dark:text-white text-zinc-600">open source collaboration, creating public PRs, and networking</strong>. I believe in combining creativity with technology to create meaningful and impactful work.
+                Beyond engineering, I am an <strong className="dark:text-white text-zinc-800">artist</strong> passionate about open-source collaboration, hackathons, and creative digital experiences that bridge precision mathematics with intuitive design.
               </p>
             </div>
             <motion.a

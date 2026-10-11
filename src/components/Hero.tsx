@@ -55,7 +55,7 @@ export default function Home({ onProfileClick }: HomeProps): React.JSX.Element {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <p className="flex items-center gap-2 uppercase tracking-[0.2em] font-semibold text-sm mb-10
+          <div className="flex items-center gap-2 uppercase tracking-[0.2em] font-semibold text-sm mb-10
             dark:text-white text-zinc-400">
             <GradientText
               colors={["#5d94d7", "#5a6168", "#1e1f21"]}
@@ -66,7 +66,7 @@ export default function Home({ onProfileClick }: HomeProps): React.JSX.Element {
               ____portfolio
             </GradientText>
             <FiSmile size={18} className="ml-2 animate-pulse" />
-          </p>
+          </div>
 
           <h1 className="text-5xl md:text-6xl font-black leading-tight mb-6
             dark:text-white text-gray-900">

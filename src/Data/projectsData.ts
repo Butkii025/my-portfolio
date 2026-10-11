@@ -10,21 +10,21 @@ export interface Project {
 }
 
 export const PROJECTS_DATA: Project[] = [
-  //   {
-  //   title: "PixelAnsh - AI-Powered Art Commerce & Collaboration Platform",
-  //   desc: "Full-stack art platform with a searchable gallery, role-based accounts (customer, artist, admin), a commission request flow with a live price estimate and a 5-stage progress tracker, and a Razorpay test-mode checkout with a 15-minute inventory hold and server-side payment signature verification. Includes Kiran, a Gemini-powered chat assistant that reads live prices from the database, a guest-artist approval and payout workflow, customer reviews, Row Level Security on every table, and light, dark and animated system themes.",
-  //   focused: "Full-Stack Development · AI Application · E-Commerce",
-  //   tech: ["Next.js", "React", "TypeScript", "Framer Motion", "Supabase", "Razorpay", "Gemini API"],
-  //   url: 'https://pixelansh.vercel.app/',
-  //   img: 'project-img/pixelansh.png',
-  //   code: 'https://github.com/Butkii025/pixelansh',
-  //   type: 'Full Stack',
-  // },
+  {
+    title: "PixelAnsh - AI-Powered Art Commerce & Collaboration Platform",
+    desc: "AI-powered end-to-end art commerce platform: searchable gallery, customer-artist collaboration workflows, Gemini-driven live price estimation, progress tracking, test-mode Razorpay checkout, and guest-artist management with integrated payment & review systems.",
+    focused: "Full-Stack Development · AI Application · E-Commerce",
+    tech: ["Next.js", "React", "TypeScript", "Framer Motion", "Supabase", "Razorpay", "Gemini API"],
+    url: 'https://pixelansh.vercel.app/',
+    img: 'project-img/pixelansh.png',
+    code: 'https://github.com/Butkii025/pixelansh',
+    type: 'Full Stack',
+  },
   {
     title: "Present Call - Biometrics Engine with Anti-spoofing & Realtime Sync",
     desc: "A teacher can mark the attendance of an entire class from one photograph, or conduct a voice roll-call in which students say “Present” one after another. Students enrol once using their face and voice, and from then on their identity is verified using mathematical embeddings rather than stored raw images.",
     focused: "Full-Stack Development · AI Application",
-    tech: ["Python", "Scikit-Learn", "Supabase", "Resemblyzer", "bcrypt","segno"],
+    tech: ["Python", "Scikit-Learn", "Supabase", "Resemblyzer", "bcrypt", "segno"],
     url: 'https://presentcall.vercel.app/',
     img: 'project-img/presentcall.png',
     code: 'https://github.com/Butkii025/Present-Call-page',
@@ -54,7 +54,7 @@ export const PROJECTS_DATA: Project[] = [
     title: "FeelFrame - Text Sentiment Analysis",
     desc: "Full-Stack Sentiment Analysis Platform Built and deployed a production REST API with FastAPI serving the trained model, with a custom frontend featuring, it tells you whether the sentiment is positive or negative, with a confidence score, visualized live on a sweeping needle gauge. Classification approaches on 50K IMDB reviews TF-IDF + Logistic Regression/LinearSVC baseline 91% accuracy ",
     focused: "Deep Learning · NLP · Model Deployment",
-    tech: ["Next.js","React","TypeScript","Python", "Scikit-Learn", "PyTorch","REST API"],
+    tech: ["Next.js", "React", "TypeScript", "Python", "Scikit-Learn", "PyTorch", "REST API"],
     url: 'https://feelframe.vercel.app/',
     img: 'project-img/feelframe.png',
     code: 'https://github.com/Butkii025/feelframe',
@@ -65,7 +65,7 @@ export const PROJECTS_DATA: Project[] = [
     title: "Real Estate Valuation Analysis",
     desc: "End-to-end full-stack application: engineered ML ensemble (Ridge/Lasso/GBR) achieving 89.54% R², built interactive Streamlit frontend with real-time predictions, deployed production-ready dashboard with Plotly market analytics.",
     focused: "Full-Stack Development · Machine Learning Model",
-    tech: ["Python", "Scikit-Learn", "Plotly", "Pandas", "Joblib","Streamlit Cloud"],
+    tech: ["Python", "Scikit-Learn", "Plotly", "Pandas", "Joblib", "Streamlit Cloud"],
     url: 'https://propsight.streamlit.app/',
     img: 'project-img/real-estate-price.png',
     code: 'https://github.com/Butkii025/propsight-analysis/tree/main',
@@ -102,7 +102,7 @@ export const PROJECTS_DATA: Project[] = [
     code: 'https://github.com/Butkii025/my-portfolio',
     type: 'Web Development',
   },
-  
+
   {
     title: "Offline Music Player Desktop Application",
     desc: "Full-stack desktop application: Tkinter GUI with Pygame audio engine, automated file caching, compiled to standalone .exe using PyInstaller. Zero-dependency offline execution on Windows.",
@@ -112,7 +112,7 @@ export const PROJECTS_DATA: Project[] = [
     code: 'https://github.com/Butkii025/Music_Player_App',
     type: 'Desktop App',
   },
-  
+
   {
     title: "Xela_Arcade - Chess Engine & Game Collection",
     desc: "Custom game framework with chess.js engine leveraging state machines and minimax algorithms. Demonstrates deep algorithm design, competitive bot logic, and React animation orchestration.",

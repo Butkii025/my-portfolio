@@ -78,8 +78,12 @@ const InteractiveDots = ({
     timeRef.current += animationSpeed;
     const now = Date.now();
 
-    ctx.fillStyle = backgroundColor;
-    ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+    if (backgroundColor === 'transparent') {
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+    } else {
+      ctx.fillStyle = backgroundColor;
+      ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+    }
 
     const rr = parseInt(dotColor.slice(1, 3), 16);
     const gg = parseInt(dotColor.slice(3, 5), 16);
@@ -131,8 +135,8 @@ const InteractiveDots = ({
   }, [animate, resizeCanvas]);
 
   return (
-    <div style={{ position: 'fixed', inset: 0, width: '100%', height: '100%', backgroundColor, zIndex: 0 }}>
-      <canvas ref={canvasRef} style={{ display: 'block', width: '100%', height: '100%' }} />
+    <div style={{ position: 'fixed', inset: 0, width: '100%', height: '100%', backgroundColor: backgroundColor === 'transparent' ? 'transparent' : backgroundColor, zIndex: 0, pointerEvents: 'none' }}>
+      <canvas ref={canvasRef} style={{ display: 'block', width: '100%', height: '100%', pointerEvents: 'none' }} />
     </div>
   );
 };
