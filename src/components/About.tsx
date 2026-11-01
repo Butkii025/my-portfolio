@@ -84,7 +84,7 @@ export default function AboutCool({
 
   useEffect(() => {
     if (themeMode === 'system') {
-      setProfileImage('/1.png');
+      setProfileImage('/pv-gamified.png');
     } else if (themeMode === 'light' || !isDark) {
       setProfileImage('/pv.png');
     } else {
