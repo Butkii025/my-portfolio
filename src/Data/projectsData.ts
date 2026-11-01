@@ -11,10 +11,19 @@ export interface Project {
 
 export const PROJECTS_DATA: Project[] = [
   {
-    title: "PixelAnsh - AI-Powered Art Commerce & Collaboration Platform",
+    title: "Mini-TXT - NLP Summarization API",
+    desc: "Built a FastAPI text summarization service with a POST /summarize/ endpoint and Pydantic request validation. A Hugging Face T5 model with PyTorch tokenizes and truncates input to 512 tokens, then generates abstractive summaries using 4-beam search with a 150-token output cap. Supports automatic CUDA, Apple MPS, and CPU device selection, with a Jinja2 web interface for interactive use.",
+    focused: "Natural Language Processing · Model Serving · Web Application",
+    tech: ["Python", "FastAPI", "PyTorch", "Hugging Face Transformers", "REST APIs"],
+    img: 'project-img/mini-txt.png',
+    code: 'https://github.com/Butkii025/mini-txt',
+    type: 'AI Application',
+  },
+  {
+    title: "PixelAnsh - Art Commerce & Collaboration Platform",
     desc: "AI-powered end-to-end art commerce platform: searchable gallery, customer-artist collaboration workflows, Gemini-driven live price estimation, progress tracking, test-mode Razorpay checkout, and guest-artist management with integrated payment & review systems.",
-    focused: "Full-Stack Development · AI Application · E-Commerce",
-    tech: ["Next.js", "React", "TypeScript", "Framer Motion", "Supabase", "Razorpay", "Gemini API"],
+    focused: "Full-Stack Development · E-Commerce",
+    tech: ["React", "TypeScript", "Framer Motion", "postgresql", "Razorpay", "Gemini bot"],
     url: 'https://pixelansh.vercel.app/',
     img: 'project-img/pixelansh.png',
     code: 'https://github.com/Butkii025/pixelansh',

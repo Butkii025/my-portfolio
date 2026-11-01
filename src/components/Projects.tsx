@@ -15,17 +15,50 @@ export default function Projects(): React.JSX.Element {
     }
   };
 
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const categories = ['All', 'Full Stack', 'Ai Application', 'Machine Learning', 'Research & Analytics'];
+
+  const filteredProjects = selectedCategory === 'All'
+    ? PROJECTS_DATA
+    : PROJECTS_DATA.filter((p) => {
+        if (selectedCategory === 'Research & Analytics') {
+          return p.type.toLowerCase().includes('data') || p.type.toLowerCase().includes('research') || p.type.toLowerCase().includes('dashboard');
+        }
+        return p.type.toLowerCase().includes(selectedCategory.toLowerCase());
+      });
+
   return (
     <section id="projects" className="py-28 px-6 md:px-12 lg:px-24 dark:bg-transparent text-zinc-900 dark:text-zinc-100">
       <div className="max-w-7xl mx-auto">
         <div className="mb-8">
           <p className="uppercase tracking-[0.2em] mb-4 text-zinc-500 dark:text-zinc-500 text-xs font-semibold">Projects</p>
-          <h2 className="flex items-center gap-3 text-5xl md:text-6xl font-bold dark:text-white text-black mb-4">
-            Featured Work & Experiences
-          </h2>
-          <p className="text-base dark:text-zinc-400 text-zinc-600 max-w-2xl mb-20">
-            Projects where data, machine learning, and design come together.
-          </p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-4">
+            <div>
+              <h2 className="flex items-center gap-3 text-5xl md:text-6xl font-bold dark:text-white text-black mb-3">
+                Featured Work &amp; Experiences
+              </h2>
+              <p className="text-base dark:text-zinc-400 text-zinc-600 max-w-2xl">
+                Projects where data science, machine learning models, and modern UI design come together.
+              </p>
+            </div>
+
+            {/* Filter pills */}
+            <div className="flex items-center gap-2 overflow-x-auto pb-2 flex-wrap">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => { setSelectedCategory(cat); setActiveIndex(null); }}
+                  className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all duration-300 cursor-pointer ${
+                    selectedCategory === cat
+                      ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/25 scale-105'
+                      : 'dark:bg-white/5 dark:text-zinc-400 dark:hover:text-white bg-zinc-100 text-zinc-600 hover:bg-zinc-200'
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
 
         <div className="
@@ -39,7 +72,7 @@ export default function Projects(): React.JSX.Element {
           [&::-webkit-scrollbar-thumb]:bg-zinc-300
           [&::-webkit-scrollbar-thumb]:rounded-full
         ">
-          {PROJECTS_DATA.map((project, index) => (
+          {filteredProjects.map((project, index) => (
             <div key={index} className="snap-center shrink-0 w-[78vw]">
               <ProjectCard
                 project={project}
@@ -62,14 +95,14 @@ export default function Projects(): React.JSX.Element {
           [&::-webkit-scrollbar-thumb]:bg-zinc-300
           [&::-webkit-scrollbar-thumb]:rounded-full
         ">
-          {PROJECTS_DATA.map((project, index) => {
+          {filteredProjects.map((project, index) => {
             const isActive = activeIndex === index;
             return (
               <div key={index} className="shrink-0"
                 style={{
-                  transition: 'width 0.6s cubic-bezier(0.34,1.4,0.64,1)',
-                  width: isActive ? '380px' : '180px',
-                  minWidth: isActive ? '380px' : '180px',
+                  transition: 'width 0.5s cubic-bezier(0.25, 1, 0.5, 1)',
+                  width: isActive ? '390px' : '220px',
+                  minWidth: isActive ? '390px' : '220px',
                 }}
                 onMouseEnter={() => setActiveIndex(index)}
                 onMouseLeave={() => setActiveIndex(null)}

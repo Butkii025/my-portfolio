@@ -27,6 +27,18 @@ export default function VijayPortfolio() {
   const [themeMode,     setThemeMode]     = useState('dark');
   const [isDark,        setIsDark]        = useState(true);
   const [showPreloader, setShowPreloader] = useState(true);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalHeight > 0) {
+        setScrollProgress((window.scrollY / totalHeight) * 100);
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Sync theme mode with localStorage and system preference (defaulting to dark)
   useEffect(() => {
@@ -148,6 +160,11 @@ export default function VijayPortfolio() {
 
         {/* NAVBAR */}
         <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md dark:bg-zinc-900/10 bg-white/70 border-b dark:border-white/5 border-blue-100 transition-colors duration-300">
+          {/* Scroll progress bar */}
+          <div
+            className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-blue-500 via-indigo-500 to-cyan-400 transition-all duration-100 ease-out"
+            style={{ width: `${scrollProgress}%` }}
+          />
           <div className="max-w-7xl mx-auto flex items-center justify-between px-6">
 
             {/* Logo */}
@@ -374,7 +391,7 @@ export default function VijayPortfolio() {
 
         {/* SECTIONS */}
         <Hero onProfileClick={openProfile} />
-        <About isDark={isDark} onProfileClick={openProfile} />
+        <About isDark={isDark} themeMode={themeMode} onProfileClick={openProfile} />
         <AcademicBlock />
         <Skills />
         <Experience />

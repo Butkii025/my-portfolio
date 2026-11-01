@@ -404,7 +404,7 @@ export default function ChatBot() {
         onClick={() => setIsOpen((open) => !open)}
         aria-label={isOpen ? "Close portfolio chat" : "Open portfolio chat"}
         aria-expanded={isOpen}
-        className="group relative ml-auto flex h-13 w-13 sm:h-14 sm:w-14 items-center justify-center rounded-full border border-zinc-200 dark:border-white/15 bg-white dark:bg-black text-zinc-900 dark:text-white shadow-xl shadow-blue-500/10 hover:border-blue-400/60 hover:shadow-blue-500/20 transition-all duration-300 hover:scale-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-400/30"
+        className="group relative ml-auto flex h-13 w-13 sm:h-14 sm:w-14 items-center justify-center rounded-full border border-zinc-200 dark:border-white/15 bg-white dark:bg-black text-zinc-900 dark:text-white shadow-xl shadow-blue-500/10 hover:border-blue-400/60 hover:shadow-blue-500/20 transition-all duration-300 hover:scale-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-400/30 cursor-pointer"
       >
         <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />

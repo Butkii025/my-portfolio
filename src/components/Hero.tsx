@@ -68,10 +68,18 @@ export default function Home({ onProfileClick }: HomeProps): React.JSX.Element {
             <FiSmile size={18} className="ml-2 animate-pulse" />
           </div>
 
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-4 backdrop-blur-md border border-emerald-500/20 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            Available for AI/ML & Data Engineering Roles
+          </div>
+
           <h1 className="text-5xl md:text-6xl font-black leading-tight mb-6
             dark:text-white text-gray-900">
             Priyanshu
-            <span className="text-4xl md:text-5xl block bg-gradient-to-r text-zinc-500 text-transparent font-black mb-6">
+            <span className="text-4xl md:text-5xl block text-zinc-500 font-black mb-6">
               Vijay
             </span>
           </h1>
@@ -82,13 +90,13 @@ export default function Home({ onProfileClick }: HomeProps): React.JSX.Element {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="mb-8"
           >
-            <p className="text-lg md:text-xl font-bold mb-2
-              dark:text-zinc-400 text-zinc-600 mt-10">
-              Data Scientist  & AI/ML Engineer
-              <span className="text-xs uppercase tracking-widest dark:text-zinc-500 text-zinc-500 mt-2 block">
-                12+ Production Projects • 3+ Internships • 20+ Technologies • 2+ Hackathons
-              </span>
-            </p>
+            <div className="text-xl md:text-2xl font-bold mb-2 dark:text-zinc-200 text-zinc-800 flex items-center gap-2 flex-wrap">
+              <span>Data Scientist &amp;</span>
+              <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">AI/ML Engineer</span>
+            </div>
+            <span className="text-xs uppercase tracking-widest dark:text-zinc-500 text-zinc-500 mt-2 block font-medium">
+              15+ Production Projects • 3+ Internships • 20+ Technologies • 2+ Hackathons
+            </span>
           </motion.div>
 
           <motion.p
@@ -109,7 +117,8 @@ export default function Home({ onProfileClick }: HomeProps): React.JSX.Element {
             className="flex gap-4 flex-wrap mb-4"
           >
             <motion.a
-              href="https://docs.google.com/document/d/145I8HrBv9Ub2HroPFgFkyLaGp5p4T4UDzb6s-uII7Pk/export?format=pdf"
+              href="https://docs.google.com/document/d/145I8HrBv9Ub2HroPFgFkyLaGp5p4T4UDzb6s-uII7Pk/preview"
+                target="_blank"
               className="px-4 py-3 rounded-2xl transition duration-300 cursor-pointer font-semibold
                   dark:border dark:border-white/20 dark:text-white dark:hover:bg-white/10 dark:active:bg-zinc-400
                   border border-zinc-300 text-zinc-700 hover:bg-zinc-100 active:bg-zinc-200

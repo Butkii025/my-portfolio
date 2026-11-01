@@ -1,14 +1,13 @@
 'use client';
 
 import React, { useRef, useState, useCallback, useEffect } from 'react';
-import { FaPaintBrush } from 'react-icons/fa';
+import { FaPaintBrush,FaDownload } from 'react-icons/fa';
 import { FiChevronLeft, FiChevronRight, FiX } from 'react-icons/fi';
 import { ART_IMAGES, RANGOLI_FACTS } from '@/src/Data/creativeData';
 import ArtCard from '@/src/components/ArtCard';
-import VideoBox from '@/src/Data/VideoBox';
 import FunZone from './FunZone';
 import { ArtImage } from '@/src/Data/creativeData';
-import ComponentLibrary from '@/src/components/Componentlibrary';
+import GradientText from "../ui/GradientText";
 
 
 function useTilt(strength = 12) {
@@ -78,9 +77,25 @@ export default function CreativeCorner(): React.JSX.Element {
           Beyond code I sketch, draw portraits, do charcoal work, design posters, and create visuals that carry emotions and stories. I've also done commissioned pieces for friends and clients.
         </p>
 
-        <div className="flex items-center gap-3 mb-6">
+        <a href="https://pixelansh.vercel.app" target="_blank" rel="noreferrer"
+            className="px-4 py-1.5 rounded-xl border text-2xl transition duration-300 shadow-sm
+              dark:border-zinc-700 dark:text-zinc-400 dark:hover:border-blue-400 dark:hover:text-blue-400
+              border-zinc-200 text-zinc-500 hover:border-blue-400 hover:text-blue-400">
+                <span className="text-xs uppercase tracking-widest dark:text-zinc-500 text-zinc-400 self-center mr-1 font-semibold">EXPLORE :</span> 
+            <GradientText
+                            colors={["#f2f2f3", "#ea5fc3", "#4478e8"]}
+                            animationSpeed={4}
+                            showBorder={false}
+                            className="inline"
+                          >
+                            PixelAnsh - Artistic E-commerce Platform
+                          </GradientText>
+          </a>
+
+
+        <div className="flex items-center gap-3 mb-6 mt-6">
           <p className="font-medium text-xm dark:text-zinc-300 text-zinc-700">MOMENT : 
-            <span className="dark:text-zinc-400 text-zinc-500 text-center text-sm italic mt-20"> 
+            <span className="dark:text-zinc-400 text-zinc-500 text-center text-sm italic mt-20">
             The team Kala_Arpan project was a monumental, award-winning rangoli installation at Lucknow University's Bhoomi Fest 2026, created using 50,000 disposable cups across 2,500 square feet in collaboration with SFD-Awadh. This incredible feat of teamwork and creativity served as a visually striking and deeply moving tribute to the victims of Pahalgam.
             </span>
             
@@ -89,7 +104,7 @@ export default function CreativeCorner(): React.JSX.Element {
         </div>
 
         <div className="flex flex-wrap gap-3 mb-14">
-          <span className="text-xs uppercase tracking-widest dark:text-zinc-500 text-zinc-400 self-center mr-1 font-semibold">Kala_Arpan -</span> 
+          <span className="text-xs uppercase tracking-widest dark:text-zinc-500 text-zinc-400 self-center mr-1 font-semibold">Kala_Arpan :</span> 
           <a href="https://www.youtube.com/shorts/lpRupMkGGaM" target="_blank" rel="noreferrer"
             className="px-3 py-1.5 rounded-xl border text-sm transition duration-300 shadow-sm
               dark:border-zinc-700 dark:text-zinc-400 dark:hover:border-blue-400 dark:hover:text-blue-400

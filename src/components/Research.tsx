@@ -223,15 +223,15 @@ export default function Research(): React.JSX.Element {
 
               <div className="mt-auto pt-4 border-t dark:border-white/10 border-zinc-200/80">
                 <p className="text-xs uppercase tracking-widest font-semibold mb-4 ml-1 text-zinc-400 dark:text-zinc-500">
-                  Project Documents
+                  Project Documents 
                 </p>
                 
                 <div className="flex flex-col gap-2">
                   {[
-                    { label: "BhuNirvighna-Ai: AI-powered predictive analytics platform for land acquisition delay", href: "research/BhNv-Ai proposal.PDF" },
+                    { label: "PresentCall: Biometrics Engine with Anti-spoofing & Realtime Sync ", href: "research/PresentCall_documentation.PDF" },
+                    { label: "BhuNirvighna-Ai: Predictive analytics platform for land acquisition delay", href: "research/BhNv-Ai proposal.PDF" },
                     { label: "CreditOptima - Loan Approval System", href: "research/CreditOptima.PDF" },
                     { label: "Ensemble Real Estate Valuation & Analytics", href: "research/Real-Estate-HousePricing.PDF" },
-                    { label: "Book Data Analysis", href: "research/Bibiliofile-data-analysis.PDF" },
                     { label: "Xela_Arcade: Frictionless Multi-Game Matrix", href: "research/Xela_Arcade-architecture.PDF"},
                   ].map((doc, i) => (
                     <a

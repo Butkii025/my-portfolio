@@ -3,6 +3,8 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaStar } from 'react-icons/fa';
+import { FaDownload } from 'react-icons/fa';
+
 
 function useTilt(strength = 8) {
   const ref = useRef<HTMLDivElement>(null);
@@ -68,13 +70,28 @@ function HighlightCard({ highlight, index }: { highlight: Highlight; index: numb
   );
 }
 
-export default function AboutCool({ isDark }: { isDark: boolean }): React.JSX.Element {
+export default function AboutCool({
+  isDark,
+  themeMode,
+  onProfileClick,
+}: {
+  isDark: boolean;
+  themeMode?: string;
+  onProfileClick?: () => void;
+}): React.JSX.Element {
   const imgTilt = useTilt(20);
-  const [profileImage, setProfileImage] = useState('/1.png');
+  const [profileImage, setProfileImage] = useState('/6.png');
 
   useEffect(() => {
-    setProfileImage(isDark ? '/2.png' : '/4.png');
-  }, [isDark]);
+    if (themeMode === 'system') {
+      setProfileImage('/1.png');
+    } else if (themeMode === 'light' || !isDark) {
+      setProfileImage('/pv.png');
+    } else {
+      // dark theme
+      setProfileImage('/2.png');
+    }
+  }, [themeMode, isDark]);
 
   return (
     <section id="about" className="py-28 px-6 md:px-12 lg:px-24 dark:bg-transparent relative overflow-hidden">
@@ -179,16 +196,29 @@ export default function AboutCool({ isDark }: { isDark: boolean }): React.JSX.El
                 Beyond engineering, I am an <strong className="dark:text-white text-zinc-800">artist</strong> passionate about open-source collaboration, hackathons, and creative digital experiences that bridge precision mathematics with intuitive design.
               </p>
             </div>
-            <motion.a
-              href="#projects"
-              whileHover={{ x: 4 }}
-              className="w-fit flex items-center gap-2 px-6 py-3 rounded-xl font-semibold
-                dark:bg-zinc-600 dark:hover:bg-zinc-700 dark:text-white
-                bg-zinc-500 hover:bg-zinc-600 text-white
-                transition-all duration-300 mt-4"
-            >
-              Explore My Work →
-            </motion.a>
+            <div className="mt-4 flex flex-wrap items-center gap-4">
+              <motion.a
+                href="https://docs.google.com/document/d/1dU8dJlBS6JWsHmSSNptbHJuFgnGopdwDu06hMEQ_2B0/preview"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-fit flex items-center gap-2 px-6 py-3 rounded-xl font-semibold
+                  dark:bg-zinc-600 dark:hover:bg-zinc-700 dark:text-white
+                  bg-zinc-500 hover:bg-zinc-600 text-white
+                  transition-all duration-300"
+              >
+                CV <FaDownload size={16} />
+              </motion.a>
+              <motion.a
+                href="#projects"
+                whileHover={{ x: 4 }}
+                className="w-fit flex items-center gap-2 px-6 py-3 rounded-xl font-semibold
+                  dark:bg-zinc-600 dark:hover:bg-zinc-700 dark:text-white
+                  bg-zinc-500 hover:bg-zinc-600 text-white
+                  transition-all duration-300"
+              >
+                Explore My Work →
+              </motion.a>
+            </div>
           </motion.div>
         </div>
 
@@ -211,7 +241,7 @@ export default function AboutCool({ isDark }: { isDark: boolean }): React.JSX.El
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.6 }}
-          className="mt-20 grid grid-cols-3 gap-4 md:gap-8"
+          className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8"
         >
           {[
             { label: 'Internships', value: '3+' },
