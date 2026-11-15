@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import CatAnimation from './CatAnimation';
+// import CatAnimation from './CatAnimation';
 import GreetingLoader from './GreetingLoader';
 
 export default function LandingPage({ onEnter }) {
@@ -103,7 +103,7 @@ export default function LandingPage({ onEnter }) {
         </button>
       </div>
 
-      <CatAnimation />
+      {/* <CatAnimation /> */}
 
       <div className="absolute bottom-6 text-center">
         <p className="text-xs text-zinc-700 tracking-widest">

@@ -9,129 +9,87 @@ export interface SkillCategory {
     value: string;
   }[];
 }
-
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
     id: 'ai-ml',
-    title: 'AI/ML Engineering',
+    title: 'AI / ML Engineering',
     icon: '🤖',
-    description: 'Building intelligent systems with deep learning and predictive models.',
-    skills: ['PyTorch', 'TensorFlow', 'Scikit-Learn', 'XGBoost', 'Deep Learning', 'Predictive Modeling', 'Neural Networks', 'Ensemble Methods','LightGBM','SciPy','KNN','Resemblyzer','librosa','segno', 'Transformers', 'Hugging Face', 'NLP', 'Computer Vision', 'Time Series Analysis'],
+    description: 'Intelligent systems built with deep learning, ensembles and predictive models.',
+    skills: [
+      'PyTorch', 'TensorFlow', 'Scikit-Learn', 'XGBoost', 'LightGBM', 'Deep Learning',
+      'Predictive Modeling', 'Neural Networks', 'Ensemble Methods', 'Transformers', 'Hugging Face',
+      'NLP', 'Computer Vision', 'Time Series Analysis', 'KNN', 'SciPy', 'Resemblyzer', 'librosa', 'segno',
+    ],
     metrics: [
-      { label: 'ML Projects', value: '6' }, 
-      { label: 'Prediction Accuracy', value: '89.54%' }, 
-      { label: 'Models Deployed', value: '9' }, 
-      { label: 'Frameworks Mastered', value: '4' }, 
+      { label: 'ML Projects', value: '6' },
+      { label: 'Prediction Accuracy', value: '89.54%' },
+      { label: 'Models Deployed', value: '9' },
     ],
   },
-
   {
-    id: 'data-analytics',
-    title: 'Data Science & Analytics',
+    id: 'data',
+    title: 'Data Science & Engineering',
     icon: '📊',
-    description: 'Uncovering insights from data with visualization and science workflows from exploration to deployment.',
-    skills: ['SQL', 'Python', 'Plotly Express', 'Pandas', 'Data Visualization', 'EDA', 'Statistical Analysis', 'Dashboard Design', 'Business Intelligence','Matplotlib','Seaborn','Python', 'Scikit-Learn', 'Pandas', 'NumPy', 'Feature Engineering', 'Model Validation', 'Hyperparameter Tuning', 'Predictive Modeling', 'Regression Analysis'],
+    description: 'From raw data to insight: analysis, visualization, scraping and ETL pipelines.',
+    skills: [
+      'Python', 'SQL', 'Pandas', 'NumPy', 'EDA', 'Statistical Analysis', 'Feature Engineering',
+      'Regression Analysis', 'Model Validation', 'Hyperparameter Tuning', 'Data Visualization',
+      'Plotly Express', 'Matplotlib', 'Seaborn', 'Power BI', 'Dashboard Design', 'Business Intelligence',
+      'Web Scraping', 'BeautifulSoup4', 'LXML', 'Requests API', 'ETL Design', 'Data Validation',
+      'Pipeline Automation', 'joblib Serialization', 'REST API Integration',
+    ],
     metrics: [
-      { label: 'Visualizations', value: '6+' }, 
-      { label: 'Records Analyzed', value: '700K+' }, 
-      { label: 'Features Engineered', value: '50+' }, 
-      { label: 'Model Accuracy', value: '89%+' }, 
-
+      { label: 'Records Analyzed', value: '700K+' },
+      { label: 'Pipelines Built', value: '3' },
+      { label: 'Features Engineered', value: '50+' },
     ],
   },
-
   {
-    id: 'data-engineering',
-    title: 'Data Engineering & ETL',
-    icon: '⚙️',
-    description: 'Building robust data pipelines, web scraping, and ETL workflows for scale.',
-    skills: ['Python', 'BeautifulSoup4', 'LXML', 'Web Scraping', 'Requests API', 'ETL Design', 'Data Validation', 'Pipeline Automation', 'joblib Serialization', 'REST API Integration'],
-    metrics: [
-      { label: 'Data Pipelines Built', value: '3' }, 
-      { label: 'Data Sources Integrated', value: '3' }, 
-      { label: 'Projects', value: '4' },
-      { label: 'Automation Coverage', value: '89%' }, 
-    ],
-  },
-
-  {
-    id: 'desktop-apps',
-    title: 'Python App Development',
-    icon: '🐍',
-    description: 'Building standalone desktop applications with rich GUI, file handling, and system integration.',
-    skills: ['Python', 'Tkinter', 'Pygame (Mixer)', 'PyInstaller', 'File I/O', 'Data Persistence', 'State Management', 'GUI Architecture', 'OOP Design', 'OS Module', 'Shutil'],
-    metrics: [
-      { label: 'GUI Apps Built', value: '5' }, 
-      { label: 'Executables Deployed', value: '3' }, 
-      { label: 'Architecture Pattern', value: 'OOP' }, 
-      { label: 'Total Lines Code', value: '4K+' }, 
-    ],
-  },
-
-  {
-  id: 'game-dev',
-  title: 'Game Algorithms',
-  icon: '🎮',
-  description: 'Building interactive game engines with complex AI, multiple game mechanics, and algorithm optimization.',
-  skills: [
-    'Chess Engine Development', 
-    'Minimax Algorithm', 
-    'Chess.js Library',         
-    'React Chessboard',          
-    'Game State Management', 
-    'Tic-Tac-Toe Logic', 
-    'Snake Game Mechanics',      
-    'Score Tracking',            
-    'Game UI Design',            
-    'Bot Development'
-  ],
-  metrics: [
-    { label: 'Games Built', value: '3' },              
-    { label: 'Game Types', value: 'Classic' }, 
-    { label: 'AI Implementation', value: '1 Bot' }, 
-    { label: 'Algorithms', value: 'Logic, chess.js' }, 
-  ],
-},
-
-  {
-    id: 'web-dev',
-    title: 'Web Development',
+    id: 'web-design',
+    title: 'Web & Design',
     icon: '💻',
-    description: 'Creating responsive, interactive web experiences with modern tech.',
-    skills: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'Framer Motion', 'REST API', 'Three.js', 'Web Animation', 'Responsive Design'],
-    metrics: [
-      { label: 'Projects Shipped', value: '4' }, 
-      { label: 'Performance Score', value: '90+' }, 
-      { label: 'Tech Stack', value: '10+' }, 
-      { label: 'Deployment Platforms', value: '3' },
+    description: 'Responsive, interactive web experiences, designed before they are coded.',
+    skills: [
+      'React', 'Next.js', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'Framer Motion', 'Three.js',
+      'REST API', 'Web Animation', 'Responsive Design', 'UI/UX Design', 'Figma', 'Adobe Photoshop',
+      'Canva', 'Design Systems', 'Prototyping', 'Motion Design',
     ],
-  },
-
-  {
-    id: 'creative-design',
-    title: 'Creative Design',
-    icon: '🎨',
-    description: 'Blending aesthetics with functionality for compelling user experiences.',
-    skills: ['UI/UX Design', 'Figma', 'Adobe Photoshop', 'Canva', 'Design Systems', 'Prototyping', 'Motion Design', 'Responsive Layout'],
     metrics: [
+      { label: 'Projects Shipped', value: '4' },
+      { label: 'Performance Score', value: '90+' },
       { label: 'Designs Created', value: '25+' },
-      { label: 'Design Tools', value: '3' }, 
-      { label: 'Projects', value: '2' }, 
-      { label: 'Design Iterations', value: '100+' }, 
     ],
   },
-
   {
-    id: 'developer-tools',
-    title: 'Developer Tools & Deployment',
-    icon: '🛠️',
-    description: 'Mastering development infrastructure, version control, and deployment platforms.',
-    skills: ['Git', 'GitHub', 'Streamlit', 'Hugging Face Space','Google Colab', 'Anaconda', 'VS Code', 'Netlify', 'Vercel', 'PyInstaller', 'Environment Management','PowerBI'],
+    id: 'apps-algorithms',
+    title: 'Apps & Algorithms',
+    icon: '🎮',
+    description: 'Desktop apps, game engines and the algorithms that power them.',
+    skills: [
+      'Python', 'Tkinter', 'Pygame (Mixer)', 'PyInstaller', 'File I/O', 'Data Persistence',
+      'State Management', 'GUI Architecture', 'OOP Design', 'OS Module', 'Shutil',
+      'Chess Engine Development', 'Minimax Algorithm', 'Chess.js', 'React Chessboard',
+      'Tic-Tac-Toe Logic', 'Snake Game Mechanics', 'Score Tracking', 'Game UI Design', 'Bot Development',
+    ],
     metrics: [
-      { label: 'Projects Deployed', value: '13' }, 
-      { label: 'Platforms Used', value: '5' }, 
-      { label: 'Repositories', value: '25+' }, 
-      { label: 'Deployment Success', value: '100%' }, 
+      { label: 'GUI Apps Built', value: '5' },
+      { label: 'Executables Deployed', value: '3' },
+      { label: 'Games Built', value: '3' },
+    ],
+  },
+  {
+    id: 'tools',
+    title: 'Tools & Deployment',
+    icon: '🛠️',
+    description: 'Version control, environments and the platforms everything ships on.',
+    skills: [
+      'Git', 'GitHub', 'Streamlit', 'Hugging Face Spaces', 'Vercel', 'Netlify',
+      'Google Colab', 'Anaconda', 'VS Code', 'Environment Management', 'groq', 'pip', 'openai', 'Deployment Pipelines', 'Cloud Hosting','FastAPI', 'Docker'
+    ],
+    metrics: [
+      { label: 'Projects Deployed', value: '13' },
+      { label: 'Platforms Used', value: '5' },
+      { label: 'Repositories', value: '30+' },
     ],
   },
 ];

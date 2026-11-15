@@ -1,4 +1,5 @@
 export interface Project {
+  name: string;
   title: string;
   desc: string;
   focused: string;
@@ -11,6 +12,7 @@ export interface Project {
 
 export const PROJECTS_DATA: Project[] = [
   {
+    name: "mini-txt",
     title: "Mini-TXT - NLP Summarization API",
     desc: "Built a FastAPI text summarization service with a POST /summarize/ endpoint and Pydantic request validation. A Hugging Face T5 model with PyTorch tokenizes and truncates input to 512 tokens, then generates abstractive summaries using 4-beam search with a 150-token output cap. Supports automatic CUDA, Apple MPS, and CPU device selection, with a Jinja2 web interface for interactive use.",
     focused: "Natural Language Processing · Model Serving · Web Application",
@@ -20,6 +22,7 @@ export const PROJECTS_DATA: Project[] = [
     type: 'AI Application',
   },
   {
+    name: "pixelansh",
     title: "PixelAnsh - Art Commerce & Collaboration Platform",
     desc: "AI-powered end-to-end art commerce platform: searchable gallery, customer-artist collaboration workflows, Gemini-driven live price estimation, progress tracking, test-mode Razorpay checkout, and guest-artist management with integrated payment & review systems.",
     focused: "Full-Stack Development · E-Commerce",
@@ -30,9 +33,10 @@ export const PROJECTS_DATA: Project[] = [
     type: 'Full Stack',
   },
   {
+    name: "presentcall",
     title: "Present Call - Biometrics Engine with Anti-spoofing & Realtime Sync",
     desc: "A teacher can mark the attendance of an entire class from one photograph, or conduct a voice roll-call in which students say “Present” one after another. Students enrol once using their face and voice, and from then on their identity is verified using mathematical embeddings rather than stored raw images.",
-    focused: "Full-Stack Development · AI Application",
+    focused: "Model Serving · AI Application · Full-Stack Development ",
     tech: ["Python", "Scikit-Learn", "Supabase", "Resemblyzer", "bcrypt", "segno"],
     url: 'https://presentcall.vercel.app/',
     img: 'project-img/presentcall.png',
@@ -40,6 +44,7 @@ export const PROJECTS_DATA: Project[] = [
     type: 'Ai Application',
   },
   {
+    name: "bhunirvighna-ai",
     title: "BhuNirvighna-Ai - Land Acquisition Delay Risk Predictor",
     desc: "End-to-end ML decision-support platform: engineered an XGBoost classifier for delay-risk scoring (0.97 ROC-AUC) with SHAP-based explainability, plus a Random Forest regressor for compensation cost estimation (R² 0.67) - all served through a multi-tab Streamlit dashboard with GIS risk heatmaps, live prediction forms, and an automated recommendation engine.",
     focused: "Full-Stack Development · Machine Learning Application",
@@ -50,6 +55,7 @@ export const PROJECTS_DATA: Project[] = [
     type: 'Full Stack',
   },
   {
+    name: "creditoptima",
     title: "CreditOptima - Loan Approval Predictor",
     desc: "End-to-end ML classification app: engineered and compared Logistic Regression, KNN, and Naive Bayes models achieving ~87% accuracy, built an interactive Streamlit frontend with live approval predictions and model comparison dashboards.",
     focused: "Full-Stack Development · Machine Learning Application",
@@ -60,6 +66,7 @@ export const PROJECTS_DATA: Project[] = [
     type: 'Machine Learning',
   },
   {
+    name: "feelframe",
     title: "FeelFrame - Text Sentiment Analysis",
     desc: "Full-Stack Sentiment Analysis Platform Built and deployed a production REST API with FastAPI serving the trained model, with a custom frontend featuring, it tells you whether the sentiment is positive or negative, with a confidence score, visualized live on a sweeping needle gauge. Classification approaches on 50K IMDB reviews TF-IDF + Logistic Regression/LinearSVC baseline 91% accuracy ",
     focused: "Deep Learning · NLP · Model Deployment",
@@ -71,6 +78,7 @@ export const PROJECTS_DATA: Project[] = [
   },
 
   {
+    name: "propsight-analysis",
     title: "Real Estate Valuation Analysis",
     desc: "End-to-end full-stack application: engineered ML ensemble (Ridge/Lasso/GBR) achieving 89.54% R², built interactive Streamlit frontend with real-time predictions, deployed production-ready dashboard with Plotly market analytics.",
     focused: "Full-Stack Development · Machine Learning Model",
@@ -82,6 +90,7 @@ export const PROJECTS_DATA: Project[] = [
   },
 
   {
+    name: "book-data-prediction",
     title: "Book Data Prediction System",
     desc: "Complete MLOps pipeline: web scraping with BeautifulSoup, ensemble ML model training, real-time prediction engine via CLI. Demonstrates end-to-end data engineering and model deployment.",
     focused: "Data Engineering · MLOps · Web Scraping · Ensemble ML",
@@ -91,6 +100,7 @@ export const PROJECTS_DATA: Project[] = [
     type: 'Data Science',
   },
   {
+    name: "smart-expense-tracker",
     title: "Smart Expense Tracker",
     desc: "A web-based personal finance dashboard cloud-deployed on Hugging Face Spaces. Features real-time transaction logging, dual-format data visualization (Matplotlib metrics), historical ledger tracking, date-stamped logs, and full undo/redo state capabilities.",
     focused: "Cloud Deployment · Data Analytics & Visualization",
@@ -102,6 +112,7 @@ export const PROJECTS_DATA: Project[] = [
   },
 
   {
+    name: "personal-portfolio",
     title: "Personal Portfolio",
     desc: "Responsive interactive portfolio with 3D cursor effects, animated component library, real-time theme switching, and optimized performance. Showcases modern web design & TypeScript expertise.",
     focused: "Web Design · Interactive UI · Performance Optimization",
@@ -113,6 +124,7 @@ export const PROJECTS_DATA: Project[] = [
   },
 
   {
+    name: "offline-music-player",
     title: "Offline Music Player Desktop Application",
     desc: "Full-stack desktop application: Tkinter GUI with Pygame audio engine, automated file caching, compiled to standalone .exe using PyInstaller. Zero-dependency offline execution on Windows.",
     focused: "Desktop Application Development · File Automation · Deployment",
@@ -123,6 +135,7 @@ export const PROJECTS_DATA: Project[] = [
   },
 
   {
+    name: "xela-arcade",  
     title: "Xela_Arcade - Chess Engine & Game Collection",
     desc: "Custom game framework with chess.js engine leveraging state machines and minimax algorithms. Demonstrates deep algorithm design, competitive bot logic, and React animation orchestration.",
     focused: "Game Development · Bot Logic · State Machines",
@@ -134,6 +147,7 @@ export const PROJECTS_DATA: Project[] = [
   },
 
   {
+    name: "weather-dashboard",
     title: "Real-Time Weather Dashboard",
     desc: "Desktop application integrating live weather REST APIs with real-time data parsing. Displays meteorological metrics, forecasts, and environmental indices via responsive GUI dashboard.",
     focused: "API Integration · Real-Time Data · GUI Development",
@@ -144,6 +158,7 @@ export const PROJECTS_DATA: Project[] = [
   },
 
   {
+    name: "password-generator",
     title: "Secure Password Generator",
     desc: "Cryptographically secure password utility with user-defined length and character constraints. Operates offline for data privacy, leverages Python's secrets module for high-entropy randomization.",
     focused: "Cryptographic Security · Data Privacy · Desktop Utility",
@@ -154,6 +169,7 @@ export const PROJECTS_DATA: Project[] = [
   },
 
   {
+    name: "craft-greet",
     title: "Craft-Greet - Custom Card Generator",
     desc: "Interactive greeting card creator with custom image upload, personalized messaging, template selection, and direct download. Demonstrates creative UI design and file handling.",
     focused: "Creative Design · User Input Handling · File Export",
@@ -165,6 +181,7 @@ export const PROJECTS_DATA: Project[] = [
   },
 
   {
+    name: "interactive-quiz-app",
     title: "Interactive Quiz Application",
     desc: "Object-oriented application with dynamic multi-choice evaluation, live score tracking, instant input validation, and automated performance metrics. Demonstrates OOP architecture and state management.",
     focused: "Object-Oriented Design · Dynamic Evaluation · Local Analytics",
@@ -175,6 +192,7 @@ export const PROJECTS_DATA: Project[] = [
   },
 
   {
+    name: "standard-calculator",
     title: "Standard Calculator",
     desc: "Desktop calculator with systematic expression parsing, decimal precision tracking, and state-driven interface. Demonstrates core math operations and UI architecture.",
     focused: "Mathematical Logic · Input Validation · State Management",
@@ -185,6 +203,7 @@ export const PROJECTS_DATA: Project[] = [
   },
 
   {
+    name: "gpa-calculator",
     title: "GPA Calculator",
     desc: "Grade computation tool with credit weighting, cumulative analysis, and performance feedback. Clean calculation logic with intuitive UI for academic tracking.",
     focused: "Educational Tool · Weighted Computation · Performance Analytics",

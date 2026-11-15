@@ -1,194 +1,191 @@
+
 'use client';
 
-import React, { useRef } from 'react';
-import { motion } from 'framer-motion';
-import { FiFileText, FiAward, FiUsers, FiExternalLink } from 'react-icons/fi';
+import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { motion, AnimatePresence, useMotionValue } from 'framer-motion';
+import { FiArrowUpRight, FiFileText, FiLayers } from 'react-icons/fi';
 import { credentialsData } from '@/src/Data/Credentialsdata';
-import type { CredentialItem, CredentialCardProps } from '@/src/Data/Credentialsdata';
+import type { CredentialItem } from '@/src/Data/Credentialsdata';
 
-function useTiltCard(strength = 8) {
-  const ref = useRef<HTMLDivElement>(null);
+type Preview = { src: string | null; label: string } | null;
 
-  const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const el = ref.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    const rotateX = -(y / rect.height) * strength;
-    const rotateY = (x / rect.width) * strength;
-    el.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02,1.02,1.02)`;
-    const glow = el.querySelector('.card-glow') as HTMLElement;
-    if (glow) {
-      const gx = 50 + (x / rect.width) * 60;
-      const gy = 50 + (y / rect.height) * 60;
-      glow.style.background = `radial-gradient(circle at ${gx}% ${gy}%, rgba(96,165,250,0.2), transparent 70%)`;
-      glow.style.opacity = '1';
-    }
+const isImage = (h: string) => /\.(png|jpe?g|webp|gif)$/i.test(h);
+const isExternal = (h: string) => /^https?:\/\//i.test(h);
+
+const getPreview = (item: CredentialItem): Preview =>
+  isExternal(item.href) ? null : {
+    src: isImage(item.href) ? item.href : null,
+    label: item.label,
   };
 
-  const onMouseLeave = () => {
-    const el = ref.current;
-    if (!el) return;
-    el.style.transform = 'perspective(600px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
-    const glow = el.querySelector('.card-glow') as HTMLElement;
-    if (glow) glow.style.opacity = '0';
-  };
-
-  return { ref, onMouseMove, onMouseLeave };
-}
-
-function CredentialItem({ item }: { item: CredentialItem }) {
-  const isPDF = item.href.toLowerCase().endsWith('.pdf');
+function CredentialRow({ item, index, onHover }: {
+  item: CredentialItem;
+  index: number;
+  onHover: (p: Preview) => void;
+}) {
+  const preview = () => onHover(getPreview(item));
 
   return (
     <motion.a
       href={item.href}
       target="_blank"
       rel="noopener noreferrer"
-      initial={{ opacity: 0, x: -10 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      whileHover={{ x: 5 }}
-      className="group relative flex items-start gap-3 p-3 rounded-lg transition-all duration-300
-        dark:hover:bg-white/5 hover:bg-zinc-50/50
-        dark:hover:border-blue-400/30 hover:border-blue-300/30
-        border dark:border-white/0 border-transparent"
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.04, duration: 0.3 }}
+      onMouseEnter={preview}
+      onMouseLeave={() => onHover(null)}
+      onFocus={preview}
+      onBlur={() => onHover(null)}
+      className="group flex items-baseline gap-3 border-b border-zinc-200 py-5 transition-colors hover:border-blue-400/40 dark:border-white/10 sm:gap-4"
     >
-      <span className="mt-1 flex-shrink-0">
-        {isPDF ? (
-          <FiFileText className="w-4 h-4 dark:text-blue-400 text-blue-500" />
-        ) : (
-          <FiAward className="w-4 h-4 dark:text-purple-400 text-purple-500" />
-        )}
+      <span className="w-7 shrink-0 font-mono text-xs text-zinc-400 group-hover:text-blue-500">
+        {String(index + 1).padStart(2, '0')}
       </span>
-      <div className="flex-1 min-w-0">
-        <p className="text-sm font-medium dark:text-zinc-300 text-zinc-700 group-hover:dark:text-blue-300 group-hover:text-blue-600 transition-colors">
-          {item.label}
-        </p>
-        {item.date && (
-          <p className="text-xs dark:text-zinc-600 text-zinc-500 mt-0.5">{item.date}</p>
-        )}
-      </div>
-      <FiExternalLink className="w-4 h-4 flex-shrink-0 dark:text-zinc-600 text-zinc-400 group-hover:dark:text-blue-400 group-hover:text-blue-500 transition-colors opacity-0 group-hover:opacity-100" />
+      <span className="font-serif text-lg font-light leading-snug text-zinc-800 transition-all group-hover:translate-x-1 group-hover:text-blue-600 dark:text-zinc-200 dark:group-hover:text-white sm:text-2xl">
+        {item.label}
+      </span>
+      <span className="mb-1.5 hidden h-px min-w-6 flex-1 border-b border-dotted border-zinc-300 group-hover:border-blue-400/60 dark:border-white/20 sm:block" />
+      {item.date && <span className="ml-auto shrink-0 font-mono text-[10px] uppercase tracking-widest text-zinc-500 sm:text-xs">{item.date}</span>}
+      <FiArrowUpRight className="h-4 w-4 shrink-0 self-center text-zinc-400 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-blue-500" />
     </motion.a>
   );
 }
 
-function CredentialCard({ title, desc, icon, badgeColor, items }: CredentialCardProps) {
-  const tilt = useTiltCard(8);
+export default function Credentials(): React.JSX.Element {
+  const [active, setActive] = useState(0);
+  const [preview, setPreview] = useState<Preview>(null);
+  const [mounted, setMounted] = useState(false);
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
 
-  const getIconComponent = (iconEmoji: string) => {
-    const iconMap: { [key: string]: React.ReactNode } = {
-      '🏆': <FiAward className="w-6 h-6 text-white" />,
-      '📚': <FiFileText className="w-6 h-6 text-white" />,
-      '👥': <FiUsers className="w-6 h-6 text-white" />,
-    };
-    return iconMap[iconEmoji] || <FiAward className="w-6 h-6 text-white" />;
+  const allItems = credentialsData.flatMap(c => c.items);
+  const group = active === -1 ? null : credentialsData[active];
+  const items = group?.items ?? allItems;
+  const total = allItems.length;
+
+  useEffect(() => setMounted(true), []);
+
+  const onMove = (e: React.MouseEvent) => {
+    const x = e.clientX > window.innerWidth - 320 ? e.clientX - 296 : e.clientX + 24;
+    mx.set(Math.max(8, x));
+    my.set(Math.max(8, Math.min(e.clientY + 16, window.innerHeight - 240)));
   };
 
-  return (
-    <motion.div
-      ref={tilt.ref}
-      onMouseMove={tilt.onMouseMove}
-      onMouseLeave={tilt.onMouseLeave}
-      style={{ transition: 'transform 0.15s ease-out', transformStyle: 'preserve-3d', width: '320px', minWidth: '320px', height: '500px' }}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="relative group p-8 rounded-3xl backdrop-blur-xl transition-all duration-500
-        dark:border dark:border-white/10 border-zinc-200 dark:bg-gradient-to-br dark:from-white/5 dark:to-white/0
-        border border-white/40 bg-gradient-to-br from-white/60 to-zinc-50/40
-        flex flex-col h-full
-        hover:shadow-2xl hover:dark:shadow-blue-500/20 hover:shadow-blue-500/10
-        dark:hover:border-blue-400/50 hover:border-blue-300/30"
-    >
-      <div
-        className="card-glow absolute inset-0 pointer-events-none rounded-3xl transition-opacity duration-300"
-        style={{ opacity: 0 }}
-      />
+  const tabClass = (selected: boolean) =>
+    `relative pb-4 font-serif text-xl font-light transition-colors sm:text-2xl ${
+      selected ? 'text-black dark:text-white' : 'text-zinc-400 hover:text-zinc-700 dark:text-zinc-500 dark:hover:text-zinc-300'
+    }`;
 
-      <div className="relative z-10 flex flex-col h-full">
-        {/* HEADER */}
-        <div className="flex items-start justify-between mb-4">
-          <div className="flex items-center gap-3">
-            <div className={`p-3 rounded-xl ${badgeColor}`}>
-              {getIconComponent(icon)}
-            </div>
+  return (
+    <section id="credentials" className="relative overflow-hidden px-6 py-28 md:px-12 lg:px-24">
+      <div className="mx-auto max-w-7xl">
+
+        {/* Header */}
+        <motion.div initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-14">
+        
+          <p className="mb-4 text-xs uppercase tracking-[0.35em] text-blue-400/80 dark:text-blue-400/70">
+              Achievements
+            </p>
+
+          <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
             <div>
-              <h3 className="text-2xl font-bold dark:text-white text-zinc-900">
-                {title}
-              </h3>
+              
+              <h2 className="flex items-center gap-3 font-serif text-4xl font-light md:text-6xl dark:text-white text-black mb-4">
+                Credentials <span className="text-zinc-500 italic">& </span>Certifications
+              </h2>
+              <p className="mt-5 max-w-xl text-xs leading-relaxed text-zinc-500 dark:text-zinc-400 md:text-sm">
+                A collection of professional achievements, educational certifications, and community contributions.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-3">
+              <div className="flex items-center gap-2 rounded-xl border border-blue-500/20 bg-blue-500/[0.04] px-4 py-3">
+                <span className="h-2 w-2 animate-pulse rounded-full bg-blue-500" />
+                <span className="font-mono text-[10px] uppercase tracking-widest text-text-blue-400/80 dark:text-blue-400/70">Live archive</span>
+              </div>
+              {[
+                ['Collections', credentialsData.length],
+                ['Total records', total],
+              ].map(([label, value]) => (
+                <div key={label} className="min-w-[105px] rounded-xl border border-zinc-200 bg-white/40 px-4 py-3 dark:border-white/10 dark:bg-white/[0.03]">
+                  <p className="text-[9px] uppercase tracking-widest text-zinc-500">{label}</p>
+                  <p className="mt-1 font-mono text-2xl font-light text-zinc-900 dark:text-white">{String(value).padStart(2, '0')}</p>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
-
-        <p className="text-sm dark:text-zinc-400 text-zinc-600 mb-6 leading-relaxed">
-          {desc}
-        </p>
-
-        <div className="w-12 h-1 bg-gradient-to-r dark:from-blue-500/40 dark:to-blue-500/0 from-blue-400/40 to-blue-400/0 rounded-full mb-6" />
-
-        <div className="flex-1 space-y-2 min-h-0 overflow-y-auto pr-2
-          [&::-webkit-scrollbar]:w-1
-          dark:[&::-webkit-scrollbar-track]:bg-transparent
-          dark:[&::-webkit-scrollbar-thumb]:bg-zinc-700
-          [&::-webkit-scrollbar-track]:bg-transparent
-          [&::-webkit-scrollbar-thumb]:bg-zinc-300
-          [&::-webkit-scrollbar-thumb]:rounded-full
-          hover:dark:[&::-webkit-scrollbar-thumb]:bg-zinc-600
-          hover:[&::-webkit-scrollbar-thumb]:bg-zinc-400">
-          {items.map((item, i) => (
-            <CredentialItem key={i} item={item} />
-          ))}
-        </div>
-
-        <div className="mt-6 pt-6 border-t dark:border-white/5 border-white/30">
-          <p className="text-xs uppercase tracking-widest font-semibold dark:text-zinc-500 text-zinc-500">
-            {items.length} Credential{items.length !== 1 ? 's' : ''}
-          </p>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-export default function Credentials(): React.JSX.Element {
-  return (
-    <section id="credentials" className="py-28 px-6 md:px-12 lg:px-24 dark:bg-transparent overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
-        >
-          <p className="uppercase tracking-[0.2em] mb-4 text-zinc-500 dark:text-zinc-500 text-xs font-semibold">
-            Achievements
-          </p>
-          <h2 className="flex items-center gap-3 text-5xl md:text-6xl font-bold dark:text-white text-black mb-4">
-            Credentials & Certifications
-          </h2>
-          <p className="text-base dark:text-zinc-400 text-zinc-600 max-w-2xl">
-            A collection of professional achievements, educational certifications, and community contributions.
-          </p>
         </motion.div>
 
-        <div className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory items-start
-          [&::-webkit-scrollbar]:h-1.5
-          dark:[&::-webkit-scrollbar-track]:bg-zinc-900
-          dark:[&::-webkit-scrollbar-thumb]:bg-zinc-800
-          [&::-webkit-scrollbar-track]:bg-zinc-100
-          [&::-webkit-scrollbar-thumb]:bg-zinc-300
-          [&::-webkit-scrollbar-thumb]:rounded-full">
-          {credentialsData.map((card, i) => (
-            <div key={i} className="snap-start flex-shrink-0">
-              <CredentialCard {...card} />
-            </div>
-          ))}
+        {/* Category navigation */}
+        <div role="tablist" aria-label="Credential categories" className="flex flex-wrap gap-x-8 gap-y-4 border-b border-zinc-200 dark:border-white/10">
+          {[{ title: 'All', items: allItems }, ...credentialsData].map((category, i) => {
+            const selected = (i === 0 && active === -1) || i === active + 1;
+            return (
+              <button key={category.title} type="button" role="tab" aria-selected={selected} onClick={() => setActive(i - 1)} className={tabClass(selected)}>
+                {category.title}
+                <sup className="ml-1.5 font-mono text-[10px] text-blue-500">{category.items.length}</sup>
+                {selected && <motion.span layoutId="credential-tab" className="absolute inset-x-0 -bottom-px h-px bg-blue-500" />}
+              </button>
+            );
+          })}
         </div>
 
+        {/* Description */}
+        <div className="mb-3 mt-7 flex items-center justify-between gap-4">
+          <p className="max-w-xl text-xs leading-relaxed text-zinc-500 dark:text-zinc-400 md:text-sm">
+            {group?.desc ?? 'Explore all achievements and milestones in one place.'}
+          </p>
+          <p className="hidden shrink-0 font-mono text-[9px] uppercase tracking-widest text-zinc-400 md:block">Hover to preview ↗</p>
+        </div>
+
+        {/* Credential ledger */}
+        <div onMouseMove={onMove} className="min-h-[260px] border-t border-zinc-200 dark:border-white/10">
+          <AnimatePresence mode="wait">
+            <motion.div key={active} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25 }}>
+              {items.map((item, i) => <CredentialRow key={`${item.href}-${i}`} item={item} index={i} onHover={setPreview} />)}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Footer */}
+        <div className="mt-7 flex flex-wrap items-center justify-between gap-3 border-t border-zinc-200 pt-5 dark:border-white/10">
+          <div className="flex items-center gap-2">
+            <FiLayers className="h-3.5 w-3.5 text-blue-500" />
+            <span className="font-mono text-[9px] uppercase tracking-widest text-zinc-500">{group?.title ?? 'All collections'}</span>
+          </div>
+          <p className="font-mono text-[9px] tracking-widest text-zinc-400">{items.length} RECORDS</p>
+        </div>
       </div>
+
+      {/* Floating preview */}
+      {mounted && createPortal(
+        <AnimatePresence>
+          {preview && (
+            <motion.div
+              key="credential-preview"
+              initial={{ opacity: 0, scale: 0.94 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.94 }}
+              transition={{ duration: 0.15 }}
+              style={{ x: mx, y: my }}
+              className="pointer-events-none fixed left-0 top-0 z-[70] hidden w-[272px] rounded-xl border border-zinc-200 bg-white/95 p-2 shadow-2xl backdrop-blur-xl dark:border-white/10 dark:bg-zinc-950/95 md:block"
+            >
+              {preview.src ? (
+                <img src={preview.src} alt={preview.label} className="max-h-52 w-full rounded-lg object-contain" />
+              ) : (
+                <div className="flex h-36 flex-col items-center justify-center gap-3 rounded-lg bg-zinc-100 dark:bg-white/[0.04]">
+                  <FiFileText className="h-8 w-8 text-blue-500" />
+                  <span className="text-[10px] uppercase tracking-widest text-zinc-500">PDF · Click to open</span>
+                </div>
+              )}
+              <p className="mt-2 truncate px-1 text-[10px] text-zinc-500">{preview.label}</p>
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </section>
   );
 }

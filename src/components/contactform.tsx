@@ -90,7 +90,7 @@ export default function ContactForm({ onSuccess }: Props) {
         </div>
         <div>
           <p className="text-lg font-bold dark:text-white text-black mb-1">Message sent !</p>
-          <p className="text-sm dark:text-zinc-400 text-zinc-500">I'll get back to you shortly</p>
+          <p className="text-xs md:text-sm dark:text-zinc-400 text-zinc-500">I'll get back to you shortly</p>
         </div>
         <p className="font-['Alex_Brush',_cursive] text-xl dark:text-zinc-300 text-zinc-500 italic">
           " - have a nice day"

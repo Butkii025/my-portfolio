@@ -67,20 +67,20 @@ export const credentialsData: CredentialCardProps[] = [
         date: 'Sept 2026',
       },
       {
-        label: 'Google/Kaggle Hacathon 2026 - Kaggle Badge',
+        label: 'Google/Kaggle Hackathon 2026 - Kaggle Badge',
         href: 'https://www.kaggle.com/certification/badges/butkii/108',
         type: 'image',
         date: 'July 2026',
       },
       {
-        label: 'Internship Common Aptitute Test- ICAT',
+        label: 'Internship Common Aptitude Test - ICAT',
         href: '/credentials/ICAT.PDF',
         type: 'pdf',
         date: 'July 2026',
       },
       {
         label: 'Research on Market Volatility Forecasting System',
-        href: 'research/NCMPCS.PDF',
+        href: '/research/NCMPCS.PDF',
         date: 'March 2026',
         type: 'pdf',
       },
@@ -133,7 +133,7 @@ export const credentialsData: CredentialCardProps[] = [
         type: 'image',
       }, 
       {
-        label: 'Record Wining Rangoli @Bhoomi-fest_26',
+        label: 'Record-Winning Rangoli @Bhoomi-fest_26',
         href: '/credentials/Bhoomi-fest.png',
         type: 'image',
       },

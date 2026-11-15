@@ -44,7 +44,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
+      className={`${geistSans.variable} ${geistMono.variable} ${greatVibes.variable} h-full antialiased scroll-smooth`}
       style={{ scrollPaddingTop: "80px" }}
     >
       <body className="min-h-full flex flex-col">{children}</body>

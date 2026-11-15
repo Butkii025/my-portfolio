@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import ContactForm from './contactform';
 import { FaDownload } from 'react-icons/fa';
 
@@ -11,30 +12,32 @@ export default function Contact(): React.JSX.Element {
   return (
     <section id="contact" className="py-28 px-6 md:px-12 lg:px-24 dark:bg-transparent">
       <div className="max-w-6xl mx-auto">
-        <div className="mb-6">
-          <p className="uppercase tracking-[0.2em] mb-4 text-zinc-500 dark:text-zinc-500 text-xs font-semibold">Contact</p>
-          <h2 className="flex items-center gap-3 text-5xl md:text-6xl font-bold dark:text-white text-black mb-4">
+        <div className="mb-6 text-center">
+          
+          <p className="mb-4 text-xs uppercase tracking-[0.35em] text-blue-400/80 dark:text-blue-400/70">
+              Contact
+            </p>
+          <h2 className="flex items-center justify-center gap-3 font-serif text-4xl font-light md:text-6xl dark:text-white text-black mb-4">
             Let's Build Together
           </h2>
+          <p className="mx-auto max-w-2xl text-center text-xs md:text-sm leading-relaxed dark:text-zinc-400 text-zinc-500">
+            Interested in collaborations, projects, or creative ideas? Let's connect and create impactful digital experiences.
+          </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-start">
           
-          <div className="flex flex-col gap-8">
-            <p className="leading-relaxed dark:text-zinc-400 text-zinc-500">
-              Interested in collaborations, projects, or creative ideas?<br></br> Let's connect and create impactful digital experiences.
-            </p>
-
+          <div className="flex flex-col gap-8 text-center">
             <div className="flex flex-col gap-3">
               <a href="mailto:priyanshuvijay262@gmail.com"
                 className="inline-flex items-center gap-2 text-sm transition-all duration-300 origin-left
-                  dark:text-zinc-500 dark:hover:text-blue-400 text-zinc-500 hover:text-blue-400 hover:scale-[1.02]">
+                  dark:text-zinc-500 dark:hover:text-blue-400 text-zinc-500 hover:text-blue-600 hover:scale-[1.02]">
                 <span className="dark:text-zinc-600 text-zinc-400">→</span>
                 <span className="hover:underline underline-offset-2">priyanshuvijay262@gmail.com</span>
               </a>
               <a href="https://github.com/Butkii025" target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm transition-all duration-300 origin-left
-                  dark:text-zinc-500 dark:hover:text-blue-400 text-zinc-500 hover:text-blue-400 hover:scale-[1.02]">
+                  dark:text-zinc-500 dark:hover:text-blue-400 text-zinc-500 hover:text-blue-600 hover:scale-[1.02]">
                 <span className="dark:text-zinc-600 text-zinc-400">→</span>
                 <span className="hover:underline underline-offset-2">github.com/Butkii025</span>
               </a>
@@ -43,7 +46,7 @@ export default function Contact(): React.JSX.Element {
                   href="https://docs.google.com/document/d/145I8HrBv9Ub2HroPFgFkyLaGp5p4T4UDzb6s-uII7Pk/edit?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 text-sm  mt-4 rounded-2xl transition duration-300 cursor-pointer dark:border dark:border-white/20 dark:text-white/80 dark:hover:bg-white/10 dark:active:bg-zinc-400 border border-zinc-300 text-zinc-700 hover:bg-zinc-100 active:bg-zinc-300"
+                  className="portfolio-link-button px-4 py-2 text-sm mt-4 rounded-2xl transition duration-300 cursor-pointer dark:border dark:border-white/20 dark:text-white/80 dark:hover:bg-white/10 dark:active:bg-zinc-400 border border-zinc-300 text-zinc-700 hover:bg-zinc-100 active:bg-zinc-300"
                 >
                   Resume <FaDownload size={18} className="inline-block ml-2" />
                 </a>
@@ -51,9 +54,19 @@ export default function Contact(): React.JSX.Element {
               
             </div>
 
-            <ChaiCup submitted={submitted} />
+            
+            <div className="flex justify-center">
+              <motion.img
+                src="/card.png"
+                alt="Priyanshu — creative engineer and artist"
+                loading="lazy"
+                whileHover={{ y: -10, scale: 1.035 }}
+                transition={{ duration: 0.6 }}
+                className="max-h-[250px] w-100 object-contain drop-shadow-[0_0_18px_rgba(59,130,246,0.18)]"
+              />
+            </div><ChaiCup submitted={submitted} />
 
-            <p className="text-sm italic dark:text-zinc-500 text-zinc-400 font-['Alex_Brush',_cursive] text-lg">
+            <p className="font-serif italic text-xl leading-tight text-zinc-400 dark:text-zinc-500">
               " — the best meetings start with chai "
             </p>
           </div>

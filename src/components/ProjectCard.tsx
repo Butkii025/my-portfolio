@@ -1,152 +1,187 @@
 'use client';
 
-import React, { useRef } from 'react';
-import { Project } from '@/src/Data/projectsData';
+import React, { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
-function useTilt(strength = 10) {
-  const ref = useRef<HTMLDivElement>(null);
-  const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const el = ref.current;
-    if (!el) return;
-    const r = el.getBoundingClientRect();
-    const x = e.clientX - r.left - r.width / 2;
-    const y = e.clientY - r.top - r.height / 2;
-    el.style.transform = `perspective(800px) rotateX(${-(y / r.height) * strength}deg) rotateY(${(x / r.width) * strength}deg) scale3d(1.02,1.02,1.02)`;
-    const g = el.querySelector('.card-glow') as HTMLElement;
-    if (g) {
-      g.style.background = `radial-gradient(circle at ${50 + (x / r.width) * 60}% ${50 + (y / r.height) * 60}%, rgba(96,165,250,0.15), transparent 70%)`;
-      g.style.opacity = '1';
-    }
-  };
-
-  const onMouseLeave = () => {
-    const el = ref.current;
-    if (!el) return;
-    el.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
-    const g = el.querySelector('.card-glow') as HTMLElement;
-    if (g) g.style.opacity = '0';
-  };
-
-  return { ref, onMouseMove, onMouseLeave };
-}
-
-interface ProjectCardProps {
-  project: Project;
-  isActive: boolean;
-  onMouseEnter: () => void;
-  onMouseLeave: () => void;
-  onExplore: (e: React.MouseEvent<HTMLAnchorElement>, title: string) => void;
-}
+export type Project = {
+  name: string;
+  title: string;
+  type: string;
+  focused?: string;
+  desc: string;
+  img: string;
+  tech: string[];
+  url?: string;
+  code?: string;
+};
 
 export default function ProjectCard({
   project,
-  isActive,
-  onMouseEnter,
-  onMouseLeave: onLeave,
-  onExplore,
-}: ProjectCardProps) {
-  const tilt = useTilt(10);
-  const ease = 'cubic-bezier(0.25,1,0.5,1)';
+  index,
+}: {
+  project: Project;
+  index: number;
+}) {
+  const [isActive, setIsActive] = useState(false);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [glow, setGlow] = useState({ x: 50, y: 50 });
+
+  const handlePointerMove = (
+    e: React.PointerEvent<HTMLDivElement>
+  ) => {
+    if (e.pointerType !== 'mouse') return;
+
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const rotateY = (x / rect.width - 0.5) * 20;
+    const rotateX = (y / rect.height - 0.5) * -20;
+
+    setTilt({ x: rotateX, y: rotateY });
+
+    setGlow({
+      x: (x / rect.width) * 100,
+      y: (y / rect.height) * 100,
+    });
+  };
+
+  const resetTilt = () => {
+    setTilt({ x: 0, y: 0 });
+  };
 
   return (
-    <div
-      ref={tilt.ref}
-      onMouseMove={tilt.onMouseMove}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={() => { tilt.onMouseLeave(); onLeave(); }}
-      style={{ transition: 'transform 0.15s ease-out', transformStyle: 'preserve-3d' }}
-      className="group relative rounded-3xl overflow-hidden w-full h-full flex flex-col min-h-[480px]
-        dark:bg-gradient-to-br dark:from-white/5 dark:to-white/0 dark:border dark:border-white/10 dark:hover:border-blue-400/50 dark:hover:shadow-blue-500/10
-        bg-gradient-to-br from-zinc-50 to-white border border-zinc-200 hover:border-blue-400/50 hover:shadow-blue-500/10
-        backdrop-blur-sm hover:shadow-2xl"
+    <motion.div
+      initial={{ opacity: 0, y: 35 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.6, delay: index * 0.08 }}
+      className="w-[78vw] max-w-[340px] shrink-0 snap-center"
     >
-      <div className="card-glow absolute inset-0 pointer-events-none rounded-3xl z-10 transition-opacity duration-300" style={{ opacity: 0 }} />
-
-      <div className="relative h-48 sm:h-52 w-full overflow-hidden shrink-0 dark:bg-zinc-900 bg-zinc-100">
-        <img src={project.img} alt={project.title}
-          className="w-full h-full object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105" />
-        <div className="absolute inset-0 dark:bg-zinc-950/20 bg-white/10 transition-opacity duration-500 group-hover:opacity-0" />
-
-        <span className="absolute top-3 right-3 text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-md
-          dark:bg-zinc-900/90 dark:border dark:border-zinc-700 dark:text-zinc-400
-          bg-white/90 border border-zinc-200 text-zinc-500">
-          {project.type}
-        </span>
-      </div>
-
-      <div className="flex flex-col flex-1 p-5">
-        <h3 className="font-bold text-base tracking-tight mb-2 transition-colors duration-300
-          dark:text-white text-zinc-800 group-hover:text-blue-400
-          line-clamp-2 group-hover:line-clamp-none">
-          {project.title}
-        </h3>
-
-        <p className="text-xs italic mb-3 dark:text-zinc-600 text-zinc-400 line-clamp-1">
-           {project.focused}
-        </p>
-
-        <div style={{
-          transition: `opacity 0.45s ${ease}, max-height 0.55s ${ease}`,
-          opacity: isActive ? 1 : 0,
-          maxHeight: isActive ? '20rem' : '0px',  // ← Changed from '10rem' to '20rem'
-          overflow: 'hidden',
+      <motion.div
+        onPointerMove={handlePointerMove}
+        onPointerLeave={resetTilt}
+        animate={{
+          rotateX: tilt.x,
+          rotateY: tilt.y,
         }}
-          className="text-sm leading-relaxed dark:text-zinc-400 text-zinc-500 mb-8 mt-2">
-          {project.desc}
+        transition={{
+          type: 'spring',
+          stiffness: 180,
+          damping: 18,
+        }}
+        style={{
+          transformStyle: 'preserve-3d',
+          perspective: 1000,
+        }}
+        className="relative min-h-[480px] overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-xl dark:border-white/10 dark:bg-[#18211b]"
+      >
+        {/* Cursor-following glow */}
+        <div
+          className="pointer-events-none absolute inset-0 z-20 opacity-60"
+          style={{
+            background: `radial-gradient(circle at ${glow.x}% ${glow.y}%, rgba(91, 148, 215, 0.22), transparent 45%)`,
+          }}
+        />
+
+        {/* Project image */}
+        <div className="relative h-[205px] overflow-hidden bg-zinc-100 dark:bg-[#111812]">
+          <img
+            src={project.img}
+            alt={project.name}
+            className="h-full w-full object-cover"
+          />
+
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent dark:from-[#18211b]" />
+
+          <span className="absolute left-4 top-4 rounded-full border border-zinc-300 bg-white/85 px-3 py-1 text-xs text-zinc-700 backdrop-blur-md dark:border-white/15 dark:bg-black/40 dark:text-zinc-200">
+            {project.type}
+          </span>
         </div>
 
-        <div style={{
-          transition: `opacity 0.4s ${ease} 0.1s, max-height 0.5s ${ease}`,
-          opacity: isActive ? 1 : 0,
-          maxHeight: isActive ? '6rem' : '0px',
-          overflow: 'hidden',
-        }}
-          className="flex flex-wrap gap-1.5 mb-4 text-xs">
-          {project.tech.map((t, i) => (
-            <span key={i}
-              style={{
-                transitionDelay: isActive ? `${0.15 + i * 0.04}s` : '0s',
-                opacity: isActive ? 1 : 0,
-                transform: isActive ? 'translateY(0)' : 'translateY(6px)',
-                transition: 'opacity 0.3s ease, transform 0.3s ease',
-              }}
-              className="px-2 py-0.5 rounded-md whitespace-nowrap
-                dark:bg-zinc-900/80 dark:border dark:border-zinc-800 dark:text-zinc-400
-                bg-zinc-100 border border-zinc-200 text-zinc-600">
-              {t}
+        {/* Main card content */}
+        <div className="relative z-10 flex flex-col p-5">
+          <p className="mb-2 text-xs uppercase tracking-[0.2em] text-blue-400/80 dark:text-blue-400/80">
+            Project {String(index + 1).padStart(2, '0')}
+          </p>
+
+          <h3 className="font-serif text-2xl font-light leading-tight text-zinc-900 dark:text-zinc-100">
+            {project.name}
+          </h3>
+
+          <p className="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+            {project.desc}
+          </p>
+
+          <button
+            type="button"
+            onClick={() => setIsActive(!isActive)}
+            className="mt-5 flex items-center justify-between border-t border-zinc-200 pt-4 text-sm text-blue-700 transition-colors hover:text-blue-800 dark:border-white/10 dark:text-blue-400 dark:hover:text-blue-300"
+          >
+            <span>
+              {isActive ? 'Show less' : 'Explore project'}
             </span>
-          ))}
+
+            <span className="text-lg">
+              {isActive ? '−' : '+'}
+            </span>
+          </button>
+
+          {/* Expandable project details */}
+          <AnimatePresence initial={false}>
+            {isActive && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.35 }}
+                className="overflow-hidden"
+              >
+                {project.focused && (
+                  <p className="mt-4 text-sm text-zinc-600 dark:text-zinc-300">
+                    {project.focused}
+                  </p>
+                )}
+
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {project.tech?.map((item) => (
+                    <span
+                      key={item}
+                      className="rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-xs text-zinc-700 dark:border-white/10 dark:bg-white/5 dark:text-zinc-300"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="mt-5 flex gap-5 text-sm">
+                  {project.url && (
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-700 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+                    >
+                      Preview ↗
+                    </a>
+                  )}
+
+                  {project.code && (
+                    <a
+                      href={project.code}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-700 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+                    >
+                      Source Code ↗
+                    </a>
+                  )}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
-
-        <div style={{
-          transition: `opacity 0.4s ${ease} 0.25s, max-height 0.5s ${ease}`,
-          opacity: isActive ? 1 : 0,
-          maxHeight: isActive ? '5rem' : '0px',
-          overflow: 'hidden',
-        }}
-          className="flex gap-3 mt-4">
-
-          {project.url && (
-            <a href={project.url} target="_blank" rel="noopener noreferrer"
-              className="flex-1 text-center" onClick={(e) => onExplore(e, project.title)}>
-              <button className="w-full px-3 py-2.5 text-xs font-medium rounded-xl transition duration-200 cursor-pointer
-                dark:border dark:border-zinc-800 dark:text-white dark:hover:bg-white/10 dark:active:bg-blue-400
-                border border-zinc-300 text-zinc-700 hover:bg-zinc-100 active:bg-blue-400">
-                Preview ↗
-              </button>
-            </a>
-          )}
-
-          <a href={project.code} target="_blank" rel="noopener noreferrer"
-            className={project.url ? 'flex-1 text-center' : 'w-full text-center'}>
-            <button className="w-full px-3 py-2.5 text-xs font-medium rounded-xl transition duration-200 cursor-pointer
-              dark:border dark:border-zinc-800 dark:text-white dark:hover:bg-white/10 dark:active:bg-blue-400
-              border border-zinc-300 text-zinc-700 hover:bg-zinc-100 active:bg-blue-400">
-              Code 
-            </button>
-          </a>
-        </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }

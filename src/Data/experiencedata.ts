@@ -10,7 +10,7 @@ export interface ExperienceItem {
 
 export const experiences: ExperienceItem[] = [
   {
-    title: "Full-Stack AI Developer",
+    title: "Full-Stack Developer",
     role: "@Smart India Hackathon 2026 - Ministry of Rural Development",
     date: "September 2026",
     description:

@@ -91,9 +91,9 @@ export default function FunZone() {
           target="_blank"
           rel="noreferrer"
           title="Explore more on Xela_Arcade"
-          className="absolute top-4 right-4 z-20 flex items-center justify-center h-7 w-7 rounded-lg transition-all duration-200 active:scale-95
-            dark:bg-zinc-900/60 dark:border dark:border-white/10 dark:text-zinc-500 dark:hover:border-blue-400/40 dark:hover:text-blue-400
-            bg-zinc-100 border border-zinc-200 text-zinc-400 hover:border-blue-400/40 hover:text-blue-400"
+          className="portfolio-link-button absolute top-4 right-4 z-20 flex items-center justify-center h-7 w-7 rounded-lg transition-all duration-200 active:scale-95
+            dark:bg-zinc-900/60 dark:border dark:border-white/10 dark:text-zinc-500 dark:hover:border-blue-400/40
+            bg-zinc-100 border border-zinc-200 text-zinc-400 hover:border-blue-400/40"
         >
           <FaExternalLinkAlt size={10} />
         </a>

@@ -147,6 +147,16 @@ export default function ChatBot() {
     endOfMessagesRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [isOpen, isLoading, messages]);
 
+  useEffect(() => {
+    const openKiran = () => setIsOpen(true);
+
+    window.addEventListener("open-kiran-chat", openKiran);
+
+    return () => {
+      window.removeEventListener("open-kiran-chat", openKiran);
+    };
+  }, []);
+
   const handleClear = () => {
     setMessages([INITIAL_WELCOME]);
     setError("");
@@ -345,7 +355,7 @@ export default function ChatBot() {
                   type="button"
                   disabled={isLoading}
                   onClick={() => handleSendQuery(chip.query)}
-                  className="whitespace-nowrap rounded-full border border-zinc-200 dark:border-white/15 bg-white dark:bg-white/5 px-3 py-1 text-[11px] font-medium text-zinc-600 dark:text-zinc-300 transition duration-200 hover:border-blue-400 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-400 hover:scale-[1.02] disabled:opacity-50"
+                  className="whitespace-nowrap rounded-full border border-zinc-200 dark:border-white/15 bg-white dark:bg-white/5 px-3 py-1 text-[11px] font-medium text-zinc-600 dark:text-zinc-300 transition duration-200 hover:border-blue-400 dark:hover:border-blue-400 hover:scale-[1.02] disabled:opacity-50"
                 >
                   {chip.label}
                 </button>

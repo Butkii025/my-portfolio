@@ -1,413 +1,252 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
-import { FaHome, FaMoon, FaSun, FaDesktop } from 'react-icons/fa';
+import Link from 'next/link';
+import { FaMoon, FaSun, FaDesktop } from 'react-icons/fa';
+
 import Hero from '../src/components/Hero';
 import About from '../src/components/About';
+import AcademicBlock from '../src/components/Academics';
 import Skills from '../src/components/Skills';
-import Projects from '../src/components/Projects';
 import Credentials from '../src/components/Credentials';
 import Research from '../src/components/Research';
-import CreativeCorner from '../src/components/ArtGallery';
-import Contact from '../src/components/Contact';
-import SmoothFollower from '@/src/anim/SmoothFollower';
-import Footer from '../src/components/Footer';
-import InteractiveDots from '@/src/ui/Interactivedots';
-import ArtisticIllustrativeBg from '@/src/ui/ArtisticIllustrativeBg';
 import Experience from '../src/components/Experience';
-import AcademicBlock from '../src/components/Academics';
-import LandingPage from '../src/Prepage/LandingPage';
+import Projects from '../src/components/Projects';
+import Contact from '../src/components/Contact';
+import Footer from '../src/components/Footer';
 import ChatBot from '../src/components/ChatBot';
+import LandingPage from '../src/Prepage/LandingPage';
+import DeveloperZone from '../src/components/DeveloperZone';
+
+import SmoothFollower from '@/src/anim/SmoothFollower';
+import InteractiveDots from '@/src/ui/Interactivedots';
+
+const desktopLinks = [
+  ['About', '/#about'],
+  ['Stacks', '/#skills'],
+  ['Projects', '/#projects'],
+  ['Experience', '/#experience'],
+  ['Gallery', '/gallery'],
+];
+
+const mobileLinks = [
+  ['Home', '/#hero'],
+  ['About', '/#about'],
+  ['Academics', '/#academics'],
+  ['Stacks', '/#skills'],
+  ['Credentials', '/#credentials'],
+  ['Research', '/#research'],
+  ['Experience', '/#experience'],
+  ['Projects', '/#projects'],
+  ['Developer Zone', '/#developer-zone'],
+  ['Gallery', '/gallery'],
+  ['Contact', '/#contact'],
+];
 
 export default function VijayPortfolio() {
-  const [isMenuOpen,    setIsMenuOpen]    = useState(false);
-  const [isLogoOpen,    setIsLogoOpen]    = useState(false);
-  const [isProfileOpen, setIsProfileOpen] = useState(false);
-  // Theme mode: 'dark' (default) | 'system' | 'light'
-  const [themeMode,     setThemeMode]     = useState('dark');
-  const [isDark,        setIsDark]        = useState(true);
-  const [showPreloader, setShowPreloader] = useState(true);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const [menu, setMenu] = useState(false);
+  const [logo, setLogo] = useState(false);
+  const [profile, setProfile] = useState(false);
+  const [themeMode, setThemeMode] = useState('dark');
+  const [isDark, setIsDark] = useState(true);
+  const [showPreloader, setShowPreloader] = useState(false);
+  const [sessionChecked, setSessionChecked] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (totalHeight > 0) {
-        setScrollProgress((window.scrollY / totalHeight) * 100);
-      }
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    const visited = sessionStorage.getItem('hasVisited') === 'true';
+    setShowPreloader(!visited);
+    setSessionChecked(true);
 
-  // Sync theme mode with localStorage and system preference (defaulting to dark)
-  useEffect(() => {
     const saved = localStorage.getItem('theme_preference');
     if (saved === 'dark' || saved === 'light' || saved === 'system') {
       setThemeMode(saved);
-    } else {
-      setThemeMode('dark');
-      localStorage.setItem('theme_preference', 'dark');
     }
   }, []);
 
   useEffect(() => {
     const root = document.documentElement;
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const media = window.matchMedia('(prefers-color-scheme: dark)');
 
-    const updateTheme = () => {
-      let resolvedDark = true;
-      if (themeMode === 'system') {
-        resolvedDark = mediaQuery.matches;
-      } else if (themeMode === 'light') {
-        resolvedDark = false;
-      } else {
-        // 'dark' mode default
-        resolvedDark = true;
-      }
+    const update = () => {
+      const dark = themeMode === 'system'
+        ? media.matches
+        : themeMode === 'dark';
 
-      setIsDark(resolvedDark);
-      if (resolvedDark) {
-        root.classList.add('dark');
-      } else {
-        root.classList.remove('dark');
-      }
+      setIsDark(dark);
+      root.classList.toggle('dark', dark);
     };
 
-    updateTheme();
+    update();
     localStorage.setItem('theme_preference', themeMode);
 
     if (themeMode === 'system') {
-      mediaQuery.addEventListener('change', updateTheme);
-      return () => mediaQuery.removeEventListener('change', updateTheme);
+      media.addEventListener('change', update);
+      return () => media.removeEventListener('change', update);
     }
   }, [themeMode]);
 
-  const cycleTheme = () => {
-    setThemeMode((current) => {
-      if (current === 'system') return 'dark';
-      if (current === 'dark') return 'light';
-      return 'system';
-    });
-  };
-
   const logoSrc = isDark ? '/logo-on-dark.png' : '/logo-on-white.png';
 
-  const desktopLinks = [
-    { label: <FaHome size={16} />, href: '#home' },
-    { label: 'About',          href: '#about'          },
-    { label: 'Skills',         href: '#skills'         },
-    { label: 'Experience',     href: '#experience'     },
-    { label: 'Projects',       href: '#projects'       },
-    { label: 'Research',       href: '#research'       },
-    { label: 'Creative_Corner',href: '#creative_corner'},
-    { label: 'Contact',        href: '#contact'        },
-  ];
+  const enterSite = () => {
+    sessionStorage.setItem('hasVisited', 'true');
+    setShowPreloader(false);
+  };
 
-  const allLinks = [
-    { label: 'Home',           href: '#home'           },
-    { label: 'About',          href: '#about'          },
-    { label: 'Academics',     href: '#academics'       },
-    { label: 'Skills',         href: '#skills'         },
-    { label: 'Experience',     href: '#experience'     },
-    { label: 'Credentials',    href: '#credentials'    },
-    { label: 'Projects',       href: '#projects'       },
-    { label: 'Research',       href: '#research'       },
-    { label: 'Creative_Corner',href: '#creative_corner'},
-    { label: 'Contact',        href: '#contact'        },
+  const themeButtons = [
+    [FaMoon, 'dark'],
+    [FaDesktop, 'system'],
+    [FaSun, 'light'],
   ];
-
-  const toggleMenu   = () => setIsMenuOpen(!isMenuOpen);
-  const closeMenu    = () => setIsMenuOpen(false);
-  const openLogo     = () => setIsLogoOpen(true);
-  const closeLogo    = () => setIsLogoOpen(false);
-  const openProfile  = () => setIsProfileOpen(true);
-  const closeProfile = () => setIsProfileOpen(false);
 
   return (
     <>
-      {/* 1. The Preloader Lifecycle */}
-      {showPreloader && (
-        <LandingPage onEnter={() => setShowPreloader(false)} />
-      )}
-    <div className={`relative min-h-screen transition-colors duration-500 ${
-      themeMode === 'system'
-        ? isDark
-          ? 'bg-[#0b0f19] text-zinc-100'
-          : 'bg-[#f8fafc] text-zinc-800'
-        : 'dark:bg-black bg-white dark:text-white text-gray-900'
-    }`}>
+      {sessionChecked && showPreloader && <LandingPage onEnter={enterSite} />}
 
-      {/* Background layer */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        {/* Artistic Animated Illustrative Canvas for System mode */}
-        {themeMode === 'system' && <ArtisticIllustrativeBg isDark={isDark} />}
+      <div className="relative min-h-screen bg-white text-zinc-900 dark:bg-black dark:text-zinc-100">
+        <div className="fixed inset-0 z-0 pointer-events-none">
+          {themeMode !== 'system' && (
+            <InteractiveDots
+              backgroundColor={isDark ? '#000000' : '#ffffff'}
+              dotColor={isDark ? '#395e8b' : '#93c5fd'}
+              gridSpacing={25}
+              animationSpeed={0.005}
+              removeWaveLine
+            />
+          )}
+        </div>
 
-        {/* Global interactive dot background (hidden in system mode) */}
-        {themeMode !== 'system' && (
-          <InteractiveDots
-            backgroundColor={isDark ? '#000000' : '#ffffff'}
-            dotColor={isDark ? '#395e8b' : '#93c5fd'}
-            gridSpacing={25}
-            animationSpeed={0.005}
-            removeWaveLine={true}
-          />
-        )}
-      </div>
+        <div className="relative z-10">
+          {/* NAVBAR */}
+          <nav className="fixed top-0 left-0 z-50 w-full border-b border-blue-100 bg-white/70 backdrop-blur-md dark:border-white/5 dark:bg-zinc-900/10">
+            <div className="relative mx-auto flex max-w-7xl items-center justify-between px-6">
 
-      {/* All content above dots */}
-      <div className="relative z-10">
-
-        {/* NAVBAR */}
-        <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md dark:bg-zinc-900/10 bg-white/70 border-b dark:border-white/5 border-blue-100 transition-colors duration-300">
-          {/* Scroll progress bar */}
-          <div
-            className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-blue-500 via-indigo-500 to-cyan-400 transition-all duration-100 ease-out"
-            style={{ width: `${scrollProgress}%` }}
-          />
-          <div className="max-w-7xl mx-auto flex items-center justify-between px-6">
-
-            {/* Logo */}
-            <div className="flex items-center gap-3 py-1">
-              <img
-                src={logoSrc}
-                alt="Logo"
-                className="h-15 w-15 rounded-full cursor-pointer hover:scale-105 transition duration-300"
-                onClick={openLogo}
-              />
-              <div className="flex flex-col justify-center">
-                <h1 className="text-2xl font-bold tracking-wider leading-none dark:text-white text-zinc-800">
+              <div className="flex items-center gap-3 py-1">
+                <img
+                  src={logoSrc}
+                  alt="Logo"
+                  onClick={() => setLogo(true)}
+                  className="h-15 w-15 cursor-pointer rounded-full transition hover:scale-105"
+                />
+                <h1 className="text-2xl font-bold tracking-wider dark:text-white">
                   P_Vijay
                 </h1>
               </div>
-            </div>
 
-            {/* Desktop nav + theme toggle + hamburger */}
-            <div className="flex items-center gap-6">
-
-              {/* Desktop links */}
-              <div className="hidden md:flex items-center gap-1">
-                {desktopLinks.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    className="px-4 py-2 rounded-xl text-sm font-medium transition duration-300
-                      dark:text-zinc-300 dark:hover:text-white dark:hover:bg-white/10
-                      text-gray-600 hover:text-blue-700 hover:bg-blue-100 hover:scale-105"
+              {/* DESKTOP LINKS */}
+              <div className="absolute left-1/2 hidden -translate-x-1/2 items-center md:flex">
+                {desktopLinks.map(([label, href]) => (
+                  <Link
+                    key={label}
+                    href={href}
+                    className="rounded-xl px-2.5 py-2 text-sm font-medium text-gray-600 transition hover:scale-105 hover:bg-blue-100 dark:text-zinc-300 dark:hover:bg-white/10"
                   >
-                    {link.label}
-                  </a>
+                    {label}
+                  </Link>
                 ))}
               </div>
 
-              {/* Segmented Radio-Group Theme Toggle (System / Light / Dark) matching pixelansh.vercel.app */}
-              <div
-                role="radiogroup"
-                aria-label="Theme switcher"
-                className="relative flex items-center rounded-full border border-zinc-200/80 dark:border-white/10 bg-zinc-100/90 dark:bg-zinc-900/90 p-0.5 backdrop-blur-md shadow-xs transition-all duration-300"
-              >
-                {/* Dark (Default) */}
-                <button
-                  type="button"
-                  role="radio"
-                  aria-checked={themeMode === 'dark'}
-                  aria-label="Dark theme"
-                  title="Dark theme (Cosmic Dark)"
-                  onClick={() => setThemeMode('dark')}
-                  className={`relative z-10 grid h-7 w-7 place-items-center rounded-full transition-all duration-200 cursor-pointer ${
-                    themeMode === 'dark'
-                      ? 'bg-white dark:bg-white/15 text-indigo-500 dark:text-indigo-400 shadow-xs scale-105'
-                      : 'text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white'
-                  }`}
-                >
-                  <FaMoon size={12} />
-                </button>
-
-                {/* System (Artistic Animated Illustrative Canvas) */}
-                <button
-                  type="button"
-                  role="radio"
-                  aria-checked={themeMode === 'system'}
-                  aria-label="System theme"
-                  title="System theme (Animated Artistic Canvas & Illustrative Motifs)"
-                  onClick={() => setThemeMode('system')}
-                  className={`relative z-10 grid h-7 w-7 place-items-center rounded-full transition-all duration-200 cursor-pointer ${
-                    themeMode === 'system'
-                      ? 'bg-white dark:bg-white/15 text-blue-500 dark:text-blue-400 shadow-xs scale-105'
-                      : 'text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white'
-                  }`}
-                >
-                  <FaDesktop size={12} />
-                </button>
-
-                {/* Light */}
-                <button
-                  type="button"
-                  role="radio"
-                  aria-checked={themeMode === 'light'}
-                  aria-label="Light theme"
-                  title="Light theme"
-                  onClick={() => setThemeMode('light')}
-                  className={`relative z-10 grid h-7 w-7 place-items-center rounded-full transition-all duration-200 cursor-pointer ${
-                    themeMode === 'light'
-                      ? 'bg-white text-amber-500 shadow-xs scale-105'
-                      : 'text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white'
-                  }`}
-                >
-                  <FaSun size={12} />
-                </button>
-              </div>
-
-              {/* Hamburger — mobile only */}
-              <button
-                onClick={toggleMenu}
-                className="flex md:hidden flex-col gap-1 cursor-pointer p-2 z-50"
-                aria-label="Toggle menu"
-              >
-                <span className={`w-6 h-0.5 transition-all duration-300 dark:bg-white bg-zinc-700 ${isMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`} />
-                <span className={`w-6 h-0.5 transition-all duration-300 dark:bg-white bg-zinc-700 ${isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`} />
-              </button>
-            </div>
-          </div>
-
-          {/* Mobile dropdown */}
-          {isMenuOpen && (
-            <>
-              <div
-                className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
-                onClick={closeMenu}
-                style={{ boxShadow: 'inset 0 0 40px rgba(96,165,250,0.15)' }}
-              />
-              <div className="absolute top-24 right-6 w-56 rounded-2xl shadow-2xl z-40 animate-in fade-in slide-in-from-top-2 duration-300
-                dark:bg-black dark:border-2 dark:border-blue-400
-                bg-white border-2 border-blue-400 overflow-hidden">
-                <div className="flex flex-col py-3">
-                  {/* Mobile theme pill inside menu */}
-                  <div className="px-4 py-2 mb-2 border-b border-zinc-200 dark:border-white/10 flex items-center justify-between">
-                    <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400">Theme</span>
-                    <div
-                      role="radiogroup"
-                      aria-label="Theme switcher mobile"
-                      className="flex items-center rounded-full border border-zinc-200/80 dark:border-white/10 bg-zinc-100/90 dark:bg-zinc-900/90 p-0.5"
+              <div className="flex items-center gap-4">
+                {/* THEME SWITCHER */}
+                <div className="flex rounded-full border border-zinc-200 bg-zinc-100 p-0.5 dark:border-white/10 dark:bg-zinc-900">
+                  {themeButtons.map(([Icon, mode]) => (
+                    <button
+                      key={mode}
+                      onClick={() => setThemeMode(mode)}
+                      title={`${mode} theme`}
+                      aria-label={`${mode} theme`}
+                      className={`grid h-7 w-7 place-items-center rounded-full ${
+                        themeMode === mode
+                          ? 'bg-white text-blue-500 shadow dark:bg-white/15'
+                          : 'text-zinc-500'
+                      }`}
                     >
-                      <button
-                        type="button"
-                        onClick={() => setThemeMode('dark')}
-                        title="Dark"
-                        className={`grid h-6 w-6 place-items-center rounded-full transition-all ${
-                          themeMode === 'dark' ? 'bg-white dark:bg-white/20 text-indigo-400' : 'text-zinc-400'
-                        }`}
-                      >
-                        <FaMoon size={10} />
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setThemeMode('system')}
-                        title="System"
-                        className={`grid h-6 w-6 place-items-center rounded-full transition-all ${
-                          themeMode === 'system' ? 'bg-white dark:bg-white/20 text-blue-500' : 'text-zinc-400'
-                        }`}
-                      >
-                        <FaDesktop size={10} />
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setThemeMode('light')}
-                        title="Light"
-                        className={`grid h-6 w-6 place-items-center rounded-full transition-all ${
-                          themeMode === 'light' ? 'bg-white text-amber-500' : 'text-zinc-400'
-                        }`}
-                      >
-                        <FaSun size={10} />
-                      </button>
-                    </div>
-                  </div>
-
-                  {allLinks.map((link) => (
-                    <a
-                      key={link.href}
-                      href={link.href}
-                      onClick={closeMenu}
-                      className="px-6 py-2.5 text-sm transition duration-300 cursor-pointer
-                        dark:text-white dark:hover:text-blue-400 dark:hover:bg-white/5
-                        text-gray-700 hover:text-blue-600 hover:bg-blue-50"
-                    >
-                      {link.label}
-                    </a>
+                      <Icon size={12} />
+                    </button>
                   ))}
                 </div>
+
+                {/* MOBILE MENU BUTTON */}
+                <button
+                  onClick={() => setMenu(!menu)}
+                  className="flex flex-col gap-1 p-2 md:hidden"
+                  aria-label="Toggle menu"
+                >
+                  <span className={`h-0.5 w-6 bg-zinc-700 transition dark:bg-white ${menu ? 'translate-y-1.5 rotate-45' : ''}`} />
+                  <span className={`h-0.5 w-6 bg-zinc-700 transition dark:bg-white ${menu ? '-translate-y-0.5 -rotate-45' : ''}`} />
+                </button>
               </div>
-            </>
+            </div>
+
+            {/* MOBILE MENU */}
+            {menu && (
+              <>
+                <div
+                  className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm"
+                  onClick={() => setMenu(false)}
+                />
+                <div className="absolute right-6 top-24 z-50 w-56 overflow-hidden rounded-2xl border-2 border-blue-400 bg-white py-3 shadow-2xl dark:bg-black">
+                  <div className="flex justify-around border-b border-zinc-200 px-3 pb-3 dark:border-white/10">
+                    {themeButtons.map(([Icon, mode]) => (
+                      <button key={mode} onClick={() => setThemeMode(mode)}>
+                        <Icon className={themeMode === mode ? 'text-blue-500' : 'text-zinc-500'} />
+                      </button>
+                    ))}
+                  </div>
+
+                  {mobileLinks.map(([label, href]) => (
+                    <Link
+                      key={label}
+                      href={href}
+                      onClick={() => setMenu(false)}
+                      className="block px-6 py-2.5 text-sm text-gray-700 hover:bg-blue-50 dark:text-white dark:hover:bg-white/5"
+                    >
+                      {label}
+                    </Link>
+                  ))}
+                </div>
+              </>
+            )}
+          </nav>
+
+          {/* LOGO MODAL */}
+          {logo && (
+            <div
+              onClick={() => setLogo(false)}
+              className="fixed inset-0 z-[60] flex items-center justify-center bg-black/70 backdrop-blur-sm"
+            >
+              <img src={logoSrc} alt="Logo" className="h-64 w-64 rounded-full border-2 border-blue-400 object-cover shadow-2xl" />
+            </div>
           )}
-        </nav>
 
-        {/* LOGO MODAL — theme aware */}
-        {isLogoOpen && (
-          <>
+          {/* PROFILE MODAL */}
+          {profile && (
             <div
-              className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50"
-              onClick={closeLogo}
-              style={{ boxShadow: 'inset 0 0 60px rgba(96,165,250,0.2)' }}
-            />
-            <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
-              <div
-                className="pointer-events-auto animate-in fade-in zoom-in duration-300"
-                onClick={e => e.stopPropagation()}
-              >
-                <img
-                  src={logoSrc}
-                  alt="Profile Logo"
-                  className="w-64 h-64 rounded-full border-2 border-blue-400 shadow-2xl object-cover"
-                  style={{ boxShadow: '0 0 40px rgba(96,165,250,0.4)' }}
-                />
-              </div>
+              onClick={() => setProfile(false)}
+              className="fixed inset-0 z-[60] flex items-center justify-center bg-black/70 backdrop-blur-sm"
+            >
+              <img src="/profile.png" alt="Profile" className="h-80 w-80 rounded-full border-2 border-blue-400 object-cover shadow-2xl" />
             </div>
-          </>
-        )}
+          )}
 
-        {/* PROFILE MODAL */}
-        {isProfileOpen && (
-          <>
-            <div
-              className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50"
-              onClick={closeProfile}
-              style={{ boxShadow: 'inset 0 0 60px rgba(96,165,250,0.2)' }}
-            />
-            <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
-              <div
-                className="pointer-events-auto animate-in fade-in zoom-in duration-300"
-                onClick={e => e.stopPropagation()}
-              >
-                <img
-                  src="/profile.png"
-                  alt="Profile Picture"
-                  className="w-80 h-80 rounded-full border-2 border-blue-400 shadow-2xl object-cover"
-                  style={{ boxShadow: '0 0 40px rgba(96,165,250,0.4)' }}
-                />
-              </div>
-            </div>
-          </>
-        )}
+          {/* ALL HOMEPAGE SECTIONS */}
+          <section id="hero"><Hero onProfileClick={() => setProfile(true)} /></section>
+          <section id="about"><About isDark={isDark} themeMode={themeMode} onProfileClick={() => setProfile(true)} /></section>
+          <section id="academics"><AcademicBlock /></section>
+          <section id="skills"><Skills /></section>
+          <section id="credentials"><Credentials /></section>
+          <section id="research"><Research /></section>
+          <section id="experience"><Experience /></section>
+          <section id="projects"><Projects /></section>
+          {/* DEVELOPER ZONE */}
+          <section id="developer-zone"><DeveloperZone /></section>
+          <section id="contact"><Contact /></section>
 
-        {/* SECTIONS */}
-        <Hero onProfileClick={openProfile} />
-        <About isDark={isDark} themeMode={themeMode} onProfileClick={openProfile} />
-        <AcademicBlock />
-        <Skills />
-        <Experience />
-        <Credentials />
-        <Projects />
-        <Research />
-        <CreativeCorner />
-        <Contact />
-        <Footer />
-        <ChatBot />
-
-        {/* Cursor */}
-        <SmoothFollower />
-
+          <Footer />
+          <ChatBot />
+          <SmoothFollower />
+        </div>
       </div>
-    </div>
-  </>);
-  
+    </>
+  );
 }
