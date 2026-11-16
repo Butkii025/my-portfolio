@@ -30,7 +30,7 @@ export const PROJECTS_DATA: Project[] = [
     url: 'https://pixelansh.vercel.app/',
     img: 'project-img/pixelansh.png',
     code: 'https://github.com/Butkii025/pixelansh',
-    type: 'Full Stack',
+    type: 'Web Application',
   },
   {
     name: "presentcall",
@@ -52,7 +52,7 @@ export const PROJECTS_DATA: Project[] = [
     url: 'https://bhunirvighna-ai.streamlit.app/',
     img: 'project-img/BhNv.png',
     code: 'https://github.com/Butkii025/BhuNirvighna-Ai',
-    type: 'Full Stack',
+    type: 'Machine Learning',
   },
   {
     name: "creditoptima",
@@ -74,7 +74,7 @@ export const PROJECTS_DATA: Project[] = [
     url: 'https://feelframe.vercel.app/',
     img: 'project-img/feelframe.png',
     code: 'https://github.com/Butkii025/feelframe',
-    type: 'Full Stack',
+    type: 'Data Analysis',
   },
 
   {
@@ -86,7 +86,7 @@ export const PROJECTS_DATA: Project[] = [
     url: 'https://propsight.streamlit.app/',
     img: 'project-img/real-estate-price.png',
     code: 'https://github.com/Butkii025/propsight-analysis/tree/main',
-    type: 'Data Science',
+    type: 'Data Analysis',
   },
 
   {
@@ -120,7 +120,7 @@ export const PROJECTS_DATA: Project[] = [
     url: 'https://p-vijay.vercel.app/',
     img: 'project-img/portfolio.png',
     code: 'https://github.com/Butkii025/my-portfolio',
-    type: 'Web Development',
+    type: 'Web Application',
   },
 
   {
@@ -143,7 +143,7 @@ export const PROJECTS_DATA: Project[] = [
     url: 'https://xela-arcade.vercel.app/',
     img: 'project-img/Xela_Arcade.png',
     code: 'https://github.com/Butkii025/Xela_Arcade',
-    type: 'Web Development',
+    type: 'Web Application',
   },
 
   {
@@ -177,7 +177,7 @@ export const PROJECTS_DATA: Project[] = [
     url: 'https://butkii025.github.io/Craft-Greet/',
     img: 'project-img/craftgreet.png',
     code: 'https://github.com/Butkii025/Craft-Greet',
-    type: 'Web Development',
+    type: 'Web Application',
   },
 
   {
@@ -211,6 +211,6 @@ export const PROJECTS_DATA: Project[] = [
     url: 'https://butkii025.github.io/SGPA-calculator/',
     img: 'project-img/clgplusminus.png',
     code: 'https://github.com/Butkii025/SGPA-calculator',
-    type: 'Web Development',
+    type: 'Web Application',
   },
 ];

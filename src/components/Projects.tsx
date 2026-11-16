@@ -9,7 +9,7 @@ import GradientText from '../ui/GradientText';
 
 const categories = [
   'All',
-  'Full Stack',
+  'Web Application',
   'Ai Application',
   'Machine Learning',
   'Research & Analytics',

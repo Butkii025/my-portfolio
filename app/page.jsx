@@ -24,7 +24,7 @@ import InteractiveDots from '@/src/ui/Interactivedots';
 
 const desktopLinks = [
   ['About', '/#about'],
-  ['Stacks', '/#skills'],
+  ['Technologies', '/#skills'],
   ['Projects', '/#projects'],
   ['Experience', '/#experience'],
   ['Gallery', '/gallery'],
@@ -34,7 +34,7 @@ const mobileLinks = [
   ['Home', '/#hero'],
   ['About', '/#about'],
   ['Academics', '/#academics'],
-  ['Stacks', '/#skills'],
+  ['Skills', '/#skills'],
   ['Credentials', '/#credentials'],
   ['Research', '/#research'],
   ['Experience', '/#experience'],
