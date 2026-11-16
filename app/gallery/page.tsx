@@ -11,7 +11,6 @@ import ChatBot from '../../src/components/ChatBot';
 
 import SmoothFollower from '@/src/anim/SmoothFollower';
 import InteractiveDots from '@/src/ui/Interactivedots';
-import ArtisticConstellationBg from '@/src/ui/ArtisticConstellationBg';
 
 type ThemeMode = 'dark' | 'system' | 'light';
 
